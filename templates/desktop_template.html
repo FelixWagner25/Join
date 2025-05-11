@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="/styles/style.css">
+    <script src="/scripts/script.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
-<body>
+<body onload="init()">
 <div class="page">
 
     <header> 
@@ -17,7 +19,7 @@
     </header>
 
 
-<!--Sebastian: navbar styling anpassen -->
+<!--Sebastian: navbar styling weiter anpassen -->
 
 
 <aside>   
@@ -26,19 +28,23 @@
             <img src="/assets/icons/join_icon.svg" alt="join-logo">
         </div>
         <menu>
-            <a href="/assets/html/summary.html"><img src="/assets/icons/summary_icon.svg" alt="#"><span>Summary</span></a>
-            <a href="/assets/html/add_task.html"><img src="/assets/icons/add_task_icon.svg" alt="#"><span>Add Task</span></a>
-            <a href="/assets/html/board.html"><img src="/assets/icons/board_icon.svg" alt="#"><span>Board</span></a>
-            <a href="/assets/html/contacts.html"><img src="/assets/icons/contacts_icon.svg" alt="#"><span>Contacts</span></a>
+            <a href="#summary"  onclick="loadContent('/assets/html/summary.html')"><img src="/assets/icons/summary_icon.svg" alt="#"><span>Summary</span></a>
+            <a href="#add_task" onclick="loadContent('/assets/html/add_task.html')"><img src="/assets/icons/add_task_icon.svg" alt="#"><span>Add Task</span></a>
+            <a href="#board"    onclick="loadContent('/assets/html/board.html')"><img src="/assets/icons/board_icon.svg" alt="#"><span>Board</span></a>
+            <a href="#contacts" onclick="loadContent('/assets/html/contacts.html')"><img src="/assets/icons/contacts_icon.svg" alt="#"><span>Contacts</span></a>
         </menu>
         <div class="policy-legal">
-            <a href="/assets/html/privacy_policy.html"></a><span>Privacy Policy</span></a>
-            <a href="/assets/html/legal_notice.html"></a><span>Legal notice</span></a>
+            <a href="#privacy"  onclick="loadContent('/assets/html/privacy_policy.html')"><span>Privacy Policy</span></a>
+            <a href="#legal"    onclick="loadContent('/assets/html/legal_notice.html')"><span>Legal notice</span></a>
         </div>
     </nav>
-    <main></main>
+
 </aside>
-        
+     
+    <main w3-include-html="/assets/html/summary.html"></main>
+
+
+
 </body>
 </html>
 

@@ -23,7 +23,6 @@ header{
     align-items: center;
     max-width: 1920px;
     box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.1);
-    
 }
 
 .header-container{
@@ -49,8 +48,8 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-/*         align-items: center; */
 }
+
 
 .join-logo{
     height: 229px;
@@ -67,11 +66,16 @@ nav{
 
 main{
     background-color: #F6F7F8;
-    height: calc(100% - 96px);
-    width: calc(100% - 232px);
+    display: flex;
+    justify-content: center;
     left: 232px;
-    position: relative;
+    margin-left: 232px;
+    padding-top: 8px;
+    height: calc(100vh - 104px);
 }
+
+
+
 
 menu{
     color: #FFFFFF;
@@ -103,7 +107,6 @@ a:hover{
     background-color: #091931;
 }
 
-
 .policy-legal{
     display: flex;
     flex-direction: column;
@@ -121,6 +124,8 @@ a:hover{
     padding: 8px;
     gap: 8px;
 }
+
+
 
 .d-flex{
     display: flex;
