@@ -24,3 +24,98 @@
   padding-top: 96px;
   padding-left: 62px;
 }
+
+.contact-details-name-icon {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  color: white;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 47px;
+  font-weight: 500;
+}
+
+.contact-details-icon-edit-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 54px;
+  padding-top: 32px;
+}
+
+.contact-details-name {
+  font-size: 47px;
+  font-weight: 500;
+}
+
+.contacts-details {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.contact-details-name-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contract-details-edit-delete-wrap {
+  display: flex;
+  gap: 24px;
+}
+
+.contact-details-edit-contact {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-contact-icon {
+  width: 30px;
+  height: 19px;
+}
+
+.edit-contact-icon:hover {
+  cursor: pointer;
+}
+
+.edit-contact-text {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.contact-information-text {
+  font-size: 20px;
+  padding-top: 27px;
+  padding-bottom: 27px;
+}
+
+.contact-details-email-phone-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.contact-details-email-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-details-category {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.contact-details-email {
+  font-size: 16px;
+  font-weight: 400;
+  color: #007cee;
+}
+
+.contact-details-phone {
+  font-size: 16px;
+  font-weight: 400;
+}
