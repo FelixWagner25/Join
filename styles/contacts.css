@@ -1,0 +1,26 @@
+.contacts-details-headline-title {
+  font-size: 61px;
+  font-weight: 700;
+}
+
+.contacts-details-headline-subtitle {
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.vline {
+  border-left: 3px solid #29abe2;
+  height: 59px;
+}
+
+.contacts-details-headline {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-grow: 1;
+}
+
+.contacts-details-wrap {
+  padding-top: 96px;
+  padding-left: 62px;
+}
