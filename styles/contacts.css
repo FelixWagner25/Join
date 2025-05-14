@@ -119,3 +119,38 @@
   font-size: 16px;
   font-weight: 400;
 }
+
+.contacts-list-wrap {
+  width: 456px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.add-new-contact-btn {
+  background-color: #2a3647;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 10px;
+  width: 352px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.add-new-contact-btn:hover {
+  background-color: #354355;
+}
+
+.add-new-contact-text {
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.add-new-contact-img {
+  width: 32px;
+  height: 32px;
+}
