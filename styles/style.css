@@ -34,6 +34,7 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 }
 
 aside {
@@ -41,29 +42,28 @@ aside {
   display: flex;
   position: fixed;
   width: 232px;
-  height: 100vh;
-  padding: 64px 0;
-  top: 0;
-  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
-  z-index: 30;
-}
-nav {
+  height: 1024px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 64px 0;
+  top: 0;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  font-weight: 400;
 }
 
 .join-logo {
-  height: 229px;
-  width: 232px;
+  display: flex;
+  justify-content: center;
 }
 
 .join-logo > img {
   height: 121.97px;
   width: 100.03px;
-  top: 64px;
-  left: 65.98px;
-  position: absolute;
+
 }
 
 main {
@@ -71,19 +71,25 @@ main {
   display: flex;
   left: 232px;
   margin-left: 232px;
+  margin-top: 8px;
   height: calc(100vh - 104px);
 }
 
-menu {
+menu{
+    padding: 0;
+    margin: 0;
+}
+nav {
   color: #ffffff;
   display: flex;
   flex-direction: column;
   width: 232px;
+  height: 229px;
   gap: 15px;
-  padding: 0;
+
 }
 
-menu > a,
+nav > a,
 .policy-legal > a {
   display: flex;
   height: 46px;
@@ -95,24 +101,25 @@ menu > a,
   align-items: center;
 }
 
-menu > span {
+nav > span {
   height: 19px;
   width: 72px;
 }
 
-a:hover {
+nav>a:hover {
   cursor: pointer;
   background-color: #091931;
 }
 
 .policy-legal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 121px;
-  height: 317px;
-  padding: 243px 0 0 52px;
-  gap: 4px;
+display: flex;
+flex-direction: column;
+align-items: center;
+height: 317px;
+padding: 243px 0 0 0;
+gap: 4px;
+
+
 }
 
 .policy-legal > a {
@@ -121,6 +128,44 @@ a:hover {
   justify-content: end;
   padding: 8px;
   gap: 8px;
+  height: 19px;
+  width: 105px;
+  color: #A8A8A8;
+}
+
+.header-user{
+  gap: 16px;
+  width: 104px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+
+}
+
+.x{
+  position: relative;
+  height: 56px;
+  width: 56px;
+  gap: 16px;
+  text-align: center;
+  color: #29ABE2;
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 559px;
+}
+
+.x:hover{
+    background-color: rgb(12, 46, 98,.12);
+    cursor: pointer;
+}
+.help-icon{
+  cursor: pointer;
+}
+.text-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .d-flex {

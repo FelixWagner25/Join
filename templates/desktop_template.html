@@ -18,7 +18,13 @@
     <header> 
         <div class="header-container">
             <div>Kanban Project Management Tool</div> 
-            <div>Blocker: Frame 42</div>
+            <div class="header-user">
+                <img class="help-icon" src="/assets/icons/header_help_icon.svg" alt="">
+                <div class="x">
+                    <img src="/assets/icons/header_profile_ellipse.svg" alt="">
+                    <span class="text-center">SM</span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -27,22 +33,19 @@
 
 
 <aside>   
-    <nav>
         <div class="join-logo">
             <img src="/assets/icons/join_icon.svg" alt="join-logo">
         </div>
-        <menu>
+        <nav>
             <a href="#summary"  onclick="loadContent('/assets/html/summary.html')"><img src="/assets/icons/summary_icon.svg" alt="#"><span>Summary</span></a>
             <a href="#add_task" onclick="loadContent('/assets/html/add_task.html')"><img src="/assets/icons/add_task_icon.svg" alt="#"><span>Add Task</span></a>
             <a href="#board"    onclick="loadContent('/assets/html/board.html')"><img src="/assets/icons/board_icon.svg" alt="#"><span>Board</span></a>
             <a href="#contacts" onclick="loadContent('/assets/html/contacts.html')"><img src="/assets/icons/contacts_icon.svg" alt="#"><span>Contacts</span></a>
-        </menu>
+        </nav>
         <div class="policy-legal">
             <a href="#privacy"  onclick="loadContent('/assets/html/privacy_policy.html')"><span>Privacy Policy</span></a>
             <a href="#legal"    onclick="loadContent('/assets/html/legal_notice.html')"><span>Legal notice</span></a>
         </div>
-    </nav>
-
 </aside>
      
     <main w3-include-html="/assets/html/summary.html"></main>
