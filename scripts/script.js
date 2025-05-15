@@ -2,7 +2,6 @@
 
 function init(){
   w3.includeHTML();
-
 }
 
 

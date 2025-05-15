@@ -71,7 +71,6 @@ main {
   display: flex;
   left: 232px;
   margin-left: 232px;
-  margin-top: 8px;
   height: calc(100vh - 104px);
 }
 
