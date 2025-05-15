@@ -127,6 +127,10 @@
   align-items: center;
   background-color: #ffffff;
   padding: 32px 24px;
+  height: calc(100vh - 160px);
+  overflow-y: scroll;
+  scrollbar-width: 24px;
+  box-shadow: 4 0 6 0 rgba(0, 0, 0, 0.08);
 }
 
 .add-new-contact-btn {
@@ -143,6 +147,7 @@
 
 .add-new-contact-btn:hover {
   background-color: #354355;
+  cursor: pointer;
 }
 
 .add-new-contact-text {
@@ -209,4 +214,14 @@
   display: flex;
   gap: 35px;
   padding: 15px 24px;
+  border-radius: 10px;
+}
+
+.contact-list-item-wrap:hover {
+  cursor: pointer;
+}
+
+.focus {
+  background-color: #2a3647;
+  color: white;
 }
