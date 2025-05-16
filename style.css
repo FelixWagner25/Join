@@ -11,21 +11,6 @@ body {
   font-weight: 400;
 }
 
-.background-fade {
-  height: 100%;
-  width: 100%;
-  background-color: #f6f7f8;
-  position: absolute;
-  animation: backgroundFade 2s ease-in-out;
-  /* animation-timing-function: cubic-bezier(0.45, 1.45, 0.8, 1); */
-  /* animation-duration: 100ms; */
-}
-
-@keyframes backgroundFade {
-  0% {
-    background-color: #f6f7f8;
-  }
-}
 
 button {
   border-style: unset;
