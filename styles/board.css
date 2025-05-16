@@ -1,0 +1,48 @@
+.board-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+.board-input-add-task-wrap {
+  display: flex;
+  gap: 32px;
+}
+
+.board-headline-text {
+  font-size: 61px;
+  font-weight: 700;
+}
+
+.board-col-wrap {
+  display: flex;
+  padding: 0 64px;
+  gap: 26px;
+}
+
+.col-title-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #42526e;
+}
+
+.add-btn {
+  height: 24px;
+  width: 24px;
+  border-radius: 8px;
+  border: 2px solid #2a3647;
+}
+
+.col-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 246px;
+}

@@ -52,18 +52,16 @@ aside {
   font-weight: 400;
 }
 
-
 main {
   background-color: #f6f7f8;
-  display: flex;
   left: 232px;
   margin-left: 232px;
   height: calc(100vh - 104px);
 }
 
-menu{
-    padding: 0;
-    margin: 0;
+menu {
+  padding: 0;
+  margin: 0;
 }
 nav {
   color: #ffffff;
@@ -72,7 +70,6 @@ nav {
   width: 232px;
   height: 229px;
   gap: 15px;
-
 }
 
 nav > a,
@@ -92,20 +89,18 @@ nav > span {
   width: 72px;
 }
 
-nav>a:hover {
+nav > a:hover {
   cursor: pointer;
   background-color: #091931;
 }
 
 .policy-legal {
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 317px;
-padding: 243px 0 0 0;
-gap: 4px;
-
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 317px;
+  padding: 243px 0 0 0;
+  gap: 4px;
 }
 
 .policy-legal > a {
@@ -116,10 +111,10 @@ gap: 4px;
   gap: 8px;
   height: 19px;
   width: 105px;
-  color: #A8A8A8;
+  color: #a8a8a8;
 }
 
-.header-user{
+.header-user {
   gap: 16px;
   width: 104px;
   height: 56px;
@@ -127,22 +122,22 @@ gap: 4px;
   align-items: center;
 }
 
-.profile-ellipse{
+.profile-ellipse {
   position: relative;
   height: 56px;
   width: 56px;
   gap: 16px;
   text-align: center;
-  color: #29ABE2;
+  color: #29abe2;
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 559px;
 }
 
-.profile-ellipse:hover{
-    background-color: rgb(12, 46, 98,.12);
-    cursor: pointer;
+.profile-ellipse:hover {
+  background-color: rgb(12, 46, 98, 0.12);
+  cursor: pointer;
 }
-.help-icon{
+.help-icon {
   cursor: pointer;
 }
