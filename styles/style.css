@@ -57,3 +57,8 @@ button {
   display: none;
 }
 
+.d-flex-c-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
