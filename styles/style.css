@@ -57,7 +57,7 @@ button {
   display: none;
 }
 
-.d-flex-c-c {
+.d-flex-row-c-c {
   display: flex;
   justify-content: center;
   align-items: center;

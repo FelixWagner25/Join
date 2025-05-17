@@ -29,7 +29,7 @@
   border-radius: 10px;
   color: #d1d1d1d1;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .search-input:focus {
@@ -85,4 +85,29 @@
   flex-direction: column;
   gap: 24px;
   width: 246px;
+}
+
+.add-task-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background-color: #2a3647;
+}
+
+.add-task-btn-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.add-task-btn:hover {
+  background-color: #354355;
+  cursor: pointer;
+}
+
+.add-taks-btn-icon {
+  width: 19px;
+  height: 19px;
 }
