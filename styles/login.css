@@ -58,11 +58,42 @@
 .signup-container {
   width: 279px;
   height: 49px;
-  position: fixed;
+  position: sticky;
   top: 67px;
   left: 1439px;
   gap: 35px;
   animation: hide 2s forwards;
+  align-items: center;
+}
+
+.signup-container > span {
+  width: 153px;
+  height: 24px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #000000;
+}
+
+.signup-container > button {
+  width: 91px;
+  height: 49px;
+  border-radius: 8px;
+
+  gap: 10px;
+  background-color: #2a3647;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #ffffff;
+}
+
+.signup-container > button:hover {
+  cursor: pointer;
+  background-color: #29abe2;
+  box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
 }
 
 .login-headline-container {
@@ -100,12 +131,19 @@ form {
   gap: 20px;
   justify-content: center;
   flex-direction: column;
+
 }
 
 input {
   width: inherit;
   border: 0;
+  font-size: 20px;
 }
+
+input:hover{
+  cursor: pointer;
+}
+
 .input-container {
   width: inherit;
   height: 48px;
@@ -174,9 +212,9 @@ input[type="checkbox"]:checked {
   padding: 0 0 0 0px;
 }
 
-input[type="checkbox"]:checked:hover{
-    background-color: #edf2fa;
-    border-radius: 51px;
+input[type="checkbox"]:checked:hover {
+  background-color: #edf2fa;
+  border-radius: 51px;
 }
 
 .login-btn-container {
@@ -209,6 +247,8 @@ input[type="checkbox"]:checked:hover{
 .guest-login-btn:hover {
   color: #29abe2;
   border-color: #29abe2;
+  box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
+  border-width: 2px;
 }
 
 .guest-login-btn > span {
@@ -222,8 +262,10 @@ input[type="checkbox"]:checked:hover{
   color: #ffffff;
 }
 
-.login-btn:hover {
+.login-btn:hover , .signup-btn:hover {
+  cursor: pointer;
   background-color: #29abe2;
+  box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
 }
 
 .login-btn > span {
@@ -248,11 +290,10 @@ input[type="checkbox"]:checked:hover{
   transform: translate(-50%) translateY(-50%);
 }
 
-.form-signup{
+.form-signup {
   height: 326px;
   width: 422px;
 }
-
 
 .signup-btn {
   height: 55px;
@@ -264,6 +305,8 @@ input[type="checkbox"]:checked:hover{
   color: #ffffff;
 }
 
+
+
 .signup-btn > span {
   width: 78px;
   height: 25px;
@@ -274,8 +317,7 @@ input[type="checkbox"]:checked:hover{
   align-items: center;
 }
 
-
-.arrow-left{
+.arrow-left {
   position: absolute;
   top: 128px;
   left: 32px;
