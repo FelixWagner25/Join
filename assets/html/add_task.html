@@ -1,21 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Join</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/addtask.css">
+    <link rel="stylesheet" href="/styles/summary.css">
+
+    <link rel="stylesheet" href="/styles/assets.css">
+    <link rel="icon" href="../assets/img/faviconLogo.svg">
+    <script src="/scripts/script.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
+
 <body>
 
-    
+    <div class="add-task-wrapper">
+        <div class="add-task-container">
+            <h1>Add Task</h1>
+
+            <div class="form-section">
+
+
+                <div class="form-column">
+                    <div class="input-group">
+                        <label class="input-label required">Title</label>
+                        <input type="text" id="task-title" placeholder="Enter a title">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Description</label>
+                        <textarea id="task-description" placeholder="Enter a Description"></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label required">Due Date</label>
+                        <input type="date" id="task-due-date" placeholder="dd/mm/yyyy">
+                    </div>
+                </div>
+
+
+                <div class="divider"></div>
+
+
+                <div class="form-column">
+                    <div class="input-group">
+                        <label class="input-label">Priority</label>
+                        <div class="priority-buttons">
+                            <button class="priority-btn" id="priority-urgent">
+                                <span>Urgent</span>
+                                <img src="/assets/icons/urgent.png" alt="Urgent">
+                            </button>
+                            <button class="priority-btn" id="priority-medium">
+                                <span>Medium</span>
+                                <img src="/assets/icons/medium.png" alt="Medium">
+                            </button>
+                            <button class="priority-btn" id="priority-low">
+                                <span>Low</span>
+                                <img src="/assets/icons/low.png" alt="Low">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Assigned To</label>
+                        <div class="select-wrapper">
+                            <select id="task-assigned">
+                                <option value="" disabled selected>Select contacts to assign</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label required">Category</label>
+                        <div class="select-wrapper">
+                            <select id="task-category">
+                                <option value="" disabled selected>Select task category</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Subtasks</label>
+                        <div class="input-with-icon">
+                            <input type="text" id="task-subtasks" placeholder="Add new subtask">
+                            <button class="add-subtask">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <div class="required-info">This field is required</div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-clear">
+                        <span>Clear</span>
+                        <span>×</span>
+                    </button>
+                    <button class="btn btn-create">
+                        <span>Create Task</span>
+                        <span class="checkmark">✓</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
     <!-- Content für w3-include-html -->
+    <!-- 
 <div style="display: flex; justify-content: center; flex-direction: column;">
 <div style="height: 200px; width: 300px; background-color: aqua;"></div>
 <div style="height: 400px; width: 300px; background-color: blueviolet;"></div>
 <div style="height: 300px; width: 300px; background-color: darkcyan;" ></div>
 </div>
-    <!-- Content für w3-include-html -->
+     Content für w3-include-html -->
 
 
 </body>
+
 </html>

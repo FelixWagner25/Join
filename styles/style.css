@@ -9,12 +9,12 @@ body {
   background-color: #f6f7f8;
   font-size: 20px;
   font-weight: 400;
+  box-sizing: border-box;
 }
 
 button {
   border-style: unset;
 }
-
 
 .text-center {
   position: absolute;
@@ -30,6 +30,117 @@ button {
   transform: translate(-50%, -50%);
 }
 
+header {
+  position: fixed;
+  left: 232px; 
+  width: calc(100% - 232px);
+  height: 96px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.header-container {
+  padding: 20px 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+aside {
+  background-color: #2a3647;
+  display: flex;
+  position: fixed;
+  width: 232px;
+  height: 100vh;
+  padding: 64px 0;
+  top: 0;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
+  z-index: 30;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.join-logo {
+  height: 229px;
+  width: 232px;
+}
+
+.join-logo > img {
+  height: 121.97px;
+  width: 100.03px;
+  top: 64px;
+  left: 65.98px;
+  position: absolute;
+}
+
+main {
+  margin-left: 232px;
+  width: calc(100% - 232px);
+  min-height: calc(100vh - 96px);
+  display: flex;
+  align-items: center;
+  background: #f6f7f8;
+  display: flex;
+  flex-direction: column;
+}
+
+menu {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 232px;
+  gap: 15px;
+  padding: 0;
+}
+
+menu > a,
+.policy-legal > a {
+  display: flex;
+  height: 46px;
+  background-color: #2a3647;
+  color: #ffffff;
+  padding: 8px 56px;
+  gap: 8px;
+  text-decoration: none;
+  align-items: center;
+}
+
+menu > span {
+  height: 19px;
+  width: 72px;
+}
+
+a:hover {
+  cursor: pointer;
+  background-color: #091931;
+}
+
+.policy-legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 121px;
+  height: 317px;
+  padding: 243px 0 0 52px;
+  gap: 4px;
+}
+
+.policy-legal > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 8px;
+  gap: 8px;
+}
+
 .d-flex {
   display: flex;
 }
@@ -41,4 +152,3 @@ button {
 .d-none {
   display: none;
 }
-
