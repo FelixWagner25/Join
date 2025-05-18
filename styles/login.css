@@ -44,7 +44,6 @@
 }
 @keyframes hide {
   0% {
-    z-index: -1;
     opacity: 0;
   }
   25% {
@@ -235,6 +234,7 @@ input[type="checkbox"]:checked:hover {
   line-height: 120%;
   letter-spacing: 0;
 }
+
 .guest-login-btn {
   width: 177px;
   background-color: #ffffff;
@@ -304,8 +304,6 @@ input[type="checkbox"]:checked:hover {
   background-color: #2a3647;
   color: #ffffff;
 }
-
-
 
 .signup-btn > span {
   width: 78px;

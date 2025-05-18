@@ -111,3 +111,156 @@
   width: 19px;
   height: 19px;
 }
+
+.board-distribution {
+  width: 1028px;
+  height: 100%;
+  padding: 0 64px;
+  display: flex;
+  gap: 26px;
+}
+
+.board-col {
+  height: 100%;
+  width: 252px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.no-task-feedback {
+  width: 252px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  border-width: 1px;
+  border-style: dashed;
+  border-color: #a8a8a8;
+  gap: 10px;
+  background-color: #e7e7e7;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.16);
+  color: #a8a8a8;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0;
+  font-family: OpenSans;
+  margin-top: 16px;
+}
+
+.board-card {
+  width: 252px;
+  border-radius: 24px;
+  flex-direction: column;
+  gap: 10px;
+  color: #ffffff;
+  box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.08);
+}
+
+.board-card:active{
+  rotate: 5deg;
+}
+
+.board-card-wrap {
+  width: 220px;
+  gap: 24px;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.board-card-user-story-label {
+  width: 113px;
+  height: 27px;
+  border-radius: 8px;
+  padding: 4px 16px;
+  gap: 10px;
+  background-color: #0038ff;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.board-card-content {
+  width: 220px;
+  border-radius: 10px;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.task-headline {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #2a3647;
+  margin: 0;
+}
+
+.card-text-area {
+  width: 220px;
+  height: 38px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #a8a8a8;
+}
+
+.progress-bar {
+  width: 128px;
+  height: 8px;
+  top: 4px;
+  border-radius: 8px;
+  padding-right: 64px;
+  gap: 10px;
+  background-color: #f4f4f4;
+}
+
+.progress-bar-status {
+  border-radius: 16px;
+  height: 8px;
+  width: 64px;
+  background-color: #4589ff;
+}
+
+.status-subtasks{
+  width: 73px;
+  height: 14px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #000;
+  white-space: nowrap;
+}
+
+.users-wrap{
+  display: flex;
+  justify-content: space-between;
+}
+
+.users-icon-container{
+  height: 32px;
+}
+
+.users-icon{
+  width: 32px;
+  height: 32px;
+  border-radius: 45px;
+  gap: 10px;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0;
+  border: 1px;
+ 	border-color: #ffffff;
+  border-style: solid;
+}
+
+.users-icon + .users-icon{
+  margin-left: -8px;
+}
