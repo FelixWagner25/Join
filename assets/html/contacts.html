@@ -1,24 +1,26 @@
 <body>
   <div class="d-none bg-dimmed" id="bg-dimmed" onclick="closeOverlay()">
-    <div class="d-flex-row-c-c">
-      <div class="d-none" id="add-contact-screen">
-        <div class="d-flex">
-          <img src="" alt="close" class="close-icon" />
-          <div class="add-contact-title-page">
-            <span>Add contact</span>
-            <span>Tasks are better with a team</span>
+    <div class="d-flex-row-c-c h-100vh">
+      <div
+        class="d-none add-contact-screen"
+        id="add-contact-screen"
+        onclick="stopEventPropagation(event)"
+      >
+        <img src="" alt="close" class="close-icon" />
+        <div class="add-contact-title-page">
+          <span>Add contact</span>
+          <span>Tasks are better with a team</span>
+        </div>
+        <div class="add-contact-badge">Bild</div>
+        <div class="add-contact-input-check">
+          <div class="add-contact-input-wrap">
+            <span>Name</span>
+            <span>Email</span>
+            <span>Phone</span>
           </div>
-          <div class="add-contact-badge">Bild</div>
-          <div class="add-contact-input-check">
-            <div class="add-contact-input-wrap">
-              <span>Name</span>
-              <span>Email</span>
-              <span>Phone</span>
-            </div>
-            <div class="add-contact-btns-wrap">
-              <button>Cancel X</button>
-              <button>Create contact</button>
-            </div>
+          <div class="add-contact-btns-wrap">
+            <button>Cancel X</button>
+            <button>Create contact</button>
           </div>
         </div>
       </div>
