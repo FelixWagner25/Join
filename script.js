@@ -1,3 +1,6 @@
+let database = 'https://join-461-default-rtdb.europe-west1.firebasedatabase.app/'
+
+
 /**
  * Function to log in as guest
  *
@@ -13,3 +16,5 @@ function signupPage() {
 function stopEventPropagation(event) {
   event.stopPropagation();
 }
+
+
