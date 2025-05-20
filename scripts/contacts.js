@@ -22,7 +22,6 @@ function blurBackground() {
 function openAddContactScreen() {
   let contactScreenRef = document.getElementById("add-contact-screen");
   contactScreenRef.classList.remove("d-none");
-  contactScreenRef.classList.add("d-flex");
 }
 
 /**

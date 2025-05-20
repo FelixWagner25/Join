@@ -6,12 +6,14 @@
         id="add-contact-screen"
         onclick="stopEventPropagation(event)"
       >
-        <img
-          src="/assets/icons/close.svg"
-          alt="close"
-          class="close-icon"
-          onclick="closeOverlay()"
-        />
+        <div class="close-icon-wrap d-flex-row-c-c">
+          <img
+            src="/assets/icons/close.svg"
+            alt="close"
+            class="close-icon"
+            onclick="closeOverlay()"
+          />
+        </div>
         <div class="add-contact-title-page">
           <img
             src="/assets/icons/join_icon.svg"
@@ -73,8 +75,22 @@
             </div>
           </form>
           <div class="add-contact-btns-wrap">
-            <button>Cancel X</button>
-            <button>Create contact</button>
+            <button class="add-contact-btn-cancel">
+              <span>Cancel</span>
+              <img
+                src="/assets/icons/cancel.svg"
+                alt="cancel"
+                class="add-contact-btn-icon-cancel"
+              />
+            </button>
+            <button class="add-contact-btn">
+              <span>Create contact</span>
+              <img
+                src="/assets/icons/check_withoutBorder.svg"
+                alt="check"
+                class="add-contact-btn-icon-check"
+              />
+            </button>
           </div>
         </div>
       </div>

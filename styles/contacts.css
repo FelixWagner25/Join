@@ -250,9 +250,19 @@
 .close-icon {
   width: 13px;
   height: 13px;
+}
+
+.close-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   position: absolute;
   top: 32px;
   right: 48px;
+}
+
+.close-icon-wrap:hover {
+  background-color: #e8e8e8;
 }
 
 .add-contact-title-page {
@@ -331,8 +341,71 @@
   font-weight: 400;
 }
 
+.add-contact-input-wrap:hover {
+  cursor: pointer;
+}
+
 .add-contacts-form-wrap {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+.add-contact-input-check {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.add-contact-btns-wrap {
+  display: flex;
+  gap: 24px;
+}
+
+.add-contact-btn-cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #2a3647;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: white;
+  color: #2a3647;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.add-contact-btn-icon-cancel {
+  width: 12px;
+  height: 12px;
+}
+
+.add-contact-btn-icon-check {
+  width: 16px;
+  height: 11px;
+}
+
+.add-contact-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: #2a3647;
+  color: white;
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.add-contact-btn:hover {
+  background-color: #29abe2;
+  cursor: pointer;
+}
+
+.add-contact-btn-cancel:hover {
+  color: #29abe2;
+  border: 1px solid #29abe2;
+  cursor: pointer;
 }
