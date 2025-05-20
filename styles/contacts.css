@@ -238,8 +238,64 @@
 }
 
 .add-contact-screen {
+  position: relative;
   background-color: white;
   width: 1212px;
   height: 592px;
   border-radius: 30px;
+  display: flex;
+}
+
+.close-icon {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 32px;
+  right: 48px;
+}
+
+.add-contact-title-page {
+  background-color: #2a3647;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  color: white;
+  width: 467px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 66px 48px;
+}
+
+.add-contacts-screen-logo {
+  margin-top: 80px;
+  width: 56px;
+  height: 66px;
+}
+
+.add-contacts-screen-title-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-contacts-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-contacts-screen-title-text {
+  font-size: 61px;
+  font-weight: 700;
+}
+
+.add-contacts-screen-title-subtext {
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.add-contacts-title-page-hline {
+  width: 90px;
+  border: 2px solid #29abe2;
+  border-radius: 3px;
 }
