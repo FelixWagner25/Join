@@ -50,3 +50,15 @@ button {
 .h-100vh {
   height: 100vh;
 }
+
+.mg-t-80px {
+  margin-top: 80px;
+}
+
+.mg-t-200px {
+  margin-top: 200px;
+}
+
+.mg-t-140px {
+  margin-top: 140px;
+}
