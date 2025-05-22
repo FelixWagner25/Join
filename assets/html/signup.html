@@ -24,14 +24,14 @@
               <div class="login-headline d-flex">Sign up</div>
               <div class="login-headline-underline"></div>
             </div>
-            <form action="submit" class="form-signup d-flex">
-              <div class="input-container d-flex"><div class="input-content d-flex"><input placeholder="Name" type="text" name="" id="name"><img src="/assets/icons/person_icon.svg" alt=""></div></div>
-              <div class="input-container d-flex"><div class="input-content d-flex"><input placeholder="Email" type="email" name="" id="email"><img src="/assets/icons/mail_icon.svg" alt=""></div></div>
-              <div class="input-container d-flex"><div class="input-content d-flex"><input placeholder="Password" type="password" name="" id="password"><img src="/assets/icons/lock_icon.svg" alt=""></div></div>
-              <div class="input-container d-flex"><div class="input-content d-flex"><input placeholder="Confirm Password" type="password" name="" id="password-confirm"><img src="/assets/icons/lock_icon.svg" alt=""></div></div>
-              <div class="input-container d-flex-c-c"><div class="input-checkbox d-flex"><input type="checkbox" name="" id="accept-policy">I accept the<span class="d-flex"> Privacy policy</span></div></div>
+            <form class="form-signup d-flex"  onsubmit="signupFormValidation(event)">
+              <div class="input-container d-flex"><div class="input-content d-flex"><input required placeholder="Name" type="text" name="name" id="name"><img src="/assets/icons/person_icon.svg" alt=""></div></div>
+              <div class="input-container d-flex"><div class="input-content d-flex"><input required placeholder="Email" type="email" name="email" id="email"><img src="/assets/icons/mail_icon.svg" alt=""></div></div>
+              <div class="input-container d-flex"><div class="input-content d-flex"><input required placeholder="Password" type="password" name="password" id="password" minlength="8"><img src="/assets/icons/lock_icon.svg" alt=""></div></div>
+              <div class="input-container d-flex"><div class="input-content d-flex"><input required placeholder="Confirm Password" type="password" name="password" id="password-confirm"><img src="/assets/icons/lock_icon.svg" alt=""></div></div>
+              <div class="input-container d-flex-c-c"><div class="input-checkbox d-flex"><input type="checkbox" name="checkbox" id="accept-policy">I accept the<span class="d-flex"> Privacy policy</span></div></div>
+              <button class="signup-btn d-flex" type="submit"><span class="d-flex text-center-relative">Log in</span></button>
             </form>
-            <button class="signup-btn d-flex" type="button"><span class="d-flex text-center-relative">Log in</span></button>
           </div>
         </div>
       </div>

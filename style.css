@@ -1,6 +1,5 @@
 * {
   font-family: Inter;
-  transition-delay: 100ms;
 }
 
 body {
@@ -11,6 +10,7 @@ body {
   font-size: 20px;
   font-weight: 400;
 }
+
 
 button {
   border-style: unset;
@@ -48,18 +48,3 @@ button {
   align-items: center;
 }
 
-.h-100vh {
-  height: 100vh;
-}
-
-.mg-t-80px {
-  margin-top: 80px;
-}
-
-.mg-t-200px {
-  margin-top: 200px;
-}
-
-.mg-t-140px {
-  margin-top: 140px;
-}
