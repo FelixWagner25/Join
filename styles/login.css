@@ -130,7 +130,7 @@ form {
   gap: 20px;
   justify-content: center;
   flex-direction: column;
-
+  align-items: center;
 }
 
 input {
@@ -148,6 +148,11 @@ input:hover{
   height: 48px;
   width: 422px;
   gap: 8px;
+  flex-direction: column;
+}
+
+.input-container:nth-of-type(4) {
+  height: 70px;
 }
 
 input:focus-visible {
@@ -319,4 +324,20 @@ input[type="checkbox"]:checked:hover {
   position: absolute;
   top: 128px;
   left: 32px;
+}
+
+
+
+.validation{
+  height: 16px;
+  width: 364px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #FF8190;
+}
+
+.email {
+  margin: -6px 0 ;
 }

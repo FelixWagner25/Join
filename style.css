@@ -16,6 +16,16 @@ button {
   border-style: unset;
 }
 
+button:disabled{
+  background-color: gray;
+}
+
+button:disabled:hover{
+  background-color: gray;
+  box-shadow: none;
+  cursor: default;
+}
+
 .text-center {
   position: absolute;
   top: 50%;
