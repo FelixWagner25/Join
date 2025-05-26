@@ -1,30 +1,190 @@
 <body>
-  <div class="d-none bg-dimmed" id="bg-dimmed" onclick="closeOverlay()">
+  <div
+    class="d-none bg-dimmed"
+    id="bg-dimmed"
+    onclick="closeAddContactOverlay()"
+  >
     <div class="d-flex-row-c-c h-100vh">
-      <div
-        class="d-none add-contact-screen"
-        id="add-contact-screen"
-        onclick="stopEventPropagation(event)"
-      >
-        <img src="" alt="close" class="close-icon" />
-        <div class="add-contact-title-page">
-          <span>Add contact</span>
-          <span>Tasks are better with a team</span>
-        </div>
-        <div class="add-contact-badge">Bild</div>
-        <div class="add-contact-input-check">
-          <div class="add-contact-input-wrap">
-            <span>Name</span>
-            <span>Email</span>
-            <span>Phone</span>
+      <div class="d-none" id="add-contact-screen-show-switch">
+        <div class="add-contact-screen" onclick="stopEventPropagation(event)">
+          <div class="close-icon-wrap d-flex-row-c-c">
+            <img
+              src="/assets/icons/close.svg"
+              alt="close"
+              class="close-icon"
+              onclick="closeAddContactOverlay()"
+            />
           </div>
-          <div class="add-contact-btns-wrap">
-            <button>Cancel X</button>
-            <button>Create contact</button>
+          <div class="add-contact-title-page">
+            <img
+              src="/assets/icons/join_icon.svg"
+              alt="Join Logo"
+              class="add-contacts-screen-logo mg-t-80px"
+            />
+            <div class="add-contacts-title-wrap">
+              <div class="add-contacts-screen-title-text-wrap">
+                <span class="add-contacts-screen-title-text">Add contact</span>
+                <span class="add-contacts-screen-title-subtext"
+                  >Tasks are better with a team!</span
+                >
+              </div>
+              <div class="add-contacts-title-page-hline"></div>
+            </div>
+          </div>
+          <div class="mg-t-200px">
+            <div class="add-contact-badge-wrap d-flex-row-c-c">
+              <img
+                src="/assets/icons/person.svg"
+                alt="person icon"
+                class="add-contact-badge"
+              />
+            </div>
+          </div>
+          <div class="add-contact-input-check mg-t-140px">
+            <form class="add-contacts-form-wrap">
+              <div class="add-contact-input-wrap">
+                <input
+                  type="text"
+                  class="add-contact-input"
+                  placeholder="Name"
+                />
+                <img
+                  src="/assets/icons/person_icon.svg"
+                  alt="person-icon"
+                  class="add-contact-input-icon"
+                />
+              </div>
+              <div class="add-contact-input-wrap">
+                <input
+                  type="text"
+                  class="add-contact-input"
+                  placeholder="Email"
+                />
+                <img
+                  src="/assets/icons/mail_icon.svg"
+                  alt="email-icon"
+                  class="add-contact-input-icon"
+                />
+              </div>
+              <div class="add-contact-input-wrap">
+                <input
+                  type="text"
+                  class="add-contact-input"
+                  placeholder="Phone"
+                />
+                <img
+                  src="/assets/icons/call.svg"
+                  alt="call icon"
+                  class="add contact-input-icon"
+                />
+              </div>
+            </form>
+            <div class="add-contact-btns-wrap">
+              <button class="add-contact-btn-cancel">
+                <span>Cancel</span>
+                <img
+                  src="/assets/icons/cancel.svg"
+                  alt="cancel"
+                  class="add-contact-btn-icon-cancel"
+                  onmouseover="this.src='/assets/icons/close-blue.svg';"
+                  onmouseout="this.src='/assets/icons/cancel.svg';"
+                />
+              </button>
+              <button class="add-contact-btn">
+                <span>Create contact</span>
+                <img
+                  src="/assets/icons/check_withoutBorder.svg"
+                  alt="check"
+                  class="add-contact-btn-icon-check"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="d-none" id="edit-contact-screen"></div>
+      <div class="d-none" id="edit-contact-screen-show-switch">
+        <div class="add-contact-screen" onclick="stopEventPropagation(event)">
+          <div class="close-icon-wrap d-flex-row-c-c">
+            <img
+              src="/assets/icons/close.svg"
+              alt="close"
+              class="close-icon"
+              onclick="closeAddContactOverlay()"
+            />
+          </div>
+          <div class="add-contact-title-page">
+            <img
+              src="/assets/icons/join_icon.svg"
+              alt="Join Logo"
+              class="add-contacts-screen-logo mg-t-80px"
+            />
+            <div class="add-contacts-title-wrap">
+              <div class="add-contacts-screen-title-text-wrap">
+                <span class="add-contacts-screen-title-text">Edit contact</span>
+              </div>
+              <div class="add-contacts-title-page-hline"></div>
+            </div>
+          </div>
+          <div class="mg-t-200px">
+            <div class="bg-orange contact-badge-wrap d-flex-row-c-c">
+              <div class="font-sz-47px">AM</div>
+            </div>
+          </div>
+          <div class="add-contact-input-check mg-t-140px">
+            <form class="add-contacts-form-wrap">
+              <div class="add-contact-input-wrap">
+                <input
+                  type="text"
+                  class="add-contact-input"
+                  placeholder="Name"
+                />
+                <img
+                  src="/assets/icons/person_icon.svg"
+                  alt="person-icon"
+                  class="add-contact-input-icon"
+                />
+              </div>
+              <div class="add-contact-input-wrap">
+                <input
+                  type="text"
+                  class="add-contact-input"
+                  placeholder="Email"
+                />
+                <img
+                  src="/assets/icons/mail_icon.svg"
+                  alt="email-icon"
+                  class="add-contact-input-icon"
+                />
+              </div>
+              <div class="add-contact-input-wrap">
+                <input
+                  type="text"
+                  class="add-contact-input"
+                  placeholder="Phone"
+                />
+                <img
+                  src="/assets/icons/call.svg"
+                  alt="call icon"
+                  class="add contact-input-icon"
+                />
+              </div>
+            </form>
+            <div class="add-contact-btns-wrap">
+              <button class="add-contact-btn-cancel">
+                <span>Delete</span>
+              </button>
+              <button class="add-contact-btn">
+                <span>Save</span>
+                <img
+                  src="/assets/icons/check_withoutBorder.svg"
+                  alt="check"
+                  class="add-contact-btn-icon-check"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -142,11 +302,16 @@
           <div class="contact-details-name-wrap">
             <div class="contact-details-name">Anton Mayer</div>
             <div class="contract-details-edit-delete-wrap">
-              <div class="contact-details-edit-contact">
+              <div
+                class="contact-details-edit-contact"
+                onclick="showEditContactScreen()"
+              >
                 <img
                   src="/assets/icons/edit.svg"
                   alt="edit pencil"
                   class="edit-contact-icon"
+                  onmouseover="this.src='/assets/icons/edit-blue.svg';"
+                  onmouseout="this.src='/assets/icons/edit.svg';"
                 />
                 <span class="edit-contact-text">Edit</span>
               </div>
@@ -155,6 +320,8 @@
                   src="/assets/icons/delete.svg"
                   alt="delete trash bin"
                   class="edit-contact-icon"
+                  onmouseover="this.src='/assets/icons/delete-blue.svg';"
+                  onmouseout="this.src='/assets/icons/delete.svg';"
                 />
                 <span class="edit-contact-text">Delete</span>
               </div>

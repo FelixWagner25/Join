@@ -1,5 +1,6 @@
 * {
   font-family: Inter;
+  transition-delay: 100ms;
 }
 
 body {
@@ -11,9 +12,18 @@ body {
   font-weight: 400;
 }
 
-
 button {
   border-style: unset;
+}
+
+button:disabled {
+  background-color: gray;
+}
+
+button:disabled:hover {
+  background-color: gray;
+  box-shadow: none;
+  cursor: default;
 }
 
 .text-center {
@@ -46,4 +56,24 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.mg-t-80px {
+  margin-top: 80px;
+}
+
+.mg-t-200px {
+  margin-top: 200px;
+}
+
+.mg-t-140px {
+  margin-top: 140px;
+}
+
+.font-sz-47px {
+  font-size: 47px;
 }
