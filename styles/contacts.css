@@ -86,6 +86,11 @@
   font-weight: 400;
 }
 
+.edit-contact-text:hover {
+  color: #29abe2;
+  font-weight: 700;
+}
+
 .contact-information-text {
   font-size: 20px;
   padding-top: 27px;
