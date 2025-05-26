@@ -409,3 +409,11 @@
   border: 1px solid #29abe2;
   cursor: pointer;
 }
+
+.contact-badge-wrap {
+  width: 120px;
+  height: 120px;
+  border: 3px solid white;
+  border-radius: 50%;
+  color: white;
+}

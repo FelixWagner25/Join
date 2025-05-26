@@ -20,7 +20,9 @@ function blurBackground() {
  *
  */
 function openAddContactScreen() {
-  let contactScreenRef = document.getElementById("add-contact-screen");
+  let contactScreenRef = document.getElementById(
+    "add-contact-screen-show-switch"
+  );
   contactScreenRef.classList.remove("d-none");
 }
 
@@ -28,6 +30,32 @@ function openAddContactScreen() {
  * This function closes any overlay at the contacts page.
  *
  */
-function closeOverlay() {
+function closeAddContactOverlay() {
   document.getElementById("bg-dimmed").classList.add("d-none");
+  document
+    .getElementById("add-contact-screen-show-switch")
+    .classList.add("d-none");
+  document
+    .getElementById("edit-contact-screen-show-switch")
+    .classList.add("d-none");
+}
+
+/**
+ * This function is used to show the edit contact screen.
+ *
+ */
+function showEditContactScreen() {
+  blurBackground();
+  openEditContactScreen();
+}
+
+/**
+ * This function opend the edit contact screen.
+ *
+ */
+function openEditContactScreen() {
+  let contactScreenRef = document.getElementById(
+    "edit-contact-screen-show-switch"
+  );
+  contactScreenRef.classList.remove("d-none");
 }
