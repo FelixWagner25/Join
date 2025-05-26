@@ -11,16 +11,15 @@ body {
   font-weight: 400;
 }
 
-
 button {
   border-style: unset;
 }
 
-button:disabled{
+button:disabled {
   background-color: gray;
 }
 
-button:disabled:hover{
+button:disabled:hover {
   background-color: gray;
   box-shadow: none;
   cursor: default;
@@ -58,3 +57,18 @@ button:disabled:hover{
   align-items: center;
 }
 
+.h-100vh {
+  height: 100vh;
+}
+
+.mg-t-80px {
+  margin-top: 80px;
+}
+
+.mg-t-200px {
+  margin-top: 200px;
+}
+
+.mg-t-140px {
+  margin-top: 140px;
+}
