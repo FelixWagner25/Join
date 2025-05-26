@@ -6,24 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/addtask.css">
+    <link rel="stylesheet" href="/scripts/addtask.css">
     <link rel="stylesheet" href="/styles/summary.css">
-
     <link rel="stylesheet" href="/styles/assets.css">
     <link rel="icon" href="../assets/img/faviconLogo.svg">
     <script src="/scripts/script.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="/scripts/desktop_template.js"></script>
 </head>
 
-<body>
+<body onload="initAssignedToDropdown(); initCategoryDropdown();">
 
     <div class="add-task-wrapper">
         <div class="add-task-container">
             <h1>Add Task</h1>
 
             <div class="form-section">
-
-
                 <div class="form-column">
                     <div class="input-group">
                         <label class="input-label required">Title</label>
@@ -41,23 +39,21 @@
                     </div>
                 </div>
 
-
                 <div class="divider"></div>
-
 
                 <div class="form-column">
                     <div class="input-group">
                         <label class="input-label">Priority</label>
                         <div class="priority-buttons">
-                            <button class="priority-btn" id="priority-urgent">
+                            <button class="priority-btn" id="priority-urgent" onclick="setPriority('urgent')">
                                 <span>Urgent</span>
                                 <img src="/assets/icons/urgent.png" alt="Urgent">
                             </button>
-                            <button class="priority-btn" id="priority-medium">
+                            <button class="priority-btn" id="priority-medium" onclick="setPriority('medium')">
                                 <span>Medium</span>
                                 <img src="/assets/icons/medium.png" alt="Medium">
                             </button>
-                            <button class="priority-btn" id="priority-low">
+                            <button class="priority-btn" id="priority-low" onclick="setPriority('low')">
                                 <span>Low</span>
                                 <img src="/assets/icons/low.png" alt="Low">
                             </button>
@@ -85,8 +81,8 @@
                     <div class="input-group">
                         <label class="input-label">Subtasks</label>
                         <div class="input-with-icon">
-                            <input type="text" id="task-subtasks" placeholder="Add new subtask">
-                            <button class="add-subtask">+</button>
+                            <input type="text" id="task-subtasks" placeholder="Add new subtask" onkeypress="if(event.key === 'Enter') addSubtask();">
+                            <button class="add-subtask" onclick="addSubtask()">+</button>
                         </div>
                     </div>
                 </div>
@@ -96,33 +92,20 @@
                 <div class="required-info">This field is required</div>
 
                 <div class="action-buttons">
-                    <button class="btn btn-clear">
+                    <button class="btn btn-clear" onclick="clearForm()">
                         <span>Clear</span>
                         <span>×</span>
                     </button>
-                    <button class="btn btn-create">
+                    <button class="btn btn-create" onclick="saveTask()">
                         <span>Create Task</span>
                         <span class="checkmark">✓</span>
                     </button>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 
-
-    <!-- Content für w3-include-html -->
-    <!-- 
-<div style="display: flex; justify-content: center; flex-direction: column;">
-<div style="height: 200px; width: 300px; background-color: aqua;"></div>
-<div style="height: 400px; width: 300px; background-color: blueviolet;"></div>
-<div style="height: 300px; width: 300px; background-color: darkcyan;" ></div>
-</div>
-     Content für w3-include-html -->
-
-
+    <script src="/scripts/addtask.js"></script>
 </body>
 
 </html>
