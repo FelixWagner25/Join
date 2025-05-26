@@ -110,7 +110,9 @@ function getNewUserInformation() {
     let value = userInput[index].value;
     userCredential[key] = value;
   }
-  console.log(userCredential);
+  submitNewUser("user" , userCredential)
+ console.log(userCredential);
+ 
 }
 
 /**
@@ -119,7 +121,7 @@ function getNewUserInformation() {
  * @param {*} path storage path on firebase-server
  * @param {JSON} data user-credentials as JSON
  */
-async function submitNewUser(path = "", data = {}) {
+async function submitNewUser(path="" , data = {}) {
   let response = await fetch(database + path + ".json", {
     method: "POST",
     headers: {
@@ -127,4 +129,16 @@ async function submitNewUser(path = "", data = {}) {
     },
     body: JSON.stringify(data),
   });
+}
+
+async function userLogin(path="user") {
+  let response = await fetch(database + path , {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  })
+  let responseRef = await response.json()
+  console.log(responseRef);
+  
 }
