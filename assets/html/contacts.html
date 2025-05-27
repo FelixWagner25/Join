@@ -41,9 +41,10 @@
             </div>
           </div>
           <div class="add-contact-input-check mg-t-140px">
-            <form class="add-contacts-form-wrap">
+            <form class="add-contacts-form-wrap" onsubmit="addNewContact()">
               <div class="add-contact-input-wrap">
                 <input
+                  required
                   type="text"
                   class="add-contact-input"
                   placeholder="Name"
@@ -56,7 +57,8 @@
               </div>
               <div class="add-contact-input-wrap">
                 <input
-                  type="text"
+                  required
+                  type="email"
                   class="add-contact-input"
                   placeholder="Email"
                 />
@@ -68,7 +70,8 @@
               </div>
               <div class="add-contact-input-wrap">
                 <input
-                  type="text"
+                  required
+                  type="tel"
                   class="add-contact-input"
                   placeholder="Phone"
                 />
@@ -78,27 +81,31 @@
                   class="add contact-input-icon"
                 />
               </div>
+              <div class="add-contact-btns-wrap">
+                <button
+                  type="button"
+                  onclick="closeAddContactOverlay()"
+                  class="add-contact-btn-cancel"
+                >
+                  <span>Cancel</span>
+                  <img
+                    src="/assets/icons/cancel.svg"
+                    alt="cancel"
+                    class="add-contact-btn-icon-cancel"
+                    onmouseover="this.src='/assets/icons/close-blue.svg';"
+                    onmouseout="this.src='/assets/icons/cancel.svg';"
+                  />
+                </button>
+                <button type="submit" class="add-contact-btn">
+                  <span>Create contact</span>
+                  <img
+                    src="/assets/icons/check_withoutBorder.svg"
+                    alt="check"
+                    class="add-contact-btn-icon-check"
+                  />
+                </button>
+              </div>
             </form>
-            <div class="add-contact-btns-wrap">
-              <button class="add-contact-btn-cancel">
-                <span>Cancel</span>
-                <img
-                  src="/assets/icons/cancel.svg"
-                  alt="cancel"
-                  class="add-contact-btn-icon-cancel"
-                  onmouseover="this.src='/assets/icons/close-blue.svg';"
-                  onmouseout="this.src='/assets/icons/cancel.svg';"
-                />
-              </button>
-              <button class="add-contact-btn">
-                <span>Create contact</span>
-                <img
-                  src="/assets/icons/check_withoutBorder.svg"
-                  alt="check"
-                  class="add-contact-btn-icon-check"
-                />
-              </button>
-            </div>
           </div>
         </div>
       </div>

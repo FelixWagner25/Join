@@ -59,3 +59,30 @@ function openEditContactScreen() {
   );
   contactScreenRef.classList.remove("d-none");
 }
+
+/**
+ * This function adds a new contact to the database.
+ *
+ */
+function addNewContact() {
+  let newContactData = getNewContactInformation();
+  submitNewContact((path = ""), (contactData = newContactData));
+}
+
+/**
+ * This function collects a new contact's information typed into the form.
+ *
+ */
+function getNewContactInformation() {
+  let contactData = {};
+  // stringify contact Data to JSON
+  return contactData;
+}
+
+/**
+ * This function uploads contact data to the firebase database.
+ *
+ * @param {string} path - storage path on firebase server
+ * @param {JSON} contactData - contact data as JSON
+ */
+function submitNewContact(path = "", contactData = {}) {}
