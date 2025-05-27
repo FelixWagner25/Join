@@ -74,9 +74,31 @@ function addNewContact() {
  *
  */
 function getNewContactInformation() {
-  let contactData = {};
+  let nameRef = document.getElementById("add-contact-input-name");
+  let emailRef = document.getElementById("add-contact-input-email");
+  let phoneRef = document.getElementById("add-contact-input-phone");
+  let contactData = {
+    name: nameRef.value,
+    email: emailRef.value,
+    phone: phoneRef.value,
+  };
+  clearAddContactForm();
+  let contactDataJSON = JSON.stringify(contactData);
   // stringify contact Data to JSON
-  return contactData;
+  return contactDataJSON;
+}
+
+/**
+ * This function clears the add contact input form.
+ *
+ */
+function clearAddContactForm() {
+  let nameRef = document.getElementById("add-contact-input-name");
+  let emailRef = document.getElementById("add-contact-input-email");
+  let phoneRef = document.getElementById("add-contact-input-phone");
+  nameRef.value = "";
+  emailRef.value = "";
+  phoneRef.value = "";
 }
 
 /**
