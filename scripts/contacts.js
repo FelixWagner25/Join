@@ -66,7 +66,7 @@ function openEditContactScreen() {
  */
 function addNewContact() {
   let newContactData = getNewContactInformation();
-  submitNewContact((path = ""), (contactData = newContactData));
+  submitNewContact("contacts", newContactData);
 }
 
 /**
@@ -83,9 +83,7 @@ function getNewContactInformation() {
     phone: phoneRef.value,
   };
   clearAddContactForm();
-  let contactDataJSON = JSON.stringify(contactData);
-  // stringify contact Data to JSON
-  return contactDataJSON;
+  return contactData;
 }
 
 /**
@@ -105,6 +103,18 @@ function clearAddContactForm() {
  * This function uploads contact data to the firebase database.
  *
  * @param {string} path - storage path on firebase server
- * @param {JSON} contactData - contact data as JSON
+ * @param {object} contactData - contact data as JS object
+ * @typedef {Object} contactData
+ * @property {string} name
+ * @property {string} email
+ * @property {string} phone
  */
-function submitNewContact(path = "", contactData = {}) {}
+async function submitNewContact(path = "", contactData = {}) {
+  let response = await fetch(database + path + ".json", {
+    method: "POST",
+    header: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(contactData),
+  });
+}
