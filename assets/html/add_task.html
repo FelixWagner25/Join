@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="/scripts/addtask.css">
     <link rel="stylesheet" href="/styles/summary.css">
     <link rel="stylesheet" href="/styles/assets.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="icon" href="../assets/img/faviconLogo.svg">
     <script src="/scripts/script.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="/scripts/desktop_template.js"></script>
 </head>
 
-<body onload="initAssignedToDropdown(); initCategoryDropdown();">
+<body>
 
     <div class="add-task-wrapper">
         <div class="add-task-container">
@@ -63,7 +64,7 @@
                     <div class="input-group">
                         <label class="input-label">Assigned To</label>
                         <div class="select-wrapper">
-                            <select id="task-assigned">
+                            <select id="task-assigned" onfocus="initAssignedToDropdown()">
                                 <option value="" disabled selected>Select contacts to assign</option>
                             </select>
                         </div>
@@ -72,7 +73,7 @@
                     <div class="input-group">
                         <label class="input-label required">Category</label>
                         <div class="select-wrapper">
-                            <select id="task-category">
+                            <select id="task-category" onfocus="initCategoryDropdown()">
                                 <option value="" disabled selected>Select task category</option>
                             </select>
                         </div>
@@ -81,7 +82,8 @@
                     <div class="input-group">
                         <label class="input-label">Subtasks</label>
                         <div class="input-with-icon">
-                            <input type="text" id="task-subtasks" placeholder="Add new subtask" onkeypress="if(event.key === 'Enter') addSubtask();">
+                            <input type="text" id="task-subtasks" placeholder="Add new subtask"
+                                onkeypress="if(event.key === 'Enter') addSubtask();">
                             <button class="add-subtask" onclick="addSubtask()">+</button>
                         </div>
                     </div>
@@ -106,6 +108,10 @@
     </div>
 
     <script src="/scripts/addtask.js"></script>
+    <script>
+        initAssignedToDropdown();
+        initCategoryDropdown();
+    </script>
 </body>
 
 </html>
