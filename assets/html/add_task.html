@@ -61,12 +61,16 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
+                     <div class="input-group">
                         <label class="input-label">Assigned To</label>
-                        <div class="select-wrapper">
-                            <select id="task-assigned" onfocus="initAssignedToDropdown()">
-                                <option value="" disabled selected>Select contacts to assign</option>
-                            </select>
+                        <div class="multi-select-wrapper" onfocus="initAssignedToDropdown()">
+                            <div class="multi-select-display" onclick="toggleAssignedDropdown()">
+                                <div class="selected-items" id="selected-contacts">
+                                    <span style="color: #999;">Select contacts to assign</span>
+                                </div>
+                            </div>
+                            <div class="multi-select-dropdown" id="contacts-dropdown">
+                            </div>
                         </div>
                     </div>
 
