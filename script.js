@@ -1,6 +1,8 @@
 const database =
   "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
 
+let contacts = {};
+
 /**
  * Function to log in as guest
  *
@@ -144,4 +146,22 @@ async function userLogin(path = "user") {
   });
   let responseRef = await response.json();
   console.log(responseRef);
+}
+
+/**
+ * Function to get database element from firebase server as JSON
+ *
+ * @param {string} path
+ * @returns - database element as JSON
+ */
+async function getDataBaseElement(path = "") {
+  let response = await fetch(database + path + ".json", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let responseJSON = await response.json();
+  console.log(responseJSON);
+  return responseJSON;
 }

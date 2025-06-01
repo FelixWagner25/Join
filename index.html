@@ -4,41 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/styles/assets.css">
-    <link rel="stylesheet" href="/styles/login.css">
-    <link rel="icon" href="/assets/img/faviconLogo.svg">
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/styles/assets.css" />
+    <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="icon" href="/assets/img/faviconLogo.svg" />
     <script src="/script.js"></script>
   </head>
-  <body>
-      <div id="login-view">
-        <div class="background-fade">
-              <div class="join-logo-index">
-                  <img src="/assets/img/faviconLogo.svg" alt="join-logo">
-              </div>
+  <body onload="init()">
+    <div id="login-view">
+      <div class="background-fade">
+        <div class="join-logo-index">
+          <img src="/assets/img/faviconLogo.svg" alt="join-logo" />
+        </div>
 
-          <div class="signup-container d-flex">
-            <span>Not a Join user?</span>
-            <button onclick="signupPage()">Sign Up</button>
+        <div class="signup-container d-flex">
+          <span>Not a Join user?</span>
+          <button onclick="signupPage()">Sign Up</button>
+        </div>
+
+        <div class="login-container d-flex text-center">
+          <div class="login-headline-container d-flex">
+            <div class="login-headline d-flex">Log In</div>
+            <div class="login-headline-underline"></div>
           </div>
-
-          <div class="login-container d-flex text-center">
-            <div class="login-headline-container d-flex">
-              <div class="login-headline d-flex">Log In</div>
-              <div class="login-headline-underline"></div>
+          <form action="submit" class="d-flex">
+            <div class="input-container d-flex">
+              <div class="input-content d-flex">
+                <input
+                  placeholder="Email"
+                  type="email"
+                  name=""
+                  id="email"
+                /><img src="/assets/icons/mail_icon.svg" alt="" />
+              </div>
             </div>
-            <form action="submit" class="d-flex">
-              <div class="input-container d-flex"><div class="input-content d-flex"><input placeholder="Email" type="email" name="" id="email"><img src="/assets/icons/mail_icon.svg" alt=""></div></div>
-              <div class="input-container d-flex"><div class="input-content d-flex"><input placeholder="Password" type="password" name="" id="password"><img src="/assets/icons/lock_icon.svg" alt=""></div></div>
-            </form>
-
-            <div class="login-btn-container d-flex">
-              <button onclick="userLogin()" class="login-btn" type="button"><span class="d-flex text-center-relative">Log in</span></button>
-              <button onclick="guestLogin()" id="guest-login" class="guest-login-btn" type="button"><span class="d-flex text-center-relative">Guest Log In</span> </button>
+            <div class="input-container d-flex">
+              <div class="input-content d-flex">
+                <input
+                  placeholder="Password"
+                  type="password"
+                  name=""
+                  id="password"
+                /><img src="/assets/icons/lock_icon.svg" alt="" />
+              </div>
             </div>
+          </form>
+
+          <div class="login-btn-container d-flex">
+            <button onclick="userLogin()" class="login-btn" type="button">
+              <span class="d-flex text-center-relative">Log in</span>
+            </button>
+            <button
+              onclick="guestLogin()"
+              id="guest-login"
+              class="guest-login-btn"
+              type="button"
+            >
+              <span class="d-flex text-center-relative">Guest Log In</span>
+            </button>
           </div>
         </div>
       </div>
-
+    </div>
   </body>
 </html>

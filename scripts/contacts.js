@@ -1,4 +1,12 @@
 /**
+ * Function to initialize contacts object with database entries
+ *
+ */
+async function initContacs() {
+  contacts = await getDataBaseElement("contacts");
+}
+
+/**
  * This function is used to show the add contact input screen.
  *
  */
