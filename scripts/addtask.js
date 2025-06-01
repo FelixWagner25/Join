@@ -22,33 +22,57 @@ function setPriority(priority) {
 }
 
 /**
- * Adds a new subtask when user clicks add button or presses enter
+ * Creates a delete button for subtasks
+ * @param {HTMLElement} subtaskDiv - The subtask div to remove when clicked
+ * @returns {HTMLElement} The delete button element
+ */
+function createDeleteButton(subtaskDiv) {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = '×';
+  deleteBtn.classList.add('delete-subtask');
+  deleteBtn.addEventListener('click', () => subtaskDiv.remove());
+  return deleteBtn;
+}
+
+/**
+ * Creates a complete subtask element
+ * @param {string} text - The subtask text
+ * @returns {HTMLElement} The complete subtask div
+ */
+function createSubtaskElement(text) {
+  const subtaskDiv = document.createElement('div');
+  subtaskDiv.classList.add('subtask');
+
+  const span = document.createElement('span');
+  span.textContent = text;
+
+  const deleteBtn = createDeleteButton(subtaskDiv);
+
+  subtaskDiv.appendChild(span);
+  subtaskDiv.appendChild(deleteBtn);
+  
+  return subtaskDiv;
+}
+
+/**
+ * Adds the subtask element to the DOM
+ * @param {HTMLElement} subtaskElement - The subtask element to add
+ */
+function insertSubtaskIntoDOM(subtaskElement) {
+  const container = document.querySelector('.input-with-icon');
+  container.parentNode.insertBefore(subtaskElement, container.nextSibling);
+}
+
+/**
+ * Main function to add a new subtask
  */
 function addSubtask() {
   const input = document.getElementById('task-subtasks');
   const text = input.value.trim();
 
   if (text) {
-    const subtaskDiv = document.createElement('div');
-    subtaskDiv.classList.add('subtask');
-
-    const span = document.createElement('span');
-    span.textContent = text;
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = '×';
-    deleteBtn.classList.add('delete-subtask');
-
-    deleteBtn.addEventListener('click', function () {
-      subtaskDiv.remove();
-    });
-
-    subtaskDiv.appendChild(span);
-    subtaskDiv.appendChild(deleteBtn);
-
-    const container = document.querySelector('.input-with-icon');
-    container.parentNode.insertBefore(subtaskDiv, container.nextSibling);
-
+    const subtaskElement = createSubtaskElement(text);
+    insertSubtaskIntoDOM(subtaskElement);
     input.value = '';
   }
 }
