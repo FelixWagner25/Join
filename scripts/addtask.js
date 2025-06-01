@@ -1,18 +1,12 @@
-/**
- * Speichert alle erstellten Aufgaben
- * @type {Array}
- */
+// Stores all created tasks in an array
 let tasks = [];
 
-/**
- * Speichert die aktuell gewählte Priorität
- * @type {string|null}
- */
+// Keeps track of which priority is currently selected
 let currentPriority = null;
 
 /**
- * Setzt die Priorität (wird von HTML onclick aufgerufen)
- * @param {string} priority - 'urgent', 'medium', 'low'
+ * Sets the priority when user clicks a priority button
+ * @param {string} priority - can be 'urgent', 'medium', or 'low'
  */
 function setPriority(priority) {
   const buttons = document.querySelectorAll('.priority-btn');
@@ -22,7 +16,7 @@ function setPriority(priority) {
 }
 
 /**
- * Fügt einen neuen Subtask hinzu (wird von HTML onclick/onkeypress aufgerufen)
+ * Adds a new subtask when user clicks add button or presses enter
  */
 function addSubtask() {
   const input = document.getElementById('task-subtasks');
@@ -54,7 +48,7 @@ function addSubtask() {
 }
 
 /**
- * Dropdown für Zuweisung (wird von HTML onload aufgerufen)
+ * Loads contacts from Firebase and shows them in the dropdown
  */
 async function initAssignedToDropdown() {
   const dropdown = document.getElementById('task-assigned');
@@ -66,7 +60,7 @@ async function initAssignedToDropdown() {
     while (dropdown.options.length > 1) {
       dropdown.remove(1);
     }
-    
+  
     for (const id in contacts) {
       if (contacts.hasOwnProperty(id)) {
         const contact = contacts[id];
@@ -75,12 +69,12 @@ async function initAssignedToDropdown() {
       }
     }
   } catch (error) {
-    console.error('Fehler beim Laden der Kontakte:', error);
+    console.error('Error loading contacts:', error);
   }
 }
 
 /**
- * Dropdown für Kategorien (wird von HTML onload aufgerufen)
+ * Sets up the category dropdown with default options
  */
 function initCategoryDropdown() {
   const dropdown = document.getElementById('task-category');
@@ -96,8 +90,8 @@ function initCategoryDropdown() {
 }
 
 /**
- * Holt alle Werte aus dem Formular für die neue Aufgabe
- * @returns {Object|null} gibt das Task-Objekt zurück oder null, wenn etwas fehlt
+ * Gets all values from the form to create a new task
+ * @returns {Object|null} The task data or null if required fields are missing
  */
 function getTaskValues() {
   const title = document.getElementById('task-title').value.trim();
@@ -129,21 +123,21 @@ function getTaskValues() {
 }
 
 /**
- * Speichert den aktuellen Task (wird von HTML onclick aufgerufen)
+ * Saves the task when user clicks create button
  */
 function saveTask() {
   const task = getTaskValues();
   
   if (!task) return;
 
-  console.log('Task-Daten:', task);
+  console.log('Task data:', task);
   tasks.push(task);
-  console.log('Aktuelle Tasks:', tasks);
+  console.log('All tasks:', tasks);
   clearForm();
 }
 
 /**
- * Leert alle Formularfelder (wird von HTML onclick aufgerufen)
+ * Clears all form fields when user clicks clear button
  */
 function clearForm() {
   document.getElementById('task-title').value = '';
