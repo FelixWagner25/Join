@@ -162,6 +162,5 @@ async function getDataBaseElement(path = "") {
     },
   });
   let responseJSON = await response.json();
-  console.log(responseJSON);
   return responseJSON;
 }

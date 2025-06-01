@@ -126,3 +126,17 @@ async function submitNewContact(path = "", contactData = {}) {
     body: JSON.stringify(contactData),
   });
 }
+
+/**
+ * This function renders the contacts list
+ *
+ */
+async function renderContactsList() {
+  contacts = await getDataBaseElement("contacts");
+  let contactsListRef = document.getElementById("contacts-list");
+  contactsListRef.innerHTML = "";
+  for (let i = 0; i < Object.keys(contacts).length; i++) {
+    let contactKey = Object.keys(contacts)[i];
+    contactsListRef.innerHTML += getContactsListContactTemplate(contactKey);
+  }
+}

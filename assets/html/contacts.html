@@ -7,13 +7,11 @@
     <div class="d-flex-row-c-c h-100vh">
       <div class="d-none" id="add-contact-screen-show-switch">
         <div class="add-contact-screen" onclick="stopEventPropagation(event)">
-          <div class="close-icon-wrap d-flex-row-c-c">
-            <img
-              src="/assets/icons/close.svg"
-              alt="close"
-              class="close-icon"
-              onclick="closeAddContactOverlay()"
-            />
+          <div
+            class="close-icon-wrap d-flex-row-c-c"
+            onclick="closeAddContactOverlay()"
+          >
+            <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
           </div>
           <div class="add-contact-title-page">
             <img
@@ -114,13 +112,11 @@
       </div>
       <div class="d-none" id="edit-contact-screen-show-switch">
         <div class="add-contact-screen" onclick="stopEventPropagation(event)">
-          <div class="close-icon-wrap d-flex-row-c-c">
-            <img
-              src="/assets/icons/close.svg"
-              alt="close"
-              class="close-icon"
-              onclick="closeAddContactOverlay()"
-            />
+          <div
+            class="close-icon-wrap d-flex-row-c-c"
+            onclick="closeAddContactOverlay()"
+          >
+            <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
           </div>
           <div class="add-contact-title-page">
             <img
@@ -208,7 +204,7 @@
           class="add-new-contact-img"
         />
       </button>
-      <div class="contacts-list">
+      <div class="contacts-list" id="contacts-list">
         <div class="bookmark-wrap">
           <div class="bookmark-letter">A</div>
         </div>
