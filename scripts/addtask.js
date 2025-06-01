@@ -95,7 +95,30 @@ async function initAssignedToDropdown() {
 }
 
 /**
- * Renders the contacts dropdown with checkboxes
+ * Creates a dropdown option element for a single contact
+ */
+function createContactOption(id, contact, isSelected) {
+  const optionDiv = document.createElement('div');
+  optionDiv.classList.add('multi-select-option');
+  
+  optionDiv.innerHTML = `
+    <input type="checkbox" id="contact-${id}" ${isSelected ? 'checked' : ''} 
+           onchange="toggleContact('${id}', '${contact.name}')">
+    <label for="contact-${id}">${contact.name}</label>
+  `;
+  
+  return optionDiv;
+}
+
+/**
+ * Checks if a contact is currently selected
+ */
+function isContactSelected(id) {
+  return selectedContacts.some(c => c.id === id);
+}
+
+/**
+ * Clears and rebuilds the contacts dropdown
  */
 function renderContactsDropdown() {
   const dropdown = document.getElementById('contacts-dropdown');
@@ -104,18 +127,8 @@ function renderContactsDropdown() {
   for (const id in allContacts) {
     if (allContacts.hasOwnProperty(id)) {
       const contact = allContacts[id];
-      const isSelected = selectedContacts.some(c => c.id === id);
-
-      const optionDiv = document.createElement('div');
-      optionDiv.classList.add('multi-select-option');
-
-      optionDiv.innerHTML = `
-                        <input type="checkbox" id="contact-${id}" ${isSelected ? 'checked' : ''} 
-                               onchange="toggleContact('${id}', '${contact.name}')">
-                        <label for="contact-${id}">${contact.name}</label>
-                    `;
-
-      dropdown.appendChild(optionDiv);
+      const option = createContactOption(id, contact, isContactSelected(id));
+      dropdown.appendChild(option);
     }
   }
 }
