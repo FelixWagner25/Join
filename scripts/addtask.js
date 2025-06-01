@@ -1,23 +1,3 @@
-// ====================
-// Firebase (Für später aktivieren)
-// ====================
-/*
-const firebaseConfig = {
-  apiKey: "MEIN_API_KEY",
-  authDomain: "join-461.firebaseapp.com",
-  databaseURL: "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "join-461",
-  storageBucket: "join-461.appspot.com",
-  messagingSenderId: "MEINE_SENDER_ID",
-  appId: "MEINE_APP_ID"
-};
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-const tasksRef = database.ref('tasks');
-const usersRef = database.ref('users');
-*/
-
-
 /**
  * Speichert alle erstellten Aufgaben
  * @type {Array}
@@ -29,16 +9,6 @@ let tasks = [];
  * @type {string|null}
  */
 let currentPriority = null;
-
-/**
- * Platzhalter bis Contacts fertig ist
- * @type {Array}
- */
-const PLACEHOLDER_CONTACTS = [
-  { id: '1', name: 'Max Mustermann', color: '#FF5733' },
-  { id: '2', name: 'Bruce Wayne', color: '#33FF57' },
-  { id: '3', name: 'Son Goku', color: '#3357FF' }
-];
 
 /**
  * Setzt die Priorität (wird von HTML onclick aufgerufen)
@@ -59,7 +29,6 @@ function addSubtask() {
   const text = input.value.trim();
 
   if (text) {
-    // Neues div-Element für den Subtask erstellen
     const subtaskDiv = document.createElement('div');
     subtaskDiv.classList.add('subtask');
 
@@ -70,7 +39,7 @@ function addSubtask() {
     deleteBtn.textContent = '×';
     deleteBtn.classList.add('delete-subtask');
 
-    deleteBtn.addEventListener('click', function () {
+    deleteBtn.addEventListener('click', function() {
       subtaskDiv.remove();
     });
 
@@ -87,17 +56,27 @@ function addSubtask() {
 /**
  * Dropdown für Zuweisung (wird von HTML onload aufgerufen)
  */
-function initAssignedToDropdown() {
+async function initAssignedToDropdown() {
   const dropdown = document.getElementById('task-assigned');
   
-  dropdown.innerHTML = '<option value="" disabled selected>Select contact</option>';
-  PLACEHOLDER_CONTACTS.forEach(contact => {
-    const option = document.createElement('option');
-    option.value = contact.id;
-    option.textContent = contact.name;
-    option.style.color = contact.color;
-    dropdown.appendChild(option);
-  });
+  try {
+    const response = await fetch('https://join-461-default-rtdb.europe-west1.firebasedatabase.app/contacts.json');
+    const contacts = await response.json();
+    
+    while (dropdown.options.length > 1) {
+      dropdown.remove(1);
+    }
+    
+    for (const id in contacts) {
+      if (contacts.hasOwnProperty(id)) {
+        const contact = contacts[id];
+        const option = new Option(contact.name, id);
+        dropdown.add(option);
+      }
+    }
+  } catch (error) {
+    console.error('Fehler beim Laden der Kontakte:', error);
+  }
 }
 
 /**
@@ -183,6 +162,3 @@ function clearForm() {
     subtask.remove();
   });
 }
-
-
-
