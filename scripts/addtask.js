@@ -232,30 +232,16 @@ function getTaskValues() {
  */
 async function saveTask() {
   const task = getTaskValues();
-
   if (!task) return;
 
-  try {
-    const response = await fetch('https://join-461-default-rtdb.europe-west1.firebasedatabase.app/tasks.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(task)
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data = await response.json();
-    console.log('Task saved successfully:', data);
-    clearForm();
-    alert('Task created successfully!');
-  } catch (error) {
-    console.error('Error saving task:', error);
-    alert('Error saving task. Please try again.');
-  }
+  await fetch('https://join-461-default-rtdb.europe-west1.firebasedatabase.app/tasks.json', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(task)
+  });
+  clearForm();
 }
 
 /**
