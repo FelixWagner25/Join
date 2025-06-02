@@ -124,6 +124,7 @@
             overflow-y: auto;
             z-index: 1000;
             display: none;
+            font-size: 14px;
         }
 
         .multi-select-option {
@@ -174,7 +175,7 @@
         .priority-btn {
             flex: 1;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
             align-items: center;
             padding: 12px 16px;
             background: white;
@@ -183,6 +184,12 @@
             cursor: pointer;
             transition: all 0.2s ease;
             color: #2a3647;
+        }
+
+        #priority-medium img {
+            width: 16px;
+            height: 8px;
+
         }
 
         .priority-btn:hover {
@@ -282,10 +289,18 @@
             color: #2a3647;
         }
 
+        .btn-clear:hover {
+            background: rgb(221, 220, 220);
+        }
+
         .btn-create {
             background: #2a3647;
             color: white;
             border: none;
+        }
+
+        .btn-create:hover {
+            background: #354253;
         }
 
         .btn-create .checkmark {
