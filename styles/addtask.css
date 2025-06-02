@@ -1,5 +1,4 @@
 
-
         .add-task-wrapper {
             display: flex;
             align-items: center;
@@ -102,9 +101,10 @@
             align-items: center;
             justify-content: space-between;
             font-size: 14px;
-            
-            
+            margin: 0;
+            box-sizing: border-box;
         }
+
 
         .multi-select-display::after {
             content: "▼";
