@@ -140,3 +140,11 @@ async function renderContactsList() {
     contactsListRef.innerHTML += getContactsListContactTemplate(contactKey);
   }
 }
+
+function getFirstTowContactInitials(contactKey) {
+  let contactNameSplit = contacts[contactKey].name.split(" ");
+  let contactInitials =
+    contactNameSplit[0].charAt(0).toUpperCase() +
+    contactNameSplit[1].charAt(0).toUpperCase();
+  return contactInitials;
+}
