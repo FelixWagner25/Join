@@ -4,6 +4,7 @@
  */
 async function initContacs() {
   contacts = await getDataBaseElement("contacts");
+  await renderContactsList();
 }
 
 /**
@@ -141,6 +142,12 @@ async function renderContactsList() {
   }
 }
 
+/**
+ * This function extracts the first two initials of a contact name
+ *
+ * @param {string} contactKey
+ * @returns - first two contact initials
+ */
 function getFirstTowContactInitials(contactKey) {
   let contactNameSplit = contacts[contactKey].name.split(" ");
   let contactInitials =

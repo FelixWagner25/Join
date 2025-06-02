@@ -4,7 +4,6 @@
  */
 async function init() {
   w3.includeHTML();
-  await initContacs();
 }
 
 /**
