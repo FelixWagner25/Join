@@ -3,8 +3,21 @@
  *
  */
 async function initContacs() {
-  contacts = await getDataBaseElement("contacts");
+  contactsArray = await getSortedContactsArray();
   await renderContactsList();
+}
+
+async function getSortedContactsArray() {
+  let contacts = {};
+  let contactsArray = [];
+  contacts = await getDataBaseElement("contacts");
+  contactsArray = Object.entries(contacts);
+  contactsArray.sort((idValuePairA, idValuePairB) => {
+    const nameA = idValuePairA[1].name.toLowerCase();
+    const nameB = idValuePairB[1].name.toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
+  return contactsArray;
 }
 
 /**
@@ -133,12 +146,11 @@ async function submitNewContact(path = "", contactData = {}) {
  *
  */
 async function renderContactsList() {
-  contacts = await getDataBaseElement("contacts");
+  contactsArray = await getSortedContactsArray();
   let contactsListRef = document.getElementById("contacts-list");
   contactsListRef.innerHTML = "";
-  for (let i = 0; i < Object.keys(contacts).length; i++) {
-    let contactKey = Object.keys(contacts)[i];
-    contactsListRef.innerHTML += getContactsListContactTemplate(contactKey);
+  for (let i = 0; i < contactsArray.length; i++) {
+    contactsListRef.innerHTML += getContactsListContactTemplate(i);
   }
 }
 
@@ -148,8 +160,8 @@ async function renderContactsList() {
  * @param {string} contactKey
  * @returns - first two contact initials
  */
-function getFirstTowContactInitials(contactKey) {
-  let contactNameSplit = contacts[contactKey].name.split(" ");
+function getFirstTowContactInitials(indexContact) {
+  let contactNameSplit = contactsArray[indexContact][1].name.split(" ");
   let contactInitials =
     contactNameSplit[0].charAt(0).toUpperCase() +
     contactNameSplit[1].charAt(0).toUpperCase();

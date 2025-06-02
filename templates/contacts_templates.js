@@ -1,18 +1,22 @@
 /**
  * This function retruns the contacts list contact tempate
  *
- * @param {string} contactKey
+ * @param {integer} indexContact
  * @returns - HMTL template of a contact item in contacts list.
  */
-function getContactsListContactTemplate(contactKey) {
+function getContactsListContactTemplate(indexContact) {
   return `
     <div class="contact-list-item-wrap">
         <div class="profile-badge bg-purple">${getFirstTowContactInitials(
-          contactKey
+          indexContact
         )}</div>
         <div class="contact-name-wrap">
-            <div class="contact-name">${contacts[contactKey].name}</div>
-            <div class="contact-email">${contacts[contactKey].email}</div>
+            <div class="contact-name">${
+              contactsArray[indexContact][1].name
+            }</div>
+            <div class="contact-email">${
+              contactsArray[indexContact][1].email
+            }</div>
         </div>
     </div>
   `;
