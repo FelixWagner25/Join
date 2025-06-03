@@ -107,7 +107,7 @@ function showPassword(x) {
 }
 
 /**
- * Function to create JSON-object (signup - user credential)
+ * Function to create JSON-object (signup - user credential), if checkMailRedundancy is false
  *
  */
 function getNewUserInformation() {
@@ -117,31 +117,28 @@ function getNewUserInformation() {
     let key = userInput[index].name;
     let value = userInput[index].value;
     userCredential[key] = value;
-
   }
-  checkMailRedundancy(userCredential)
-/*   submitNewUser("user", userCredential); */
-  console.log(userCredential);
+  checkMailRedundancy(userCredential);
+
 }
 
-
+/**
+ * This function checks, if the mail for sign-up is already saved in the database
+ * 
+ * @param {object} email the sign-up credentials 
+ */
 async function checkMailRedundancy(email){
   let mailError = document.getElementById("email-redundancy-error");
   let response = await fetch(database + "/user" + ".json");
   let responseRef = await response.json();
   let mailValue = Object.values(responseRef)
-  for (let i = 0; i < mailValue.length; i++) {
-    let newMail = mailValue[i];
-    if (newMail.email === email.email){
-       mailError.classList.remove("d-none");
-       mailError.previousElementSibling.classList.add("error-border");
-      break;
-        } console.log("nicht doppelt");
-        
-  }
-
-  console.log(email.email);
-  
+  let newMail = mailValue.map((i) => {return i.email})
+  if (!newMail.includes(email.email)) {
+      submitNewUser("user", email);
+  } else {
+    mailError.classList.remove("d-none");
+    mailError.previousElementSibling.classList.add("error-border");
+}
 }
 
 /**
