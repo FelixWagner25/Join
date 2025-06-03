@@ -54,18 +54,14 @@ function getContactDetailsTemplate(indexContact) {
                     src="/assets/icons/edit.svg"
                     alt="edit pencil"
                     class="edit-contact-icon"
-                    onmouseover="this.src='/assets/icons/edit-blue.svg';"
-                    onmouseout="this.src='/assets/icons/edit.svg';"
                 />
                 <span class="edit-contact-text">Edit</span>
                 </div>
-                <div class="contact-details-edit-contact">
+                <div class="contact-details-delete-contact">
                 <img
                     src="/assets/icons/delete.svg"
                     alt="delete trash bin"
-                    class="edit-contact-icon"
-                    onmouseover="this.src='/assets/icons/delete-blue.svg';"
-                    onmouseout="this.src='/assets/icons/delete.svg';"
+                    class="delete-contact-icon"
                     onclick="deleteContact(${indexContact})"
                 />
                 <span class="edit-contact-text">Delete</span>
