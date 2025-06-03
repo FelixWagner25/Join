@@ -104,9 +104,11 @@ function openEditContactScreen() {
  * This function adds a new contact to the database.
  *
  */
-function addNewContact() {
+async function addNewContact() {
   let newContactData = getNewContactInformation();
   submitNewContact("contacts", newContactData);
+  await renderContactsList();
+  closeAddContactOverlay();
 }
 
 /**
@@ -224,4 +226,9 @@ function firstLettersAreEqual(char1, char2) {
     return true;
   }
   return false;
+}
+
+function getContactColorClassName(indexContact) {
+  let index = indexContact % contactColorClasses.length;
+  return contactColorClasses[index];
 }

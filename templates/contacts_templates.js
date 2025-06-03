@@ -7,9 +7,9 @@
 function getContactsListContactTemplate(indexContact) {
   return `
     <div class="contact-list-item-wrap">
-        <div class="profile-badge ${
-          contactColorClasses[indexContact]
-        }">${getFirstTowContactInitials(indexContact)}</div>
+        <div class="profile-badge ${getContactColorClassName(
+          indexContact
+        )}">${getFirstTowContactInitials(indexContact)}</div>
         <div class="contact-name-wrap">
             <div class="contact-name">${
               contactsArray[indexContact][1].name
