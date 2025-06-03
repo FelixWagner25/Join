@@ -164,3 +164,17 @@ async function getDataBaseElement(path = "") {
   let responseJSON = await response.json();
   return responseJSON;
 }
+
+/**
+ * This function delets an element form firebase server and collects the response as JSON
+ *
+ * @param {string} path
+ * @returns
+ */
+async function deleteDataBaseElement(path = "") {
+  let response = await fetch(database + path + ".json", {
+    method: "DELETE",
+  });
+  let responseJSON = await response.json();
+  return responseJSON;
+}

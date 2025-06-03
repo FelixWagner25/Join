@@ -228,7 +228,36 @@ function firstLettersAreEqual(char1, char2) {
   return false;
 }
 
+/**
+ * This function assigns a icon color to a contact
+ *
+ * @param {integer} indexContact
+ * @returns - CSS class with color property as string
+ */
 function getContactColorClassName(indexContact) {
   let index = indexContact % contactColorClasses.length;
   return contactColorClasses[index];
+}
+
+/**
+ * This function deletes a contact from firebase server
+ *
+ * @param {integer} indexContact
+ */
+async function deleteContact(indexContact) {
+  let contactId = contactsArray[indexContact][0];
+  let path = "contacts/" + contactId;
+  responseMessage = deleteDataBaseElement(path);
+  await renderContactsList();
+}
+
+/**
+ * This function renders the details section of a contact
+ *
+ * @param {integer} indexContact
+ */
+function renderContactDetails(indexContact) {
+  let contactDetailsRef = document.getElementById("contact-details");
+  contactDetailsRef.innerHTML = "";
+  contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
 }
