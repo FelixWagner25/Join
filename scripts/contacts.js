@@ -248,6 +248,7 @@ async function deleteContact(indexContact) {
   let contactId = contactsArray[indexContact][0];
   let path = "contacts/" + contactId;
   responseMessage = deleteDataBaseElement(path);
+  clearContactDetails();
   await renderContactsList();
 }
 
@@ -258,6 +259,13 @@ async function deleteContact(indexContact) {
  */
 function renderContactDetails(indexContact) {
   let contactDetailsRef = document.getElementById("contact-details");
-  contactDetailsRef.innerHTML = "";
+  clearContactDetails();
   contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
+}
+
+/**
+ * This function clears the contact details panel
+ */
+function clearContactDetails() {
+  document.getElementById("contact-details").innerHTML = "";
 }
