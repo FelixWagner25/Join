@@ -91,7 +91,7 @@ function signupFormValidation(event) {
 }
 
 /**
- * Function to make Password visible/unvisible for user
+ * Function to trigger Password visible/unvisible for user
  *
  * @param {HTMLElement}  x the clicked Icon element
  */
@@ -157,16 +157,38 @@ async function submitNewUser(path = "", data = {}) {
   });
 }
 
+/**
+ * This function gets all users-credentials from database and triggers credential-check-function
+ * 
+ * @param {string} path path of the database
+ */
 async function userLogin(path = "user") {
-  let response = await fetch(database + path, {
+  let response = await fetch(database + path + ".json", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
   let responseRef = await response.json();
-  console.log(responseRef);
+  checkLogInCredentials(responseRef)
 }
+
+/**
+ * This function checks, if login-credentials are valid to credentials from database
+ * 
+ * @param {object} responseRef all user credentials from the database
+ */
+function checkLogInCredentials(responseRef) {
+  let x = Object.values(responseRef)
+  let loginInput = document.getElementsByTagName('input')
+  let credentialsMerge = x.map((i)=> {return i.email + i.password});
+  if(credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
+    console.log("success");
+    /* forward to desktop_template */
+  } else {console.log("no match")
+        /* error-message */
+  };
+  }
 
 /**
  * Function to get database element from firebase server as JSON
