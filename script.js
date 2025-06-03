@@ -50,11 +50,13 @@ function checkInput() {
  */
 function resetErrorMessage(x) {
   let passwordError = document.getElementById("password-error");
-  let mailError = document.getElementById("email-error");
+  let classMail = document.getElementsByClassName('validation email')
   switch (x) {
     case 1:
-      mailError.classList.add("d-none");
-      mailError.previousElementSibling.classList.remove("error-border");
+      [...classMail].forEach(index => {
+        index.classList.add("d-none");
+        index.previousElementSibling.classList.remove("error-border");
+      });
       break;
     case 2:
     case 3:
@@ -72,8 +74,7 @@ function resetErrorMessage(x) {
  */
 function signupFormValidation(event) {
   event.preventDefault(); /* preventDefault nur nutzen, wenn Validierungsfehler */
-  const regex =
-    /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+  const regex =/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
   let userInput = document.getElementsByTagName("input");
   let mail = document.getElementById("email");
   let passwordError = document.getElementById("password-error");
@@ -116,9 +117,31 @@ function getNewUserInformation() {
     let key = userInput[index].name;
     let value = userInput[index].value;
     userCredential[key] = value;
+
   }
-  submitNewUser("user", userCredential);
+  checkMailRedundancy(userCredential)
+/*   submitNewUser("user", userCredential); */
   console.log(userCredential);
+}
+
+
+async function checkMailRedundancy(email){
+  let mailError = document.getElementById("email-redundancy-error");
+  let response = await fetch(database + "/user" + ".json");
+  let responseRef = await response.json();
+  let mailValue = Object.values(responseRef)
+  for (let i = 0; i < mailValue.length; i++) {
+    let newMail = mailValue[i];
+    if (newMail.email === email.email){
+       mailError.classList.remove("d-none");
+       mailError.previousElementSibling.classList.add("error-border");
+      break;
+        } console.log("nicht doppelt");
+        
+  }
+
+  console.log(email.email);
+  
 }
 
 /**
