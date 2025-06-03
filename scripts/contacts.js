@@ -1,3 +1,21 @@
+let contactColorClasses = [
+  "bg-orange",
+  "bg-purple",
+  "bg-pink",
+  "bg-darkpurple",
+  "bg-turqoise",
+  "bg-green",
+  "bg-lightred",
+  "bg-lightorange",
+  "bg-lightpink",
+  "bg-gold",
+  "bg-royalblue",
+  "bg-neon",
+  "bg-yellow",
+  "bg-red",
+  "bg-sand",
+];
+
 /**
  * Function to initialize contacts object with database entries
  *
@@ -150,14 +168,19 @@ async function renderContactsList() {
   let contactsListRef = document.getElementById("contacts-list");
   contactsListRef.innerHTML = "";
   for (let i = 0; i < contactsArray.length; i++) {
-    contactsListRef.innerHTML += getContactsListContactTemplate(i);
+    if (contactHasFirstLetterPredecessor(i)) {
+      contactsListRef.innerHTML += getContactsListContactTemplate(i);
+    } else {
+      contactsListRef.innerHTML += getContactListBookmarkTemplate(i);
+      contactsListRef.innerHTML += getContactsListContactTemplate(i);
+    }
   }
 }
 
 /**
  * This function extracts the first two initials of a contact name
  *
- * @param {string} contactKey
+ * @param {integer} indexContact
  * @returns - first two contact initials
  */
 function getFirstTowContactInitials(indexContact) {
@@ -166,4 +189,39 @@ function getFirstTowContactInitials(indexContact) {
     contactNameSplit[0].charAt(0).toUpperCase() +
     contactNameSplit[1].charAt(0).toUpperCase();
   return contactInitials;
+}
+
+/**
+ * This function checks whether contact in contact list has a first letter predecessor. If the contact has a first letter predecessor there is no need for an additional contact list bookmark related to this contact
+ *
+ * @param {integer} indexContact
+ * @returns
+ */
+function contactHasFirstLetterPredecessor(indexContact) {
+  if (indexContact == 0) {
+    return false;
+  } else if (
+    firstLettersAreEqual(
+      contactsArray[indexContact][1].name,
+      contactsArray[indexContact - 1][1].name
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Function that checks whether first characters of two strings are equal
+ *
+ * @param {string} char1 - first character
+ * @param {string} char2 - second character
+ * @returns
+ */
+function firstLettersAreEqual(char1, char2) {
+  if (char1.charAt(0).toLowerCase() == char2.charAt(0).toLowerCase()) {
+    return true;
+  }
+  return false;
 }
