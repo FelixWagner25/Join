@@ -43,28 +43,17 @@ function checkInput() {
 }
 
 /**
- * Function to reset error-message on signup
+ * Function to reset error-messages on login & signup page
  *
- * @param {number} x indicator which error to reset
- *                   1 = email 2||3 = password
+ * 
  */
-function resetErrorMessage(x) {
-  let passwordError = document.getElementById("password-error");
-  let classMail = document.getElementsByClassName('validation email')
-  switch (x) {
-    case 1:
-      [...classMail].forEach(index => {
-        index.classList.add("d-none");
-        index.previousElementSibling.classList.remove("error-border");
-      });
-      break;
-    case 2:
-    case 3:
-      passwordError.classList.add("d-none");
-      passwordError.previousElementSibling.classList.remove("error-border");
-      break;
+function resetErrorMessage() {
+  let error = document.getElementsByTagName('input')
+  let message = document.getElementsByClassName('validation');
+      [...error].forEach((element) => {element.parentElement.classList.remove("error-border")});
+      [...message].forEach((message) => {message.classList.add("d-none")})
   }
-}
+
 
 /**
  * Function to validate users credentials after button submit
@@ -180,13 +169,16 @@ async function userLogin(path = "user") {
  */
 function checkLogInCredentials(responseRef) {
   let x = Object.values(responseRef)
+  let loginError = document.getElementById('password-error')
   let loginInput = document.getElementsByTagName('input')
   let credentialsMerge = x.map((i)=> {return i.email + i.password});
   if(credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
     console.log("success");
     /* forward to desktop_template */
-  } else {console.log("no match")
-        /* error-message */
+  } else {
+    loginError.classList.remove("d-none");
+    [...loginInput].forEach((input) => {input.parentElement.classList.add("error-border");
+    })
   };
   }
 

@@ -28,14 +28,14 @@
               <div class="input-container d-flex"><div class="input-content d-flex">
                 <input required placeholder="Name" type="text" name="name" id="name"><img src="/assets/icons/person_icon.svg" alt=""></div></div>
               <div class="input-container d-flex"><div class="input-content d-flex">
-                <input required placeholder="Email" type="email" name="email" id="email" oninput="resetErrorMessage(1)"><img src="/assets/icons/mail_icon.svg" alt=""></div>
+                <input required placeholder="Email" type="email" name="email" id="email" oninput="resetErrorMessage()"><img src="/assets/icons/mail_icon.svg" alt=""></div>
                    <div id="email-error" class="d-none validation email">Please enter a valid e-mail address</div>
                   <div id="email-redundancy-error" class="d-none validation email">E-mail address already exists!</div></div>
               <div class="input-container d-flex"><div class="input-content d-flex">
-                <input required placeholder="Password" type="password" name="password" id="password" minlength="8" oninput="resetErrorMessage(2)"><div class="pw-icon" onclick="showPassword(this)"></div></div></div>
+                <input required placeholder="Password" type="password" name="password" id="password" minlength="8" oninput="resetErrorMessage()"><div class="pw-icon" onclick="showPassword(this)"></div></div></div>
               <div class="input-container d-flex"><div class="input-content d-flex">
-                <input required placeholder="Confirm Password" type="password" name="password" id="password-confirm" oninput="resetErrorMessage(3)"><div class="pw-icon" onclick="showPassword(this)"></div></div>
-                   <div id="password-error" class="d-none validation">Your passwords don't match. Please try again</div></div>
+                <input required placeholder="Confirm Password" type="password" name="password" id="password-confirm" oninput="resetErrorMessage()"><div class="pw-icon" onclick="showPassword(this)"></div></div>
+                   <div id="password-error" class="d-none validation">Your passwords don't match. Please try again.</div></div>
               
               <div class="input-container d-flex-row-c-c"><div class="input-checkbox d-flex">
                 <input type="checkbox" name="checkbox" id="accept-policy" onclick="checkInput()">I accept the<span class="d-flex"> Privacy policy</span></div></div>
