@@ -108,7 +108,6 @@ function getNewUserInformation() {
     userCredential[key] = value;
   }
   checkMailRedundancy(userCredential);
-
 }
 
 /**
@@ -120,10 +119,14 @@ async function checkMailRedundancy(email){
   let mailError = document.getElementById("email-redundancy-error");
   let response = await fetch(database + "/user" + ".json");
   let responseRef = await response.json();
+    if (responseRef === null){
+      submitNewUser("user", email);
+      showMessage()};
   let mailValue = Object.values(responseRef)
   let newMail = mailValue.map((i) => {return i.email})
   if (!newMail.includes(email.email)) {
       submitNewUser("user", email);
+      showMessage()
   } else {
     mailError.classList.remove("d-none");
     mailError.previousElementSibling.classList.add("error-border");
@@ -145,6 +148,20 @@ async function submitNewUser(path = "", data = {}) {
     body: JSON.stringify(data),
   });
 }
+
+function showMessage() {
+  let messageBox = document.querySelector('.signup-message')
+  let newBlur = document.querySelector('.background-fade')
+  let signup = document.querySelector('.signup')
+  messageBox.classList.remove('d-none')
+  messageBox.classList.add('d-flex-row-c-c')
+  newBlur.style.backgroundColor = "rgb(0, 0, 0, 0.10)"
+  signup.style.zIndex = "-1";
+  setTimeout(() => {
+    location.href = "/index.html"
+  }, 1800);
+}
+
 
 /**
  * This function gets all users-credentials from database and triggers credential-check-function
@@ -173,8 +190,7 @@ function checkLogInCredentials(responseRef) {
   let loginInput = document.getElementsByTagName('input')
   let credentialsMerge = x.map((i)=> {return i.email + i.password});
   if(credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
-    console.log("success");
-    /* forward to desktop_template */
+    location.href = "/templates/desktop_template.html"
   } else {
     loginError.classList.remove("d-none");
     [...loginInput].forEach((input) => {input.parentElement.classList.add("error-border");
