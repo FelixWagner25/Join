@@ -187,9 +187,14 @@ async function renderContactsList() {
  */
 function getFirstTowContactInitials(indexContact) {
   let contactNameSplit = contactsArray[indexContact][1].name.split(" ");
-  let contactInitials =
-    contactNameSplit[0].charAt(0).toUpperCase() +
-    contactNameSplit[1].charAt(0).toUpperCase();
+  let contactInitials = "";
+  if (contactNameSplit.length == 1) {
+    contactInitials = contactNameSplit[0].charAt(0).toUpperCase();
+  } else {
+    contactInitials =
+      contactNameSplit[0].charAt(0).toUpperCase() +
+      contactNameSplit[1].charAt(0).toUpperCase();
+  }
   return contactInitials;
 }
 
