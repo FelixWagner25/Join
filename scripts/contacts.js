@@ -274,3 +274,23 @@ function renderContactDetails(indexContact) {
 function clearContactDetails() {
   document.getElementById("contact-details").innerHTML = "";
 }
+
+function showContactDetails(indexContact) {
+  removeFocusFromAllContacts();
+  addFocusToContact(indexContact);
+  renderContactDetails(indexContact);
+}
+
+function removeFocusFromAllContacts() {
+  contactsListTagsRef = document.getElementsByClassName(
+    "contact-list-item-wrap"
+  );
+  for (let i = 0; i < contactsListTagsRef.length; i++) {
+    contactsListTagsRef[i].classList.remove("focus");
+  }
+}
+
+function addFocusToContact(indexContact) {
+  let elementId = "contacts-list-" + String(indexContact);
+  document.getElementById(elementId).classList.add("focus");
+}

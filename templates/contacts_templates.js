@@ -6,7 +6,7 @@
  */
 function getContactsListContactTemplate(indexContact) {
   return `
-    <div class="contact-list-item-wrap" onclick="renderContactDetails(${indexContact})">
+    <div class="contact-list-item-wrap" onclick="showContactDetails(${indexContact})" id="contacts-list-${indexContact}">
         <div class="profile-badge ${getContactColorClassName(
           indexContact
         )}">${getFirstTowContactInitials(indexContact)}</div>
