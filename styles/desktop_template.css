@@ -73,7 +73,7 @@ nav {
 }
 
 nav > a,
-.policy-legal > a {
+.policy-legal > a{
   display: flex;
   height: 46px;
   background-color: #2a3647;
@@ -92,6 +92,42 @@ nav > span {
 nav > a:hover {
   cursor: pointer;
   background-color: #091931;
+}
+
+.dropdown-menu-container{
+  position: relative;
+  top: 150px;
+  right: 150px;
+  width: 150px;
+  height: 204px;
+  border-radius: 20px 0 20px 20px;
+  border: unset;
+  background-color: #2a3647;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
+}
+
+.dropdown-menu-inside{
+  flex-direction: column;
+  padding: 8px 16px;
+  width: 130px;
+  height: 184px ;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dropdown-menu-inside > a{
+  width: 130px;
+  height: 46px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #cdcdcd;
+  text-decoration: none;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .policy-legal {
