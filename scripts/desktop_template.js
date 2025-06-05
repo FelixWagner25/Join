@@ -36,5 +36,5 @@ document.addEventListener('click', function(event){
 
 function loadProfile() {
   let initials = document.getElementById('profile-initials')
-
+  
 }
