@@ -84,9 +84,10 @@ function closeAddContactOverlay() {
  * This function is used to show the edit contact screen.
  *
  */
-function showEditContactScreen() {
+function showEditContactScreen(indexContact) {
   blurBackground();
   openEditContactScreen();
+  renderEditContactScreen(indexContact);
 }
 
 /**
@@ -98,6 +99,14 @@ function openEditContactScreen() {
     "edit-contact-screen-show-switch"
   );
   contactScreenRef.classList.remove("d-none");
+}
+
+function renderEditContactScreen(indexContact) {
+  editContactScreenRef = document.getElementById(
+    "edit-contact-screen-show-switch"
+  );
+  editContactScreenRef.innerHTML = "";
+  editContactScreenRef.innerHTML = getEditContactScreenTemplate(indexContact);
 }
 
 /**
