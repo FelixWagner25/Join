@@ -126,6 +126,7 @@ function getEditContactScreenTemplate(indexContact) {
                   type="text"
                   class="add-contact-input"
                   placeholder="Name"
+                  id="input-name-${indexContact}"
                 />
                 <img
                   src="/assets/icons/person_icon.svg"
@@ -138,6 +139,7 @@ function getEditContactScreenTemplate(indexContact) {
                   type="text"
                   class="add-contact-input"
                   placeholder="Email"
+                  id="input-email-${indexContact}"
                 />
                 <img
                   src="/assets/icons/mail_icon.svg"
@@ -150,6 +152,7 @@ function getEditContactScreenTemplate(indexContact) {
                   type="text"
                   class="add-contact-input"
                   placeholder="Phone"
+                  id="input-phone-${indexContact}"
                 />
                 <img
                   src="/assets/icons/call.svg"

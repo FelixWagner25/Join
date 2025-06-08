@@ -88,6 +88,7 @@ function showEditContactScreen(indexContact) {
   blurBackground();
   openEditContactScreen();
   renderEditContactScreen(indexContact);
+  prefillContactInputFields(indexContact);
 }
 
 /**
@@ -107,6 +108,47 @@ function renderEditContactScreen(indexContact) {
   );
   editContactScreenRef.innerHTML = "";
   editContactScreenRef.innerHTML = getEditContactScreenTemplate(indexContact);
+}
+
+/**
+ * This function prefills all input fields of add contact form with current values stored on firebase server.
+ *
+ * @param {integer} indexContact
+ */
+async function prefillContactInputFields(indexContact) {
+  prefillContactInputField("name", indexContact);
+  prefillContactInputField("email", indexContact);
+  prefillContactInputField("phone", indexContact);
+}
+
+/**
+ * This function prefills an input field of the add contact form with the respective current value stored on firebase server.
+ *
+ * @param {string} inputHtmlId - id of contact input html element
+ * @param {string} attributeName - contact attribute name, either "name", "email" or "phone"
+ * @param {integer} indexContact
+ */
+async function prefillContactInputField(attributeName, indexContact) {
+  let inputHtmlId = "input-" + attributeName + "-" + String(indexContact);
+  let inputFieldRef = document.getElementById(inputHtmlId);
+  inputFieldRef.value = await getCurrentContactAttribute(
+    attributeName,
+    indexContact
+  );
+}
+
+/**
+ * This function gets the current contact attribute from firebase server
+ *
+ * @param {string} attribute - contact attribute either name, email or phone
+ * @param {integer} indexContact
+ * @returns - current contact attribute
+ */
+async function getCurrentContactAttribute(attribute, indexContact) {
+  let contactId = contactsArray[indexContact][0];
+  let path = "contacts/" + contactId + "/" + attribute;
+  currentAttribute = await getDataBaseElement(path);
+  return currentAttribute;
 }
 
 /**
