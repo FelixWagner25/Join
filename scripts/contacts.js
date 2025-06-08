@@ -306,6 +306,7 @@ async function deleteContact(indexContact) {
   responseMessage = deleteDataBaseElement(path);
   clearContactDetails();
   await renderContactsList();
+  closeAddContactOverlay();
 }
 
 /**

@@ -57,12 +57,11 @@ function getContactDetailsTemplate(indexContact) {
                 />
                 <span class="edit-contact-text">Edit</span>
                 </div>
-                <div class="contact-details-delete-contact">
+                <div class="contact-details-delete-contact" onclick="deleteContact(${indexContact})">
                 <img
                     src="/assets/icons/delete.svg"
                     alt="delete trash bin"
                     class="delete-contact-icon"
-                    onclick="deleteContact(${indexContact})"
                 />
                 <span class="edit-contact-text">Delete</span>
                 </div>
@@ -162,7 +161,7 @@ function getEditContactScreenTemplate(indexContact) {
               </div>
             </form>
             <div class="add-contact-btns-wrap">
-              <button class="add-contact-btn-cancel">
+              <button class="add-contact-btn-cancel" onclick="deleteContact(${indexContact})">
                 <span>Delete</span>
               </button>
               <button class="add-contact-btn">
