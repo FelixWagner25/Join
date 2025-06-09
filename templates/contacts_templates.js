@@ -22,6 +22,12 @@ function getContactsListContactTemplate(indexContact) {
   `;
 }
 
+/**
+ * This function returns the contacts list bookmark template
+ *
+ * @param {integer} indexContact
+ * @returns - HTML template of a contact list bookmark
+ */
 function getContactListBookmarkTemplate(indexContact) {
   return `
     <div class="bookmark-wrap">
@@ -33,6 +39,12 @@ function getContactListBookmarkTemplate(indexContact) {
     `;
 }
 
+/**
+ * This function returns the contact details template.
+ *
+ * @param {integer} indexContact
+ * @returns - HTML template of the contact details section
+ */
 function getContactDetailsTemplate(indexContact) {
   return `
     <div class="contact-details-icon-edit-name-wrap">
@@ -87,6 +99,12 @@ function getContactDetailsTemplate(indexContact) {
   `;
 }
 
+/**
+ * This function returns the edit contact srceen template
+ *
+ * @param {integer} indexContact
+ * @returns - HTML template for edit contact screen
+ */
 function getEditContactScreenTemplate(indexContact) {
   return `
   <div class="add-contact-screen" onclick="stopEventPropagation(event)">

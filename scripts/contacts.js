@@ -25,6 +25,11 @@ async function initContacs() {
   await renderContactsList();
 }
 
+/**
+ * This function returns an alphabetically by name sorted array from contacts object input.
+ *
+ * @returns - array with alphabetically by name sorted contacts from firebase server
+ */
 async function getSortedContactsArray() {
   let contacts = {};
   let contactsArray = [];
@@ -102,8 +107,13 @@ function openEditContactScreen() {
   contactScreenRef.classList.remove("d-none");
 }
 
+/**
+ * This function renders the edit contact overlay screen.
+ *
+ * @param {integer} indexContact
+ */
 function renderEditContactScreen(indexContact) {
-  editContactScreenRef = document.getElementById(
+  let editContactScreenRef = document.getElementById(
     "edit-contact-screen-show-switch"
   );
   editContactScreenRef.innerHTML = "";
@@ -227,6 +237,12 @@ async function updateContact(indexContact) {
   closeContactOverlays();
 }
 
+/**
+ * This function updates the attributes of existing contacts on firebase server.
+ *
+ * @param {string} path
+ * @param {object} contactData
+ */
 async function submitUpdateContact(path = "", contactData = {}) {
   let response = await fetch(database + path + ".json", {
     method: "PUT",
@@ -352,12 +368,20 @@ function clearContactDetails() {
   document.getElementById("contact-details").innerHTML = "";
 }
 
+/**
+ * This function shows a contacts details.
+ *
+ * @param {integer} indexContact
+ */
 function showContactDetails(indexContact) {
   removeFocusFromAllContacts();
   addFocusToContact(indexContact);
   renderContactDetails(indexContact);
 }
 
+/**
+ * This function removes the focus class from all contact list entries
+ */
 function removeFocusFromAllContacts() {
   contactsListTagsRef = document.getElementsByClassName(
     "contact-list-item-wrap"
@@ -367,6 +391,11 @@ function removeFocusFromAllContacts() {
   }
 }
 
+/**
+ * This function adds the focus to the selected contact list entry.
+ *
+ * @param {integer} indexContact
+ */
 function addFocusToContact(indexContact) {
   let elementId = "contacts-list-" + String(indexContact);
   document.getElementById(elementId).classList.add("focus");
