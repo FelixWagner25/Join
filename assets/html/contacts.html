@@ -1,15 +1,11 @@
 <body>
-  <div
-    class="d-none bg-dimmed"
-    id="bg-dimmed"
-    onclick="closeAddContactOverlay()"
-  >
+  <div class="d-none bg-dimmed" id="bg-dimmed" onclick="closeContactOverlays()">
     <div class="d-flex-row-c-c h-100vh">
       <div class="d-none" id="add-contact-screen-show-switch">
         <div class="add-contact-screen" onclick="stopEventPropagation(event)">
           <div
             class="close-icon-wrap d-flex-row-c-c"
-            onclick="closeAddContactOverlay()"
+            onclick="closeContactOverlays()"
           >
             <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
           </div>
@@ -78,13 +74,13 @@
                 <img
                   src="/assets/icons/call.svg"
                   alt="call icon"
-                  class="add contact-input-icon"
+                  class="add-contact-input-icon"
                 />
               </div>
               <div class="add-contact-btns-wrap">
                 <button
                   type="button"
-                  onclick="closeAddContactOverlay()"
+                  onclick="closeContactOverlays()"
                   class="add-contact-btn-cancel"
                 >
                   <span>Cancel</span>

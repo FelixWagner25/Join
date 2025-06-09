@@ -70,7 +70,7 @@ function openAddContactScreen() {
  * This function closes any overlay at the contacts page.
  *
  */
-function closeAddContactOverlay() {
+function closeContactOverlays() {
   document.getElementById("bg-dimmed").classList.add("d-none");
   document
     .getElementById("add-contact-screen-show-switch")
@@ -129,7 +129,7 @@ async function prefillContactInputFields(indexContact) {
  * @param {integer} indexContact
  */
 async function prefillContactInputField(attributeName, indexContact) {
-  let inputHtmlId = "input-" + attributeName + "-" + String(indexContact);
+  let inputHtmlId = "input-" + String(indexContact) + "-" + attributeName;
   let inputFieldRef = document.getElementById(inputHtmlId);
   inputFieldRef.value = await getCurrentContactAttribute(
     attributeName,
@@ -156,26 +156,26 @@ async function getCurrentContactAttribute(attribute, indexContact) {
  *
  */
 async function addNewContact() {
-  let newContactData = getNewContactInformation();
+  let newContactData = getContactInformation("add-contact-input-");
   await submitNewContact("contacts", newContactData);
   await renderContactsList();
-  closeAddContactOverlay();
+  closeContactOverlays();
 }
 
 /**
  * This function collects a new contact's information typed into the form.
  *
  */
-function getNewContactInformation() {
-  let nameRef = document.getElementById("add-contact-input-name");
-  let emailRef = document.getElementById("add-contact-input-email");
-  let phoneRef = document.getElementById("add-contact-input-phone");
+function getContactInformation(htmlIdPrefix) {
+  let nameRef = document.getElementById(htmlIdPrefix + "name");
+  let emailRef = document.getElementById(htmlIdPrefix + "email");
+  let phoneRef = document.getElementById(htmlIdPrefix + "phone");
   let contactData = {
     name: nameRef.value,
     email: emailRef.value,
     phone: phoneRef.value,
   };
-  clearAddContactForm();
+  clearAddContactForm(htmlIdPrefix);
   return contactData;
 }
 
@@ -183,10 +183,10 @@ function getNewContactInformation() {
  * This function clears the add contact input form.
  *
  */
-function clearAddContactForm() {
-  let nameRef = document.getElementById("add-contact-input-name");
-  let emailRef = document.getElementById("add-contact-input-email");
-  let phoneRef = document.getElementById("add-contact-input-phone");
+function clearAddContactForm(htmlIdPrefix) {
+  let nameRef = document.getElementById(htmlIdPrefix + "name");
+  let emailRef = document.getElementById(htmlIdPrefix + "email");
+  let phoneRef = document.getElementById(htmlIdPrefix + "phone");
   nameRef.value = "";
   emailRef.value = "";
   phoneRef.value = "";
@@ -205,6 +205,31 @@ function clearAddContactForm() {
 async function submitNewContact(path = "", contactData = {}) {
   let response = await fetch(database + path + ".json", {
     method: "POST",
+    header: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(contactData),
+  });
+}
+
+/**
+ * This function updates the current contact information on the firebase server
+ *
+ * @param {integer} indexContact
+ */
+async function updateContact(indexContact) {
+  let htmlIdPrefix = "input-" + String(indexContact) + "-";
+  let editedContactData = getContactInformation(htmlIdPrefix);
+  let contactPath = "contacts/" + contactsArray[indexContact][0];
+  await submitUpdateContact(contactPath, editedContactData);
+  await renderContactsList();
+  renderContactDetails(indexContact);
+  closeContactOverlays();
+}
+
+async function submitUpdateContact(path = "", contactData = {}) {
+  let response = await fetch(database + path + ".json", {
+    method: "PUT",
     header: {
       "Content-Type": "application/json",
     },
@@ -306,7 +331,7 @@ async function deleteContact(indexContact) {
   responseMessage = await deleteDataBaseElement(path);
   clearContactDetails();
   await renderContactsList();
-  closeAddContactOverlay();
+  closeContactOverlays();
 }
 
 /**

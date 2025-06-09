@@ -92,7 +92,7 @@ function getEditContactScreenTemplate(indexContact) {
   <div class="add-contact-screen" onclick="stopEventPropagation(event)">
           <div
             class="close-icon-wrap d-flex-row-c-c"
-            onclick="closeAddContactOverlay()"
+            onclick="closeContactOverlays()"
           >
             <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
           </div>
@@ -125,7 +125,7 @@ function getEditContactScreenTemplate(indexContact) {
                   type="text"
                   class="add-contact-input"
                   placeholder="Name"
-                  id="input-name-${indexContact}"
+                  id="input-${indexContact}-name"
                 />
                 <img
                   src="/assets/icons/person_icon.svg"
@@ -138,7 +138,7 @@ function getEditContactScreenTemplate(indexContact) {
                   type="text"
                   class="add-contact-input"
                   placeholder="Email"
-                  id="input-email-${indexContact}"
+                  id="input-${indexContact}-email"
                 />
                 <img
                   src="/assets/icons/mail_icon.svg"
@@ -151,7 +151,7 @@ function getEditContactScreenTemplate(indexContact) {
                   type="text"
                   class="add-contact-input"
                   placeholder="Phone"
-                  id="input-phone-${indexContact}"
+                  id="input-${indexContact}-phone"
                 />
                 <img
                   src="/assets/icons/call.svg"
@@ -164,7 +164,7 @@ function getEditContactScreenTemplate(indexContact) {
               <button class="add-contact-btn-cancel" onclick="deleteContact(${indexContact})">
                 <span>Delete</span>
               </button>
-              <button class="add-contact-btn">
+              <button class="add-contact-btn" onclick="updateContact(${indexContact})">
                 <span>Save</span>
                 <img
                   src="/assets/icons/check_withoutBorder.svg"
