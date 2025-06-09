@@ -157,7 +157,7 @@ async function getCurrentContactAttribute(attribute, indexContact) {
  */
 async function addNewContact() {
   let newContactData = getNewContactInformation();
-  submitNewContact("contacts", newContactData);
+  await submitNewContact("contacts", newContactData);
   await renderContactsList();
   closeAddContactOverlay();
 }
@@ -303,7 +303,7 @@ function getContactColorClassName(indexContact) {
 async function deleteContact(indexContact) {
   let contactId = contactsArray[indexContact][0];
   let path = "contacts/" + contactId;
-  responseMessage = deleteDataBaseElement(path);
+  responseMessage = await deleteDataBaseElement(path);
   clearContactDetails();
   await renderContactsList();
   closeAddContactOverlay();
