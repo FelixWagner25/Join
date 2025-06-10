@@ -107,7 +107,6 @@ function getContactDetailsTemplate(indexContact) {
  */
 function getEditContactScreenTemplate(indexContact) {
   return `
-  <div class="add-contact-screen" onclick="stopEventPropagation(event)">
           <div
             class="close-icon-wrap d-flex-row-c-c"
             onclick="closeContactOverlays()"
@@ -192,6 +191,5 @@ function getEditContactScreenTemplate(indexContact) {
               </button>
             </div>
           </div>
-        </div>
   `;
 }
