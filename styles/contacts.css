@@ -462,3 +462,35 @@
 .contact-details-animate-in {
   animation: slideInFromRight 0.25s linear;
 }
+
+.contact-created-banner {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(300%);
+  color: white;
+  background-color: #2a3647;
+  font-size: 20px;
+  font-weight: 400px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+@keyframes bannerAnimation {
+  0% {
+    transform: translateX(300%);
+  }
+  25% {
+    transform: translateX(-50%);
+  }
+  75% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.animate-banner {
+  animation: bannerAnimation 3s ease-in-out;
+}

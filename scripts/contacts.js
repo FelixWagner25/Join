@@ -17,6 +17,7 @@ let contactColorClasses = [
 ];
 
 let overlayTransitionMiliSeconds = 250;
+bannerTransitionTimeMilliSeconds = 3000;
 
 /**
  * Function to initialize contacts object with database entries
@@ -172,6 +173,7 @@ async function addNewContact() {
   await submitNewContact("contacts", newContactData);
   await renderContactsList();
   closeContactOverlays();
+  showNewContactCreatedMessage();
 }
 
 /**
@@ -222,6 +224,14 @@ async function submitNewContact(path = "", contactData = {}) {
     },
     body: JSON.stringify(contactData),
   });
+}
+
+function showNewContactCreatedMessage() {
+  bannerRef = document.getElementById("contact-created-banner");
+  bannerRef.classList.add("animate-banner");
+  setTimeout(() => {
+    bannerRef.classList.remove("animate-banner");
+  }, bannerTransitionTimeMilliSeconds);
 }
 
 /**
