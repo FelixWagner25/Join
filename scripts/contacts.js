@@ -16,6 +16,8 @@ let contactColorClasses = [
   "bg-sand",
 ];
 
+let overlayTransitionMiliSeconds = 250;
+
 /**
  * Function to initialize contacts object with database entries
  *
@@ -49,7 +51,9 @@ async function getSortedContactsArray() {
  */
 function showAddContactScreen() {
   blurBackground();
-  openAddContactScreen();
+  setTimeout(() => {
+    openAddContactScreen();
+  }, overlayTransitionMiliSeconds);
 }
 
 /**
@@ -65,10 +69,8 @@ function blurBackground() {
  *
  */
 function openAddContactScreen() {
-  let contactScreenRef = document.getElementById(
-    "add-contact-screen-show-switch"
-  );
-  contactScreenRef.classList.remove("d-none");
+  let contactScreenRef = document.getElementById("add-contact-screen");
+  contactScreenRef.classList.add("overlay-open");
 }
 
 /**
@@ -76,13 +78,15 @@ function openAddContactScreen() {
  *
  */
 function closeContactOverlays() {
-  document.getElementById("bg-dimmed").classList.add("d-none");
   document
-    .getElementById("add-contact-screen-show-switch")
-    .classList.add("d-none");
+    .getElementById("add-contact-screen")
+    .classList.remove("overlay-open");
   document
     .getElementById("edit-contact-screen-show-switch")
     .classList.add("d-none");
+  setTimeout(() => {
+    document.getElementById("bg-dimmed").classList.add("d-none");
+  }, overlayTransitionMiliSeconds);
 }
 
 /**
