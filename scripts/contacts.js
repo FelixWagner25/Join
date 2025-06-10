@@ -361,6 +361,9 @@ function renderContactDetails(indexContact) {
   let contactDetailsRef = document.getElementById("contact-details");
   clearContactDetails();
   contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
+  contactDetailsRef.classList.remove("contact-details-animate-in");
+  void contactDetailsRef.offsetWidth;
+  contactDetailsRef.classList.add("contact-details-animate-in");
 }
 
 /**

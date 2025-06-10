@@ -50,7 +50,7 @@
   font-weight: 500;
 }
 
-.contacts-details {
+.contact-details {
   display: flex;
   flex-direction: column;
   gap: 21px;
@@ -448,4 +448,17 @@
   border: 3px solid white;
   border-radius: 50%;
   color: white;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.contact-details-animate-in {
+  animation: slideInFromRight 0.25s linear;
 }
