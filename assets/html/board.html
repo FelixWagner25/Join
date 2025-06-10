@@ -1,162 +1,83 @@
-<body>
-  <div class="board-headline">
-    <div class="board-headline-text">Board</div>
-    <div class="board-search-add-task-wrap">
-      <div class="search-wrap">
-        <input type="text" placeholder="Find Task" class="search-input" />
-        <div class="search-icon-wrap">
-          <div class="board-vline"></div>
-          <div class="d-flex-row-c-c">
-            <img
-              src="/assets/icons/search.svg"
-              alt="search"
-              class="search-icon"
-            />
-          </div>
-        </div>
-      </div>
-      <button class="add-task-btn">
-        <span class="add-task-btn-text">Add task</span>
-        <div class="d-flex-row-c-c">
-          <img
-            src="/assets/icons/add_white.svg"
-            alt="add task"
-            class="add-taks-btn-icon"
-          />
-        </div>
-      </button>
-    </div>
-  </div>
-  <div class="board-col-wrap">
-    <div class="col-content-wrap">
-      <div class="col-title-wrap">
-        <div class="col-title">To do</div>
-        <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
-      </div>
-      <div class="col-content"></div>
-    </div>
-    <div class="col-content-wrap">
-      <div class="col-title-wrap">
-        <div class="col-title">In progress</div>
-        <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
-      </div>
-      <div class="col-content"></div>
-    </div>
-    <div class="col-content-wrap">
-      <div class="col-title-wrap">
-        <div class="col-title">Await feedback</div>
-        <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
-      </div>
-      <div class="col-content"></div>
-    </div>
-    <div class="col-content-wrap">
-      <div class="col-title-wrap">
-        <div class="col-title">Done</div>
-      </div>
-      <div class="col-content"></div>
-    </div>
-  </div>
-
-<div class="board-distribution">
-  <div class="board-col" id="to-do"><div class="no-task-feedback d-flex-row-c-c">No tasks To do</div><div class="board-card">
-  <div class="board-card-wrap d-flex">
-    <div class="board-card-user-story-label d-flex-row-c-c">User Story</div>
-      <div class="board-card-content d-flex">
-        <h2 class="task-headline">Headline</h2>
-        <div class="card-text-area">^sfsdfgasdfsad f sgfsdfasdfasdf asdfas</div>
-        <div class="progress d-flex-row-c-c">
-          <div class="progress-bar d-flex" >
-            <div class="progress-bar-status" area-min-value="0" aria-max-value="100" aria-valuenow="50"></div>
-          </div>
-          <span class="status-subtasks">1/2 Subtasks</span>
-        </div>
-        <div clasS="users-wrap">
-            <div class="users-icon-container d-flex">
-              <div class="users-icon d-flex-row-c-c bg-darkpurple">GG</div>
-              <div class="users-icon d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon d-flex-row-c-c bg-green">BG</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="stylesheet" href="/styles/board.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="icon" href="../assets/img/faviconLogo.svg">
+</head>
+<body onload="init()">
+    <div class="board-headline">
+        <div class="board-headline-text">Board</div>
+        <div class="board-search-add-task-wrap">
+            <div class="search-wrap">
+                <input type="text" placeholder="Find Task" class="search-input" />
+                <div class="search-icon-wrap">
+                    <div class="board-vline"></div>
+                    <div class="d-flex-row-c-c">
+                        <img src="/assets/icons/search.svg" alt="search" class="search-icon" />
+                    </div>
+                </div>
             </div>
-            <img src="/assets/icons/urgent.svg" alt="">
+            <button class="add-task-btn">
+                <span class="add-task-btn-text">Add task</span>
+                <div class="d-flex-row-c-c">
+                    <img src="/assets/icons/add_white.svg" alt="add task" class="add-taks-btn-icon" />
+                </div>
+            </button>
         </div>
     </div>
-  </div>
-</div></div>
-  <div class="board-col" id="in-progress"><div class="no-task-feedback d-flex-row-c-c">No tasks To do</div><div class="board-card">
-  <div class="board-card-wrap d-flex">
-    <div class="board-card-user-story-label d-flex-row-c-c">User Story</div>
-      <div class="board-card-content d-flex">
-        <h2 class="task-headline">Headline</h2>
-        <div class="card-text-area">^sfsdfgasdfsad f sgfsdfasdfasdf asdfas</div>
-        <div class="progress d-flex-row-c-c">
-          <div class="progress-bar d-flex" >
-            <div class="progress-bar-status" area-min-value="0" aria-max-value="100" aria-valuenow="50"></div>
-          </div>
-          <span class="status-subtasks">1/2 Subtasks</span>
-        </div>
-        <div clasS="users-wrap">
-            <div class="users-icon-container d-flex">
-              <div class="users-icon  d-flex-row-c-c bg-darkpurple">GG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-            </div>
-            <img src="/assets/icons/urgent.svg" alt="">
-        </div>
-    </div>
-  </div>
-</div>
-<div class="board-card">
-  <div class="board-card-wrap d-flex">
-    <div class="board-card-user-story-label d-flex-row-c-c">User Story</div>
-      <div class="board-card-content d-flex">
-        <h2 class="task-headline">Headline</h2>
-        <div class="card-text-area">^sfsdfgasdfsad f sgfsdfasdfasdf asdfas</div>
-        <div class="progress d-flex-row-c-c">
-          <div class="progress-bar d-flex" >
-            <div class="progress-bar-status" area-min-value="0" aria-max-value="100" aria-valuenow="50"></div>
-          </div>
-          <span class="status-subtasks">1/2 Subtasks</span>
-        </div>
-        <div clasS="users-wrap">
-            <div class="users-icon-container d-flex">
-              <div class="users-icon  d-flex-row-c-c bg-darkpurple">GG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-            </div>
-            <img src="/assets/icons/urgent.svg" alt="">
-        </div>
-    </div>
-  </div>
-</div></div>
-  <div class="board-col" id="await-feedback"><div class="no-task-feedback d-flex-row-c-c">No tasks To do</div><div class="board-card">
-  <div class="board-card-wrap d-flex">
-    <div class="board-card-user-story-label d-flex-row-c-c">User Story</div>
-      <div class="board-card-content d-flex">
-        <h2 class="task-headline">Headline</h2>
-        <div class="card-text-area">^sfsdfgasdfsad f sgfsdfasdfasdf asdfas</div>
-        <div class="progress d-flex-row-c-c">
-          <div class="progress-bar d-flex" >
-            <div class="progress-bar-status" area-min-value="0" aria-max-value="100" aria-valuenow="50"></div>
-          </div>
-          <span class="status-subtasks">1/2 Subtasks</span>
-        </div>
-        <div clasS="users-wrap">
-            <div class="users-icon-container d-flex">
-              <div class="users-icon  d-flex-row-c-c bg-darkpurple">GG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-              <div class="users-icon  d-flex-row-c-c bg-green">BG</div>
-            </div>
-            <img src="/assets/icons/urgent.svg" alt="">
-        </div>
-    </div>
-  </div>
-</div></div>
-  <div class="board-col" id="done"><div class="no-task-feedback d-flex-row-c-c">No tasks To do</div></div>
-</div>
 
+    
+    <div class="board-col-wrap">
+      
+        <div class="col-content-wrap">
+            <div class="col-title-wrap">
+                <div class="col-title">To do</div>
+                <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+            </div>
+            <div class="col-content" id="to-do">
+                <div class="no-task-feedback d-flex-row-c-c">No tasks To do</div>
+            </div>
+        </div>
 
+       
+        <div class="col-content-wrap">
+            <div class="col-title-wrap">
+                <div class="col-title">In progress</div>
+                <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+            </div>
+            <div class="col-content" id="in-progress">
+                <div class="no-task-feedback d-flex-row-c-c">No tasks in progress</div>
+            </div>
+        </div>
 
+       
+        <div class="col-content-wrap">
+            <div class="col-title-wrap">
+                <div class="col-title">Await feedback</div>
+                <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+            </div>
+            <div class="col-content" id="await-feedback">
+                <div class="no-task-feedback d-flex-row-c-c">No tasks awaiting feedback</div>
+            </div>
+        </div>
+
+       
+        <div class="col-content-wrap">
+            <div class="col-title-wrap">
+                <div class="col-title">Done</div>
+            </div>
+            <div class="col-content" id="done">
+                <div class="no-task-feedback d-flex-row-c-c">No tasks done</div>
+            </div>
+        </div>
+    </div>
+
+   
+    <script src="/scripts/board.js"></script>
 </body>
+
+</html>
