@@ -127,6 +127,60 @@ function createTaskCard(task) {
     return cardDiv;
 }
 
+
+function getSubtasksInfo(subtasks) {
+    if (!subtasks || subtasks.length === 0) {
+        return { html: '', completed: 0, total: 0 };
+    }
+    
+    const total = subtasks.length;
+    const completed = 0;
+    const progressPercent = total > 0 ? (completed / total) * 100 : 0;
+    
+    const html = `
+        <div class="progress d-flex-row-c-c">
+            <div class="progress-bar d-flex">
+                <div class="progress-bar-status" style="width: ${progressPercent}%" aria-min-value="0" aria-max-value="100" aria-valuenow="${progressPercent}"></div>
+            </div>
+            <span class="status-subtasks">${completed}/${total} Subtasks</span>
+        </div>
+    `;
+    
+    return { html, completed, total };
+}
+
+function getSimpleColor(index) {
+    const colors = ['#2a3647', '#ff7a00', '#1abc9c', '#3498db'];
+    return colors[index % colors.length];
+}
+
+const backgroundColor = getSimpleColor(i);
+
+
+function renderAssignedUsers(assignedTo) {
+    if (!assignedTo || assignedTo.length === 0) return '';
+    
+    return assignedTo.map((contact, index) => {
+        const initials = getInitials(contact.name);
+        const backgroundColor = getSimpleColor(index);
+        
+        return `<div class="users-icon" style="background-color: ${backgroundColor}">
+                  ${initials}
+                </div>`;
+    }).join('');
+}
+
+function getInitials(name) {
+    if (!name) return 'NN';
+    
+    const parts = name.trim().split(' ');
+    if (parts.length === 1) {
+        return parts[0].substring(0, 2).toUpperCase();
+    }
+    
+    return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+}
+
 function getCategoryClass(category) {
     if (category === 'technical-task') {
         return 'technical-task';
