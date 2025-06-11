@@ -57,6 +57,21 @@ button:disabled:hover {
   align-items: center;
 }
 
+.d-flex-column-c-c{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+
 .h-100vh {
   height: 100vh;
 }
@@ -75,4 +90,32 @@ button:disabled:hover {
 
 .font-sz-47px {
   font-size: 47px;
+}
+
+
+.text-area{
+  width: 1016px;
+  gap: 35px;
+}
+
+.text-paragraph{
+  width: 1016px;
+  gap: 10px;
+}
+
+.text{
+  white-space: break-spaces;
+  text-align: justify;
+}
+
+.font-Inter-400{
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.text-color-000000{
+  color: black;
 }
