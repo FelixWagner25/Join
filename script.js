@@ -29,16 +29,17 @@ function stopEventPropagation(event) {
 }
 
 /**
- * Function to force user to accept Privacy Policy
+ * Function to check the state of all required input fields and the acceptance checkbox.
  *
  */
 function checkInput() {
   let checkbox = document.getElementById("accept-policy");
+  let requiredInputs = document.querySelectorAll('input')
   let button = document.querySelector(".signup-btn");
-  if (!checkbox.checked) {
-    button.setAttribute("disabled", "true");
-  } else {
+  if ([...requiredInputs].every((input) => input.value !== "") && checkbox.checked) {
     button.removeAttribute("disabled");
+  } else {
+    button.setAttribute("disabled", "true");
   }
 }
 
