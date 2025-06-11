@@ -2,7 +2,7 @@ let allTasks = {};
 let allContacts = {};
 
 
-async function init() {
+async function initBoard() {
     await loadContacts();
     await loadTasks();
     renderBoard();
