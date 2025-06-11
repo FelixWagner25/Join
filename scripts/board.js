@@ -94,3 +94,49 @@ function hideNoTaskFeedback(column) {
         feedback.style.display = 'none';
     }
 }
+
+function createTaskCard(task) {
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('board-card');
+    cardDiv.setAttribute('data-task-id', task.id);
+    
+    const categoryClass = getCategoryClass(task.category);
+    const categoryText = getCategoryText(task.category);
+    const description = task.description || 'No description provided';
+    const subtasksInfo = getSubtasksInfo(task.subtasks);
+    const assignedUsers = renderAssignedUsers(task.assignedTo);
+    const priorityIcon = getPriorityIcon(task.priority);
+    
+    cardDiv.innerHTML = `
+        <div class="board-card-wrap d-flex">
+            <div class="board-card-user-story-label d-flex-row-c-c ${categoryClass}">${categoryText}</div>
+            <div class="board-card-content d-flex">
+                <h2 class="task-headline">${task.title}</h2>
+                <div class="card-text-area">${description}</div>
+                ${subtasksInfo.html}
+                <div class="users-wrap">
+                    <div class="users-icon-container d-flex">
+                        ${assignedUsers}
+                    </div>
+                    <img src="${priorityIcon}" alt="${task.priority} priority">
+                </div>
+            </div>
+        </div>
+    `;
+    
+    return cardDiv;
+}
+
+function getCategoryClass(category) {
+    if (category === 'technical-task') {
+        return 'technical-task';
+    }
+    return 'user-story'; 
+}
+
+function getCategoryText(category) {
+    if (category === 'technical-task') {
+        return 'Technical Task';
+    }
+    return 'User Story';
+}
