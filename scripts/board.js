@@ -140,3 +140,27 @@ function getCategoryText(category) {
     }
     return 'User Story';
 }
+
+function getPriorityIcon(priority) {
+    switch (priority) {
+        case 'urgent':
+            return '/assets/icons/urgent.svg';
+        case 'medium':
+            return '/assets/icons/medium.svg';
+        case 'low':
+            return '/assets/icons/low.svg';
+        default:
+            return '/assets/icons/medium.svg';
+    }
+}
+
+function addTechnicalTaskStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .board-card-user-story-label.technical-task {
+            background-color: #1abc9c !important;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
