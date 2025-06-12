@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/styles/assets.css" />
     <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="stylesheet" href="/styles/colors.css" />
     <link rel="icon" href="/assets/img/faviconLogo.svg" />
     <script src="/script.js"></script>
   </head>
@@ -17,35 +18,35 @@
           <img src="/assets/img/faviconLogo.svg" alt="join-logo" />
         </div>
 
-        <div class="signup-container d-flex">
-          <span>Not a Join user?</span>
-          <button onclick="signupPage()">Sign Up</button>
+        <div class="signup-container d-flex-row-c-fe ">
+          <span class="font-Inter-400-20px">Not a Join user?</span>
+          <button class="font-Inter-700-16px text-color-white" onclick="signupPage()">Sign Up</button>
         </div>
 
-        <div class="login-container d-flex text-center">
-          <div class="login-headline-container d-flex">
-            <div class="login-headline d-flex">Log In</div>
-            <div class="login-headline-underline"></div>
+        <div class="login-container d-flex-column-c-c text-center">
+          <div class="login-headline-container d-flex-column-c-c">
+            <div class="login-headline d-flex-row-c-c font-Inter-700-61px text-color-black">Log In</div>
+            <div class="login-headline-underline text-color-29ABE2"></div>
           </div>
-          <form class="d-flex">
-            <div class="input-container d-flex">
-              <div class="input-content d-flex">
+          <form class="d-flex-column-c-c">
+            <div class="input-container d-flex-column-c">
+              <div class="input-content d-flex-c-sb">
                 <input placeholder="Email" type="email" name="" id="email" oninput="resetErrorMessage()"/><img src="/assets/icons/mail_icon.svg" alt="" />
               </div> <div class="d-none" class="login-error"></div>
             </div>
-            <div class="input-container d-flex">
-              <div class="input-content d-flex">
+            <div class="input-container d-flex-column">
+              <div class="input-content d-flex-c-sb">
                 <input placeholder="Password" type="password" name="" id="password" oninput="resetErrorMessage()"/><div class="pw-icon" onclick="showPassword(this)"></div>
                 </div>
-                <div id="password-error" class="d-none validation login-error">Check your email and password. Please try again.</div>
+                <div id="password-error" class="d-none validation email font-Inter-400-13px login-error text-color-FF8190">Check your email and password. Please try again.</div>
             </div>
           </form>
 
-          <div class="login-btn-container d-flex">
-            <button onclick="userLogin()" class="login-btn" type="button">
+          <div class="login-btn-container d-flex-c-sb">
+            <button onclick="userLogin()" class="login-btn font-Inter-700-21px text-color-white" type="button">
               <span class="d-flex text-center-relative">Log in</span>
             </button>
-            <button onclick="guestLogin()" id="guest-login" class="guest-login-btn" type="button">
+            <button onclick="guestLogin()" id="guest-login" class="guest-login-btn font-Inter-700-21px text-color-2A3647" type="button">
               <span class="d-flex text-center-relative">Guest Log In</span>
             </button>
           </div>

@@ -53,21 +53,44 @@ button:disabled:hover {
 
 .d-flex-row-c-c {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .d-flex-column-c-c{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
+
+.d-flex-column-c{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.d-flex-c-sb{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.d-flex-row-c-fe{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .d-flex-column{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.d-flex-c-se{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 
@@ -107,6 +130,14 @@ button:disabled:hover {
   text-align: justify;
 }
 
+.font-Inter-400-13px{
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
 .font-Inter-400-16px{
   font-family: Inter;
   font-weight: 400;
@@ -139,6 +170,14 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
+.font-Inter-700-16px{
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
 .font-Inter-700-21px{
   font-family: Inter;
   font-weight: 700;
@@ -156,26 +195,8 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.text-color-black{
-  color: black;
-}
 
-.text-color-white{
-  color: #FFFFFF;
-}
-
-.text-color-2A3647{
-  color: #2A3647;
-}
-
-.text-color-A8A8A8{
-  color: #A8A8A8;
-}
-
-.text-color-007CEE{
-  color: #007CEE;
-}
-
-.text-color-29ABE2{
-  color: #29ABE2;
+.padding-t64-r400{
+  padding-top: 64px;
+  padding-right: 400px;
 }

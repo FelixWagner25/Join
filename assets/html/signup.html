@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/styles/assets.css">
     <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="/styles/colors.css">
     <link rel="icon" href="/assets/img/faviconLogo.svg">
     <script src="/script.js"></script>
 </head>
@@ -17,33 +18,32 @@
                   <img src="/assets/img/faviconLogo.svg" alt="join-logo">
               </div>
 
-          <div class="login-container signup d-flex text-center ">
+          <div class="login-container signup d-flex-column-c-c text-center ">
             <div class="login-headline-container d-flex">
                   <a href="/index.html" class="arrow-left"><img src="/assets/icons/arrow-left.svg" alt=""></a>
           
-              <div class="login-headline d-flex">Sign up</div>
-              <div class="login-headline-underline"></div>
+              <div class="login-headline d-flex-row-c-c font-Inter-700-61px">Sign up</div>
+              <div class="login-headline-underline text-color-29ABE2"></div>
             </div>
-            <form class="form-signup d-flex"  onsubmit="signupFormValidation(event)">
-              <div class="input-container d-flex"><div class="input-content d-flex">
+            <form class="form-signup d-flex-column-c-c"  onsubmit="signupFormValidation(event)">
+              <div class="input-container d-flex"><div class="input-content d-flex-c-sb">
                 <input required placeholder="Name" type="text" name="name" id="add-contact-input-name"><img src="/assets/icons/person_icon.svg" alt=""></div></div>
-              <div class="input-container d-flex"><div class="input-content d-flex">
+              <div class="input-container d-flex-column"><div class="input-content d-flex-c-sb">
                 <input required placeholder="Email" type="email" name="email" id="add-contact-input-email" oninput="resetErrorMessage(), checkInput()"><img src="/assets/icons/mail_icon.svg" alt=""></div>
-                   <div id="email-error" class="d-none validation email">Please enter a valid e-mail address</div>
-                  <div id="email-redundancy-error" class="d-none validation email">E-mail address already exists!</div></div>
-              <div class="input-container d-flex"><div class="input-content d-flex">
+                   <div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
+                  <div id="email-redundancy-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">E-mail address already exists!</div></div>
+              <div class="input-container d-flex"><div class="input-content d-flex-c-sb">
                 <input required placeholder="Password" type="password" name="password" id="password" minlength="8" oninput="resetErrorMessage(), checkInput()"><div class="pw-icon" onclick="showPassword(this)"></div></div></div>
-              <div class="input-container d-flex"><div class="input-content d-flex">
+              <div class="input-container d-flex-column"><div class="input-content d-flex-c-sb">
                 <input required placeholder="Confirm Password" type="password" name="password" id="password-confirm" oninput="resetErrorMessage(), checkInput()"><div class="pw-icon" onclick="showPassword(this)"></div></div>
-                   <div id="password-error" class="d-none validation">Your passwords don't match. Please try again.</div></div>
-              
-              <div class="input-container d-flex-row-c-c"><div class="input-checkbox d-flex">
-                <input type="checkbox" name="checkbox" id="accept-policy" onchange="checkInput()">I accept the<span class="d-flex"> Privacy policy</span></div></div>
-              <button disabled class="signup-btn d-flex" type="submit"><span class="d-flex text-center-relative">Sign up</span></button>
+                   <div id="password-error" class="d-none validation font-Inter-400-13px text-color-FF8190">Your passwords don't match. Please try again.</div></div>
+              <div class="input-container d-flex-row-c-c"><div class="input-checkbox d-flex-c-se font-Inter-400-16px text-color-A8A8A8">
+                <input type="checkbox" name="checkbox" id="accept-policy" onchange="checkInput()">I accept the<span class="d-flex text-color-29ABE2"> Privacy policy</span></div></div>
+              <button disabled class="signup-btn d-flex-row-c-c font-Inter-700-21px " type="submit"><span class="d-flex text-center-relative text-color-white">Sign up</span></button>
             </form>
           </div>
           
-          <div class="signup-message d-none"><div class="signup-message-text">You Signed Up successfully</div></div>
+          <div class="signup-message d-none"><div class="signup-message-text font-Inter-400-20px text-color-white">You Signed Up successfully</div></div>
 
         </div>
       </div>
