@@ -7,10 +7,10 @@
 function getContactsListContactTemplate(indexContact) {
   return `
     <div class="contact-list-item-wrap" onclick="showContactDetails(${indexContact})" id="contacts-list-${indexContact}">
-        <div class="profile-badge ${getContactColorClassName(
+        <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
           indexContact
         )}">${getFirstTowContactInitials(indexContact)}</div>
-        <div class="contact-name-wrap">
+        <div class="contact-name-wrap d-flex-column">
             <div class="contact-name">${
               contactsArray[indexContact][1].name
             }</div>
@@ -30,7 +30,7 @@ function getContactsListContactTemplate(indexContact) {
  */
 function getContactListBookmarkTemplate(indexContact) {
   return `
-    <div class="bookmark-wrap">
+    <div class="bookmark-wrap d-flex-c">
           <div class="bookmark-letter">${contactsArray[indexContact][1].name
             .charAt(0)
             .toUpperCase()}</div>
@@ -121,7 +121,7 @@ function getEditContactScreenTemplate(indexContact) {
             />
             <div class="add-contacts-title-wrap">
               <div class="add-contacts-screen-title-text-wrap">
-                <span class="add-contacts-screen-title-text">Edit contact</span>
+                <span class="add-contacts-screen-title-text text-color-white font-Inter-700-61px">Edit contact</span>
               </div>
               <div class="add-contacts-title-page-hline"></div>
             </div>
@@ -135,9 +135,9 @@ function getEditContactScreenTemplate(indexContact) {
               )}</div>
             </div>
           </div>
-          <div class="add-contact-input-check mg-t-140px">
-            <form class="add-contacts-form-wrap">
-              <div class="add-contact-input-wrap">
+          <div class="add-contact-input-check .d-flex-column mg-t-140px">
+            <form class="add-contacts-form-wrap d-flex-column">
+              <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="text"
                   class="add-contact-input"
@@ -150,7 +150,7 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add-contact-input-icon"
                 />
               </div>
-              <div class="add-contact-input-wrap">
+              <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="text"
                   class="add-contact-input"
@@ -163,7 +163,7 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add-contact-input-icon"
                 />
               </div>
-              <div class="add-contact-input-wrap">
+              <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="text"
                   class="add-contact-input"
@@ -176,7 +176,7 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add contact-input-icon"
                 />
               </div>
-            </form>
+            
             <div class="add-contact-btns-wrap">
               <button class="add-contact-btn-cancel" onclick="deleteContact(${indexContact})">
                 <span>Delete</span>
@@ -190,6 +190,7 @@ function getEditContactScreenTemplate(indexContact) {
                 />
               </button>
             </div>
+            </form>
           </div>
   `;
 }

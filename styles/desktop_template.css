@@ -15,41 +15,26 @@
 }
 
 header {
-  display: flex;
-  background-color: #ffffff;
   max-width: 1920px;
   height: 96px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   max-width: 1920px;
   box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.1);
 }
 
 .header-container {
   padding: 20px 40px 20px 348px;
-  display: flex;
-  justify-content: space-between;
   width: 100%;
-  align-items: center;
 }
 
 aside {
   background-color: #2a3647;
-  display: flex;
   position: fixed;
   width: 232px;
   height: 1024px;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   padding: 64px 0;
   top: 0;
   box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
-  font-size: 16px;
-  line-height: 120%;
-  letter-spacing: 0%;
-  font-weight: 400;
 }
 
 main {
@@ -63,6 +48,7 @@ menu {
   padding: 0;
   margin: 0;
 }
+
 nav {
   color: #ffffff;
   display: flex;
@@ -74,14 +60,11 @@ nav {
 
 nav > a,
 .policy-legal > a{
-  display: flex;
   height: 46px;
   background-color: #2a3647;
-  color: #ffffff;
   padding: 8px 56px;
   gap: 8px;
   text-decoration: none;
-  align-items: center;
 }
 
 nav > span {
@@ -107,12 +90,9 @@ nav > a:hover {
 }
 
 .dropdown-menu-inside{
-  flex-direction: column;
   padding: 8px 16px;
   width: 130px;
   height: 184px ;
-  justify-content: center;
-  flex-direction: column;
   gap: 8px;
 }
 
@@ -120,34 +100,22 @@ nav > a:hover {
   width: 130px;
   height: 46px;
   border-radius: 8px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 120%;
-  letter-spacing: 0;
-  color: #cdcdcd;
+
   text-decoration: none;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .policy-legal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   height: 317px;
   padding: 243px 0 0 0;
   gap: 4px;
 }
 
 .policy-legal > a {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
   padding: 8px;
   gap: 8px;
   height: 19px;
   width: 105px;
-  color: #a8a8a8;
+
 }
 
 .header-user {
@@ -164,9 +132,7 @@ nav > a:hover {
   width: 56px;
   gap: 16px;
   text-align: center;
-  color: #29abe2;
   font-weight: bold;
-  background-color: #ffffff;
   border-radius: 559px;
 }
 
