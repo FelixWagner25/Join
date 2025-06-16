@@ -15,9 +15,9 @@ let allContacts = {};
  * @param {string} priority - can be 'urgent', 'medium', or 'low'
  */
 function setPriority(priority) {
-  const buttons = document.querySelectorAll('.priority-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  document.getElementById(`priority-${priority}`).classList.add('active');
+  const buttons = document.querySelectorAll(".priority-btn");
+  buttons.forEach((btn) => btn.classList.remove("active"));
+  document.getElementById(`priority-${priority}`).classList.add("active");
   currentPriority = priority;
 }
 
@@ -27,10 +27,10 @@ function setPriority(priority) {
  * @returns {HTMLElement} The delete button element
  */
 function createDeleteButton(subtaskDiv) {
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = '×';
-  deleteBtn.classList.add('delete-subtask');
-  deleteBtn.addEventListener('click', () => subtaskDiv.remove());
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "×";
+  deleteBtn.classList.add("delete-subtask");
+  deleteBtn.addEventListener("click", () => subtaskDiv.remove());
   return deleteBtn;
 }
 
@@ -40,17 +40,17 @@ function createDeleteButton(subtaskDiv) {
  * @returns {HTMLElement} The complete subtask div
  */
 function createSubtaskElement(text) {
-  const subtaskDiv = document.createElement('div');
-  subtaskDiv.classList.add('subtask');
+  const subtaskDiv = document.createElement("div");
+  subtaskDiv.classList.add("subtask");
 
-  const span = document.createElement('span');
+  const span = document.createElement("span");
   span.textContent = text;
 
   const deleteBtn = createDeleteButton(subtaskDiv);
 
   subtaskDiv.appendChild(span);
   subtaskDiv.appendChild(deleteBtn);
-  
+
   return subtaskDiv;
 }
 
@@ -59,7 +59,7 @@ function createSubtaskElement(text) {
  * @param {HTMLElement} subtaskElement - The subtask element to add
  */
 function insertSubtaskIntoDOM(subtaskElement) {
-  const container = document.querySelector('.input-with-icon');
+  const container = document.querySelector(".input-with-icon");
   container.parentNode.insertBefore(subtaskElement, container.nextSibling);
 }
 
@@ -67,13 +67,13 @@ function insertSubtaskIntoDOM(subtaskElement) {
  * Main function to add a new subtask
  */
 function addSubtask() {
-  const input = document.getElementById('task-subtasks');
+  const input = document.getElementById("task-subtasks");
   const text = input.value.trim();
 
   if (text) {
     const subtaskElement = createSubtaskElement(text);
     insertSubtaskIntoDOM(subtaskElement);
-    input.value = '';
+    input.value = "";
   }
 }
 
@@ -84,13 +84,14 @@ async function initAssignedToDropdown() {
   if (Object.keys(allContacts).length > 0) return; // Already loaded
 
   try {
-    const response = await fetch('https://join-461-default-rtdb.europe-west1.firebasedatabase.app/contacts.json');
+    const response = await fetch(
+      "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/contacts.json"
+    );
     allContacts = await response.json();
-
 
     renderContactsDropdown();
   } catch (error) {
-    console.error('Error loading contacts:', error);
+    console.error("Error loading contacts:", error);
   }
 }
 
@@ -98,15 +99,15 @@ async function initAssignedToDropdown() {
  * Creates a dropdown option element for a single contact
  */
 function createContactOption(id, contact, isSelected) {
-  const optionDiv = document.createElement('div');
-  optionDiv.classList.add('multi-select-option');
-  
+  const optionDiv = document.createElement("div");
+  optionDiv.classList.add("multi-select-option");
+
   optionDiv.innerHTML = `
-    <input type="checkbox" id="contact-${id}" ${isSelected ? 'checked' : ''} 
+    <input type="checkbox" id="contact-${id}" ${isSelected ? "checked" : ""} 
            onchange="toggleContact('${id}', '${contact.name}')">
     <label for="contact-${id}">${contact.name}</label>
   `;
-  
+
   return optionDiv;
 }
 
@@ -114,15 +115,15 @@ function createContactOption(id, contact, isSelected) {
  * Checks if a contact is currently selected
  */
 function isContactSelected(id) {
-  return selectedContacts.some(c => c.id === id);
+  return selectedContacts.some((c) => c.id === id);
 }
 
 /**
  * Clears and rebuilds the contacts dropdown
  */
 function renderContactsDropdown() {
-  const dropdown = document.getElementById('contacts-dropdown');
-  dropdown.innerHTML = '';
+  const dropdown = document.getElementById("contacts-dropdown");
+  dropdown.innerHTML = "";
 
   for (const id in allContacts) {
     if (allContacts.hasOwnProperty(id)) {
@@ -137,9 +138,9 @@ function renderContactsDropdown() {
  * Toggles the assigned to dropdown
  */
 function toggleAssignedDropdown() {
-  const dropdown = document.getElementById('contacts-dropdown');
-  const isVisible = dropdown.style.display === 'block';
-  dropdown.style.display = isVisible ? 'none' : 'block';
+  const dropdown = document.getElementById("contacts-dropdown");
+  const isVisible = dropdown.style.display === "block";
+  dropdown.style.display = isVisible ? "none" : "block";
 
   if (!isVisible && Object.keys(allContacts).length === 0) {
     initAssignedToDropdown();
@@ -150,7 +151,7 @@ function toggleAssignedDropdown() {
  * Toggles a contact selection
  */
 function toggleContact(contactId, contactName) {
-  const existingIndex = selectedContacts.findIndex(c => c.id === contactId);
+  const existingIndex = selectedContacts.findIndex((c) => c.id === contactId);
 
   if (existingIndex > -1) {
     selectedContacts.splice(existingIndex, 1);
@@ -165,15 +166,16 @@ function toggleContact(contactId, contactName) {
  * Updates the display of selected contacts
  */
 function updateSelectedContactsDisplay() {
-  const container = document.getElementById('selected-contacts');
+  const container = document.getElementById("selected-contacts");
 
   if (selectedContacts.length === 0) {
-    container.innerHTML = '<span style="color: #999;">Select contacts to assign</span>';
+    container.innerHTML =
+      '<span style="color: #999;">Select contacts to assign</span>';
   } else {
-    container.innerHTML = '';
-    selectedContacts.forEach(contact => {
-      const tag = document.createElement('div');
-      tag.classList.add('selected-tag');
+    container.innerHTML = "";
+    selectedContacts.forEach((contact) => {
+      const tag = document.createElement("div");
+      tag.classList.add("selected-tag");
       tag.innerHTML = `
                         ${contact.name}
                         <span class="remove" onclick="removeContact('${contact.id}')">&times;</span>
@@ -187,7 +189,7 @@ function updateSelectedContactsDisplay() {
  * Removes a contact from selection
  */
 function removeContact(contactId) {
-  selectedContacts = selectedContacts.filter(c => c.id !== contactId);
+  selectedContacts = selectedContacts.filter((c) => c.id !== contactId);
   updateSelectedContactsDisplay();
   renderContactsDropdown();
 }
@@ -196,13 +198,14 @@ function removeContact(contactId) {
  * Sets up the category dropdown with default options
  */
 function initCategoryDropdown() {
-  const dropdown = document.getElementById('task-category');
+  const dropdown = document.getElementById("task-category");
   const categories = ["Technical Task", "User Story"];
 
-  dropdown.innerHTML = '<option value="" disabled selected>Select category</option>';
-  categories.forEach(category => {
-    const option = document.createElement('option');
-    option.value = category.toLowerCase().replace(' ', '-');
+  dropdown.innerHTML =
+    '<option value="" disabled selected>Select category</option>';
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category.toLowerCase().replace(" ", "-");
     option.textContent = category;
     dropdown.appendChild(option);
   });
@@ -213,17 +216,20 @@ function initCategoryDropdown() {
  * @returns {Object|null} The task data or null if required fields are missing
  */
 function getTaskValues() {
-  const title = document.getElementById('task-title').value.trim();
-  const dueDate = document.getElementById('task-due-date').value;
-  const category = document.getElementById('task-category').value;
+  const title = document.getElementById("task-title").value.trim();
+  const dueDate = document.getElementById("task-due-date").value;
+  const category = document.getElementById("task-category").value;
 
-  const description = document.getElementById('task-description').value.trim();
+  const description = document.getElementById("task-description").value.trim();
 
-  const subtasks = Array.from(document.querySelectorAll('.subtask span'))
-    .map(el => el.textContent);
+  const subtasks = Array.from(document.querySelectorAll(".subtask span")).map(
+    (el) => el.textContent
+  );
 
   if (!title || !dueDate || !category || !currentPriority) {
-    alert('Please fill in all required fields: Title, Due Date, Category and Priority!');
+    alert(
+      "Please fill in all required fields: Title, Due Date, Category and Priority!"
+    );
     return null;
   }
 
@@ -235,8 +241,8 @@ function getTaskValues() {
     priority: currentPriority,
     assignedTo: selectedContacts.length > 0 ? selectedContacts : null,
     subtasks: subtasks.length > 0 ? subtasks : null,
-    status: 'todo',
-    createdAt: new Date().toISOString()
+    status: "todo",
+    createdAt: new Date().toISOString(),
   };
 }
 
@@ -247,13 +253,16 @@ async function saveTask() {
   const task = getTaskValues();
   if (!task) return;
 
-  await fetch('https://join-461-default-rtdb.europe-west1.firebasedatabase.app/tasks.json', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(task)
-  });
+  await fetch(
+    "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(task),
+    }
+  );
   clearForm();
 }
 
@@ -261,32 +270,32 @@ async function saveTask() {
  * Clears all form fields when user clicks clear button
  */
 function clearForm() {
-  document.getElementById('task-title').value = '';
-  document.getElementById('task-description').value = '';
-  document.getElementById('task-due-date').value = '';
-  document.getElementById('task-category').value = '';
-  document.getElementById('task-subtasks').value = '';
+  document.getElementById("task-title").value = "";
+  document.getElementById("task-description").value = "";
+  document.getElementById("task-due-date").value = "";
+  document.getElementById("task-category").value = "";
+  document.getElementById("task-subtasks").value = "";
 
-  document.querySelectorAll('.priority-btn').forEach(btn => {
-    btn.classList.remove('active');
+  document.querySelectorAll(".priority-btn").forEach((btn) => {
+    btn.classList.remove("active");
   });
   currentPriority = null;
 
-  document.querySelectorAll('.subtask').forEach(subtask => {
+  document.querySelectorAll(".subtask").forEach((subtask) => {
     subtask.remove();
   });
 
   selectedContacts = [];
   updateSelectedContactsDisplay();
-  document.getElementById('contacts-dropdown').style.display = 'none';
+  document.getElementById("contacts-dropdown").style.display = "none";
 }
 
 // Close dropdown when clicking outside
-document.addEventListener('click', function (event) {
-  const wrapper = document.querySelector('.multi-select-wrapper');
-  const dropdown = document.getElementById('contacts-dropdown');
+document.addEventListener("click", function (event) {
+  const wrapper = document.querySelector(".multi-select-wrapper");
+  const dropdown = document.getElementById("contacts-dropdown");
 
-  if (!wrapper.contains(event.target)) {
-    dropdown.style.display = 'none';
+  if (wrapper && dropdown && !wrapper.contains(event.target)) {
+    dropdown.style.display = "none";
   }
 });
