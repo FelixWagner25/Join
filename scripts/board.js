@@ -122,6 +122,8 @@ function createTaskCard(task) {
         </div>
     `;
 
+  cardDiv.addEventListener("click", () => openTaskOverlay(task));
+
   return cardDiv;
 }
 
@@ -212,4 +214,27 @@ function addTechnicalTaskStyles() {
         }
     `;
   document.head.appendChild(style);
+}
+
+function openTaskOverlay(task) {
+  const overlay = document.getElementById("task-overlay");
+  const detailContainer = document.getElementById("task-detail-view");
+
+  detailContainer.innerHTML = `
+    <h2>${task.title}</h2>
+    <p>Description: ${task.description}</p>
+    <p>Due Date: ${task.dueDate || "No date set"}</p>
+    <p>Priority: ${task.priority}</p>
+    <p>Category: ${task.category}</p>
+    <div class="assigned-users">
+      ${renderAssignedUsers(task.assignedTo)}
+    </div>
+    <button onclick="openTaskEdit(${JSON.stringify(task).replace(/"/g, '&quot;')})" class="btn btn-edit">Edit</button>
+  `;
+
+  overlay.classList.remove("hidden");
+}
+
+function closeOverlay() {
+  document.getElementById("task-overlay").classList.add("hidden");
 }
