@@ -238,3 +238,54 @@ function openTaskOverlay(task) {
 function closeOverlay() {
   document.getElementById("task-overlay").classList.add("hidden");
 }
+
+function openTaskEdit(task) {
+  const detailContainer = document.getElementById("task-detail-view");
+
+  detailContainer.innerHTML = `
+    <h2>Edit Task</h2>
+    <label>Title</label>
+    <input type="text" id="edit-title" value="${task.title}" />
+
+    <label>Description</label>
+    <textarea id="edit-description">${task.description || ""}</textarea>
+
+    <label>Due Date</label>
+    <input type="date" id="edit-date" value="${task.dueDate || ""}" />
+
+    <label>Priority</label>
+    <select id="edit-priority">
+      <option value="urgent" ${task.priority === "urgent" ? "selected" : ""}>Urgent</option>
+      <option value="medium" ${task.priority === "medium" ? "selected" : ""}>Medium</option>
+      <option value="low" ${task.priority === "low" ? "selected" : ""}>Low</option>
+    </select>
+
+    <label>Category</label>
+    <input type="text" id="edit-category" value="${task.category}" />
+
+    <button onclick="saveTaskEdit('${task.id}')">Save Changes</button>
+  `;
+}
+
+async function saveTaskEdit(taskId) {
+  const updatedTask = {
+    title: document.getElementById("edit-title").value,
+    description: document.getElementById("edit-description").value,
+    dueDate: document.getElementById("edit-date").value,
+    priority: document.getElementById("edit-priority").value,
+    category: document.getElementById("edit-category").value,
+  };
+
+  await fetch(
+    `https://join-461-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}.json`,
+    {
+      method: "PATCH",
+      body: JSON.stringify(updatedTask),
+    }
+  );
+
+  await loadTasks();
+  clearBoard();
+  renderBoard();
+  closeOverlay();
+}
