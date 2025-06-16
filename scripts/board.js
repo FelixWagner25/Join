@@ -1,5 +1,4 @@
 let allTasks = {};
-// let allContacts = {};
 
 async function initBoard() {
   await loadContacts();
@@ -152,7 +151,7 @@ function getSimpleColor(index) {
   return colors[index % colors.length];
 }
 
-const backgroundColor = getSimpleColor(i);
+// const backgroundColor = getSimpleColor(i);
 
 function renderAssignedUsers(assignedTo) {
   if (!assignedTo || assignedTo.length === 0) return "";
