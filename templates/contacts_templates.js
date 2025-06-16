@@ -136,13 +136,14 @@ function getEditContactScreenTemplate(indexContact) {
             </div>
           </div>
           <div class="add-contact-input-check .d-flex-column mg-t-140px">
-            <form class="add-contacts-form-wrap d-flex-column">
+            <form class="add-contacts-form-wrap d-flex-column" onsubmit="updateContact(${indexContact})">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="text"
                   class="add-contact-input"
                   placeholder="Name"
                   id="input-${indexContact}-name"
+                  required
                 />
                 <img
                   src="/assets/icons/person_icon.svg"
@@ -156,6 +157,7 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add-contact-input"
                   placeholder="Email"
                   id="input-${indexContact}-email"
+                  required
                 />
                 <img
                   src="/assets/icons/mail_icon.svg"
@@ -176,20 +178,19 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add contact-input-icon"
                 />
               </div>
-            
-            <div class="add-contact-btns-wrap">
-              <button class="add-contact-btn-cancel" onclick="deleteContact(${indexContact})">
-                <span>Delete</span>
-              </button>
-              <button class="add-contact-btn" onclick="updateContact(${indexContact})">
-                <span>Save</span>
-                <img
-                  src="/assets/icons/check_withoutBorder.svg"
-                  alt="check"
-                  class="add-contact-btn-icon-check"
-                />
-              </button>
-            </div>
+              <div class="add-contact-btns-wrap">
+                <button type="button" class="add-contact-btn-cancel bg-white text-color-2A3647" onclick="deleteContact(${indexContact})">
+                  <span>Delete</span>
+                </button>
+                <button type="submit" class="add-contact-btn d-flex-row-c-c">
+                  <span>Save</span>
+                  <img
+                    src="/assets/icons/check_withoutBorder.svg"
+                    alt="check"
+                    class="add-contact-btn-icon-check"
+                  />
+                </button>
+              </div>
             </form>
           </div>
   `;
