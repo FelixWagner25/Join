@@ -25,7 +25,6 @@ bannerTransitionTimeMilliSeconds = 3000;
  */
 async function initContacs() {
   contactsArray = await getSortedContactsArray();
-  await renderContactsList();
 }
 
 /**

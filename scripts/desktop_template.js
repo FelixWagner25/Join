@@ -4,6 +4,7 @@
  */
 async function init() {
   w3.includeHTML();
+  await initContacs();
 }
 
 /**
@@ -17,24 +18,23 @@ function loadContent(page) {
   w3.includeHTML();
 }
 
-
 function toggleDropdown() {
-  let dropdown = document.querySelector('.dropdown-menu-container')
-  dropdown.classList.toggle('d-none')  
+  let dropdown = document.querySelector(".dropdown-menu-container");
+  dropdown.classList.toggle("d-none");
 }
 
-document.addEventListener('click', function(event){
-  const dropdownContainer = document.querySelector('.dropdown-menu-container');
-  const profile = document.querySelector('.profile-ellipse');
-   if (
+document.addEventListener("click", function (event) {
+  const dropdownContainer = document.querySelector(".dropdown-menu-container");
+  const profile = document.querySelector(".profile-ellipse");
+  if (
     dropdownContainer &&
     !dropdownContainer.contains(event.target) &&
-    !profile.contains(event.target)) {
-    dropdownContainer.classList.add('d-none');
+    !profile.contains(event.target)
+  ) {
+    dropdownContainer.classList.add("d-none");
   }
-})
+});
 
 function loadProfile() {
-  let initials = document.getElementById('profile-initials')
-  
+  let initials = document.getElementById("profile-initials");
 }
