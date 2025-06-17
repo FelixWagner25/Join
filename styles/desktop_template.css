@@ -60,7 +60,7 @@ aside {
 main {
   grid-area: main;
   height: calc(100vh - 96px);
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 menu {

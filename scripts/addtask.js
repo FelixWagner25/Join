@@ -112,7 +112,7 @@ async function initAssignedToDropdown() {
  */
 function createContactOption(id, contact, isSelected) {
   const optionDiv = document.createElement("div");
-  optionDiv.classList.add("multi-select-option");
+  optionDiv.classList.add("multi-select-option d-flex-align-item-c");
 
   optionDiv.innerHTML = `
     <input type="checkbox" id="contact-${id}" ${isSelected ? "checked" : ""} 

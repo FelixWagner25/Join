@@ -7,36 +7,44 @@ body {
 
 .summary {
   flex: 1;
-  display: flex;
   gap: 40px;
-  justify-content: center;
-  flex-direction: column;
   padding-top: 110px;
   padding-left: 96px;
 }
 
+.metrics-header h1 {
+  margin: 0;
+}
+
+.header-divider {
+  height: 70px;
+  width: 4px;
+  margin: 0 16px;
+}
+
+.metrics-subtitle {
+  font-size: 27px;
+  color: #666;
+  font-weight: 400;
+}
+
+
 .summary-content {
-  display: flex;
   gap: 40px;
-  align-items: center;
 }
 
 .cards-wrapper {
   flex: 1;
-  display: flex;
-  flex-direction: column;
   gap: 28px;
   max-width: 560px;
 }
 
 .card-row {
-  display: flex;
   gap: 28px;
   flex-wrap: wrap;
 }
 
 .card {
-  background-color: #ffffff;
   border-radius: 22px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 24px;
@@ -45,28 +53,14 @@ body {
 
 .small-card {
   flex: 1;
-  display: flex;
-  align-items: center;
-  min-height: 120px;
-  justify-content: center;
   text-align: center;
+  min-height: 120px;
 }
 
 .card-icon {
   width: 60px;
   height: 60px;
   margin-right: 20px;
-}
-
-.card-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-value {
-  font-size: 64px;
-  font-weight: 600;
-  line-height: 1;
 }
 
 .card-title {
@@ -77,24 +71,13 @@ body {
 .large-card {
   display: flex;
   min-height: 120px;
-
   text-align: center;
 }
 
 .urgent-left,
 .urgent-right {
   flex: 1;
-  display: flex;
-  align-items: center;
   padding: 0 20px;
-}
-
-.urgent-left {
-  justify-content: flex-start;
-}
-
-.urgent-right {
-  justify-content: flex-start;
 }
 
 .divider-vertical {
@@ -112,10 +95,7 @@ body {
 
 .greeting {
 /*   flex: 0 0 40%; */
-  display: flex;
-  justify-content: center;
   padding-left: 40px;
-  align-self: center;
 }
 
 .greeting h2 {
@@ -136,31 +116,7 @@ body {
   font-weight: 700;
 }
 
-.metrics-header {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-}
 
-.metrics-header h1 {
-  font-size: 61px;
-  font-weight: 600;
-  color: #000;
-  margin: 0;
-}
-
-.header-divider {
-  height: 70px;
-  width: 4px;
-  background-color: #00aaff;
-  margin: 0 16px;
-}
-
-.metrics-subtitle {
-  font-size: 27px;
-  color: #666;
-  font-weight: 400;
-}
 
 @media screen and (max-width: 800px) {
   .summary {

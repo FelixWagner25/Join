@@ -1,11 +1,11 @@
 
 <body>
 
-    <div class="add-task-wrapper">
+    <div class="d-flex-align-item-c">
         <div class="add-task-container">
             <h1>Add Task</h1>
 
-            <div class="form-section">
+            <div class="form-section d-flex">
                 <div class="form-column">
                     <div class="input-group">
                         <label class="input-label required">Title</label>
@@ -29,15 +29,15 @@
                     <div class="input-group">
                         <label class="input-label">Priority</label>
                         <div class="priority-buttons">
-                            <button class="priority-btn" id="priority-urgent" onclick="setPriority('urgent')">
+                            <button class="priority-btn d-flex-row-c-c" id="priority-urgent" onclick="setPriority('urgent')">
                                 <span>Urgent</span>
                                 <img src="/assets/icons/urgent.png" alt="Urgent">
                             </button>
-                            <button class="priority-btn" id="priority-medium" onclick="setPriority('medium')">
+                            <button class="priority-btn d-flex-row-c-c" id="priority-medium" onclick="setPriority('medium')">
                                 <span>Medium</span>
                                 <img src="/assets/icons/medium.png" alt="Medium">
                             </button>
-                            <button class="priority-btn" id="priority-low" onclick="setPriority('low')">
+                            <button class="priority-btn d-flex-row-c-c" id="priority-low" onclick="setPriority('low')">
                                 <span>Low</span>
                                 <img src="/assets/icons/low.png" alt="Low">
                             </button>
@@ -46,9 +46,9 @@
 
                      <div class="input-group">
                         <label class="input-label">Assigned To</label>
-                        <div class="multi-select-wrapper" onfocus="initAssignedToDropdown()">
-                            <div class="multi-select-display" onclick="toggleAssignedDropdown()">
-                                <div class="selected-items" id="selected-contacts">
+                        <div class="multi-select-wrapper " onfocus="initAssignedToDropdown()">
+                            <div class="multi-select-display d-flex-c-sb" onclick="toggleAssignedDropdown()">
+                                <div class="selected-items d-flex " id="selected-contacts">
                                     <span>Select contacts to assign</span>
                                 </div>
                             </div>
@@ -77,15 +77,15 @@
                 </div>
             </div>
 
-            <div class="form-footer">
+            <div class="form-footer d-flex-c-sb">
                 <div class="required-info">This field is required</div>
 
                 <div class="action-buttons">
-                    <button class="btn btn-clear" onclick="clearForm()">
+                    <button class="btn  d-flex-align-item-c btn-clear" onclick="clearForm()">
                         <span>Clear</span>
                         <span>×</span>
                     </button>
-                    <button class="btn btn-create" onclick="saveTask()">
+                    <button class="btn  d-flex-align-item-c btn-create" onclick="saveTask()">
                         <span>Create Task</span>
                         <span class="checkmark">✓</span>
                     </button>
