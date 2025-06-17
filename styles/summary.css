@@ -5,27 +5,20 @@ body {
   overflow-x: hidden;
 }
 
-.page {
-  display: flex;
-  min-height: 100vh;
-}
-
 .summary {
   flex: 1;
   display: flex;
   gap: 40px;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-top: 110px;
+  padding-left: 96px;
 }
 
 .summary-content {
-  width: 100%;
   display: flex;
   gap: 40px;
   align-items: center;
-  justify-content: center;
-  
 }
 
 .cards-wrapper {
@@ -33,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 28px;
+  max-width: 560px;
 }
 
 .card-row {
@@ -56,7 +50,6 @@ body {
   min-height: 120px;
   justify-content: center;
   text-align: center;
-  
 }
 
 .card-icon {
@@ -82,13 +75,11 @@ body {
 }
 
 .large-card {
-
   display: flex;
   min-height: 120px;
-  
+
   text-align: center;
 }
-
 
 .urgent-left,
 .urgent-right {
@@ -106,7 +97,6 @@ body {
   justify-content: flex-start;
 }
 
-
 .divider-vertical {
   width: 2px;
   height: 100px;
@@ -121,7 +111,7 @@ body {
 }
 
 .greeting {
-  flex: 0 0 40%;
+/*   flex: 0 0 40%; */
   display: flex;
   justify-content: center;
   padding-left: 40px;
@@ -146,31 +136,57 @@ body {
   font-weight: 700;
 }
 
-
 .metrics-header {
-    width: 100%;
-    margin: 0 auto 32px auto;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .metrics-header h1 {
-    font-size: 61px;
-    font-weight: 600;
-    color: #000;
-    margin: 0;
+  font-size: 61px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
 }
 
 .header-divider {
-    height: 70px;
-    width: 4px;
-    background-color: #00aaff;
-    margin: 0 16px;
+  height: 70px;
+  width: 4px;
+  background-color: #00aaff;
+  margin: 0 16px;
 }
 
 .metrics-subtitle {
-    font-size: 27px;
-    color: #666;
-    font-weight: 400;
+  font-size: 27px;
+  color: #666;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 800px) {
+  .summary {
+    margin: 48px 16px;
+    padding: 0;
+    justify-content: unset;
+  }
+
+  .metrics-header {
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 16px 0 0 16px;
+  }
+
+  .header-divider {
+    rotate: 90deg;
+    margin: 0 32px ;
+  }
+
+  .summary-content{
+    height: 384px;
+
+  }
+
+  .greeting {
+    display: none;
+    /* fade out after 2sec */
+  }
 }

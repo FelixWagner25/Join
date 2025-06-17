@@ -16,6 +16,8 @@ let contactColorClasses = [
   "bg-sand",
 ];
 
+let databasee = "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
+
 let overlayTransitionMiliSeconds = 250;
 bannerTransitionTimeMilliSeconds = 3000;
 
@@ -25,6 +27,7 @@ bannerTransitionTimeMilliSeconds = 3000;
  */
 async function initContacs() {
   contactsArray = await getSortedContactsArray();
+  await renderContactsList();
 }
 
 /**
@@ -216,7 +219,7 @@ function clearAddContactForm(htmlIdPrefix) {
  * @property {string} phone
  */
 async function submitNewContact(path = "", contactData = {}) {
-  let response = await fetch(database + path + ".json", {
+  let response = await fetch(databasee + path + ".json", {
     method: "POST",
     header: {
       "Content-Type": "application/json",

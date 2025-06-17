@@ -65,7 +65,6 @@
 .col-title-wrap {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
 }
 
 .col-title {
@@ -147,24 +146,27 @@
   line-height: 120%;
   letter-spacing: 0;
   font-family: OpenSans;
+  margin-top: 16px;
 }
 
-.board-card-wrap {
-  width: 220px;
-  height: 244px;
+.board-card {
+  width: 252px;
   border-radius: 24px;
-  padding: 16px;
+  flex-direction: column;
   gap: 10px;
   color: #ffffff;
   box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.08);
 }
 
-.board-card:active {
+.board-card:active{
   rotate: 5deg;
 }
 
-.board-card {
+.board-card-wrap {
+  width: 220px;
   gap: 24px;
+  flex-direction: column;
+  padding: 16px;
 }
 
 .board-card-user-story-label {
@@ -224,7 +226,7 @@
   background-color: #4589ff;
 }
 
-.status-subtasks {
+.status-subtasks{
   width: 73px;
   height: 14px;
   font-weight: 400;
@@ -235,16 +237,16 @@
   white-space: nowrap;
 }
 
-.users-wrap {
+.users-wrap{
   display: flex;
   justify-content: space-between;
 }
 
-.users-icon-container {
+.users-icon-container{
   height: 32px;
 }
 
-.users-icon {
+.users-icon{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -258,47 +260,10 @@
   line-height: 120%;
   letter-spacing: 0;
   border: 1px;
-  border-color: #ffffff;
+ 	border-color: #ffffff;
   border-style: solid;
 }
 
-.users-icon + .users-icon {
+.users-icon + .users-icon{
   margin-left: -8px;
-}
-
-.task-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.task-overlay-content {
-  background: white;
-  width: 60%;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 16px;
-  padding: 32px;
-  position: relative;
-}
-
-.task-overlay.hidden {
-  display: none;
-}
-
-.overlay-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
 }
