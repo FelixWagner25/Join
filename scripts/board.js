@@ -6,16 +6,11 @@ async function initBoard() {
   renderBoard();
 }
 
-async function loadContacts() {
-  try {
-    const response = await fetch(
-      "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/contacts.json"
-    );
-    allContacts = (await response.json()) || {};
-  } catch (error) {
-    console.error("Error loading contacts:", error);
-    allContacts = {};
-  }
+async function getTasksArray() {
+  let tasks = await getDataBaseElement("tasks");
+  let tasksArray = [];
+  tasksArray = Object.entries(tasks);
+  return tasksArray;
 }
 
 async function loadTasks() {
