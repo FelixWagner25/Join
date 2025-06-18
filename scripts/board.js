@@ -1,16 +1,33 @@
 async function initBoard() {
   tasksArray = await getTasksArray();
-  //renderBoard();
+  renderBoard();
 }
 
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
-  let tasksArray = [];
   tasksArray = Object.entries(tasks);
   return tasksArray;
 }
 
 function renderBoard() {
+  renderBoardColumn("to-do", "todo");
+  // renderBoardColumn("in-progress");
+  // renderBoardColumn("await-feedback");
+  // renderBoardColumn("done");
+}
+
+function renderBoardColumn(columHTMLid, taskStatusId) {
+  let boardColRef = document.getElementById(columHTMLid);
+  boardColRef.innerHTML = "";
+  for (let i = 0; i < tasksArray.length; i++) {
+    if (tasksArray[i][1].status != taskStatusId) {
+      continue;
+    }
+    boardColRef.innerHTML += getBoardCardTemplate(i);
+  }
+}
+
+function renderBoardOutdated() {
   const columns = {
     todo: "to-do",
     "in-progress": "in-progress",

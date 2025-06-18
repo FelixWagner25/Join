@@ -1,8 +1,8 @@
 const database =
   "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
 
-let contacts = {};
-let tasks = {};
+let contactsArray = [];
+let tasksArray = [];
 /**
  * Function to log in as guest
  *

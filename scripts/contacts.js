@@ -33,9 +33,7 @@ async function initContacs() {
  * @returns - array with alphabetically by name sorted contacts from firebase server
  */
 async function getSortedContactsArray() {
-  let contacts = {};
-  let contactsArray = [];
-  contacts = await getDataBaseElement("contacts");
+  let contacts = await getDataBaseElement("contacts");
   contactsArray = Object.entries(contacts);
   contactsArray.sort((idValuePairA, idValuePairB) => {
     const nameA = idValuePairA[1].name.toLowerCase();
