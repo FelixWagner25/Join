@@ -1,6 +1,3 @@
-// Stores all created tasks in an array
-let tasks = [];
-
 // Keeps track of which priority is currently selected
 let currentPriority = null;
 

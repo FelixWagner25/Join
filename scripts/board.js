@@ -1,9 +1,6 @@
-let allTasks = {};
-
 async function initBoard() {
-  await loadContacts();
-  await loadTasks();
-  renderBoard();
+  tasksArray = await getTasksArray();
+  //renderBoard();
 }
 
 async function getTasksArray() {
@@ -11,18 +8,6 @@ async function getTasksArray() {
   let tasksArray = [];
   tasksArray = Object.entries(tasks);
   return tasksArray;
-}
-
-async function loadTasks() {
-  try {
-    const response = await fetch(
-      "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/tasks.json"
-    );
-    allTasks = (await response.json()) || {};
-  } catch (error) {
-    console.error("Error loading tasks:", error);
-    allTasks = {};
-  }
 }
 
 function renderBoard() {
