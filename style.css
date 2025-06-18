@@ -70,12 +70,6 @@ button:disabled:hover {
   justify-content: center;
 }
 
-.d-flex-column--c{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .d-flex-c-sb{
   display: flex;
   align-items: center;
@@ -99,9 +93,9 @@ button:disabled:hover {
   justify-content: space-evenly;
 }
 
-.d-flex-c{
+.d-flex-align-item-c{
   display: flex;
-  align-items: center;
+  align-items:center;
 }
 
 
@@ -141,14 +135,6 @@ button:disabled:hover {
   text-align: justify;
 }
 
-.font-Inter-400-12px{
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
 .font-Inter-400-13px{
   font-family: Inter;
   font-weight: 400;
@@ -185,6 +171,22 @@ button:disabled:hover {
   font-family: Inter;
   font-weight: 500;
   font-size: 47px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.font-Inter-600-61px{
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 61px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.font-Inter-600-64px{
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 64px;
   line-height: 120%;
   letter-spacing: 0;
 }

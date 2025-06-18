@@ -1,9 +1,9 @@
 <body>
   <div class="d-none bg-dimmed" id="bg-dimmed" onclick="closeContactOverlays()">
     <div
-      class="add-contact-screen d-flex bg-white"
+      class="add-contact-screen"
       onclick="stopEventPropagation(event)"
-      id="add-contact-screen" 
+      id="add-contact-screen"
     >
       <div
         class="close-icon-wrap d-flex-row-c-c"
@@ -11,16 +11,16 @@
       >
         <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
       </div>
-      <div class="add-contact-title-page d-flex-column text-color-white">
+      <div class="add-contact-title-page">
         <img
           src="/assets/icons/join_icon.svg"
           alt="Join Logo"
           class="add-contacts-screen-logo mg-t-80px"
         />
-        <div class="add-contacts-title-wrap d-flex-column font-Inter-700-61px">
-          <div class="add-contacts-screen-title-text-wrap d-flex-column">
-            <span class="add-contacts-screen-title-text font-Inter-700-61px">Add contact</span>
-            <span class="add-contacts-screen-title-subtext font-Inter-400-27px"
+        <div class="add-contacts-title-wrap">
+          <div class="add-contacts-screen-title-text-wrap">
+            <span class="add-contacts-screen-title-text">Add contact</span>
+            <span class="add-contacts-screen-title-subtext"
               >Tasks are better with a team!</span
             >
           </div>
@@ -36,9 +36,9 @@
           />
         </div>
       </div>
-      <div class="add-contact-input-check d-flex-column mg-t-140px">
-        <form class="add-contacts-form-wrap d-flex-column" onsubmit="addNewContact()">
-          <div class="add-contact-input-wrap d-flex-c-sb">
+      <div class="add-contact-input-check mg-t-140px">
+        <form class="add-contacts-form-wrap" onsubmit="addNewContact()">
+          <div class="add-contact-input-wrap">
             <input
               required
               type="text"
@@ -52,7 +52,7 @@
               class="add-contact-input-icon"
             />
           </div>
-          <div class="add-contact-input-wrap d-flex-c-sb">
+          <div class="add-contact-input-wrap">
             <input
               required
               type="email"
@@ -66,7 +66,7 @@
               class="add-contact-input-icon"
             />
           </div>
-          <div class="add-contact-input-wrap d-flex-c-sb">
+          <div class="add-contact-input-wrap">
             <input
               type="tel"
               class="add-contact-input"
@@ -83,7 +83,7 @@
             <button
               type="button"
               onclick="closeContactOverlays()"
-              class="add-contact-btn-cancel d-flex-row-c-c bg-white text-color-2A3647"
+              class="add-contact-btn-cancel"
             >
               <span>Cancel</span>
               <img
@@ -94,7 +94,7 @@
                 onmouseout="this.src='/assets/icons/cancel.svg';"
               />
             </button>
-            <button type="submit" class="add-contact-btn d-flex-row-c-c">
+            <button type="submit" class="add-contact-btn">
               <span>Create contact</span>
               <img
                 src="/assets/icons/check_withoutBorder.svg"
@@ -107,16 +107,16 @@
       </div>
     </div>
     <div
-      class="add-contact-screen d-flex bg-white"
+      class="add-contact-screen"
       onclick="stopEventPropagation(event)"
       id="edit-contact-screen"
     ></div>
   </div>
 
   <div class="d-flex">
-    <div class="contacts-list-wrap d-flex-column--c bg-white">
-      <button class="add-new-contact-btn d-flex-row-c-c" onclick="showAddContactScreen()">
-        <span class="add-new-contact-text text-color-white">Add new contact</span>
+    <div class="contacts-list-wrap">
+      <button class="add-new-contact-btn" onclick="showAddContactScreen()">
+        <span class="add-new-contact-text">Add new contact</span>
         <img
           src="/assets/icons/person_add.svg"
           alt="add person"
@@ -136,7 +136,7 @@
       <div class="contact-details" id="contact-details"></div>
     </div>
   </div>
-  <div class="contact-created-banner font-Inter-400-20px bg-2a3647 text-color-white" id="contact-created-banner">
+  <div class="contact-created-banner" id="contact-created-banner">
     Contact successfully created
   </div>
 </body>

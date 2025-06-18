@@ -6,16 +6,11 @@ async function initBoard() {
   renderBoard();
 }
 
-async function loadContacts() {
-  try {
-    const response = await fetch(
-      "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/contacts.json"
-    );
-    allContacts = (await response.json()) || {};
-  } catch (error) {
-    console.error("Error loading contacts:", error);
-    allContacts = {};
-  }
+async function getTasksArray() {
+  let tasks = await getDataBaseElement("tasks");
+  let tasksArray = [];
+  tasksArray = Object.entries(tasks);
+  return tasksArray;
 }
 
 async function loadTasks() {
@@ -95,7 +90,7 @@ function hideNoTaskFeedback(column) {
 
 function createTaskCard(task) {
   const cardDiv = document.createElement("div");
-  cardDiv.classList.add("board-card");
+  cardDiv.classList.add("board-card-wrap");
   cardDiv.setAttribute("data-task-id", task.id);
 
   const categoryClass = getCategoryClass(task.category);
@@ -106,7 +101,7 @@ function createTaskCard(task) {
   const priorityIcon = getPriorityIcon(task.priority);
 
   cardDiv.innerHTML = `
-        <div class="board-card-wrap d-flex">
+        <div class="board-card d-flex-column">
             <div class="board-card-user-story-label d-flex-row-c-c ${categoryClass}">${categoryText}</div>
             <div class="board-card-content d-flex">
                 <h2 class="task-headline">${task.title}</h2>
@@ -229,7 +224,10 @@ function openTaskOverlay(task) {
     <div class="assigned-users">
       ${renderAssignedUsers(task.assignedTo)}
     </div>
-    <button onclick="openTaskEdit(${JSON.stringify(task).replace(/"/g, '&quot;')})" class="btn btn-edit">Edit</button>
+    <button onclick="openTaskEdit(${JSON.stringify(task).replace(
+      /"/g,
+      "&quot;"
+    )})" class="btn btn-edit">Edit</button>
   `;
 
   overlay.classList.remove("hidden");
@@ -255,9 +253,15 @@ function openTaskEdit(task) {
 
     <label>Priority</label>
     <select id="edit-priority">
-      <option value="urgent" ${task.priority === "urgent" ? "selected" : ""}>Urgent</option>
-      <option value="medium" ${task.priority === "medium" ? "selected" : ""}>Medium</option>
-      <option value="low" ${task.priority === "low" ? "selected" : ""}>Low</option>
+      <option value="urgent" ${
+        task.priority === "urgent" ? "selected" : ""
+      }>Urgent</option>
+      <option value="medium" ${
+        task.priority === "medium" ? "selected" : ""
+      }>Medium</option>
+      <option value="low" ${
+        task.priority === "low" ? "selected" : ""
+      }>Low</option>
     </select>
 
     <label>Category</label>

@@ -6,6 +6,16 @@
   color: #007cee;
 }
 
+
+.bg-white{
+  background-color: #ffffff;
+}
+
+
+.bg-neonblue{
+  background-color: #00aaff;
+}
+
 .bg-orange {
   background-color: #ff7a00;
 }
@@ -66,14 +76,6 @@
   background-color: #ffbb2b;
 }
 
-.bg-white {
-  background-color: #ffffff;
-}
-
-.bg-2a3647{
-  background-color: #2a3647;
-}
-
 .text-color-black{
   color: black;
 }
@@ -100,8 +102,4 @@
 
 .text-color-FF8190{
   color: #FF8190;
-}
-
-.text-color-CDCDCD{
-  color: #cdcdcd;
 }

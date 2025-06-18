@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/styles/desktop_template.css">
     <link rel="stylesheet" href="/styles/summary.css">
     <link rel="stylesheet" href="/styles/addtask.css">
     <link rel="stylesheet" href="/styles/assets.css">
     <link rel="stylesheet" href="/styles/contacts.css">
     <link rel="stylesheet" href="/styles/colors.css">
-    <link rel="stylesheet" href="/styles/desktop_template.css">
+
     <link rel="stylesheet" href="/styles/board.css">
     <link rel="icon" href="/assets/img/faviconLogo.svg">
     <script src="/scripts/desktop_template.js"></script>
@@ -29,52 +30,52 @@
 
 <body onload="init();">
     <div class="page">
-        <header class="d-flex-c-sb bg-white">
-            <div class="header-container d-flex-c-sb">
+        <header>
+            <div class="header-container">
                 <div>Kanban Project Management Tool</div>
                 <div class="header-user">
                     <img class="help-icon" src="/assets/icons/header_help_icon.svg" alt="">
-                    <div class="profile-ellipse text-color-29ABE2 bg-whit" onload="loadProfile()" onclick="toggleDropdown()">
+                    <div class="profile-ellipse" onload="loadProfile()" onclick="toggleDropdown()">
                         <img src="/assets/icons/header_profile_ellipse.svg" alt="">
                         <span id="profile-initials" class="text-center">G</span>
                     </div>
                     <div class="dropdown-menu-container d-none">
-                        <div class="dropdown-menu-inside d-flex-column-c font-Inter-400-16px ">
-                            <a class="dropdown-menu d-flex-column-c font-Inter-400-16px text-color-CDCDCD" href="#help"
+                        <div class="dropdown-menu-inside d-flex">
+                            <a class="dropdown-menu d-flex" href="#help"
                                 onclick="loadContent('/assets/html/help.html')">Help</a>
-                            <a class="dropdown-menu d-flex-column-c font-Inter-400-16px text-color-CDCDCD" href="#legal_notice"
+                            <a class="dropdown-menu d-flex" href="#legal_notice"
                                 onclick="loadContent('/assets/html/legal_notice.html')">Legal Notice</a>
-                            <a class="dropdown-menu d-flex-column-c font-Inter-400-16px text-color-CDCDCD" href="#privacy-policy"
+                            <a class="dropdown-menu d-flex" href="#privacy-policy"
                                 onclick="loadContent('/assets/html/privacy_policy.html')">Privacy Policy</a>
-                            <a class="dropdown-menu d-flex-column-c font-Inter-400-16px text-color-CDCDCD" href="/index.html">Log out</a>
+                            <a class="dropdown-menu d-flex" href="/index.html">Log out</a>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <aside class="d-flex-column font-Inter-400-16px">
+        <aside class="font-Inter-400-16px">
             <div class="join-logo">
                 <img src="/assets/icons/join_icon.svg" alt="join-logo">
             </div>
             <nav>
-                <a href="#summary" class="d-flex-c text-color-white" onclick="loadContent('/assets/html/summary.html')"><img
+                <a href="#summary" onclick="loadContent('/assets/html/summary.html')"><img
                         src="/assets/icons/summary_icon.svg" alt="#"><span>Summary</span></a>
-                <a href="#add_task" class="d-flex-c text-color-white" onclick="loadContent('/assets/html/add_task.html')"><img
+                <a href="#add_task" onclick="loadContent('/assets/html/add_task.html')"><img
                         src="/assets/icons/add_task_icon.svg" alt="#"><span>Add Task</span></a>
-                <a href="#board" class="d-flex-c text-color-white" onclick="loadContent('/assets/html/board.html'), initBoard()"><img
+                <a href="#board" onclick="loadContent('/assets/html/board.html'), initBoard()"><img
                         src="/assets/icons/board_icon.svg" alt="#"><span>Board</span></a>
-                <a href="#contacts" class="d-flex-c text-color-white" onclick="loadContent('/assets/html/contacts.html'), initContacs()"><img
+                <a href="#contacts" onclick="loadContent('/assets/html/contacts.html'), initContacs()"><img
                         src="/assets/icons/contacts_icon.svg" alt="#"><span>Contacts</span></a>
             </nav>
-            <div class="policy-legal d-flex-column--c">
-                <a href="#privacy" class="d-flex-column text-color-A8A8A8" onclick="loadContent('/assets/html/privacy_policy.html')"><span>Privacy
+            <div class="policy-legal">
+                <a href="#privacy" onclick="loadContent('/assets/html/privacy_policy.html')"><span>Privacy
                         Policy</span></a>
-                <a href="#legal" class="d-flex-column text-color-A8A8A8" onclick="loadContent('/assets/html/legal_notice.html')"><span>Legal notice</span></a>
+                <a href="#legal" onclick="loadContent('/assets/html/legal_notice.html')"><span>Legal notice</span></a>
             </div>
         </aside>
 
-        <main w3-include-html="/assets/html/summary.html"></main>
+        <main  w3-include-html="/assets/html/summary.html"></main>
 
 
 

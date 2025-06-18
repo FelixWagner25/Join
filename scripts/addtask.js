@@ -10,6 +10,18 @@ let selectedContacts = [];
 // Variable to store all contacts
 let allContacts = {};
 
+async function loadContacts() {
+  try {
+    const response = await fetch(
+      "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/contacts.json"
+    );
+    allContacts = (await response.json()) || {};
+  } catch (error) {
+    console.error("Error loading contacts:", error);
+    allContacts = {};
+  }
+}
+
 /**
  * Sets the priority when user clicks a priority button
  * @param {string} priority - can be 'urgent', 'medium', or 'low'
@@ -100,7 +112,7 @@ async function initAssignedToDropdown() {
  */
 function createContactOption(id, contact, isSelected) {
   const optionDiv = document.createElement("div");
-  optionDiv.classList.add("multi-select-option");
+  optionDiv.classList.add("multi-select-option d-flex-align-item-c");
 
   optionDiv.innerHTML = `
     <input type="checkbox" id="contact-${id}" ${isSelected ? "checked" : ""} 
