@@ -103,8 +103,17 @@ button:disabled:hover {
   height: 100vh;
 }
 
+
+.mg-t-48px{
+  margin-top: 48px;
+}
+
 .mg-t-80px {
   margin-top: 80px;
+}
+
+.mg-t-110px {
+  margin-top: 110px;
 }
 
 .mg-t-200px {
@@ -113,6 +122,10 @@ button:disabled:hover {
 
 .mg-t-140px {
   margin-top: 140px;
+}
+
+.mg-b-40px{
+  margin-bottom: 40px;
 }
 
 .font-sz-47px {
