@@ -27,6 +27,35 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
   }
 }
 
+function getTaskCategoryClass(taskCategory) {
+  let taskCategroyClass = "";
+  switch (taskCategory) {
+    case "user-story":
+      taskCategroyClass = "bg-user-story";
+      break;
+    case "technical-task":
+      taskCategroyClass = "bg-technical-task";
+      break;
+  }
+  return taskCategroyClass;
+}
+
+function getTaskPriorityIconSrc(taskUrgency) {
+  let iconSrc = "";
+  switch (taskUrgency) {
+    case "urgent":
+      iconSrc = "/assets/icons/urgent.svg";
+      break;
+    case "medium":
+      iconSrc = "/assets/icons/medium.svg";
+      break;
+    case "low":
+      iconSrc = "/assets/icons/low.svg";
+      break;
+  }
+  return iconSrc;
+}
+
 function renderBoardOutdated() {
   const columns = {
     todo: "to-do",

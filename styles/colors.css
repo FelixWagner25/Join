@@ -70,38 +70,46 @@
   background-color: #ffffff;
 }
 
-.bg-2a3647{
+.bg-2a3647 {
   background-color: #2a3647;
 }
 
-.text-color-black{
+.text-color-black {
   color: black;
 }
 
-.text-color-white{
-  color: #FFFFFF;
+.text-color-white {
+  color: #ffffff;
 }
 
-.text-color-2A3647{
-  color: #2A3647;
+.text-color-2A3647 {
+  color: #2a3647;
 }
 
-.text-color-A8A8A8{
-  color: #A8A8A8;
+.text-color-A8A8A8 {
+  color: #a8a8a8;
 }
 
-.text-color-007CEE{
-  color: #007CEE;
+.text-color-007CEE {
+  color: #007cee;
 }
 
-.text-color-29ABE2{
-  color: #29ABE2;
+.text-color-29ABE2 {
+  color: #29abe2;
 }
 
-.text-color-FF8190{
-  color: #FF8190;
+.text-color-FF8190 {
+  color: #ff8190;
 }
 
-.text-color-CDCDCD{
+.text-color-CDCDCD {
   color: #cdcdcd;
+}
+
+.bg-user-story {
+  background-color: #0038ff;
+}
+
+.bg-technical-task {
+  background-color: #1fd7c1;
 }

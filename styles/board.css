@@ -167,13 +167,12 @@
   gap: 24px;
 }
 
-.board-card-user-story-label {
+.task-category {
   width: 113px;
   height: 27px;
   border-radius: 8px;
   padding: 4px 16px;
   gap: 10px;
-  background-color: #0038ff;
   color: #ffffff;
   font-weight: 400;
   font-size: 16px;
@@ -197,7 +196,7 @@
   margin: 0;
 }
 
-.card-text-area {
+.task-description {
   width: 220px;
   height: 38px;
   font-weight: 400;
