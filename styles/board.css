@@ -149,9 +149,8 @@
   font-family: OpenSans;
 }
 
-.board-card-wrap {
+.task-card-wrap {
   width: 220px;
-  height: 244px;
   border-radius: 24px;
   padding: 16px;
   gap: 10px;
@@ -159,91 +158,63 @@
   box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.08);
 }
 
-.board-card:active {
-  rotate: 5deg;
-}
-
-.board-card {
+.task-card {
   gap: 24px;
 }
 
 .task-category {
-  width: 113px;
-  height: 27px;
   border-radius: 8px;
   padding: 4px 16px;
   gap: 10px;
   color: #ffffff;
-  font-weight: 400;
-  font-size: 16px;
   line-height: 120%;
   letter-spacing: 0;
 }
 
-.board-card-content {
-  width: 220px;
+.task-description-wrap {
   border-radius: 10px;
   gap: 8px;
   flex-direction: column;
 }
 
 .task-headline {
-  font-weight: 700;
-  font-size: 16px;
   line-height: 120%;
   letter-spacing: 0;
   color: #2a3647;
-  margin: 0;
 }
 
 .task-description {
-  width: 220px;
   height: 38px;
-  font-weight: 400;
-  font-size: 16px;
   line-height: 120%;
   letter-spacing: 0;
   color: #a8a8a8;
 }
 
+.progress-bar-wrap {
+  gap: 10px;
+}
+
 .progress-bar {
   width: 128px;
   height: 8px;
-  top: 4px;
   border-radius: 8px;
-  padding-right: 64px;
-  gap: 10px;
   background-color: #f4f4f4;
 }
 
 .progress-bar-status {
   border-radius: 16px;
   height: 8px;
-  width: 64px;
   background-color: #4589ff;
 }
 
-.status-subtasks {
-  width: 73px;
-  height: 14px;
-  font-weight: 400;
-  font-size: 12px;
+.task-card-subtasks {
   line-height: 120%;
   letter-spacing: 0;
-  color: #000;
+  color: black;
   white-space: nowrap;
 }
 
-.users-wrap {
-  display: flex;
-  justify-content: space-between;
-}
-
-.users-icon-container {
-  height: 32px;
-}
-
-.users-icon {
+.task-contacts-icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -261,7 +232,7 @@
   border-style: solid;
 }
 
-.users-icon + .users-icon {
+.task-contacts-icon + .task-contacts-icon {
   margin-left: -8px;
 }
 
