@@ -24,6 +24,24 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
       continue;
     }
     boardColRef.innerHTML += getBoardCardTemplate(i);
+    renderBoardCardContacts(i);
+  }
+}
+
+function renderBoardCardContacts(indexTask) {
+  let htmlId = "task-contacts-" + String(indexTask);
+  let taskCardContactsRef = document.getElementById(htmlId);
+  taskCardContactsRef.innerHTML = "";
+
+  for (
+    let indexTaskContact = 0;
+    indexTaskContact < tasksArray[indexTask][1].assignedTo.length;
+    indexTaskContact++
+  ) {
+    taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
+      indexTaskContact,
+      indexTask
+    );
   }
 }
 
@@ -54,6 +72,15 @@ function getTaskPriorityIconSrc(taskUrgency) {
       break;
   }
   return iconSrc;
+}
+
+function getCategoryNameTemplate(taskCategory) {
+  switch (taskCategory) {
+    case "user-story":
+      return "User Story";
+    case "technical-task":
+      return "Technical Task";
+  }
 }
 
 function renderBoardOutdated() {
