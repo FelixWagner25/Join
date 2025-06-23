@@ -83,6 +83,13 @@ function getCategoryNameTemplate(taskCategory) {
   }
 }
 
+function getContactColorClassById(contactId) {
+  let indexContact = contactsArray.findIndex(
+    (idValuePair) => idValuePair[0] === contactId
+  );
+  return getContactColorClassName(indexContact);
+}
+
 function renderBoardOutdated() {
   const columns = {
     todo: "to-do",

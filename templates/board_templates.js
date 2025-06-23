@@ -18,7 +18,7 @@ function getBoardCardTemplate(indexTask) {
                 }</div>   
             </div>
             <div class="d-flex-c-sb">
-                    <div class="d-flex" id="task-contacts-${indexTask}">
+                    <div class="d-flex mg-l-8px" id="task-contacts-${indexTask}">
                     </div>
                     <img src=${getTaskPriorityIconSrc(
                       tasksArray[indexTask][1].priority
@@ -31,9 +31,13 @@ function getBoardCardTemplate(indexTask) {
 
 function getTaskCardContactsTemplate(indexTaskContact, indexTask) {
   return `
-  <div class="task-card-contact-badge d-flex-row-c-c">
+  <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassById(
+    tasksArray[indexTask][1].assignedTo[indexTaskContact].id
+  )}">
     <div class="font-Inter-400-12px">
-      ${tasksArray[indexTask][1].assignedTo[indexTaskContact].name}
+      ${getFirstTwoStringInitials(
+        tasksArray[indexTask][1].assignedTo[indexTaskContact].name
+      )}
     </div>
   </div>
   `;

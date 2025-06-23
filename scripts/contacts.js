@@ -281,25 +281,6 @@ async function renderContactsList() {
 }
 
 /**
- * This function extracts the first two initials of a contact name
- *
- * @param {integer} indexContact
- * @returns - first two contact initials
- */
-function getFirstTowContactInitials(indexContact) {
-  let contactNameSplit = contactsArray[indexContact][1].name.split(" ");
-  let contactInitials = "";
-  if (contactNameSplit.length == 1) {
-    contactInitials = contactNameSplit[0].charAt(0).toUpperCase();
-  } else {
-    contactInitials =
-      contactNameSplit[0].charAt(0).toUpperCase() +
-      contactNameSplit[1].charAt(0).toUpperCase();
-  }
-  return contactInitials;
-}
-
-/**
  * This function checks whether contact in contact list has a first letter predecessor. If the contact has a first letter predecessor there is no need for an additional contact list bookmark related to this contact
  *
  * @param {integer} indexContact

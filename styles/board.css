@@ -212,6 +212,7 @@
   height: 32px;
   border: 1px solid #ffffff;
   border-radius: 50%;
+  margin-left: -8px;
 }
 
 .task-card-subtasks {

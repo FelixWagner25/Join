@@ -9,7 +9,9 @@ function getContactsListContactTemplate(indexContact) {
     <div class="contact-list-item-wrap" onclick="showContactDetails(${indexContact})" id="contacts-list-${indexContact}">
         <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
           indexContact
-        )}">${getFirstTowContactInitials(indexContact)}</div>
+        )}">${getFirstTwoStringInitials(
+    contactsArray[indexContact][1].name
+  )}</div>
         <div class="contact-name-wrap d-flex-column">
             <div class="contact-name">${
               contactsArray[indexContact][1].name
@@ -50,8 +52,8 @@ function getContactDetailsTemplate(indexContact) {
     <div class="contact-details-icon-edit-name-wrap">
         <div class="${getContactColorClassName(
           indexContact
-        )} contact-details-name-icon">${getFirstTowContactInitials(
-    indexContact
+        )} contact-details-name-icon">${getFirstTwoStringInitials(
+    contactsArray[indexContact][1].name
   )}</div>
             <div class="contact-details-name-wrap">
             <div class="contact-details-name">${
@@ -130,8 +132,8 @@ function getEditContactScreenTemplate(indexContact) {
             <div class="${getContactColorClassName(
               indexContact
             )} contact-badge-wrap d-flex-row-c-c">
-              <div class="font-sz-47px">${getFirstTowContactInitials(
-                indexContact
+              <div class="font-sz-47px">${getFirstTwoStringInitials(
+                contactsArray[indexContact][1].name
               )}</div>
             </div>
           </div>

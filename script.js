@@ -264,3 +264,16 @@ async function deleteDataBaseElement(path = "") {
   let responseJSON = await response.json();
   return responseJSON;
 }
+
+function getFirstTwoStringInitials(inputString) {
+  let inputStringSplit = inputString.split(" ");
+  let stringInitials = "";
+  if (inputStringSplit.length == 1) {
+    stringInitials = inputStringSplit[0].charAt(0).toUpperCase();
+  } else {
+    stringInitials =
+      inputStringSplit[0].charAt(0).toUpperCase() +
+      inputStringSplit[1].charAt(0).toUpperCase();
+  }
+  return stringInitials;
+}

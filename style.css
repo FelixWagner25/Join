@@ -57,53 +57,52 @@ button:disabled:hover {
   justify-content: center;
 }
 
-.d-flex-column-c-c{
+.d-flex-column-c-c {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.d-flex-column-c{
+.d-flex-column-c {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.d-flex-column--c{
+.d-flex-column--c {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.d-flex-c-sb{
+.d-flex-c-sb {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.d-flex-row-c-fe{
+.d-flex-row-c-fe {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.d-flex-column{
+.d-flex-column {
   display: flex;
   flex-direction: column;
 }
 
-.d-flex-c-se{
+.d-flex-c-se {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.d-flex-c{
+.d-flex-c {
   display: flex;
   align-items: center;
 }
-
 
 .h-100vh {
   height: 100vh;
@@ -121,27 +120,30 @@ button:disabled:hover {
   margin-top: 140px;
 }
 
+.mg-l-8px {
+  margin-left: 8px;
+}
+
 .font-sz-47px {
   font-size: 47px;
 }
 
-
-.text-area{
+.text-area {
   width: 1016px;
   gap: 35px;
 }
 
-.text-paragraph{
+.text-paragraph {
   width: 1016px;
   gap: 10px;
 }
 
-.text{
+.text {
   white-space: break-spaces;
   text-align: justify;
 }
 
-.font-Inter-400-12px{
+.font-Inter-400-12px {
   font-family: Inter;
   font-weight: 400;
   font-size: 12px;
@@ -149,7 +151,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-400-13px{
+.font-Inter-400-13px {
   font-family: Inter;
   font-weight: 400;
   font-size: 13px;
@@ -157,7 +159,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-400-16px{
+.font-Inter-400-16px {
   font-family: Inter;
   font-weight: 400;
   font-size: 16px;
@@ -165,7 +167,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-400-20px{
+.font-Inter-400-20px {
   font-family: Inter;
   font-weight: 400;
   font-size: 20px;
@@ -173,7 +175,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-400-27px{
+.font-Inter-400-27px {
   font-family: Inter;
   font-weight: 400;
   font-size: 27px;
@@ -181,7 +183,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-500-47px{
+.font-Inter-500-47px {
   font-family: Inter;
   font-weight: 500;
   font-size: 47px;
@@ -189,7 +191,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-700-16px{
+.font-Inter-700-16px {
   font-family: Inter;
   font-weight: 700;
   font-size: 16px;
@@ -197,7 +199,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-700-21px{
+.font-Inter-700-21px {
   font-family: Inter;
   font-weight: 700;
   font-size: 21px;
@@ -205,8 +207,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-
-.font-Inter-700-61px{
+.font-Inter-700-61px {
   font-family: Inter;
   font-weight: 700;
   font-size: 61px;
@@ -214,8 +215,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-
-.padding-t64-r400{
+.padding-t64-r400 {
   padding-top: 64px;
   padding-right: 400px;
 }
