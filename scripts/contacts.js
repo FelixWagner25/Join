@@ -36,9 +36,7 @@ async function initContacs() {
  * @returns - array with alphabetically by name sorted contacts from firebase server
  */
 async function getSortedContactsArray() {
-  let contacts = {};
-  let contactsArray = [];
-  contacts = await getDataBaseElement("contacts");
+  let contacts = await getDataBaseElement("contacts");
   contactsArray = Object.entries(contacts);
   contactsArray.sort((idValuePairA, idValuePairB) => {
     const nameA = idValuePairA[1].name.toLowerCase();
@@ -283,25 +281,6 @@ async function renderContactsList() {
       contactsListRef.innerHTML += getContactsListContactTemplate(i);
     }
   }
-}
-
-/**
- * This function extracts the first two initials of a contact name
- *
- * @param {integer} indexContact
- * @returns - first two contact initials
- */
-function getFirstTowContactInitials(indexContact) {
-  let contactNameSplit = contactsArray[indexContact][1].name.split(" ");
-  let contactInitials = "";
-  if (contactNameSplit.length == 1) {
-    contactInitials = contactNameSplit[0].charAt(0).toUpperCase();
-  } else {
-    contactInitials =
-      contactNameSplit[0].charAt(0).toUpperCase() +
-      contactNameSplit[1].charAt(0).toUpperCase();
-  }
-  return contactInitials;
 }
 
 /**

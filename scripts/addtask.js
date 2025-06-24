@@ -1,6 +1,3 @@
-// Stores all created tasks in an array
-let tasks = [];
-
 // Keeps track of which priority is currently selected
 let currentPriority = null;
 
@@ -253,7 +250,7 @@ function getTaskValues() {
     priority: currentPriority,
     assignedTo: selectedContacts.length > 0 ? selectedContacts : null,
     subtasks: subtasks.length > 0 ? subtasks : null,
-    status: "todo",
+    status: "to-do",
     createdAt: new Date().toISOString(),
   };
 }
