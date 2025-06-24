@@ -6,6 +6,14 @@
   color: #007cee;
 }
 
+.bg-white{
+  background-color: #ffffff;
+}
+
+.bg-neonblue{
+  background-color: #00aaff;
+}
+
 .bg-orange {
   background-color: #ff7a00;
 }

@@ -69,14 +69,7 @@ button:disabled:hover {
   flex-direction: column;
   justify-content: center;
 }
-
-.d-flex-column--c {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.d-flex-c-sb {
+.d-flex-c-sb{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -99,17 +92,26 @@ button:disabled:hover {
   justify-content: space-evenly;
 }
 
-.d-flex-c {
+.d-flex-align-item-c{
   display: flex;
-  align-items: center;
+  align-items:center;
 }
 
 .h-100vh {
   height: 100vh;
 }
 
+
+.mg-t-48px{
+  margin-top: 48px;
+}
+
 .mg-t-80px {
   margin-top: 80px;
+}
+
+.mg-t-110px {
+  margin-top: 110px;
 }
 
 .mg-t-200px {
@@ -122,6 +124,10 @@ button:disabled:hover {
 
 .mg-l-8px {
   margin-left: 8px;
+}
+
+.mg-b-40px{
+  margin-bottom: 40px;
 }
 
 .font-sz-47px {
@@ -151,7 +157,7 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-400-13px {
+.font-Inter-400-13px{
   font-family: Inter;
   font-weight: 400;
   font-size: 13px;
@@ -191,7 +197,23 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
-.font-Inter-700-16px {
+.font-Inter-600-61px{
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 61px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.font-Inter-600-64px{
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.font-Inter-700-16px{
   font-family: Inter;
   font-weight: 700;
   font-size: 16px;

@@ -1,52 +1,54 @@
+
 <body>
-    <div class="add-task-wrapper">
+
+    <div class="d-flex-align-item-c">
         <div class="add-task-container">
-            <h1>Add Task</h1>
+            <h1 class="font-Inter-700-61px">Add Task</h1>
 
-            <div class="form-section">
-                <div class="form-column">
-                    <div class="input-group">
-                        <label class="input-label required">Title</label>
-                        <input type="text" id="task-title" placeholder="Enter a title">
+            <div class="form-section d-flex mg-t-48px mg-b-40px">
+                <div class="form-column d-flex-column">
+                    <div class="input-group d-flex-column">
+                        <label class="input-label required font-Inter-400-20px">Title</label>
+                        <input class="font-Inter-400-20px text-color-d1d1d1" type="text" id="task-title" placeholder="Enter a title">
                     </div>
 
-                    <div class="input-group">
-                        <label class="input-label">Description</label>
-                        <textarea id="task-description" placeholder="Enter a Description"></textarea>
+                    <div class="input-group d-flex-column">
+                        <label class="input-label font-Inter-400-20px">Description</label>
+                        <textarea class="font-Inter-400-20px text-color-d1d1d1" id="task-description" placeholder="Enter a Description"></textarea>
                     </div>
 
-                    <div class="input-group">
-                        <label class="input-label required">Due Date</label>
-                        <input type="date" id="task-due-date" placeholder="dd/mm/yyyy">
+                    <div class="input-group d-flex-column">
+                        <label class="input-label required font-Inter-400-20px">Due Date</label>
+                        <input class="font-Inter-400-20px text-color-d1d1d1" type="date" id="task-due-date" placeholder="dd/mm/yyyy">
                     </div>
                 </div>
 
                 <div class="divider"></div>
 
-                <div class="form-column">
-                    <div class="input-group">
-                        <label class="input-label">Priority</label>
+                <div class="form-column d-flex-column">
+                    <div class="input-group d-flex-column">
+                        <label class="input-label font-Inter-400-20px">Priority</label>
                         <div class="priority-buttons">
-                            <button class="priority-btn" id="priority-urgent" onclick="setPriority('urgent')">
-                                <span>Urgent</span>
-                                <img src="/assets/icons/urgent.png" alt="Urgent">
+                            <button class="priority-btn d-flex-row-c-c" id="priority-urgent" onclick="setPriority('urgent')">
+                                <span class="font-Inter-400-20px text-color-black">Urgent</span>
+                                <img src="/assets/icons/urgent.svg" alt="Urgent">
                             </button>
-                            <button class="priority-btn" id="priority-medium" onclick="setPriority('medium')">
-                                <span>Medium</span>
-                                <img src="/assets/icons/medium.png" alt="Medium">
+                            <button class="priority-btn d-flex-row-c-c" id="priority-medium" onclick="setPriority('medium')">
+                                <span class="font-Inter-400-20px text-color-black">Medium</span>
+                                <img src="/assets/icons/medium.svg" alt="Medium">
                             </button>
-                            <button class="priority-btn" id="priority-low" onclick="setPriority('low')">
-                                <span>Low</span>
-                                <img src="/assets/icons/low.png" alt="Low">
+                            <button class="priority-btn d-flex-row-c-c" id="priority-low" onclick="setPriority('low')">
+                                <span class="font-Inter-400-20px text-color-black">Low</span>
+                                <img src="/assets/icons/low.svg" alt="Low">
                             </button>
                         </div>
                     </div>
 
-                     <div class="input-group">
-                        <label class="input-label">Assigned To</label>
-                        <div class="multi-select-wrapper" onfocus="initAssignedToDropdown()">
-                            <div class="multi-select-display" onclick="toggleAssignedDropdown()">
-                                <div class="selected-items" id="selected-contacts">
+                     <div class="input-group d-flex-column">
+                        <label class="input-label font-Inter-400-20px">Assigned To</label>
+                        <div class="multi-select-wrapper " onfocus="initAssignedToDropdown()">
+                            <div class="multi-select-display d-flex-c-sb" onclick="toggleAssignedDropdown()">
+                                <div class="selected-items d-flex " id="selected-contacts">
                                     <span>Select contacts to assign</span>
                                 </div>
                             </div>
@@ -55,19 +57,19 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label class="input-label required">Category</label>
+                    <div class="input-group d-flex-column">
+                        <label class="input-label required font-Inter-400-20px">Category</label>
                         <div class="select-wrapper">
-                            <select id="task-category" onfocus="initCategoryDropdown()">
+                            <select class="font-Inter-400-20px" id="task-category" onfocus="initCategoryDropdown()">
                                 <option value="" disabled selected>Select task category</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label class="input-label">Subtasks</label>
+                    <div class="input-group d-flex-column">
+                        <label class="input-label font-Inter-400-20px">Subtasks</label>
                         <div class="input-with-icon">
-                            <input type="text" id="task-subtasks" placeholder="Add new subtask"
+                            <input class="font-Inter-400-20px text-color-d1d1d1" type="text" id="task-subtasks" placeholder="Add new subtask"
                                 onkeypress="if(event.key === 'Enter') addSubtask();">
                             <button class="add-subtask" onclick="addSubtask()">+</button>
                         </div>
@@ -75,17 +77,17 @@
                 </div>
             </div>
 
-            <div class="form-footer">
-                <div class="required-info">This field is required</div>
+            <div class="form-footer d-flex-c-sb">
+                <div class="required-info text-color-black font-Inter-400-16px"><span class="font-Inter-400-20px">*</span>This field is required</div>
 
                 <div class="action-buttons">
-                    <button class="btn btn-clear" onclick="clearForm()">
-                        <span>Clear</span>
-                        <span>×</span>
+                    <button class="btn  d-flex-align-item-c btn-clear" onclick="clearForm()">
+                        <span class="font-Inter-400-20px">Clear</span>
+                        <span class="checkmark"><img src="/assets/icons/xvector.svg" alt=""></span>
                     </button>
-                    <button class="btn btn-create" onclick="saveTask()">
-                        <span>Create Task</span>
-                        <span class="checkmark">✓</span>
+                    <button class="btn  d-flex-align-item-c btn-create" onclick="saveTask()">
+                        <span class="font-Inter-700-21px">Create Task</span>
+                        <span class="checkmark"><img src="/assets/icons/checkmarg.svg" alt=""></span>
                     </button>
                 </div>
             </div>
@@ -93,6 +95,6 @@
     </div>
 
     <script src="/scripts/addtask.js"></script>
+
 </body>
 
-</html>
