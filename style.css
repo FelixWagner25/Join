@@ -215,6 +215,14 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
+.font-OpenSans-400-16px {
+  font-family: OpenSans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
 .padding-t64-r400 {
   padding-top: 64px;
   padding-right: 400px;
