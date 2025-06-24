@@ -39,7 +39,12 @@ function subtasksExist(indexTask) {
   return tasksArray[indexTask][1].subtasks !== undefined;
 }
 
-function renderSubtaskProgressInfo(indexTask) {}
+function renderSubtaskProgressInfo(indexTask) {
+  let htmlId = "subtasks-progress-" + String(indexTask);
+  let taskSubtaskInfoRef = document.getElementById(htmlId);
+  taskSubtaskInfoRef.innerHTML = "";
+  taskSubtaskInfoRef.innerHTML = getTaskCardSubtaskTemplate(indexTask);
+}
 
 function renderBoardCardContacts(indexTask) {
   let htmlId = "task-contacts-" + String(indexTask);

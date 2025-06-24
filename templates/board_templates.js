@@ -17,7 +17,7 @@ function getBoardCardTemplate(indexTask) {
                   tasksArray[indexTask][1].description
                 }</div>   
             </div>
-            <div id="subtasks-progress"></div>
+            <div class="d-flex-c-sb" id="subtasks-progress-${indexTask}"></div>
             <div class="d-flex-c-sb">
                     <div class="d-flex mg-l-8px" id="task-contacts-${indexTask}">
                     </div>
@@ -28,6 +28,17 @@ function getBoardCardTemplate(indexTask) {
         </div> 
     </div>
     `;
+}
+
+function getTaskCardSubtaskTemplate(indexTask) {
+  return `
+  <div class="progress-bar">
+    <div class="progress-bar-status" id="progress-${indexTask}"></div>
+  </div>
+  <div class="font-Inter-400-12px text-color-black">
+    ${tasksArray[indexTask][1].subtasks.length}/${tasksArray[indexTask][1].subtasks.length} Subtasks
+  </div>
+  `;
 }
 
 function getTaskCardContactsTemplate(indexTaskContact, indexTask) {
