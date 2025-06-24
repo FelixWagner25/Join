@@ -20,13 +20,26 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
   let boardColRef = document.getElementById(columHTMLid);
   boardColRef.innerHTML = "";
   for (let i = 0; i < tasksArray.length; i++) {
-    if (tasksArray[i][1].status != taskStatusId) {
+    if (!taskHasStatus(taskStatusId, i)) {
       continue;
     }
     boardColRef.innerHTML += getBoardCardTemplate(i);
+    if (subtasksExist(i)) {
+      renderSubtaskProgressInfo(i);
+    }
     renderBoardCardContacts(i);
   }
 }
+
+function taskHasStatus(taskStatusId, indexTask) {
+  return tasksArray[indexTask][1].status === taskStatusId;
+}
+
+function subtasksExist(indexTask) {
+  return tasksArray[indexTask][1].subtasks !== undefined;
+}
+
+function renderSubtaskProgressInfo(indexTask) {}
 
 function renderBoardCardContacts(indexTask) {
   let htmlId = "task-contacts-" + String(indexTask);

@@ -144,8 +144,6 @@
   color: #a8a8a8;
   font-size: 16px;
   font-weight: 400;
-  line-height: 120%;
-  letter-spacing: 0;
   font-family: OpenSans;
 }
 
@@ -178,15 +176,10 @@
 }
 
 .task-headline {
-  line-height: 120%;
-  letter-spacing: 0;
   color: #2a3647;
 }
 
 .task-description {
-  height: 38px;
-  line-height: 120%;
-  letter-spacing: 0;
   color: #a8a8a8;
 }
 
@@ -216,32 +209,8 @@
 }
 
 .task-card-subtasks {
-  line-height: 120%;
-  letter-spacing: 0;
   color: black;
   white-space: nowrap;
-}
-
-.task-contacts-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 45px;
-  gap: 10px;
-  color: #ffffff;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 120%;
-  letter-spacing: 0;
-  border: 1px;
-  border-color: #ffffff;
-  border-style: solid;
-}
-
-.task-contacts-icon + .task-contacts-icon {
-  margin-left: -8px;
 }
 
 .task-overlay {

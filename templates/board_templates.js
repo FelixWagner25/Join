@@ -17,6 +17,7 @@ function getBoardCardTemplate(indexTask) {
                   tasksArray[indexTask][1].description
                 }</div>   
             </div>
+            <div id="subtasks-progress"></div>
             <div class="d-flex-c-sb">
                     <div class="d-flex mg-l-8px" id="task-contacts-${indexTask}">
                     </div>
