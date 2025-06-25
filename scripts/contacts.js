@@ -16,7 +16,8 @@ let contactColorClasses = [
   "bg-sand",
 ];
 
-let databasee = "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
+let databasee =
+  "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
 
 let overlayTransitionMiliSeconds = 250;
 bannerTransitionTimeMilliSeconds = 3000;
@@ -170,7 +171,7 @@ async function getCurrentContactAttribute(attribute, indexContact) {
  */
 async function addNewContact() {
   let newContactData = getContactInformation("add-contact-input-");
-  await submitNewContact("contacts", newContactData);
+  await submitObjectToDatabase("contacts", newContactData);
   await renderContactsList();
   closeContactOverlays();
   showNewContactCreatedMessage();
@@ -206,26 +207,6 @@ function clearAddContactForm(htmlIdPrefix) {
   phoneRef.value = "";
 }
 
-/**
- * This function uploads contact data to the firebase database.
- *
- * @param {string} path - storage path on firebase server
- * @param {object} contactData - contact data as JS object
- * @typedef {Object} contactData
- * @property {string} name
- * @property {string} email
- * @property {string} phone
- */
-async function submitNewContact(path = "", contactData = {}) {
-  let response = await fetch(databasee + path + ".json", {
-    method: "POST",
-    header: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(contactData),
-  });
-}
-
 function showNewContactCreatedMessage() {
   bannerRef = document.getElementById("contact-created-banner");
   bannerRef.classList.add("animate-banner");
@@ -243,26 +224,10 @@ async function updateContact(indexContact) {
   let htmlIdPrefix = "input-" + String(indexContact) + "-";
   let editedContactData = getContactInformation(htmlIdPrefix);
   let contactPath = "contacts/" + contactsArray[indexContact][0];
-  await submitUpdateContact(contactPath, editedContactData);
+  await updateDatabaseObject(contactPath, editedContactData);
   await renderContactsList();
   renderContactDetails(indexContact);
   closeContactOverlays();
-}
-
-/**
- * This function updates the attributes of existing contacts on firebase server.
- *
- * @param {string} path
- * @param {object} contactData
- */
-async function submitUpdateContact(path = "", contactData = {}) {
-  let response = await fetch(database + path + ".json", {
-    method: "PUT",
-    header: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(contactData),
-  });
 }
 
 /**

@@ -251,6 +251,26 @@ async function getDataBaseElement(path = "") {
   return responseJSON;
 }
 
+async function submitObjectToDatabase(path = "", object = {}) {
+  let response = await fetch(databasee + path + ".json", {
+    method: "POST",
+    header: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(object),
+  });
+}
+
+async function updateDatabaseObject(path = "", object = {}) {
+  let response = await fetch(database + path + ".json", {
+    method: "PUT",
+    header: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(object),
+  });
+}
+
 /**
  * This function delets an element form firebase server and collects the response as JSON
  *

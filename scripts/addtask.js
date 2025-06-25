@@ -7,6 +7,20 @@ let selectedContacts = [];
 // Variable to store all contacts
 let allContacts = {};
 
+async function addNewTask() {
+  let newTaskData = getNewTaskInformation();
+  // await submitObjectToDatabase("tasks", newTaskData);
+  renderBoard();
+  closeAddTaskOverlay();
+  showNewTaskCreatedMessage();
+}
+
+function getNewTaskInformation() {}
+
+function closeAddTaskOverlay() {}
+
+function showNewTaskCreatedMessage() {}
+
 async function loadContacts() {
   try {
     const response = await fetch(
