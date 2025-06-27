@@ -85,6 +85,8 @@
   flex-direction: column;
   gap: 24px;
   width: 246px;
+  overflow-y: scroll;
+  height: calc(100vh - 326px) /* 585px */;
 }
 
 .add-task-btn {
@@ -190,4 +192,30 @@
   border: 1px solid #ffffff;
   border-radius: 50%;
   margin-left: -8px;
+}
+
+
+.task-overlay-wrap{
+  display: flex;
+  position: absolute;
+  z-index: 100;
+  width: 525px;
+  height: 100vh;
+  border-radius: 30px;
+  padding: 48px 40px;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.16);
+
+  transform: translate(100%, 0);
+  transition: transform 250ms linear;
+}
+
+.task-overlay-blur{
+  background-color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+
 }

@@ -1,7 +1,7 @@
 function getBoardCardTemplate(indexTask) {
   return `
-    <div class="task-card-wrap">
-          <div class="task-card d-flex-column">
+    <div class="task-card-wrap" >
+          <div class="task-card d-flex-column" onclick="showTaskOverlay()">
             <div>
               <div class="task-category font-Inter-400-16px ${getTaskCategoryClass(
                 tasksArray[indexTask][1].category
@@ -53,4 +53,38 @@ function getTaskCardContactsTemplate(indexTaskContact, indexTask) {
     </div>
   </div>
   `;
+}
+
+
+function showTaskOverlay(params) {
+  blurBackgroundBoard();
+  setTimeout(() => {
+  getTaskOverlay();
+  }, overlayTransitionMiliSeconds);
+}
+
+
+function blurBackgroundBoard() {
+  document.getElementById("task-overlay").classList.remove("d-none");
+}
+
+function getTaskOverlay(params) {
+  let overlay = document.getElementById('task-overlay')
+  overlay.innerHTML = `
+  <div class="task-overlay-wrap bg-white" id="task-overlay-wrap" onclick="event.stopPropagation()">
+    <div class="task-overlay">
+    </div>
+  </div>
+  `;
+}
+
+function overlayWipe(params) {
+  let taskOverlayRef = document.getElementById("task-overlay-wrap");
+  taskOverlayRef.classList.add("overlay-open");
+}
+
+function closeTaskOverlays() {
+  document.getElementById("task-overlay-wrap").classList.remove("task-overlay-wrap");
+  document.getElementById("task-overlay").classList.add("d-none");
+  document.getElementById("task-overlay").classList.remove("task-overlay-blur");
 }
