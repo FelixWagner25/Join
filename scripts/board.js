@@ -13,7 +13,7 @@ function renderBoard() {
   renderBoardColumn("to-do", "todo");
   // renderBoardColumn("in-progress");
   // renderBoardColumn("await-feedback");
-  // renderBoardColumn("done");
+  // renderBoardColumn("done");f
 }
 
 function renderBoardColumn(columHTMLid, taskStatusId) {

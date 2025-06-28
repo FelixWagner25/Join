@@ -187,27 +187,35 @@
 }
 
 .task-card-contact-badge {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border: 1px solid #ffffff;
   border-radius: 50%;
   margin-left: -8px;
 }
 
+.task-overlay{
+  gap: 30px;
+}
 
 .task-overlay-wrap{
-  display: flex;
-  position: absolute;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   z-index: 100;
   width: 525px;
-  height: 100vh;
+  max-height: 100vh;
   border-radius: 30px;
   padding: 48px 40px;
   box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.16);
-
-  transform: translate(100%, 0);
-  transition: transform 250ms linear;
+  transform: translate(calc(100vw - 50%), -50%);
+  transition: transform 250ms ease;
 }
+
+.task-overlay-wrap.open {
+  transform: translate(-50%, -50%);
+}
+
 
 .task-overlay-blur{
   background-color: rgba(0, 0, 0, 0.25);
@@ -218,4 +226,48 @@
   bottom: 0;
   height: 100vh;
 
+}
+
+.task-overlay-desc{
+  min-height: 24px;
+  max-width: 445px;
+}
+
+.task-overlay-meta-wrap{
+  gap: 25px;
+  height: 24px;
+}
+
+.task-overlay-assignment-wrap{
+  max-height: 208px;
+  max-width: 445px;
+  gap: 8px;
+}
+
+.task-overlay-assignment-wrap>article{
+  gap: 4px;
+  max-height: 176px;
+  max-width: 445px;
+}
+
+.task-overlay-contact{
+  max-height: 56px;
+  max-width: 216px;
+  border-radius: 10%;
+  padding: 7px 16px;
+  gap: 16px;
+  
+}
+
+.task-overlay-checkbox-wrap{
+  gap: 16px;
+  padding: 6px 16px;
+  height: 32px;
+  max-width: 344px;
+
+}
+
+.edit-delete-wrap{
+  gap: 8px;
+  flex-direction: row-reverse;
 }
