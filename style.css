@@ -69,9 +69,21 @@ button:disabled:hover {
   flex-direction: column;
   justify-content: center;
 }
+
 .d-flex-c-sb {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.d-flex-sb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex-row-end-sb {
+  display: flex;
+  align-items: flex-end;
   justify-content: space-between;
 }
 

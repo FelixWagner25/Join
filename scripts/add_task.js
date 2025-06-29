@@ -269,50 +269,6 @@ function getTaskValues() {
   };
 }
 
-/**
- * Saves the task when user clicks create button
- */
-async function saveTask() {
-  const task = getTaskValues();
-  if (!task) return;
-
-  await fetch(
-    "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(task),
-    }
-  );
-  clearForm();
-}
-
-/**
- * Clears all form fields when user clicks clear button
- */
-function clearForm() {
-  document.getElementById("task-title").value = "";
-  document.getElementById("task-description").value = "";
-  document.getElementById("task-due-date").value = "";
-  document.getElementById("task-category").value = "";
-  document.getElementById("task-subtasks").value = "";
-
-  document.querySelectorAll(".priority-btn").forEach((btn) => {
-    btn.classList.remove("active");
-  });
-  currentPriority = null;
-
-  document.querySelectorAll(".subtask").forEach((subtask) => {
-    subtask.remove();
-  });
-
-  selectedContacts = [];
-  updateSelectedContactsDisplay();
-  document.getElementById("contacts-dropdown").style.display = "none";
-}
-
 // Close dropdown when clicking outside
 document.addEventListener("click", function (event) {
   const wrapper = document.querySelector(".multi-select-wrapper");

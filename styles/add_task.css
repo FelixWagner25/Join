@@ -45,7 +45,6 @@
   height: 80px;
 }
 
-
 .required::after {
   content: " *";
   color: #ff0000;
@@ -240,27 +239,55 @@ select {
   cursor: pointer;
 }
 
-
-.required-info {
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-
-}
-
-.required-info span{
-  color: #ff0000;
-}
-.action-buttons {
-  display: flex;
+.task-form-btn-wrap {
   gap: 16px;
 }
 
-.btn {
+.task-form-btn {
+  border: 1px solid #2a3647;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  gap: 4px;
+  gap: 17px;
+}
+
+.clear-task-btn-icon {
+  width: 11px;
+  height: 11px;
+  background-image: url("/assets/icons/cancel.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.clear-task-btn {
+  color: #2a3647;
+}
+
+.clear-task-btn:hover {
+  color: #29abe2;
+  border: 1px solid #29abe2;
+}
+
+.clear-task-btn:hover .clear-task-btn-icon {
+  background-image: url("/assets/icons/close-blue.svg");
+}
+
+.submit-task-btn {
+  background-color: #2a3647;
+}
+
+.submit-task-btn:hover {
+  background-color: #29abe2;
+}
+
+.submit-task-btn-icon {
+  width: 11px;
+  height: 11px;
+  background-image: url("/assets/icons/check.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .btn-clear {
@@ -289,8 +316,8 @@ select {
 
 .btn .checkmark {
   font-size: 18px;
-    height: 24px;
-    width: 24px;
+  height: 24px;
+  width: 24px;
 }
 
 .subtask {
@@ -311,5 +338,3 @@ select {
   cursor: pointer;
   padding: 0;
 }
-
-
