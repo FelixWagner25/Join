@@ -282,9 +282,9 @@ select {
 }
 
 .submit-task-btn-icon {
-  width: 11px;
+  width: 16px;
   height: 11px;
-  background-image: url("/assets/icons/check.svg");
+  background-image: url("/assets/icons/check_withoutBorder.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
