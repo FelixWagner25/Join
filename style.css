@@ -264,3 +264,16 @@ button:disabled:hover {
   padding-top: 64px;
   padding-right: 400px;
 }
+
+.pd-t-110px {
+  padding-top: 110px;
+}
+
+.pd-lr-96px {
+  padding-left: 96px;
+  padding-right: 96px;
+}
+
+.pd-b-64px {
+  padding-bottom: 64px;
+}

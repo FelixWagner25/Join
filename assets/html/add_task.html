@@ -1,96 +1,95 @@
 <body>
-    <main class="add-task-wrapper">
-        <form class="add-task-container" onsubmit="addNewTask()">
-            <h1>Add Task</h1>
-
-            <div class="form-section">
-                <div class="form-column">
-                    <div class="input-group">
-                        <label class="input-label required">Title</label>
-                        <input type="text" id="task-title" placeholder="Enter a title">
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label">Description</label>
-                        <textarea id="task-description" placeholder="Enter a Description"></textarea>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label required">Due Date</label>
-                        <input type="date" id="task-due-date" placeholder="dd/mm/yyyy">
-                    </div>
+<div class="pd-t-110px pd-lr-96px d-flex-column add-task-form-wrap">
+    <h1 class="font-Inter-700-61px">Add Task</h1>
+    <form class="" onsubmit="addNewTask()">
+        <div class="d-flex-sb add-task-form-input pd-b-64px">
+            <div class="form-column">
+                <div class="input-group">
+                    <label class="input-label required">Title</label>
+                    <input type="text" id="task-title" placeholder="Enter a title">
                 </div>
 
-                <div class="divider"></div>
+                <div class="input-group">
+                    <label class="input-label">Description</label>
+                    <textarea id="task-description" placeholder="Enter a Description"></textarea>
+                </div>
 
-                <div class="form-column">
-                    <div class="input-group">
-                        <label class="input-label">Priority</label>
-                        <div class="priority-buttons">
-                            <button class="priority-btn" id="priority-urgent" onclick="setPriority('urgent')">
-                                <span>Urgent</span>
-                                <img src="/assets/icons/urgent.png" alt="Urgent">
-                            </button>
-                            <button class="priority-btn" id="priority-medium" onclick="setPriority('medium')">
-                                <span>Medium</span>
-                                <img src="/assets/icons/medium.png" alt="Medium">
-                            </button>
-                            <button class="priority-btn" id="priority-low" onclick="setPriority('low')">
-                                <span>Low</span>
-                                <img src="/assets/icons/low.png" alt="Low">
-                            </button>
-                        </div>
-                    </div>
-
-                     <div class="input-group">
-                        <label class="input-label">Assigned To</label>
-                        <div class="multi-select-wrapper" onfocus="initAssignedToDropdown()">
-                            <div class="multi-select-display" onclick="toggleAssignedDropdown()">
-                                <div class="selected-items" id="selected-contacts">
-                                    <span>Select contacts to assign</span>
-                                </div>
-                            </div>
-                            <div class="multi-select-dropdown" id="contacts-dropdown">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label required">Category</label>
-                        <div class="select-wrapper">
-                            <select id="task-category" onfocus="initCategoryDropdown()">
-                                <option value="" disabled selected>Select task category</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label">Subtasks</label>
-                        <div class="input-with-icon">
-                            <input type="text" id="task-subtasks" placeholder="Add new subtask"
-                                onkeypress="if(event.key === 'Enter') addSubtask();">
-                            <button class="add-subtask" onclick="addSubtask()">+</button>
-                        </div>
-                    </div>
+                <div class="input-group">
+                    <label class="input-label required">Due Date</label>
+                    <input type="date" id="task-due-date" placeholder="dd/mm/yyyy">
                 </div>
             </div>
 
-            <div class="d-flex-row-end-sb">
-                <div class="font-Inter-400-16px"><span class="col-red">*</span>This field is required</div>
+            <div class="divider"></div>
 
-                <div class="task-form-btn-wrap d-flex">
-                    <button class="task-form-btn d-flex-row-c-c clear-task-btn" type="reset">
-                        <span class="font-Inter-400-20px">Clear</span>
-                        <span class="clear-task-btn-icon"></span>
-                    </button>
-                    <button class="task-form-btn d-flex-row-c-c text-color-white submit-task-btn" type="submit">
-                        <span class="font-Inter-700-21px">Create Task</span>
-                        <span class="submit-task-btn-icon"></span>
-                    </button>
+            <div class="form-column">
+                <div class="input-group">
+                    <label class="input-label">Priority</label>
+                    <div class="priority-buttons">
+                        <button class="priority-btn" id="priority-urgent" onclick="setPriority('urgent')">
+                            <span>Urgent</span>
+                            <img src="/assets/icons/urgent.png" alt="Urgent">
+                        </button>
+                        <button class="priority-btn" id="priority-medium" onclick="setPriority('medium')">
+                            <span>Medium</span>
+                            <img src="/assets/icons/medium.png" alt="Medium">
+                        </button>
+                        <button class="priority-btn" id="priority-low" onclick="setPriority('low')">
+                            <span>Low</span>
+                            <img src="/assets/icons/low.png" alt="Low">
+                        </button>
+                    </div>
+                </div>
+
+                    <div class="input-group">
+                    <label class="input-label">Assigned To</label>
+                    <div class="multi-select-wrapper" onfocus="initAssignedToDropdown()">
+                        <div class="multi-select-display" onclick="toggleAssignedDropdown()">
+                            <div class="selected-items" id="selected-contacts">
+                                <span>Select contacts to assign</span>
+                            </div>
+                        </div>
+                        <div class="multi-select-dropdown" id="contacts-dropdown">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label required">Category</label>
+                    <div class="select-wrapper">
+                        <select id="task-category" onfocus="initCategoryDropdown()">
+                            <option value="" disabled selected>Select task category</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Subtasks</label>
+                    <div class="input-with-icon">
+                        <input type="text" id="task-subtasks" placeholder="Add new subtask"
+                            onkeypress="if(event.key === 'Enter') addSubtask();">
+                        <button class="add-subtask" onclick="addSubtask()">+</button>
+                    </div>
                 </div>
             </div>
-        </form>
-    </main>
+        </div>
+
+        <div class="d-flex-row-end-sb">
+            <div class="font-Inter-400-16px"><span class="col-red">*</span>This field is required</div>
+
+            <div class="task-form-btn-wrap d-flex">
+                <button class="task-form-btn d-flex-row-c-c clear-task-btn" type="reset">
+                    <span class="font-Inter-400-20px">Clear</span>
+                    <span class="clear-task-btn-icon"></span>
+                </button>
+                <button class="task-form-btn d-flex-row-c-c text-color-white submit-task-btn" type="submit">
+                    <span class="font-Inter-700-21px">Create Task</span>
+                    <span class="submit-task-btn-icon"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 
 </html>

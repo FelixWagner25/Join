@@ -1,8 +1,13 @@
-.add-task-container {
-  max-width: 976.25px;
-  width: 100%;
-  margin-left: 96px;
-  margin: 110px 135px 0 96px;
+h1 {
+  margin: 0;
+}
+
+.add-task-form-wrap {
+  gap: 48px;
+}
+
+.add-task-form-input {
+  gap: 48px;
 }
 
 .form-section {
@@ -288,36 +293,6 @@ select {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.btn-clear {
-  background: white;
-  border: 1px solid #2a3647;
-  color: #2a3647;
-  width: 110px;
-  height: 56px;
-}
-
-.btn-clear:hover {
-  background: rgb(221, 220, 220);
-}
-
-.btn-create {
-  background: #2a3647;
-  color: white;
-  border: none;
-  width: 183px;
-  height: 56px;
-}
-
-.btn-create:hover {
-  background: #354253;
-}
-
-.btn .checkmark {
-  font-size: 18px;
-  height: 24px;
-  width: 24px;
 }
 
 .subtask {
