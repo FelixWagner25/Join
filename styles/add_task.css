@@ -171,6 +171,7 @@ select {
 }
 
 .task-priority-btn {
+  width: 136px;
   padding: 16px 10px;
   background: white;
   box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
