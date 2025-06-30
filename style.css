@@ -277,3 +277,15 @@ button:disabled:hover {
 .pd-b-64px {
   padding-bottom: 64px;
 }
+
+.gap-8px {
+  gap: 8px;
+}
+
+.gap-32px {
+  gap: 32px;
+}
+
+.gap-48px {
+  gap: 48px;
+}

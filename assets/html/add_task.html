@@ -2,25 +2,25 @@
 <div class="pd-t-110px pd-lr-96px d-flex-column add-task-form-wrap">
     <h1 class="font-Inter-700-61px">Add Task</h1>
     <form class="" onsubmit="addNewTask()">
-        <div class="d-flex-sb add-task-form-input pd-b-64px">
-            <div class="form-column">
-                <div class="input-group">
-                    <label class="input-label required">Title</label>
-                    <input type="text" id="task-title" placeholder="Enter a title">
+        <div class="d-flex-sb gap-48px pd-b-64px">
+            <div class="d-flex-column gap-32px">
+                <div class="d-flex-column gap-8px">
+                    <label class="font-Inter-400-20px text-color-2A3647">Title<sup class="col-red">*</sup></label>
+                    <input class="task-input-text-field font-Inter-400-12px" type="text" id="task-title" placeholder="Enter a title">
                 </div>
 
-                <div class="input-group">
-                    <label class="input-label">Description</label>
-                    <textarea id="task-description" placeholder="Enter a Description"></textarea>
+                <div class="d-flex-column gap-8px">
+                    <label class="font-Inter-400-20px text-color-2A3647">Description</label>
+                    <textarea class="task-input-text-area font-Inter-400-12px" id="task-description" placeholder="Enter a Description"></textarea>
                 </div>
 
-                <div class="input-group">
-                    <label class="input-label required">Due Date</label>
-                    <input type="date" id="task-due-date" placeholder="dd/mm/yyyy">
+                <div class="d-flex-column gap-8px">
+                    <label class="input-label">Due date<sup class="col-red">*</sup></label>
+                    <input class="task-input-date" type="date" id="task-due-date" placeholder="dd/mm/yyyy">
                 </div>
             </div>
 
-            <div class="divider"></div>
+            <div class="separator"></div>
 
             <div class="form-column">
                 <div class="input-group">
@@ -75,7 +75,7 @@
         </div>
 
         <div class="d-flex-row-end-sb">
-            <div class="font-Inter-400-16px"><span class="col-red">*</span>This field is required</div>
+            <div class="font-Inter-400-16px"><sup class="col-red">*</sup>This field is required</div>
 
             <div class="task-form-btn-wrap d-flex">
                 <button class="task-form-btn d-flex-row-c-c clear-task-btn" type="reset">
