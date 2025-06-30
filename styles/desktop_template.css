@@ -95,7 +95,15 @@ nav > span {
 
 nav > a:hover {
   cursor: pointer;
-  background-color: #091931;
+  background-color: #2a3d59;
+}
+
+.active{
+  background-color: #091931
+}
+
+.active:hover{
+  background-color: #091931
 }
 
 .dropdown-menu-container{

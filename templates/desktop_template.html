@@ -30,14 +30,14 @@
 
 </head>
 
-<body onload="init();">
+<body onload="init()">
     <div class="page">
         <header>
             <div class="header-container">
                 <div>Kanban Project Management Tool</div>
                 <div class="header-user">
                     <img class="help-icon" src="/assets/icons/header_help_icon.svg" alt="">
-                    <div class="profile-ellipse" onload="loadProfile()" onclick="toggleDropdown()">
+                    <div class="profile-ellipse" onload="loadProfile()" onclick="toggleDropdown(event)">
                         <img src="/assets/icons/header_profile_ellipse.svg" alt="">
                         <span id="profile-initials" class="text-center">G</span>
                     </div>
@@ -61,13 +61,13 @@
                 <img src="/assets/icons/join_icon.svg" alt="join-logo">
             </div>
             <nav>
-                <a href="#summary" onclick="loadContent('/assets/html/summary.html')"><img
+                <a href="#summary" class="nav-link" onclick="loadContent('/assets/html/summary.html'), activeNav()"><img
                         src="/assets/icons/summary_icon.svg" alt="#"><span>Summary</span></a>
-                <a href="#add_task" onclick="loadContent('/assets/html/add_task.html')"><img
+                <a href="#add_task" class="nav-link" onclick="loadContent('/assets/html/add_task.html'), activeNav()"><img
                         src="/assets/icons/add_task_icon.svg" alt="#"><span>Add Task</span></a>
-                <a href="#board" onclick="loadContent('/assets/html/board.html'), initBoard()"><img
+                <a href="#board" class="nav-link" onclick="loadContent('/assets/html/board.html'), initBoard(), activeNav()" onload="initBoard()"><img
                         src="/assets/icons/board_icon.svg" alt="#"><span>Board</span></a>
-                <a href="#contacts" onclick="loadContent('/assets/html/contacts.html'), renderContactsList()"><img
+                <a href="#contacts" class="nav-link" onclick="loadContent('/assets/html/contacts.html'), renderContactsList(), activeNav()"><img
                         src="/assets/icons/contacts_icon.svg" alt="#"><span>Contacts</span></a>
             </nav>
             <div class="policy-legal">
@@ -77,7 +77,7 @@
             </div>
         </aside>
 
-        <main  w3-include-html="/assets/html/summary.html"></main>
+        <main id="main" w3-include-html="/assets/html/summary.html"></main>
 
 
 

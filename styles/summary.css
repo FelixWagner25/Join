@@ -45,6 +45,7 @@ body {
 }
 
 .card {
+  color:#2a3647;
   border-radius: 22px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 24px;
@@ -55,17 +56,43 @@ body {
   flex: 1;
   text-align: center;
   min-height: 120px;
+  gap: 18px;
+}
+
+.card:hover{
+  background-color: #2a3647;
+  color: white !important;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+  transform: scale(1.1);
+  transition: transform .1s ease-in-out;
 }
 
 .card-icon {
-  width: 60px;
-  height: 60px;
-  margin-right: 20px;
+  width: 69px;
+  height: 69px;
 }
+
+.edit{
+  background-image: url('/assets/icons/edit.svg');
+  background-size: contain;
+}
+
+.check{
+    background-image: url('/assets/icons/check.svg');
+    background-size: contain;
+}
+
+.card:hover > .edit{
+    background-image: url('/assets/icons/edit_hover.svg');
+}
+
+.card:hover > .check{
+  background-image: url('/assets/icons/check_hover.svg');
+}
+
 
 .card-title {
   font-size: 20px;
-  color: #666;
 }
 
 .large-card {
