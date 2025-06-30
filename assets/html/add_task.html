@@ -22,21 +22,21 @@
 
             <div class="separator"></div>
 
-            <div class="form-column">
-                <div class="input-group">
-                    <label class="input-label">Priority</label>
-                    <div class="priority-buttons">
-                        <button class="priority-btn" id="priority-urgent" onclick="setPriority('urgent')">
+            <div class="d-flex-column gap-32px">
+                <div class="d-flex-column gap-8px">
+                    <label class="font-Inter-400-20px text-color-2A3647">Priority</label>
+                    <div class="d-flex gap-16px">
+                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-urgent" onclick="setTaskPriority('task-priority-urgent')">
                             <span>Urgent</span>
-                            <img src="/assets/icons/urgent.png" alt="Urgent">
+                            <span class="task-priority-btn-icon urgent-icon"></span>
                         </button>
-                        <button class="priority-btn" id="priority-medium" onclick="setPriority('medium')">
+                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-medium" onclick="setTaskPriority('task-priority-medium')">
                             <span>Medium</span>
-                            <img src="/assets/icons/medium.png" alt="Medium">
+                            <span class="task-priority-btn-icon medium-icon"></span>
                         </button>
-                        <button class="priority-btn" id="priority-low" onclick="setPriority('low')">
+                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-low" onclick="setTaskPriority('task-priority-low')">
                             <span>Low</span>
-                            <img src="/assets/icons/low.png" alt="Low">
+                            <span class="task-priority-btn-icon low-icon"></span>
                         </button>
                     </div>
                 </div>

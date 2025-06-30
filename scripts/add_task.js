@@ -10,7 +10,7 @@ let allContacts = {};
 async function addNewTask() {
   let newTaskData = getNewTaskInformation();
   // await submitObjectToDatabase("tasks", newTaskData);
-  renderBoard();
+  //renderBoard();
   closeAddTaskOverlay();
   showNewTaskCreatedMessage();
 }
@@ -20,6 +20,24 @@ function getNewTaskInformation() {}
 function closeAddTaskOverlay() {}
 
 function showNewTaskCreatedMessage() {}
+
+function setTaskPriority(htmlId) {
+  let buttons = document.getElementsByClassName("task-priority-btn");
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active-urgent", "active-medium", "active-low");
+  }
+  let activeBtn = document.getElementById(htmlId);
+  switch (htmlId) {
+    case "task-priority-urgent":
+      activeBtn.classList.add("active-urgent");
+      break;
+    case "task-priority-low":
+      activeBtn.classList.add("active-low");
+    default:
+      activeBtn.classList.add("active-medium");
+      break;
+  }
+}
 
 async function loadContacts() {
   try {
