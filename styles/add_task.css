@@ -16,25 +16,28 @@ h1 {
   background-color: #d1d1d1;
 }
 
+.task-input-border {
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+}
+
+.task-input-border:focus {
+  border: 1px solid #29abe2;
+}
+
 .task-input-text-field {
   height: 48px;
   min-width: 440px;
-  border: 1px solid #d1d1d1d1;
   padding: 12px 21px;
-  border-radius: 10px;
 }
 
 .task-input-text-area {
   min-height: 120px;
-  border: 1px solid #d1d1d1d1;
   padding: 18px 16px;
-  border-radius: 10px;
 }
 
 .task-input-date {
   height: 48px;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1d1;
   padding: 12px 16px;
 }
 

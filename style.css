@@ -25,6 +25,16 @@ button:disabled:hover {
   cursor: default;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
+textarea {
+  border: none;
+  outline: none;
+}
+
 .text-center {
   position: absolute;
   top: 50%;
