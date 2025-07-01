@@ -89,6 +89,47 @@ h1 {
   background-color: #d1d1d1;
 }
 
+.task-subtask-icon {
+  top: 56px;
+  transform: translateY(-50%);
+  right: 16px;
+}
+
+.task-add-subtask-icon {
+  width: 14px;
+  height: 14px;
+  background-image: url("/assets/icons/add.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+.task-clear-subtask-icon {
+  width: 11px;
+  height: 11px;
+  background-image: url("/assets/icons/cancel.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.task-submit-subtask-icon {
+  width: 16px;
+  height: 11px;
+  background-image: url("/assets/icons/check_blue.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.task-subtask-icon-wrap {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.task-subtask-icon-wrap:hover {
+  background-color: #e8e8e8;
+}
+
 .clear-task-btn-icon {
   width: 11px;
   height: 11px;
@@ -109,6 +150,23 @@ h1 {
 
 .clear-task-btn:hover .clear-task-btn-icon {
   background-image: url("/assets/icons/close-blue.svg");
+}
+
+.submit-task-btn {
+  background-color: #2a3647;
+}
+
+.submit-task-btn:hover {
+  background-color: #29abe2;
+}
+
+.submit-task-btn-icon {
+  width: 16px;
+  height: 11px;
+  background-image: url("/assets/icons/check_withoutBorder.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .task-priority-btn {
@@ -172,56 +230,4 @@ h1 {
 
 .active-low .low-icon {
   background-image: url("/assets/icons/low_white.svg");
-}
-
-.input-with-icon {
-  position: relative;
-}
-
-.add-subtask {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #2a3647;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.submit-task-btn {
-  background-color: #2a3647;
-}
-
-.submit-task-btn:hover {
-  background-color: #29abe2;
-}
-
-.submit-task-btn-icon {
-  width: 16px;
-  height: 11px;
-  background-image: url("/assets/icons/check_withoutBorder.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.subtask {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  background: #f6f7f8;
-  border-radius: 8px;
-  margin-top: 8px;
-}
-
-.delete-subtask {
-  background: none;
-  border: none;
-  color: #ff0000;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 0;
 }

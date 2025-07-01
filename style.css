@@ -123,6 +123,10 @@ textarea {
   height: 100vh;
 }
 
+.mg-t-8px {
+  margin-top: 8px;
+}
+
 .mg-t-48px {
   margin-top: 48px;
 }
@@ -286,6 +290,10 @@ textarea {
 
 .pd-b-64px {
   padding-bottom: 64px;
+}
+
+.gap-4px {
+  gap: 4px;
 }
 
 .gap-8px {

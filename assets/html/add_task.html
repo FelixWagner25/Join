@@ -64,13 +64,23 @@
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <label class="input-label">Subtasks</label>
-                    <div class="input-with-icon">
-                        <input type="text" id="task-subtasks" placeholder="Add new subtask"
-                            onkeypress="if(event.key === 'Enter') addSubtask();">
-                        <button class="add-subtask" onclick="addSubtask()">+</button>
+                <div class="d-flex-column gap-8px p-relative">
+                    <label for="task-subtasks" class="font-Inter-400-20px text-color-2A3647">Subtasks</label>
+                    <input class="p-relative task-input-border task-input-category font-Inter-400-20px" type="text" id="task-subtasks" placeholder="Add new subtask">
+                    <span class="p-absolute task-subtask-icon task-add-subtask-icon" id="task-add-subtask-icon"></span>
+                    <div class="d-none p-absolute d-flex gap-8px task-subtask-icon task-subtask-clear-submit-icon-wrap">
+                        <div class="d-flex-row-c-c task-subtask-icon-wrap">
+                        <span class="task-clear-subtask-icon"></span>
+                        </div>
+                        <span class="separator"></span>
+                        <div class="d-flex-row-c-c task-subtask-icon-wrap">
+                        <span class="task-submit-subtask-icon"></span>
+                        </div>
                     </div>
+                    <ul class="task-subtasks-list" id="tasks-subtasks-list">
+                        <li class="font-Inter-400-13px mg-t-8px">Contact Form</li>
+                        <li class="font-Inter-400-13px mg-t-8px">Write Legal Imprint</li>
+                    </ul>
                 </div>
             </div>
         </div>
