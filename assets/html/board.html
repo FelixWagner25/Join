@@ -30,11 +30,11 @@
             <div class="board-headline-text">Board</div>
             <div class="board-search-add-task-wrap">
                 <div class="search-wrap">
-                    <input type="text" placeholder="Find Task" class="search-input" />
+                    <input type="text" placeholder="Find Task" class="search-input" oninput="searchTask()"/>
                     <div class="search-icon-wrap">
                         <div class="board-vline"></div>
-                        <div class="d-flex-row-c-c">
-                            <img src="/assets/icons/search.svg" alt="search" class="search-icon" />
+                        <div class="d-flex-row-c-c search-icon-div">
+                            <button class="search-icon"></button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="col-content-wrap">
                 <div class="col-title-wrap mg-b-16px">
                     <div class="col-title">To do</div>
-                    <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+                    <button class="add-btn" alt="add button"></button>
                 </div>
                 <div class="col-content" id="to-do">
                     <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks To do</div>
@@ -62,7 +62,7 @@
             <div class="col-content-wrap">
                 <div class="col-title-wrap mg-b-16px">
                     <div class="col-title">In progress</div>
-                    <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+                    <button class="add-btn" alt="add button"></button>
                 </div>
                 <div class="col-content" id="in-progress">
                     <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks in progress</div>
@@ -72,7 +72,7 @@
             <div class="col-content-wrap">
                 <div class="col-title-wrap mg-b-16px">
                     <div class="col-title">Await feedback</div>
-                    <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+                    <button class="add-btn" alt="add button"></button>
                 </div>
                 <div class="col-content" id="await-feedback">
                     <div class="no-task-feedback  font-OpenSans-400-16px d-flex-row-c-c">No tasks awaiting feedback</div>

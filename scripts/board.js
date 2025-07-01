@@ -101,3 +101,13 @@ function getCategoryNameTemplate(taskCategory) {
   }
 }
 
+function searchTask() {
+  let taskWrap = document.getElementsByClassName('task-card-wrap');
+  let inputRef = document.getElementsByClassName('search-input');
+  let searchRef = document.getElementsByClassName('task-description-wrap');
+  let foundRef = "";
+  [...taskWrap].forEach((c) => c.classList.add('d-none'));
+  foundRef = [...searchRef].filter((t) => t.innerText.includes(inputRef[0].value));
+  foundRef.forEach((c) => c.parentElement.parentElement.classList.remove('d-none'));
+}
+
