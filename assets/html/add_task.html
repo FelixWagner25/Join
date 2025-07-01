@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/assets.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/styles/colors.css">
+    <link rel="stylesheet" href="/styles/desktop_template.css">
+    
+    <link rel="stylesheet" href="/styles/addtask.css">
+    <script src="/scripts/addtask.js"></script>
+    
+    <script src="/script.js"></script>
+    <script src="/scripts/desktop_template.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="/scripts/contacts.js"></script>
 </head>
-<body>
-
-
+<body onload="init()">
+<div class="page">
+<div class="d-contents" w3-include-html="/templates/desktop_template.html"></div>
+<main id="main">
     <div class="d-flex-align-item-c">
         <div class="add-task-container">
             <h1 class="font-Inter-700-61px">Add Task</h1>
@@ -101,9 +114,8 @@
         </div>
     </div>
 
-    <script src="/scripts/addtask.js"></script>
-
-    
+</main>
+</div>  
 </body>
 </html>
 

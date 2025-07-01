@@ -1,3 +1,11 @@
+body{
+  overflow: hidden;
+}
+
+main{
+  overflow: hidden ;
+}
+
 .contacts-details-headline-title {
   font-size: 61px;
   font-weight: 700;
@@ -261,7 +269,7 @@
   height: 100vh;
 }
 
-.add-contact-screen {
+.contact-screen {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -465,16 +473,21 @@
 }
 
 .contact-created-banner {
-  position: absolute;
+  position: fixed;
   top: 75%;
   left: 50%;
-  transform: translateX(300%);
+  transform: translate(calc(100vw - 50%), -50%);
+  transition: transform 250ms ease;
   color: white;
   background-color: #2a3647;
   font-size: 20px;
   font-weight: 400px;
   border-radius: 20px;
   padding: 20px;
+}
+
+.contact-created-banner.open {
+  transform: translate(-50%, -50%);
 }
 
 @keyframes bannerAnimation {

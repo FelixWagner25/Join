@@ -101,6 +101,114 @@ function getContactDetailsTemplate(indexContact) {
   `;
 }
 
+
+function getAddContactsScreenTemplate() {
+  return `
+        <div
+          class="close-icon-wrap d-flex-row-c-c"
+          onclick="closeContactOverlays()"
+        >
+          <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
+        </div>
+        <div class="add-contact-title-page">
+          <img
+            src="/assets/icons/join_icon.svg"
+            alt="Join Logo"
+            class="add-contacts-screen-logo mg-t-80px"
+          />
+          <div class="add-contacts-title-wrap">
+            <div class="add-contacts-screen-title-text-wrap">
+              <span class="add-contacts-screen-title-text">Add contact</span>
+              <span class="add-contacts-screen-title-subtext"
+                >Tasks are better with a team!</span
+              >
+            </div>
+            <div class="add-contacts-title-page-hline"></div>
+          </div>
+        </div>
+        <div class="mg-t-200px">
+          <div class="add-contact-badge-wrap d-flex-row-c-c">
+            <img
+              src="/assets/icons/person.svg"
+              alt="person icon"
+              class="add-contact-badge"
+            />
+          </div>
+        </div>
+        <div class="add-contact-input-check mg-t-140px">
+          <form class="add-contacts-form-wrap" onsubmit="addNewContact()">
+            <div class="add-contact-input-wrap">
+              <input
+                required
+                type="text"
+                class="add-contact-input"
+                placeholder="Name"
+                id="add-contact-input-name"
+              />
+              <img
+                src="/assets/icons/person_icon.svg"
+                alt="person-icon"
+                class="add-contact-input-icon"
+              />
+            </div>
+            <div class="add-contact-input-wrap">
+              <input
+                required
+                type="email"
+                class="add-contact-input"
+                placeholder="Email"
+                id="add-contact-input-email"
+              />
+              <img
+                src="/assets/icons/mail_icon.svg"
+                alt="email-icon"
+                class="add-contact-input-icon"
+              />
+            </div>
+            <div class="add-contact-input-wrap">
+              <input
+                type="tel"
+                class="add-contact-input"
+                placeholder="Phone"
+                id="add-contact-input-phone"
+              />
+              <img
+                src="/assets/icons/call.svg"
+                alt="call icon"
+                class="add-contact-input-icon"
+              />
+            </div>
+            <div class="add-contact-btns-wrap">
+              <button
+                type="button"
+                onclick="closeContactOverlays()"
+                class="add-contact-btn-cancel"
+              >
+                <span>Cancel</span>
+                <img
+                  src="/assets/icons/cancel.svg"
+                  alt="cancel"
+                  class="add-contact-btn-icon-cancel"
+                  onmouseover="this.src='/assets/icons/close-blue.svg';"
+                  onmouseout="this.src='/assets/icons/cancel.svg';"
+                />
+              </button>
+              <button type="submit" class="add-contact-btn">
+                <span>Create contact</span>
+                <img
+                  src="/assets/icons/check_withoutBorder.svg"
+                  alt="check"
+                  class="add-contact-btn-icon-check"
+                />
+              </button>
+            </div>
+          </form>
+        </div>
+  `
+}
+
+
+
 /**
  * This function returns the edit contact srceen template
  *
