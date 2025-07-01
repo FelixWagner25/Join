@@ -39,6 +39,26 @@ function setTaskPriority(htmlId) {
   }
 }
 
+function toggleTaskCategoryDropdown() {
+  let categoryDropdownRef = document.getElementById("task-category-dropdown");
+  let categoryDropdownIconRef = document.getElementById(
+    "task-category-dropdown-icon"
+  );
+  clearInputTagValue("task-category");
+  categoryDropdownRef.classList.toggle("d-none");
+  categoryDropdownIconRef.classList.toggle("task-dropdown-open-icon");
+}
+
+function clearInputTagValue(htmlId) {
+  let inputRef = document.getElementById(htmlId);
+  inputRef.value = "";
+}
+
+function setInputTagValue(htmlId, valueToSet) {
+  let inputRef = document.getElementById(htmlId);
+  inputRef.value = valueToSet;
+}
+
 async function loadContacts() {
   try {
     const response = await fetch(

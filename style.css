@@ -303,3 +303,15 @@ textarea {
 .gap-48px {
   gap: 48px;
 }
+
+.max-width-976px {
+  max-width: 976px;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
