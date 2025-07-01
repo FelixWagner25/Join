@@ -49,14 +49,37 @@ function toggleTaskCategoryDropdown() {
   categoryDropdownIconRef.classList.toggle("task-dropdown-open-icon");
 }
 
-function clearInputTagValue(htmlId) {
-  let inputRef = document.getElementById(htmlId);
-  inputRef.value = "";
+function closeTaskCategoryDropdown() {
+  let categoryDropdownRef = document.getElementById("task-category-dropdown");
+  let categoryDropdownIconRef = document.getElementById(
+    "task-category-dropdown-icon"
+  );
+  categoryDropdownRef.classList.add("d-none");
+  categoryDropdownIconRef.classList.remove("task-dropdown-open-icon");
 }
 
-function setInputTagValue(htmlId, valueToSet) {
-  let inputRef = document.getElementById(htmlId);
-  inputRef.value = valueToSet;
+function showSubtaskControlButtons() {
+  let subtaskInputValueLength =
+    document.getElementById("task-subtasks").value.length;
+  let addIconRef = document.getElementById("task-add-subtask-icon");
+  let controlIconsWrapRef = document.getElementById(
+    "task-clear-submit-subtask-icon-wrap"
+  );
+  if (subtaskInputValueLength > 0) {
+    addIconRef.classList.add("d-none");
+    controlIconsWrapRef.classList.remove("d-none");
+  } else {
+    addIconRef.classList.remove("d-none");
+    controlIconsWrapRef.classList.add("d-none");
+  }
+}
+
+function addSubtask() {
+  let subtaskListRef = document.getElementById("tasks-subtasks-list");
+  subtaskText = getInputTagValue("task-subtasks");
+  subtaskListRef.innerHTML += getSubtaskListTemplate(subtaskText);
+  clearInputTagValue("task-subtasks");
+  showSubtaskControlButtons();
 }
 
 async function loadContacts() {
@@ -72,17 +95,6 @@ async function loadContacts() {
 }
 
 /**
- * Sets the priority when user clicks a priority button
- * @param {string} priority - can be 'urgent', 'medium', or 'low'
- */
-function setPriority(priority) {
-  const buttons = document.querySelectorAll(".priority-btn");
-  buttons.forEach((btn) => btn.classList.remove("active"));
-  document.getElementById(`priority-${priority}`).classList.add("active");
-  currentPriority = priority;
-}
-
-/**
  * Creates a delete button for subtasks
  * @param {HTMLElement} subtaskDiv - The subtask div to remove when clicked
  * @returns {HTMLElement} The delete button element
@@ -93,49 +105,6 @@ function createDeleteButton(subtaskDiv) {
   deleteBtn.classList.add("delete-subtask");
   deleteBtn.addEventListener("click", () => subtaskDiv.remove());
   return deleteBtn;
-}
-
-/**
- * Creates a complete subtask element
- * @param {string} text - The subtask text
- * @returns {HTMLElement} The complete subtask div
- */
-function createSubtaskElement(text) {
-  const subtaskDiv = document.createElement("div");
-  subtaskDiv.classList.add("subtask");
-
-  const span = document.createElement("span");
-  span.textContent = text;
-
-  const deleteBtn = createDeleteButton(subtaskDiv);
-
-  subtaskDiv.appendChild(span);
-  subtaskDiv.appendChild(deleteBtn);
-
-  return subtaskDiv;
-}
-
-/**
- * Adds the subtask element to the DOM
- * @param {HTMLElement} subtaskElement - The subtask element to add
- */
-function insertSubtaskIntoDOM(subtaskElement) {
-  const container = document.querySelector(".input-with-icon");
-  container.parentNode.insertBefore(subtaskElement, container.nextSibling);
-}
-
-/**
- * Main function to add a new subtask
- */
-function addSubtask() {
-  const input = document.getElementById("task-subtasks");
-  const text = input.value.trim();
-
-  if (text) {
-    const subtaskElement = createSubtaskElement(text);
-    insertSubtaskIntoDOM(subtaskElement);
-    input.value = "";
-  }
 }
 
 /**
@@ -271,48 +240,3 @@ function initCategoryDropdown() {
     dropdown.appendChild(option);
   });
 }
-
-/**
- * Gets all values from the form to create a new task
- * @returns {Object|null} The task data or null if required fields are missing
- */
-function getTaskValues() {
-  const title = document.getElementById("task-title").value.trim();
-  const dueDate = document.getElementById("task-due-date").value;
-  const category = document.getElementById("task-category").value;
-
-  const description = document.getElementById("task-description").value.trim();
-
-  const subtasks = Array.from(document.querySelectorAll(".subtask span")).map(
-    (el) => el.textContent
-  );
-
-  if (!title || !dueDate || !category || !currentPriority) {
-    alert(
-      "Please fill in all required fields: Title, Due Date, Category and Priority!"
-    );
-    return null;
-  }
-
-  return {
-    title,
-    description: description || null,
-    dueDate,
-    category,
-    priority: currentPriority,
-    assignedTo: selectedContacts.length > 0 ? selectedContacts : null,
-    subtasks: subtasks.length > 0 ? subtasks : null,
-    status: "to-do",
-    createdAt: new Date().toISOString(),
-  };
-}
-
-// Close dropdown when clicking outside
-document.addEventListener("click", function (event) {
-  const wrapper = document.querySelector(".multi-select-wrapper");
-  const dropdown = document.getElementById("contacts-dropdown");
-
-  if (wrapper && dropdown && !wrapper.contains(event.target)) {
-    dropdown.style.display = "none";
-  }
-});

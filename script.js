@@ -297,3 +297,17 @@ function getFirstTwoStringInitials(inputString) {
   }
   return stringInitials;
 }
+
+function clearInputTagValue(htmlId) {
+  let inputRef = document.getElementById(htmlId);
+  inputRef.value = "";
+}
+
+function getInputTagValue(htmlId) {
+  return document.getElementById(htmlId).value;
+}
+
+function setInputTagValue(htmlId, valueToSet) {
+  let inputRef = document.getElementById(htmlId);
+  inputRef.value = valueToSet;
+}
