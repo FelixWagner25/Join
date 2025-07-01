@@ -1,55 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
-    <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="/styles/desktop_template.css">
-    <link rel="stylesheet" href="/styles/summary.css">
-    <link rel="stylesheet" href="/styles/addtask.css">
-    <link rel="stylesheet" href="/styles/assets.css">
-    <link rel="stylesheet" href="/styles/contacts.css">
-    <link rel="stylesheet" href="/styles/colors.css">
-    <link rel="stylesheet" href="/styles/login.css">
-
-    <link rel="stylesheet" href="/styles/board.css">
-    <link rel="icon" href="/assets/img/faviconLogo.svg">
-    <script src="/scripts/desktop_template.js"></script>
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-    
-    <script src="/scripts/board.js"></script>
-    <script src="/scripts/contacts.js"></script>
-    <script src="/script.js"></script>
-    <script src="/scripts/addtask.js"></script>
-    <script src="/templates/contacts_templates.js"></script>
-    <script src="/templates/board_templates.js"></script>
-
-
-
-</head>
-
-<body onload="init()">
-    <div class="page">
+<body>
         <header>
             <div class="header-container">
                 <div>Kanban Project Management Tool</div>
                 <div class="header-user">
-                    <img class="help-icon" src="/assets/icons/header_help_icon.svg" alt="">
-                    <div class="profile-ellipse" onload="loadProfile()" onclick="toggleDropdown(event)">
+                    <a href="/assets/html/help.html"><img class="help-icon" src="/assets/icons/header_help_icon.svg" alt=""></a>
+                    <div class="profile-ellipse" onload="getFirstTwoStringInitials()" onclick="toggleDropdown(event)">
                         <img src="/assets/icons/header_profile_ellipse.svg" alt="">
                         <span id="profile-initials" class="text-center">G</span>
                     </div>
                     <div class="dropdown-menu-container d-none">
                         <div class="dropdown-menu-inside d-flex">
-                            <a class="dropdown-menu d-flex" href="#help"
-                                onclick="loadContent('/assets/html/help.html')">Help</a>
-                            <a class="dropdown-menu d-flex" href="#legal_notice"
-                                onclick="loadContent('/assets/html/legal_notice.html')">Legal Notice</a>
-                            <a class="dropdown-menu d-flex" href="#privacy-policy"
-                                onclick="loadContent('/assets/html/privacy_policy.html')">Privacy Policy</a>
-                            <a class="dropdown-menu d-flex" href="/index.html">Log out</a>
+                            <a class="dropdown-menu d-flex" href="/assets/html/help.html" alt="target-help-page"
+                               >Help</a>
+                            <a class="dropdown-menu d-flex" href="/assets/html/legal_notice.html" alt="target-legal-notice-page"
+                               >Legal Notice</a>
+                            <a class="dropdown-menu d-flex" href="/assets/html/privacy_policy.html" alt="target-privacy-policy-page"
+                               >Privacy Policy</a>
+                            <a class="dropdown-menu d-flex" href="/index.html" alt="target-login-page">Log out</a>
                         </div>
                     </div>
                 </div>
@@ -61,26 +28,19 @@
                 <img src="/assets/icons/join_icon.svg" alt="join-logo">
             </div>
             <nav>
-                <a href="#summary" class="nav-link" onclick="loadContent('/assets/html/summary.html')"><img
-                        src="/assets/icons/summary_icon.svg" alt="#"><span>Summary</span></a>
-                <a href="#add_task" class="nav-link" onclick="loadContent('/assets/html/add_task.html')"><img
-                        src="/assets/icons/add_task_icon.svg" alt="#"><span>Add Task</span></a>
-                <a href="#board" class="nav-link" onclick="loadContent('/assets/html/board.html'), initBoard()" onload="initBoard()"><img
-                        src="/assets/icons/board_icon.svg" alt="#"><span>Board</span></a>
-                <a href="#contacts" class="nav-link" onclick="loadContent('/assets/html/contacts.html'), renderContactsList()"><img
-                        src="/assets/icons/contacts_icon.svg" alt="#"><span>Contacts</span></a>
+                <a href="/assets/html/summary.html" class="nav-link"><img
+                        src="/assets/icons/summary_icon.svg" alt="target-summary-page"><span>Summary</span></a>
+                <a href="/assets/html/add_task.html" class="nav-link"><img
+                        src="/assets/icons/add_task_icon.svg" alt="target-add-task-page"><span>Add Task</span></a>
+                <a href="/assets/html/board.html" class="nav-link"><img
+                        src="/assets/icons/board_icon.svg" alt="target-board-page"><span>Board</span></a>
+                <a href="/assets/html/contacts.html" class="nav-link" ><img
+                        src="/assets/icons/contacts_icon.svg" alt="target-contacts-page"><span>Contacts</span></a>
             </nav>
             <div class="policy-legal">
-                <a href="#privacy" onclick="loadContent('/assets/html/privacy_policy.html')"><span>Privacy
+                <a href="/assets/html/privacy_policy.html" alt="target-privacy-policy-page"><span>Privacy
                         Policy</span></a>
-                <a href="#legal" onclick="loadContent('/assets/html/legal_notice.html')"><span>Legal notice</span></a>
+                <a href="/assets/html/legal_notice.html" alt="target-legal-notice-page"><span>Legal notice</span></a>
             </div>
         </aside>
-
-        <main id="main" w3-include-html="/assets/html/summary.html"></main>
-
-
-
 </body>
-
-</html>

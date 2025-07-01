@@ -43,9 +43,9 @@ function getTaskCardSubtaskTemplate(indexTask) {
 
 function getTaskCardContactsTemplate(indexTaskContact, indexTask) {
   return `
-  <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassById(
-    tasksArray[indexTask][1].assignedTo[indexTaskContact].id
-  )}">
+  <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassName(
+          indexTaskContact
+        )}">
     <div class="font-Inter-400-12px">
       ${getFirstTwoStringInitials(
         tasksArray[indexTask][1].assignedTo[indexTaskContact].name
@@ -68,9 +68,7 @@ function blurBackgroundBoard() {
 }
 
 function getTaskOverlay(indexTask) {
-  console.log(tasksArray[indexTask][1]);
-console.log();
-
+  console.log(tasksArray[indexTask][1].assignedTo.map((p) => p.length));
 
   let overlay = document.querySelector(".task-overlay-wrap");
   overlay.innerHTML = `
@@ -110,7 +108,9 @@ console.log();
       <article class="d-flex-column">${tasksArray[indexTask][1].assignedTo.map((p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
-            <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassById(p.id)}">
+            <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassName(
+          0
+        )}">
               <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitials(p.name)}
               </div>
             </div>

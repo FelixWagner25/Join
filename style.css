@@ -51,6 +51,10 @@ button:disabled:hover {
   display: block;
 }
 
+.d-contents{
+  display: contents;
+}
+
 .d-none {
   display: none;
 }

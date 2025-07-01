@@ -8,7 +8,7 @@ let tasksArray = [];
  *
  */
 function guestLogin() {
-  location.href = "/templates/desktop_template.html";
+  location.href = "assets/html/summary.html";
 }
 
 /**
@@ -225,7 +225,7 @@ function checkLogInCredentials(responseRef) {
     return i.email + i.password;
   });
   if (credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
-    location.href = "/templates/desktop_template.html";
+    location.href = "assets/html/summary.html";
   } else {
     loginError.classList.remove("d-none");
     [...loginInput].forEach((input) => {

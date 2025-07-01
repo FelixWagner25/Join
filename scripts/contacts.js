@@ -54,6 +54,8 @@ function showAddContactScreen() {
   blurBackground();
   setTimeout(() => {
     openAddContactScreen();
+    console.log(document.getElementById("contact-card"));
+    
   }, overlayTransitionMiliSeconds);
 }
 
@@ -70,8 +72,10 @@ function blurBackground() {
  *
  */
 function openAddContactScreen() {
-  let contactScreenRef = document.getElementById("add-contact-screen");
+  let contactScreenRef = document.getElementById("contact-card");
   contactScreenRef.classList.add("overlay-open");
+  contactScreenRef.innerHTML = "";
+  contactScreenRef.innerHTML = getAddContactsScreenTemplate();
 }
 
 /**
@@ -79,14 +83,9 @@ function openAddContactScreen() {
  *
  */
 function closeContactOverlays() {
-  document
-    .getElementById("add-contact-screen")
-    .classList.remove("overlay-open");
-  document
-    .getElementById("edit-contact-screen")
-    .classList.remove("overlay-open");
-  setTimeout(() => {
-    document.getElementById("bg-dimmed").classList.add("d-none");
+  document.getElementById("contact-card").classList.remove("overlay-open");
+  document.getElementById("bg-dimmed").classList.add("d-none");
+  setTimeout(() => {document.getElementById("bg-dimmed").classList.add("d-none");
   }, overlayTransitionMiliSeconds);
 }
 
@@ -108,7 +107,7 @@ function showEditContactScreen(indexContact) {
  *
  */
 function openEditContactScreen() {
-  let contactScreenRef = document.getElementById("edit-contact-screen");
+  let contactScreenRef = document.getElementById("contact-card");
   contactScreenRef.classList.add("overlay-open");
 }
 
@@ -118,7 +117,7 @@ function openEditContactScreen() {
  * @param {integer} indexContact
  */
 function renderEditContactScreen(indexContact) {
-  let editContactScreenRef = document.getElementById("edit-contact-screen");
+  let editContactScreenRef = document.getElementById("contact-card");
   editContactScreenRef.innerHTML = "";
   editContactScreenRef.innerHTML = getEditContactScreenTemplate(indexContact);
 }

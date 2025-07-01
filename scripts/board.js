@@ -101,9 +101,3 @@ function getCategoryNameTemplate(taskCategory) {
   }
 }
 
-function getContactColorClassById(contactId) {
-  let indexContact = contactsArray.findIndex(
-    (idValuePair) => idValuePair[0] === contactId
-  );
-  return getContactColorClassName(indexContact);
-}
