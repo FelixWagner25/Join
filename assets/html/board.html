@@ -54,7 +54,7 @@
                     <div class="col-title">To do</div>
                     <button class="add-btn" alt="add button"></button>
                 </div>
-                <div class="col-content" id="to-do">
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="to-do">
                     <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks To do</div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <div class="col-title">In progress</div>
                     <button class="add-btn" alt="add button"></button>
                 </div>
-                <div class="col-content" id="in-progress">
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="in-progress">
                     <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks in progress</div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     <div class="col-title">Await feedback</div>
                     <button class="add-btn" alt="add button"></button>
                 </div>
-                <div class="col-content" id="await-feedback">
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="await-feedback">
                     <div class="no-task-feedback  font-OpenSans-400-16px d-flex-row-c-c">No tasks awaiting feedback</div>
                 </div>
             </div>
@@ -83,9 +83,11 @@
                 <div class="col-title-wrap mg-b-16px">
                     <div class="col-title">Done</div>
                 </div>
-                <div class="col-content" id="done">
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="done">
                     <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks done</div>
                 </div>
+                
+                
             </div>
         </div>
     </main>

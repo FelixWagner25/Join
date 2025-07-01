@@ -1,6 +1,6 @@
 function getBoardCardTemplate(indexTask) {
   return `
-    <div class="task-card-wrap" >
+    <div class="task-card-wrap" draggable="true" ondragstart="startDragging(${indexTask})">
           <div class="task-card d-flex-column" onclick="showTaskOverlay(${indexTask})">
             <div>
               <div class="task-category font-Inter-400-16px ${getTaskCategoryClass(
@@ -27,6 +27,7 @@ function getBoardCardTemplate(indexTask) {
                 </div>
         </div> 
     </div>
+    <div class="d-none col-empty-wrap"></div>
     `;
 }
 
@@ -122,7 +123,7 @@ function getTaskOverlay(indexTask) {
 
     <div class="task-overlay-assignment-wrap d-flex-column">
       <div class="font-Inter-400-20px text-color-2A3647">Subtasks</div>
-      <article class="d-flex-column">${tasksArray[indexTask][1].subtasks.map((s) => ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s}</div></div></div>`).join("")}</article>
+      <article class="d-flex-column">${tasksArray[indexTask][1].subtasks?.map((s) => ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s}</div></div></div>`).join("")}</article>
     </div>
 
     <div class="edit-delete-wrap d-flex">

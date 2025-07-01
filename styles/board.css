@@ -170,6 +170,20 @@
   box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.08);
 }
 
+.task-card-wrap:active{
+  rotate: 5deg;
+}
+
+.col-empty-wrap:last-of-type{
+  width: 246px;
+  scrollbar-width: none;
+  height: 244px;
+  border: 1px;
+  border-style: dashed;
+  border-color: #a8a8a8;
+  border-radius: 30px;
+}
+
 .task-card {
   width: 220px;
   gap: 24px;

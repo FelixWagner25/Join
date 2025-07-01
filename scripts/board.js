@@ -11,9 +11,9 @@ async function getTasksArray() {
 
 function renderBoard() {
   renderBoardColumn("to-do", "todo");
-  // renderBoardColumn("in-progress");
-  // renderBoardColumn("await-feedback");
-  // renderBoardColumn("done");f
+  renderBoardColumn("in-progress", "inprogress");
+  renderBoardColumn("await-feedback", "awaitfeedback");
+  renderBoardColumn("done", "done");
 }
 
 function renderBoardColumn(columHTMLid, taskStatusId) {
@@ -53,7 +53,7 @@ function renderBoardCardContacts(indexTask) {
 
   for (
     let indexTaskContact = 0;
-    indexTaskContact < tasksArray[indexTask][1].assignedTo.length;
+    indexTaskContact < tasksArray[indexTask][1].assignedTo?.length;
     indexTaskContact++
   ) {
     taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
@@ -109,5 +109,39 @@ function searchTask() {
   [...taskWrap].forEach((c) => c.classList.add('d-none'));
   foundRef = [...searchRef].filter((t) => t.innerText.includes(inputRef[0].value));
   foundRef.forEach((c) => c.parentElement.parentElement.classList.remove('d-none'));
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+let currentTask = ""
+function startDragging(event) {
+  toggleDragArea()
+  currentTask = tasksArray[event];
+  return currentTask
+}
+
+async function moveTask(event) {
+  toggleDragArea()
+  let targetTask = event.target.closest('.col-content[id]')
+  targetTask= targetTask.id.replace("-","")
+  await updateStatus(`tasks/${currentTask[0]}/status`,targetTask)
+  await initBoard()
+}
+
+function toggleDragArea() {
+  let area = document.querySelectorAll('.col-empty-wrap:last-of-type');
+  [...area].forEach((c) => c.classList.toggle('d-none'))
+}
+
+async function updateStatus(path = "", taskData = {}) {
+  let response = await fetch(database + path + ".json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(taskData),
+  });
 }
 
