@@ -1,11 +1,5 @@
-// Keeps track of which priority is currently selected
-let currentPriority = null;
-
-// Array to store selected contacts
-let selectedContacts = [];
-
-// Variable to store all contacts
-let allContacts = {};
+let nextSubtaskId = 0;
+let currentTaskSubtasks = [];
 
 async function addNewTask() {
   let newTaskData = getNewTaskInformation();
@@ -77,16 +71,20 @@ function showSubtaskControlButtons() {
 function addSubtask() {
   let subtaskListRef = document.getElementById("tasks-subtasks-list");
   subtaskText = getInputTagValue("task-subtasks");
-  subtaskListRef.innerHTML += getSubtaskListTemplate(subtaskText);
+  subtaskListRef.innerHTML += getSubtaskListTemplate(
+    String(nextSubtaskId),
+    subtaskText
+  );
   clearInputTagValue("task-subtasks");
   showSubtaskControlButtons();
+  nextSubtaskId += 1;
 }
 
 function editSubtask(params) {}
 
-function deleteSubtask(subtaskHtmlElement) {
-  let subtaskListTag = subtaskHtmlElement.closest("li");
-  subtaskListTag.remove();
+function deleteSubtask(subtaskId) {
+  let subtaskHtmlId = "task-subtask-" + String(subtaskId);
+  document.getElementById(subtaskHtmlId).remove();
 }
 
 async function loadContacts() {
