@@ -2,22 +2,10 @@
  * Function to load summary.html on initiation
  *
  */
-async function init() {
-  w3.includeHTML();
+function init() {
+   w3.includeHTML(() => {userInitials(), setBackgroundColor()});
 /*   await initContacs(); */
-
 }
-
-/**
- * Function to load according content from nav-tag link
- *
- * @param {String} page - this is the directory of the new content-page
- */
-/* function loadContent(page) { */
-/*   const main = document.querySelector("main");
-  main.setAttribute("w3-include-html", page); */
-/*   w3.includeHTML(); */
-/* } */
 
 function toggleDropdown() {
   let dropdown = document.querySelector(".dropdown-menu-container");
@@ -36,6 +24,20 @@ document.addEventListener("click", function (event) {
   }
 });
 
-function loadProfile() {
-  let initials = document.getElementById("profile-initials");
+function userInitials() {
+  let initials = document.getElementById('profile-initials');
+  let sessionInititals = sessionStorage.getItem("initials") || "G" ;
+  initials.innerHTML = sessionInititals
+}
+
+function deleteSessionStorage() {
+  sessionStorage.clear();
+}
+
+function setBackgroundColor() {
+  let activePage = window.location.pathname
+  let links = document.getElementsByClassName('nav-link')
+  let activeLink = [...links].filter((l) => l.href.includes(activePage));
+  [...links].forEach((e) => e.classList.remove('active'));
+  activeLink.forEach((e) => e.classList.add('active'));
 }

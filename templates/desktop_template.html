@@ -1,10 +1,10 @@
 <body>
         <header>
             <div class="header-container">
-                <div>Kanban Project Management Tool</div>
+                <div >Kanban Project Management Tool</div>
                 <div class="header-user">
                     <a href="/assets/html/help.html"><img class="help-icon" src="/assets/icons/header_help_icon.svg" alt=""></a>
-                    <div class="profile-ellipse" onload="getFirstTwoStringInitials()" onclick="toggleDropdown(event)">
+                    <div class="profile-ellipse" onclick="toggleDropdown(event)">
                         <img src="/assets/icons/header_profile_ellipse.svg" alt="">
                         <span id="profile-initials" class="text-center">G</span>
                     </div>
@@ -16,7 +16,7 @@
                                >Legal Notice</a>
                             <a class="dropdown-menu d-flex" href="/assets/html/privacy_policy.html" alt="target-privacy-policy-page"
                                >Privacy Policy</a>
-                            <a class="dropdown-menu d-flex" href="/index.html" alt="target-login-page">Log out</a>
+                            <a class="dropdown-menu d-flex" href="/index.html" alt="target-login-page" onclick="deleteSessionStorage()">Log out</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         src="/assets/icons/add_task_icon.svg" alt="target-add-task-page"><span>Add Task</span></a>
                 <a href="/assets/html/board.html" class="nav-link"><img
                         src="/assets/icons/board_icon.svg" alt="target-board-page"><span>Board</span></a>
-                <a href="/assets/html/contacts.html" class="nav-link" ><img
+                <a href="/assets/html/contacts.html" class="nav-link"><img
                         src="/assets/icons/contacts_icon.svg" alt="target-contacts-page"><span>Contacts</span></a>
             </nav>
             <div class="policy-legal">

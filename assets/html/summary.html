@@ -16,7 +16,7 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="/scripts/contacts.js"></script>
 </head>
-<body onload="init()">
+<body onload="init(), userGreeting()">
 <div class="page">
     <div class="d-contents" w3-include-html="/templates/desktop_template.html"></div>
     <main id="main">
@@ -91,9 +91,9 @@
                         </div>
                     </div>
 
-                    <div class="greeting d-flex-row-c-c">
-                        <h2>Good morning</h2>
-
+                    <div class="greeting d-flex-column-c-c" >
+                        <div class="font-Inter-500-47px">Good morning<span id="comma" class="d-none">,</span></div> 
+                            <div class="font-Inter-700-64px text-color-29ABE2" id="personal-greeting"></div>
                     </div>
                 </section>
             </div>

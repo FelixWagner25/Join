@@ -21,15 +21,27 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
   boardColRef.innerHTML = "";
   for (let i = 0; i < tasksArray.length; i++) {
     if (!taskHasStatus(taskStatusId, i)) {
-      continue;
+      continue ;
     }
     boardColRef.innerHTML += getBoardCardTemplate(i);
     if (subtasksExist(i)) {
       renderSubtaskProgressInfo(i);
-    }
+    } 
     renderBoardCardContacts(i);
   }
+  checkEmptyColumn(columHTMLid)
 }
+
+function checkEmptyColumn(columHTMLid) {
+    let boardColRef = document.getElementById(columHTMLid);
+    let titleRef = boardColRef.parentElement.getElementsByClassName('col-title-wrap');
+    let title= [...titleRef].map((t) => t.innerText)
+    let board = boardColRef.getElementsByClassName('task-card-wrap')
+    if (board.length == 0) {
+    boardColRef.innerHTML += getNoTask(title)  
+    }
+}
+
 
 function taskHasStatus(taskStatusId, indexTask) {
   return tasksArray[indexTask][1].status === taskStatusId;

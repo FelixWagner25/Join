@@ -248,6 +248,14 @@ button:disabled:hover {
   letter-spacing: 0;
 }
 
+.font-Inter-700-64px {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
 .font-OpenSans-400-16px {
   font-family: OpenSans;
   font-weight: 400;

@@ -31,6 +31,13 @@ function getBoardCardTemplate(indexTask) {
     `;
 }
 
+function getNoTask(title) {
+  return `
+    <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No Tasks ${title}</div>
+    <div class="d-none col-empty-wrap"></div>
+    `
+}
+
 function getTaskCardSubtaskTemplate(indexTask) {
   return `
   <div class="progress-bar">
@@ -69,8 +76,6 @@ function blurBackgroundBoard() {
 }
 
 function getTaskOverlay(indexTask) {
-  console.log(tasksArray[indexTask][1].assignedTo.map((p) => p.length));
-
   let overlay = document.querySelector(".task-overlay-wrap");
   overlay.innerHTML = `
     <div class="task-overlay d-flex-column">
