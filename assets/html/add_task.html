@@ -68,13 +68,13 @@
                     <label for="task-subtasks" class="font-Inter-400-20px text-color-2A3647">Subtasks</label>
                     <input oninput="showSubtaskControlButtons()" class="p-relative task-input-border task-input-category font-Inter-400-20px" type="text" id="task-subtasks" placeholder="Add new subtask">
                     <span class="p-absolute task-subtask-icon task-add-subtask-icon" id="task-add-subtask-icon"></span>
-                    <div class="d-none p-absolute d-flex gap-8px task-subtask-icon task-subtask-clear-submit-icon-wrap" id="task-clear-submit-subtask-icon-wrap">
+                    <div class="d-none p-absolute d-flex gap-8px task-subtask-icon" id="task-clear-submit-subtask-icon-wrap">
                         <div class="d-flex-row-c-c task-subtask-icon-wrap" onclick="clearInputTagValue('task-subtasks')">
-                        <span class="task-clear-subtask-icon"></span>
+                            <span class="task-clear-subtask-icon"></span>
                         </div>
                         <span class="separator"></span>
                         <div class="d-flex-row-c-c task-subtask-icon-wrap" onclick="addSubtask()">
-                        <span class="task-submit-subtask-icon"></span>
+                            <span class="task-submit-subtask-icon"></span>
                         </div>
                     </div>
                     <ul class="task-subtasks-list" id="tasks-subtasks-list">

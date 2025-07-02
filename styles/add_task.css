@@ -12,6 +12,12 @@ h1 {
   background-color: #d1d1d1;
 }
 
+.separator-subtask-edit-delete-icons {
+  width: 1px;
+  height: 16px;
+  background-color: #2a3647;
+}
+
 .task-input-border {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
@@ -138,6 +144,39 @@ h1 {
 
 .subtask-list-element:hover {
   background-color: #d1d1d1;
+}
+
+.task-subtask-control-icon-wrap {
+  display: none;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+}
+
+.subtask-list-element:hover .task-subtask-control-icon-wrap {
+  display: flex;
+}
+
+.task-edit-subtask-icon {
+  height: 13px;
+  width: 13px;
+  background-image: url("/assets/icons/edit.svg");
+  background-size: contain;
+}
+
+.task-edit-subtask-icon:hover {
+  transform: scale(1.1);
+}
+
+.task-delete-subtask-icon {
+  height: 13px;
+  width: 13px;
+  background-image: url("/assets/icons/delete.svg");
+  background-size: contain;
+}
+
+.task-delete-subtask-icon:hover {
+  transform: scale(1.1);
 }
 
 .clear-task-btn-icon {

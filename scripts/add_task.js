@@ -82,6 +82,13 @@ function addSubtask() {
   showSubtaskControlButtons();
 }
 
+function editSubtask(params) {}
+
+function deleteSubtask(subtaskHtmlElement) {
+  let subtaskListTag = subtaskHtmlElement.closest("li");
+  subtaskListTag.remove();
+}
+
 async function loadContacts() {
   try {
     const response = await fetch(
