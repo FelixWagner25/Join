@@ -87,7 +87,12 @@ function renderSubtasks() {
   }
 }
 
-function editSubtask(indexSubtask) {}
+function editSubtask(indexSubtask) {
+  let editedSubtaskRef = document.getElementById(
+    "task-subtask-" + indexSubtask
+  );
+  editedSubtaskRef.innerHTML = getEditSubtaskTemplate(indexSubtask);
+}
 
 function deleteSubtask(subtaskId) {
   let subtaskHtmlId = "task-subtask-" + String(subtaskId);
