@@ -10,6 +10,9 @@
     grid-template-areas: 
     'aside nav'
     'aside main';
+}
+
+.desktop-template-alternative{
 
 }
 
@@ -98,12 +101,17 @@ nav > a:hover {
   background-color: #2a3d59;
 }
 
+.policy-legal > a:hover{
+  cursor: pointer;
+  background-color: #2a3d59;
+}
+
 .active{
-  background-color: #091931
+  background-color: #091931 !important
 }
 
 .active:hover{
-  background-color: #091931
+  background-color: #091931 !important
 }
 
 .dropdown-menu-container{
@@ -146,7 +154,6 @@ nav > a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-/*   height: 317px; */
   padding: 243px 0 0 0;
   gap: 8px;
 }
@@ -154,9 +161,9 @@ nav > a:hover {
 .policy-legal > a {
   display: flex;
   flex-direction: column;
-  padding: 8px;
   gap: 8px;
-  height: 19px;
+  height: 35px;
+  width: 100%;
   color: #a8a8a8;
 }
 

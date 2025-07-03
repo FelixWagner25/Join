@@ -2,9 +2,7 @@
   font-family: Inter;
 }
 
-a{
-  text-decoration: none;
-}
+
 
 body {
   margin: 0;
@@ -13,6 +11,14 @@ body {
   background-color: #f6f7f8;
   font-size: 20px;
   font-weight: 400;
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style-type: none;
 }
 
 button {

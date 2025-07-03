@@ -82,7 +82,6 @@ main{
 
 .contact-details-edit-contact:hover {
   color: #29abe2;
-  font-weight: 700;
   cursor: pointer;
 }
 
@@ -115,6 +114,14 @@ main{
 .edit-contact-text {
   font-size: 16px;
   font-weight: 400;
+}
+
+.contact-details-edit-contact:hover > span{
+    font-weight: 700;
+}
+
+.contact-details-delete-contact:hover > span{
+    font-weight: 700;
 }
 
 .contact-information-text {

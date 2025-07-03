@@ -8,6 +8,7 @@ let tasksArray = [];
  *
  */
 function guestLogin() {
+  saveSession("Gast")
   location.href = "assets/html/summary.html";
 }
 
@@ -247,10 +248,10 @@ async function checkLogInCredentials(responseRef) {
   }
 }
 
- function filterUserName(x, loginInput) {
-let correctuser = x.filter((x) => x.email == loginInput[0].value)
-let user = correctuser.map((n) => n.name)
-return user
+function filterUserName(x, loginInput) {
+  let correctuser = x.filter((x) => x.email == loginInput[0].value)
+  let user = correctuser.map((n) => n.name)
+  return user
 }
 
 function saveSession(name) {
@@ -266,10 +267,10 @@ function userGreeting(){
   let greet = document.getElementById('personal-greeting')
   let comma = document.getElementById('comma')
   let name = sessionStorage.getItem("user") || "G";
-  if (name === "G") {
-  } else {
-  comma.classList.remove('d-none')
-  greet.innerHTML = name}
+  if (name !== "G") {
+   comma.classList.remove('d-none')
+  greet.innerHTML = name
+  } 
 }
 
 
