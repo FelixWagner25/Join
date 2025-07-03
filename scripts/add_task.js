@@ -1,5 +1,4 @@
-let nextSubtaskId = 0;
-let currentTaskSubtasks = [];
+let newTaskSubtasks = [];
 
 async function addNewTask() {
   let newTaskData = getNewTaskInformation();
@@ -69,18 +68,26 @@ function showSubtaskControlButtons() {
 }
 
 function addSubtask() {
-  let subtaskListRef = document.getElementById("tasks-subtasks-list");
-  subtaskText = getInputTagValue("task-subtasks");
-  subtaskListRef.innerHTML += getSubtaskListTemplate(
-    String(nextSubtaskId),
-    subtaskText
-  );
+  let subtaskName = getInputTagValue("task-subtasks");
+  newTaskSubtasks.push({ name: subtaskName, done: false });
+  renderSubtasks();
   clearInputTagValue("task-subtasks");
   showSubtaskControlButtons();
-  nextSubtaskId += 1;
 }
 
-function editSubtask(params) {}
+function renderSubtasks() {
+  let subtaskListRef = document.getElementById("tasks-subtasks-list");
+  subtaskListRef.innerHTML = "";
+  for (
+    let indexSubtask = 0;
+    indexSubtask < newTaskSubtasks.length;
+    indexSubtask++
+  ) {
+    subtaskListRef.innerHTML += getSubtaskListTemplate(indexSubtask);
+  }
+}
+
+function editSubtask(indexSubtask) {}
 
 function deleteSubtask(subtaskId) {
   let subtaskHtmlId = "task-subtask-" + String(subtaskId);
