@@ -94,9 +94,9 @@ function editSubtask(indexSubtask) {
   editedSubtaskRef.innerHTML = getEditSubtaskTemplate(indexSubtask);
 }
 
-function deleteSubtask(subtaskId) {
-  let subtaskHtmlId = "task-subtask-" + String(subtaskId);
-  document.getElementById(subtaskHtmlId).remove();
+function deleteSubtask(indexSubtask) {
+  newTaskSubtasks.splice(indexSubtask, 1);
+  renderSubtasks();
 }
 
 async function loadContacts() {
