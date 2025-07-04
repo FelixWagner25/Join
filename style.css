@@ -119,6 +119,12 @@ textarea {
   align-items: center;
 }
 
+.d-flex-row-c-fs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .h-100vh {
   height: 100vh;
 }

@@ -94,6 +94,13 @@ function editSubtask(indexSubtask) {
   editedSubtaskRef.innerHTML = getEditSubtaskTemplate(indexSubtask);
 }
 
+function addEditedSubtask(indexSubtask) {
+  let inputRef = "task-subtask-edit-" + String(indexSubtask);
+  editedSubtaskName = getInputTagValue(inputRef);
+  newTaskSubtasks[indexSubtask].name = editedSubtaskName;
+  renderSubtasks();
+}
+
 function deleteSubtask(indexSubtask) {
   newTaskSubtasks.splice(indexSubtask, 1);
   renderSubtasks();
