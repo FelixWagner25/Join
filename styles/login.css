@@ -86,8 +86,8 @@ body{
 }
 
 .login-headline-container {
-  width: 315px;
-  height: 89px;
+  max-width: 315px;
+  max-height: 89px;
   gap: 16px;
 }
 
@@ -123,7 +123,7 @@ input:hover{
 .input-container {
   width: inherit;
   height: 48px;
-  width: 422px;
+  max-width: 422px;
   gap: 8px;
 }
 
@@ -237,8 +237,8 @@ input[type="checkbox"]:checked:hover {
 }
 
 .signup {
-  height: 630px !important;
-  width: 598px !important;
+  max-height: 630px !important;
+  max-width: 598px !important;
   padding: 48px 88px !important;
   justify-content: space-around !important;
   animation: none;
@@ -255,7 +255,7 @@ input[type="checkbox"]:checked:hover {
 
 .form-signup {
   height: 326px;
-  width: 422px;
+  max-width: 422px;
 }
 
 .signup-btn {
@@ -339,6 +339,15 @@ input[type="checkbox"]:checked:hover {
   transform: translate(-50% , -50%);
   animation: hide 2s forwards;
 }
+
+.policy-notice-secondary{
+  height: 35px;
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+
 
 .policy-notice-list{
   list-style-type: none;

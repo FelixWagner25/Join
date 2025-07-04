@@ -111,6 +111,11 @@ button:disabled:hover {
   align-items: center;
 }
 
+.d-flex-align-item-b{
+  display: flex;
+  align-items: baseline;
+}
+
 .h-100vh {
   height: 100vh;
 }

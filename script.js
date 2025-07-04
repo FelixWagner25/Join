@@ -263,15 +263,6 @@ function setSessionStorage(key, value) {
   sessionStorage.setItem(key,value)
 }
 
-function userGreeting(){
-  let greet = document.getElementById('personal-greeting')
-  let comma = document.getElementById('comma')
-  let name = sessionStorage.getItem("user") || "G";
-  if (name !== "G") {
-   comma.classList.remove('d-none')
-  greet.innerHTML = name
-  } 
-}
 
 
 
