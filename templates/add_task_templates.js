@@ -26,3 +26,11 @@ function getEditSubtaskTemplate(indexSubtask) {
         </div>
     `;
 }
+
+function getTaskAssigendContactsTemplate(indexContact) {
+  return `
+    <div class="d-flex-column">
+        ${contactsArray[indexContact][1].name}
+    </div>
+    `;
+}

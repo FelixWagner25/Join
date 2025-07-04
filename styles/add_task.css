@@ -60,7 +60,7 @@ h1 {
   height: 48px;
 }
 
-.task-category-dropdown {
+.task-input-dropdown {
   background-color: white;
   top: 100%;
   left: 0;
@@ -68,12 +68,13 @@ h1 {
   z-index: 2;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  max-height: 320px;
 }
 
 .task-dropdown-icon {
   width: 7px;
   height: 5px;
-  top: 62px;
+  top: 56px;
   transform: translateY(-50%);
   right: 16px;
   pointer-events: none;
