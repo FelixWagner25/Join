@@ -157,7 +157,7 @@
   height: 48px;
   border-radius: 10px;
   background-color: #e7e7e7;
-  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.16);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   color: #a8a8a8;
   border: 1px dashed #a8a8a8;
 }
@@ -168,7 +168,7 @@
   flex-direction: column;
   gap: 10px;
   color: #ffffff;
-  box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.08);
+/*   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08); */
 }
 
 .task-card-wrap:active{

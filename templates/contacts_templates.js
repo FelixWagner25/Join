@@ -86,15 +86,17 @@ function getContactDetailsTemplate(indexContact) {
         <div class="contact-details-email-phone-wrap">
             <div class="contact-details-email-wrap">
             <span class="contact-details-category">Email</span>
-            <span class="contact-email">${
+            <a href="mailto:${
               contactsArray[indexContact][1].email
-            }</span>
+            }" class="contact-email">${
+              contactsArray[indexContact][1].email
+            }</a>
             </div>
             <div class="contact-details-email-wrap">
             <span class="contact-details-category">Phone</span>
-            <span class="contact-details-phone">${
+            <a href="tel:" class="contact-details-phone text-color-black">${
               contactsArray[indexContact][1].phone
-            }</span>
+            }</a>
             </div>
         </div>
     </div>
@@ -136,9 +138,12 @@ function getAddContactsScreenTemplate() {
           </div>
         </div>
         <div class="add-contact-input-check mg-t-140px">
-          <form class="add-contacts-form-wrap" onsubmit="addNewContact()">
+          <form class="add-contacts-form-wrap" onsubmit="addNewContact(event)">
             <div class="add-contact-input-wrap">
-              <input
+            
+            
+           
+            <input
                 required
                 type="text"
                 class="add-contact-input"
@@ -151,6 +156,7 @@ function getAddContactsScreenTemplate() {
                 class="add-contact-input-icon"
               />
             </div>
+             <div class="input-container d-flex-column">
             <div class="add-contact-input-wrap">
               <input
                 required
@@ -158,19 +164,26 @@ function getAddContactsScreenTemplate() {
                 class="add-contact-input"
                 placeholder="Email"
                 id="add-contact-input-email"
+                oninput="resetErrorMessage()"
               />
               <img
                 src="/assets/icons/mail_icon.svg"
                 alt="email-icon"
                 class="add-contact-input-icon"
               />
+                          
             </div>
+<div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
+</div>
+
+             <div class="input-container d-flex-column">
             <div class="add-contact-input-wrap">
               <input
                 type="tel"
                 class="add-contact-input"
                 placeholder="Phone"
                 id="add-contact-input-phone"
+                oninput="resetErrorMessage()"
               />
               <img
                 src="/assets/icons/call.svg"
@@ -178,6 +191,8 @@ function getAddContactsScreenTemplate() {
                 class="add-contact-input-icon"
               />
             </div>
+            <div id="phone-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid phone number</div>
+</div>
             <div class="add-contact-btns-wrap">
               <button
                 type="button"
@@ -246,7 +261,7 @@ function getEditContactScreenTemplate(indexContact) {
             </div>
           </div>
           <div class="add-contact-input-check .d-flex-column mg-t-140px">
-            <form class="add-contacts-form-wrap d-flex-column" onsubmit="updateContact(${indexContact})">
+            <form class="add-contacts-form-wrap d-flex-column" onsubmit="updateContact(${indexContact}, event)">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="text"
@@ -254,6 +269,7 @@ function getEditContactScreenTemplate(indexContact) {
                   placeholder="Name"
                   id="input-${indexContact}-name"
                   required
+                  oninput="resetErrorMessage()"
                 />
                 <img
                   src="/assets/icons/person_icon.svg"
@@ -261,9 +277,11 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add-contact-input-icon"
                 />
               </div>
+
+              <div class="input-container d-flex-column">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
-                  type="text"
+                  type="email"
                   class="add-contact-input"
                   placeholder="Email"
                   id="input-${indexContact}-email"
@@ -275,12 +293,17 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add-contact-input-icon"
                 />
               </div>
+              <div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
+</div>
+
+              <div class="input-container d-flex-column">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
-                  type="text"
+                  type="tel"
                   class="add-contact-input"
                   placeholder="Phone"
                   id="input-${indexContact}-phone"
+                  oninput="resetErrorMessage()"
                 />
                 <img
                   src="/assets/icons/call.svg"
@@ -288,6 +311,8 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add contact-input-icon"
                 />
               </div>
+ <div id="phone-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid phone number</div>
+</div>
               <div class="add-contact-btns-wrap">
                 <button type="button" class="add-contact-btn-cancel bg-white text-color-2A3647" onclick="deleteContact(${indexContact})">
                   <span>Delete</span>

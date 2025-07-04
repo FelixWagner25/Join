@@ -163,17 +163,23 @@ async function getCurrentContactAttribute(attribute, indexContact) {
   return currentAttribute;
 }
 
+
 /**
  * This function adds a new contact to the database.
  *
  */
-async function addNewContact() {
+async function addNewContact(event) {
+  event.preventDefault();
+    if (!regexValidation()){
+    return
+  } 
   let newContactData = getContactInformation("add-contact-input-");
   await submitNewContact("contacts", newContactData);
   await renderContactsList();
   closeContactOverlays();
   showNewContactCreatedMessage();
 }
+
 
 /**
  * This function collects a new contact's information typed into the form.
@@ -238,7 +244,11 @@ function showNewContactCreatedMessage() {
  *
  * @param {integer} indexContact
  */
-async function updateContact(indexContact) {
+async function updateContact(indexContact, event) {
+    event.preventDefault();
+    if (!regexValidation()){
+    return
+  } 
   let htmlIdPrefix = "input-" + String(indexContact) + "-";
   let editedContactData = getContactInformation(htmlIdPrefix);
   let contactPath = "contacts/" + contactsArray[indexContact][0];

@@ -1,6 +1,6 @@
 function getBoardCardTemplate(indexTask) {
   return `
-    <div class="task-card-wrap" draggable="true" ondragstart="startDragging(${indexTask})">
+    <div class="task-card-wrap bg-white" draggable="true" ondragstart="startDragging(${indexTask})">
           <div class="task-card d-flex-column" onclick="showTaskOverlay(${indexTask})">
             <div>
               <div class="task-category font-Inter-400-16px ${getTaskCategoryClass(

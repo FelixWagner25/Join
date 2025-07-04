@@ -151,11 +151,13 @@ main{
   font-size: 16px;
   font-weight: 400;
   color: #007cee;
+  width: fit-content;
 }
 
 .contact-details-phone {
   font-size: 16px;
   font-weight: 400;
+  width: fit-content;  
 }
 
 .contacts-list-wrap {
@@ -385,7 +387,6 @@ main{
   outline: none;
   border: none;
   font-size: 20px;
-  color: #d1d1d1;
   font-weight: 400;
 }
 

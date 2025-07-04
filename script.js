@@ -71,16 +71,32 @@ function resetErrorMessage() {
  */
 function signupFormValidation(event) {
   event.preventDefault();
-  const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+    if (!regexValidation()){
+    return
+  } 
   let userInput = document.getElementsByTagName("input");
-  let mail = document.getElementById("add-contact-input-email");
   if (userInput[2].value !== userInput[3].value) {
   showErrorMessage("password", [])
-  } else if (!regex.test(mail.value)) {
-  showErrorMessage("email", [])
   } else {
   getNewUserInformation();
   }
+}
+
+function regexValidation() {
+   const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+   const regexPhone = /^\+?\d{8,}$/;
+   let mail = document.querySelectorAll("input");
+   let filteredMail = [...mail].filter((t) =>  t.type == "email")
+   let filteredPhone = [...mail].filter((t) =>  t.type == "tel")
+   let valid = true
+  if (!regexMail.test(filteredMail[0].value)) {
+   showErrorMessage("email", [])
+   valid = false
+  } if (filteredPhone[0]?.value && !regexPhone.test(filteredPhone[0].value)) {
+       showErrorMessage("phone", [])
+       valid = false
+  }
+  else return valid
 }
 
 /**
