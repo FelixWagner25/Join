@@ -69,6 +69,7 @@ h1 {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   max-height: 320px;
+  overflow-y: auto;
 }
 
 .task-dropdown-icon {
@@ -290,4 +291,25 @@ h1 {
 
 .active-low .low-icon {
   background-image: url("/assets/icons/low_white.svg");
+}
+
+.task-assigned-contacts-checkbox-icon {
+  background-image: url("/assets/icons/checkbox.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}
+
+.focus .task-assigned-contacts-checkbox-icon {
+  background-image: url("/assets/icons/checkbox_checked_white.svg");
+}
+
+.task-assigned-contact-wrap {
+  border-radius: 10px;
+}
+
+.task-assigned-contact-wrap:hover {
+  background-color: #d1d1d1;
 }

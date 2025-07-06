@@ -29,8 +29,30 @@ function getEditSubtaskTemplate(indexSubtask) {
 
 function getTaskAssigendContactsTemplate(indexContact) {
   return `
-    <div class="d-flex-column">
-        ${contactsArray[indexContact][1].name}
+    <div class="d-flex-c-sb pd-8px-16px task-assigned-contact-wrap" id="task-assigned-contact-wrap-${indexContact}" onclick="toggleAssignContact(${indexContact})">
+        <div class="d-flex-row-c-fs gap-16px">
+            <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
+              indexContact
+            )}">
+                ${getFirstTwoStringInitials(
+                  contactsArray[indexContact][1].name
+                )}
+            </div>
+            ${contactsArray[indexContact][1].name}
+        </div>
+        <span class="task-assigned-contacts-checkbox-icon"></span>
+    </div>
+    `;
+}
+
+function getTaskAssignedContactBadgeTemplate(indexContact) {
+  return `
+    <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
+      indexContact
+    )}">
+                ${getFirstTwoStringInitials(
+                  contactsArray[indexContact][1].name
+                )}
     </div>
     `;
 }

@@ -298,6 +298,10 @@ textarea {
   padding-bottom: 64px;
 }
 
+.pd-8px-16px {
+  padding: 8px 16px;
+}
+
 .gap-4px {
   gap: 4px;
 }

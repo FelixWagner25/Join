@@ -1,3 +1,4 @@
+let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
 
 async function addNewTask() {
@@ -113,9 +114,16 @@ function toggleTaskAssignedContactsDropdown() {
   let assignedContactsDropdownIconRef = document.getElementById(
     "task-assigend-contacts-dropdown-icon"
   );
+  let assignedContactsBadges = document.getElementById(
+    "task-assigned-contacts-badges"
+  );
   assignedContactsDropdownRef.classList.toggle("d-none");
+  assignedContactsDropdownRef.classList.toggle("d-flex-column");
   assignedContactsDropdownIconRef.classList.toggle("task-dropdown-open-icon");
+  assignedContactsBadges.classList.toggle("d-none");
   renderTaskAssigendContacts();
+  renderAssignedContactsCheckboxes();
+  renderAssignedContactsBadges();
 }
 
 function renderTaskAssigendContacts() {
@@ -130,5 +138,48 @@ function renderTaskAssigendContacts() {
   ) {
     assignedContactsRef.innerHTML +=
       getTaskAssigendContactsTemplate(indexContact);
+  }
+}
+
+function renderAssignedContactsCheckboxes() {
+  for (
+    let indexContact = 0;
+    indexContact < newTaskAssignedContactsIndices.length;
+    indexContact++
+  ) {
+    let assignedContactWrapRef = document.getElementById(
+      "task-assigned-contact-wrap-" + indexContact
+    );
+    assignedContactWrapRef.classList.add("focus");
+  }
+}
+
+function toggleAssignContact(indexContact) {
+  let assignedContactWrapRef = document.getElementById(
+    "task-assigned-contact-wrap-" + indexContact
+  );
+  assignedContactWrapRef.classList.toggle("focus");
+  toggleValueFromArray(indexContact, newTaskAssignedContactsIndices);
+  renderAssignedContactsBadges();
+}
+
+function toggleValueFromArray(value, array) {
+  let index = array.indexOf(value);
+  if (index !== -1) {
+    array.splice(index, 1);
+  } else {
+    array.push(value);
+  }
+}
+
+function renderAssignedContactsBadges() {
+  let badgesRef = document.getElementById("task-assigned-contacts-badges");
+  badgesRef.innerHTML = "";
+  for (
+    let indexContact = 0;
+    indexContact < newTaskAssignedContactsIndices.length;
+    indexContact++
+  ) {
+    badgesRef.innerHTML += getTaskAssignedContactBadgeTemplate(indexContact);
   }
 }
