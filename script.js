@@ -325,3 +325,5 @@ function getFirstTwoStringInitials(inputString) {
   }
   return stringInitials;
 }
+
+

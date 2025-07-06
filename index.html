@@ -20,10 +20,21 @@
           <img src="/assets/img/faviconLogo.svg" alt="join-logo" />
         </div>
 
-        <div class="signup-container d-flex-row-c-fe ">
-          <span class="font-Inter-400-20px">Not a Join user?</span>
-          <button class="font-Inter-700-16px text-color-white" onclick="signupPage()">Sign Up</button>
+
+          <div class="site-container">
+          <div class="signup-container d-flex-row-c-fe ">
+            <span class="font-Inter-400-20px">Not a Join user?</span>
+            <button class="font-Inter-700-16px text-color-white" onclick="signupPage()">Sign Up</button>
+          </div>
+
+           <footer class="policy-notice">
+            <ul class="d-flex-row-c-c policy-notice-list nav-links font-Inter-400-16px text-color-A8A8A8">
+              <li class=""><a href="/assets/html/privacy_policy.html">Privacy Policy</a></li>
+              <li class=""><a href="/assets/html/legal_notice.html">Legal Notice</a></li>
+            </ul>
+          </footer>
         </div>
+
 
         <div class="login-container d-flex-column-c-c text-center">
           <div class="login-headline-container d-flex-column-c-c">
@@ -53,19 +64,13 @@
             </button>
             <button onclick="guestLogin()" id="guest-login" class="guest-login-btn font-Inter-700-21px text-color-2A3647" type="button">
               <span class="d-flex text-center-relative">Guest Log In</span>
-            </button>
+            </button onclick="getPasswordReset()">
           </div>
-        
 
 
       </div>
 
-          <footer class="policy-notice">
-            <ul class="d-flex-row-c-c policy-notice-list">
-              <li class="nav-links font-Inter-400-16px text-color-A8A8A8"><a href="/assets/html/privacy_policy.html">Privacy Policy</a></li>
-              <li class="nav-links font-Inter-400-16px text-color-A8A8A8"><a href="/assets/html/legal_notice.html">Legal Notice</a></li>
-            </ul>
-          </footer>
+
 
         </div>
 

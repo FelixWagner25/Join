@@ -44,11 +44,37 @@ function userGreeting(){
   let comma = document.getElementById('comma');
   let name = sessionStorage.getItem("user") || "G";
     timeGreeting();
+    checkAnimation();
   if (name !== "G") {;
   comma.classList.remove('d-none');
   greet.innerHTML = name;
   } 
 
+}
+
+function checkAnimation() {
+    let greetingDiv = document.querySelector('.greeting')
+    const alreadyShown = sessionStorage.getItem('greetingShown');
+    const width = window.innerWidth
+    if (width > 820){
+    sessionStorage.setItem('greetingShown', 'true');
+    hideGreeting()
+    }  
+    if (!alreadyShown) {
+    greetingDiv.style.animation = 'fadeGreeting 3s ease-in forwards';
+    greetingDiv.addEventListener('animationend', () => {
+    hideGreeting()
+    });
+    sessionStorage.setItem('greetingShown', 'true');
+    } else {
+    hideGreeting()
+}
+}
+
+function hideGreeting() {
+    let greetingDiv = document.querySelector('.greeting')
+    greetingDiv.classList.add('d-none')
+    greetingDiv.classList.remove('d-flex-column-c-c')
 }
 
 function timeGreeting() {

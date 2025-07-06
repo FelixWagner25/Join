@@ -116,6 +116,11 @@ button:disabled:hover {
   align-items: baseline;
 }
 
+.d-flex-column-rev{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .h-100vh {
   height: 100vh;
 }
