@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" href="/styles/assets.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/styles/colors.css">
     <link rel="stylesheet" href="/styles/desktop_template.css">
+    <link rel="stylesheet" href="/styles/add_task.css">
+    <link rel="stylesheet" href="/styles/contacts.css">
     
-    <link rel="stylesheet" href="/styles/addtask.css">
-    <script src="/scripts/addtask.js"></script>
+    <script src="/scripts/add_task.js"></script>
+    <script src="/templates/add_task_templates.js"></script>
     
     <script src="/script.js"></script>
     <script src="/scripts/desktop_template.js"></script>
@@ -48,15 +51,15 @@
                 <div class="d-flex-column gap-8px">
                     <label class="font-Inter-400-20px text-color-2A3647">Priority</label>
                     <div class="d-flex gap-16px">
-                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-urgent" onclick="setTaskPriority('task-priority-urgent')">
+                        <button type="button" class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-urgent" onclick="setTaskPriority('task-priority-urgent')">
                             <span>Urgent</span>
                             <span class="task-priority-btn-icon urgent-icon"></span>
                         </button>
-                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium" id="task-priority-medium" onclick="setTaskPriority('task-priority-medium')">
+                        <button type="button" class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium" id="task-priority-medium" onclick="setTaskPriority('task-priority-medium')">
                             <span>Medium</span>
                             <span class="task-priority-btn-icon medium-icon"></span>
                         </button>
-                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-low" onclick="setTaskPriority('task-priority-low')">
+                        <button type="button" class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-low" onclick="setTaskPriority('task-priority-low')">
                             <span>Low</span>
                             <span class="task-priority-btn-icon low-icon"></span>
                         </button>

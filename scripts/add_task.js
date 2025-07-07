@@ -32,8 +32,19 @@ function getNewTaskInformation() {
 function insertMandatoryTaskInfo(newTaskObj) {
   newTaskObj.title = getInputTagValue("task-title");
   newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.category = getInputTagValue("task-category");
+  newTaskObj.category = getTaskCategoryFirebaseName();
+  newTaskObj.status = "todo";
   newTaskObj.priority = newTaskPriority;
+}
+
+function getTaskCategoryFirebaseName() {
+  let key = getInputTagValue("task-category");
+  switch (key) {
+    case "Technical Task":
+      return "technical-task"
+    case "User Story":
+      return "user-story";
+  }
 }
 
 function insertOptionalTaskInfo(newTaskObj) {

@@ -2,9 +2,9 @@
  * Function to load summary.html on initiation
  *
  */
-function init() {
+async function init() {
     w3.includeHTML(() => {userInitials(), setBackgroundColor()});
-/*   await initContacs(); */
+  await initContacs();
 }
 
 function toggleDropdown() {
