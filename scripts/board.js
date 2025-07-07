@@ -11,9 +11,9 @@ async function getTasksArray() {
 
 function renderBoard() {
   renderBoardColumn("to-do", "todo");
-  // renderBoardColumn("in-progress");
-  // renderBoardColumn("await-feedback");
-  // renderBoardColumn("done");
+  renderBoardColumn("in-progress", "inprogress");
+  renderBoardColumn("await-feedback", "awaitfeedback");
+  renderBoardColumn("done", "done");
 }
 
 function renderBoardColumn(columHTMLid, taskStatusId) {
@@ -21,15 +21,27 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
   boardColRef.innerHTML = "";
   for (let i = 0; i < tasksArray.length; i++) {
     if (!taskHasStatus(taskStatusId, i)) {
-      continue;
+      continue ;
     }
     boardColRef.innerHTML += getBoardCardTemplate(i);
     if (subtasksExist(i)) {
       renderSubtaskProgressInfo(i);
-    }
+    } 
     renderBoardCardContacts(i);
   }
+  checkEmptyColumn(columHTMLid)
 }
+
+function checkEmptyColumn(columHTMLid) {
+    let boardColRef = document.getElementById(columHTMLid);
+    let titleRef = boardColRef.parentElement.getElementsByClassName('col-title-wrap');
+    let title= [...titleRef].map((t) => t.innerText)
+    let board = boardColRef.getElementsByClassName('task-card-wrap')
+    if (board.length == 0) {
+    boardColRef.innerHTML += getNoTask(title)  
+    }
+}
+
 
 function taskHasStatus(taskStatusId, indexTask) {
   return tasksArray[indexTask][1].status === taskStatusId;
@@ -53,7 +65,7 @@ function renderBoardCardContacts(indexTask) {
 
   for (
     let indexTaskContact = 0;
-    indexTaskContact < tasksArray[indexTask][1].assignedTo.length;
+    indexTaskContact < tasksArray[indexTask][1].assignedTo?.length;
     indexTaskContact++
   ) {
     taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
@@ -101,9 +113,47 @@ function getCategoryNameTemplate(taskCategory) {
   }
 }
 
-function getContactColorClassById(contactId) {
-  let indexContact = contactsArray.findIndex(
-    (idValuePair) => idValuePair[0] === contactId
-  );
-  return getContactColorClassName(indexContact);
+function searchTask() {
+  let taskWrap = document.getElementsByClassName('task-card-wrap');
+  let inputRef = document.getElementsByClassName('search-input');
+  let searchRef = document.getElementsByClassName('task-description-wrap');
+  let foundRef = "";
+  [...taskWrap].forEach((c) => c.classList.add('d-none'));
+  foundRef = [...searchRef].filter((t) => t.innerText.includes(inputRef[0].value));
+  foundRef.forEach((c) => c.parentElement.parentElement.classList.remove('d-none'));
 }
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+let currentTask = ""
+function startDragging(event) {
+  toggleDragArea()
+  currentTask = tasksArray[event];
+  return currentTask
+}
+
+async function moveTask(event) {
+  toggleDragArea()
+  let targetTask = event.target.closest('.col-content[id]')
+  targetTask= targetTask.id.replace("-","")
+  await updateStatus(`tasks/${currentTask[0]}/status`,targetTask)
+  await initBoard()
+}
+
+function toggleDragArea() {
+  let area = document.querySelectorAll('.col-empty-wrap:last-of-type');
+  [...area].forEach((c) => c.classList.toggle('d-none'))
+}
+
+async function updateStatus(path = "", taskData = {}) {
+  let response = await fetch(database + path + ".json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(taskData),
+  });
+}
+

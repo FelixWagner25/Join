@@ -1,142 +1,63 @@
-<body>
-  <div class="d-none bg-dimmed" id="bg-dimmed" onclick="closeContactOverlays()">
-    <div
-      class="add-contact-screen"
-      onclick="stopEventPropagation(event)"
-      id="add-contact-screen"
-    >
-      <div
-        class="close-icon-wrap d-flex-row-c-c"
-        onclick="closeContactOverlays()"
-      >
-        <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
-      </div>
-      <div class="add-contact-title-page">
-        <img
-          src="/assets/icons/join_icon.svg"
-          alt="Join Logo"
-          class="add-contacts-screen-logo mg-t-80px"
-        />
-        <div class="add-contacts-title-wrap">
-          <div class="add-contacts-screen-title-text-wrap">
-            <span class="add-contacts-screen-title-text">Add contact</span>
-            <span class="add-contacts-screen-title-subtext"
-              >Tasks are better with a team!</span
-            >
-          </div>
-          <div class="add-contacts-title-page-hline"></div>
-        </div>
-      </div>
-      <div class="mg-t-200px">
-        <div class="add-contact-badge-wrap d-flex-row-c-c">
-          <img
-            src="/assets/icons/person.svg"
-            alt="person icon"
-            class="add-contact-badge"
-          />
-        </div>
-      </div>
-      <div class="add-contact-input-check mg-t-140px">
-        <form class="add-contacts-form-wrap" onsubmit="addNewContact()">
-          <div class="add-contact-input-wrap">
-            <input
-              required
-              type="text"
-              class="add-contact-input"
-              placeholder="Name"
-              id="add-contact-input-name"
-            />
-            <img
-              src="/assets/icons/person_icon.svg"
-              alt="person-icon"
-              class="add-contact-input-icon"
-            />
-          </div>
-          <div class="add-contact-input-wrap">
-            <input
-              required
-              type="email"
-              class="add-contact-input"
-              placeholder="Email"
-              id="add-contact-input-email"
-            />
-            <img
-              src="/assets/icons/mail_icon.svg"
-              alt="email-icon"
-              class="add-contact-input-icon"
-            />
-          </div>
-          <div class="add-contact-input-wrap">
-            <input
-              type="tel"
-              class="add-contact-input"
-              placeholder="Phone"
-              id="add-contact-input-phone"
-            />
-            <img
-              src="/assets/icons/call.svg"
-              alt="call icon"
-              class="add-contact-input-icon"
-            />
-          </div>
-          <div class="add-contact-btns-wrap">
-            <button
-              type="button"
-              onclick="closeContactOverlays()"
-              class="add-contact-btn-cancel"
-            >
-              <span>Cancel</span>
-              <img
-                src="/assets/icons/cancel.svg"
-                alt="cancel"
-                class="add-contact-btn-icon-cancel"
-                onmouseover="this.src='/assets/icons/close-blue.svg';"
-                onmouseout="this.src='/assets/icons/cancel.svg';"
-              />
-            </button>
-            <button type="submit" class="add-contact-btn">
-              <span>Create contact</span>
-              <img
-                src="/assets/icons/check_withoutBorder.svg"
-                alt="check"
-                class="add-contact-btn-icon-check"
-              />
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div
-      class="add-contact-screen"
-      onclick="stopEventPropagation(event)"
-      id="edit-contact-screen"
-    ></div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/styles/colors.css">
+  <link rel="stylesheet" href="/styles/desktop_template.css">
+  <link rel="stylesheet" href="/styles/assets.css">
+  
+  <link rel="stylesheet" href="/styles/contacts.css">
+  <script src="/scripts/contacts.js"></script>
+  <script src="/templates/contacts_templates.js"></script>
+  
+  <script src="/script.js"></script>
+  <script src="/scripts/desktop_template.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js" defer></script>
+</head>
 
-  <div class="d-flex">
-    <div class="contacts-list-wrap">
-      <button class="add-new-contact-btn" onclick="showAddContactScreen()">
-        <span class="add-new-contact-text">Add new contact</span>
-        <img
-          src="/assets/icons/person_add.svg"
-          alt="add person"
-          class="add-new-contact-img"
-        />
-      </button>
-      <div class="contacts-list" id="contacts-list"></div>
+<body onload="init(), renderContactsList()">
+<div class="page">
+  <div class="d-contents" w3-include-html="/templates/desktop_template.html"></div>
+  <main id="main">
+    <div class="d-none bg-dimmed" id="bg-dimmed" onclick="closeContactOverlays()">
+        <div
+        class="contact-screen"
+        onclick="stopEventPropagation(event)"
+        id="contact-card"
+      >
     </div>
-    <div class="contacts-details-wrap">
-      <div class="contacts-details-headline">
-        <span class="contacts-details-headline-title">Contacts</span>
-        <div class="vline col-lightblue"></div>
-        <span class="contacts-details-headline-subtitle"
-          >Better with a team</span
-        >
+    </div>
+
+    <div class="d-flex">
+      <div class="contacts-list-wrap">
+        <button class="add-new-contact-btn" onclick="showAddContactScreen()">
+          <span class="add-new-contact-text">Add new contact</span>
+          <img
+            src="/assets/icons/person_add.svg"
+            alt="add person"
+            class="add-new-contact-img"
+          />
+        </button>
+        <div class="contacts-list" id="contacts-list"></div>
       </div>
-      <div class="contact-details" id="contact-details"></div>
+      <div class="contacts-details-wrap">
+        <div class="contacts-details-headline">
+          <span class="contacts-details-headline-title">Contacts</span>
+          <div class="vline col-lightblue"></div>
+          <span class="contacts-details-headline-subtitle"
+            >Better with a team</span
+          >
+        </div>
+        <div class="contact-details" id="contact-details"></div>
+      </div>
     </div>
-  </div>
-  <div class="contact-created-banner" id="contact-created-banner">
-    Contact successfully created
+    <div class="contact-created-banner d-none" id="contact-created-banner">
+      Contact successfully created
+    </div>
+  </main> 
   </div>
 </body>
+</html>

@@ -1,73 +1,96 @@
-<body>
-    <div class="board-headline">
-        <div class="board-headline-text">Board</div>
-        <div class="board-search-add-task-wrap">
-            <div class="search-wrap">
-                <input type="text" placeholder="Find Task" class="search-input" />
-                <div class="search-icon-wrap">
-                    <div class="board-vline"></div>
-                    <div class="d-flex-row-c-c">
-                        <img src="/assets/icons/search.svg" alt="search" class="search-icon" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/assets.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/styles/colors.css">
+    <link rel="stylesheet" href="/styles/desktop_template.css">
+    
+    <link rel="stylesheet" href="/styles/board.css">
+    <link rel="stylesheet" href="/styles/contacts.css">
+    <script src="/scripts/board.js"></script>
+    <script src="/templates/board_templates.js"></script>
+    
+    <script src="/script.js"></script>
+    <script src="/scripts/desktop_template.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="/scripts/contacts.js"></script>
+</head>
+<body onload="init(), initBoard()">
+<div class="page">
+    <div class="d-contents" w3-include-html="/templates/desktop_template.html"></div>
+    <main id="main">
+        <div id="task-overlay" class="d-none bg-dimmed task-overlay-blur" onclick="closeTaskOverlays()">
+            <div class="task-overlay-wrap bg-white" id="task-overlay-wrap" onclick="event.stopPropagation()"></div>
+        </div>
+        <div class="board-headline">
+            <div class="board-headline-text">Board</div>
+            <div class="board-search-add-task-wrap">
+                <div class="search-wrap">
+                    <input type="text" placeholder="Find Task" class="search-input" oninput="searchTask()"/>
+                    <div class="search-icon-wrap">
+                        <div class="board-vline"></div>
+                        <div class="d-flex-row-c-c search-icon-div">
+                            <button class="search-icon"></button>
+                        </div>
                     </div>
                 </div>
+                <button class="add-task-btn">
+                    <span class="add-task-btn-text">Add task</span>
+                    <div class="d-flex-row-c-c">
+                        <img src="/assets/icons/add_white.svg" alt="add task" class="add-taks-btn-icon" />
+                    </div>
+                </button>
             </div>
-            <button class="add-task-btn">
-                <span class="add-task-btn-text">Add task</span>
-                <div class="d-flex-row-c-c">
-                    <img src="/assets/icons/add_white.svg" alt="add task" class="add-taks-btn-icon" />
+        </div>
+
+        <div class="board-col-wrap">
+        
+            <div class="col-content-wrap">
+                <div class="col-title-wrap mg-b-16px">
+                    <div class="col-title">To do</div>
+                    <button class="add-btn" alt="add button"></button>
                 </div>
-            </button>
-        </div>
-    </div>
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="to-do">
+                    <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks To do</div>
+                </div>
+            </div>
 
-    
-    <div class="board-col-wrap">
-      
-        <div class="col-content-wrap">
-            <div class="col-title-wrap mg-b-16px">
-                <div class="col-title">To do</div>
-                <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+            <div class="col-content-wrap">
+                <div class="col-title-wrap mg-b-16px">
+                    <div class="col-title">In progress</div>
+                    <button class="add-btn" alt="add button"></button>
+                </div>
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="in-progress">
+                    <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks in progress</div>
+                </div>
             </div>
-            <div class="col-content" id="to-do">
-                <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks To do</div>
-            </div>
-        </div>
 
-       
-        <div class="col-content-wrap">
-            <div class="col-title-wrap mg-b-16px">
-                <div class="col-title">In progress</div>
-                <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
+            <div class="col-content-wrap">
+                <div class="col-title-wrap mg-b-16px">
+                    <div class="col-title">Await feedback</div>
+                    <button class="add-btn" alt="add button"></button>
+                </div>
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="await-feedback">
+                    <div class="no-task-feedback  font-OpenSans-400-16px d-flex-row-c-c">No tasks awaiting feedback</div>
+                </div>
             </div>
-            <div class="col-content" id="in-progress">
-                <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks in progress</div>
-            </div>
-        </div>
-
-       
-        <div class="col-content-wrap">
-            <div class="col-title-wrap mg-b-16px">
-                <div class="col-title">Await feedback</div>
-                <img src="/assets/icons/add.svg" alt="add button" class="add-btn" />
-            </div>
-            <div class="col-content" id="await-feedback">
-                <div class="no-task-feedback  font-OpenSans-400-16px d-flex-row-c-c">No tasks awaiting feedback</div>
+        
+            <div class="col-content-wrap">
+                <div class="col-title-wrap mg-b-16px">
+                    <div class="col-title">Done</div>
+                </div>
+                <div class="col-content" ondrop="moveTask(event)" ondragover="allowDrop(event)" id="done">
+                    <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks done</div>
+                </div>
+                
+                
             </div>
         </div>
-
-       
-        <div class="col-content-wrap">
-            <div class="col-title-wrap mg-b-16px">
-                <div class="col-title">Done</div>
-            </div>
-            <div class="col-content" id="done">
-                <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No tasks done</div>
-            </div>
-        </div>
-    </div>
-
-   
-  
+    </main>
+    </div>  
 </body>
-
 </html>

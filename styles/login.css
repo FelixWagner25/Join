@@ -2,6 +2,30 @@ body{
   overflow: hidden;
 }
 
+li > a:visited{
+  color: #a8a8a8;
+}
+
+li > a:hover{
+  color: #29abe2;
+  font-weight: 700;
+  font-style: bold;
+}
+
+.accept-policy:hover{
+  text-decoration: underline;
+  text-decoration-style: solid;
+}
+
+.login-button-wrap{
+  flex-direction: column-reverse;
+  gap: 16px;
+}
+
+li{
+  min-width: 109px;
+}
+
 .background-fade {
   height: 100%;
   width: 100%;
@@ -20,7 +44,7 @@ body{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%) translateY(-50%);
+  transform: translate(-50%,-50%);
   animation: easein 2s forwards;
   z-index: 2;
 }
@@ -29,11 +53,13 @@ body{
   100% {
     top: 80px;
     left: 77px;
+    transform: translate(0, 0);
   }
 }
 
 .login-container {
-  width: 652px;
+  width: 100%;
+  max-width: 652px;
   height: 449px;
   border-radius: 30px;
   padding: 48px 115px 48px 115px;
@@ -41,6 +67,7 @@ body{
   background-color: #ffffff;
   animation: hide 2s forwards;
   z-index: -1;
+  transition: ease-in-out 0.5s 
 }
 @keyframes hide {
   0% {
@@ -85,8 +112,9 @@ body{
 }
 
 .login-headline-container {
-  width: 315px;
-  height: 89px;
+  max-width: 315px;
+  max-height: 89px;
+  gap: 16px;
 }
 
 .login-headline {
@@ -96,21 +124,19 @@ body{
 }
 
 .login-headline-underline {
-  height: 150px;
-  width: 0;
-  border-width: 3px;
+  width: 150px;
+  border-width: 2px;
   border-style: solid;
-  rotate: -90deg;
 }
 
 form {
-  width: 422px;
+  max-width: 422px;
   height: 152px;
   gap: 20px;
 }
 
 input {
-  width: inherit;
+  width: 100%;
   border: 0;
   font-size: 20px;
 }
@@ -120,9 +146,9 @@ input:hover{
 }
 
 .input-container {
-  width: inherit;
+  width: 100%;
   height: 48px;
-  width: 422px;
+  max-width: 422px;
   gap: 8px;
 }
 
@@ -134,10 +160,8 @@ input:focus-visible {
   outline: none;
 }
 
-
-
 .input-content {
-  width: 380px;
+  max-width: 100%;
   height: 24px;
   border-radius: 10px;
   border-style: solid;
@@ -238,9 +262,9 @@ input[type="checkbox"]:checked:hover {
 }
 
 .signup {
-  height: 630px !important;
-  width: 598px !important;
-  padding: 48px 88px !important;
+  max-height: 630px;
+  max-width: 598px;
+  padding: 48px 88px;
   justify-content: space-around !important;
   animation: none;
   z-index: 0;
@@ -256,7 +280,7 @@ input[type="checkbox"]:checked:hover {
 
 .form-signup {
   height: 326px;
-  width: 422px;
+  max-width: 422px;
 }
 
 .signup-btn {
@@ -273,9 +297,22 @@ input[type="checkbox"]:checked:hover {
   height: 25px;
 }
 
+.forgot-password{
+  background-color: unset;
+  width: 160px;
+  padding: 0;
+}
+
+.forgot-password:hover{
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-style: solid;
+}
+
+
 .arrow-left {
   position: absolute;
-  top: 128px;
+  top: 64px;
   left: 32px;
 }
 
@@ -332,6 +369,37 @@ input[type="checkbox"]:checked:hover {
 }
 
 
+.policy-notice{
+  height: 35px;
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  animation: hide 2s forwards;
+}
+
+.policy-notice-secondary{
+  height: 35px;
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+
+
+.policy-notice-list{
+  list-style-type: none;
+    display: flex;
+    gap: 8px;
+}
+
+.site-container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 @keyframes slide-up{
   from {    
   position: absolute;
@@ -344,5 +412,81 @@ input[type="checkbox"]:checked:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%) translateY(-50%);
+  }
+}
+
+@media  screen and (max-width: 992px) {
+  .login-container{
+    width: 322px;
+  }
+  
+  .join-logo-index > img {
+    height: 64px;
+    width: 78px;
+  }
+
+    .join-logo-index-signup > img {
+    height: 64px;
+    width: 78px;
+  }
+
+  @keyframes easein {
+  100% {
+    top: 37px;
+    left: 38px;
+    transform: translate(0, 0);
+  }
+}
+}
+
+@media screen and ( max-width: 600px ) {
+
+  .signup-container{
+    position: unset;
+  }
+
+  .signup{
+    max-height: unset;
+    max-width: unset;
+    padding: unset;
+  }
+
+  .login-container{
+    width: 300px;
+    height: 475px;
+    padding: 32px 0;
+  }
+
+  form{
+    width: 280px;
+  }
+
+  .login-btn-container{
+    flex-direction: column;
+  }
+
+  .login-btn-container > button{
+    width: 180px;
+  }
+
+  .login-headline{
+    font-size: 47px;
+  }
+
+  .background-fade{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  }
+
+  .site-container{
+    height: 12%;
+    flex-direction: column;
+    padding-bottom: 32px;
+  }
+
+  .policy-notice{
+    position: unset;
+    transform: unset;
   }
 }

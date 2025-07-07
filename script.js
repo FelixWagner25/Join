@@ -8,7 +8,8 @@ let tasksArray = [];
  *
  */
 function guestLogin() {
-  location.href = "/templates/desktop_template.html";
+  saveSession("Gast")
+  location.href = "assets/html/summary.html";
 }
 
 /**
@@ -69,23 +70,49 @@ function resetErrorMessage() {
  * @param {Event} event event-object to stop page-reload after submit
  */
 function signupFormValidation(event) {
-  event.preventDefault(); /* preventDefault nur nutzen, wenn Validierungsfehler */
-  const regex =
-    /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+  event.preventDefault();
+    if (!regexValidation()){
+    return
+  } 
   let userInput = document.getElementsByTagName("input");
-  let mail = document.getElementById("add-contact-input-email");
-  let passwordError = document.getElementById("password-error");
-  let mailError = document.getElementById("email-error");
   if (userInput[2].value !== userInput[3].value) {
-    passwordError.classList.remove("d-none");
-    passwordError.previousElementSibling.classList.add("error-border");
-  } else if (!regex.test(mail.value)) {
-    mailError.classList.remove("d-none");
-    mailError.previousElementSibling.classList.add("error-border");
+  showErrorMessage("password", [])
   } else {
-    getNewUserInformation();
+  getNewUserInformation();
   }
 }
+
+function regexValidation() {
+   const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+   const regexPhone = /^\+?\d{8,}$/;
+   let mail = document.querySelectorAll("input");
+   let filteredMail = [...mail].filter((t) =>  t.type == "email")
+   let filteredPhone = [...mail].filter((t) =>  t.type == "tel")
+   let valid = true
+  if (!regexMail.test(filteredMail[0].value)) {
+   showErrorMessage("email", [])
+   valid = false
+  } if (filteredPhone[0]?.value && !regexPhone.test(filteredPhone[0].value)) {
+       showErrorMessage("phone", [])
+       valid = false
+  }
+  else return valid
+}
+
+/**
+ * This functions adds error-messages, based on the errors-id
+ * 
+ * @param {Parameters} field declares the specific error id
+ * @param {Array} array fields to iterate, if available
+ */
+function showErrorMessage(field, array) {
+  let errorRef = document.getElementById(`${field}-error`);
+  errorRef.classList.remove("d-none");
+  array?.forEach((input) => {
+      input.parentElement.classList.add("error-border");
+    })
+  errorRef.previousElementSibling.classList.add("error-border");
+} 
 
 /**
  * Function to trigger Password visible/unvisible for user
@@ -110,9 +137,11 @@ function showPassword(x) {
 function getNewUserInformation() {
   let userInput = document.getElementsByTagName("input");
   let userCredential = {};
+  let key = "";
+  let value = ""
   for (let index = 0; index < userInput.length; index++) {
-    let key = userInput[index].name;
-    let value = userInput[index].value;
+    key = userInput[index].name;
+    value = userInput[index].value;
     userCredential[key] = value;
   }
   checkMailRedundancy(userCredential);
@@ -124,26 +153,30 @@ function getNewUserInformation() {
  * @param {object} credentials the sign-up credentials
  */
 async function checkMailRedundancy(credentials) {
-  let mailError = document.getElementById("email-redundancy-error");
   let response = await fetch(database + "/user" + ".json");
   let responseRef = await response.json();
+  let mails = getUsedMails(responseRef)
   if (responseRef === null) {
     postJSON("user", credentials);
     showMessage(credentials);
     return;
   }
+  if (!mails.includes(credentials.email)) {
+    postJSON("user", credentials);
+    showMessage(credentials);
+    return
+  } 
+    showErrorMessage("email-redundancy", [])
+}
+
+function getUsedMails(responseRef) {
   let mailValue = Object.values(responseRef);
   let newMail = mailValue.map((i) => {
     return i.email;
   });
-  if (!newMail.includes(credentials.email)) {
-    postJSON("user", credentials);
-    showMessage(credentials);
-  } else {
-    mailError.classList.remove("d-none");
-    mailError.previousElementSibling.classList.add("error-border");
-  }
+  return newMail
 }
+
 
 /**
  * This Function gives the User feedback, if signup was successful.
@@ -154,11 +187,11 @@ async function checkMailRedundancy(credentials) {
 function showMessage(credentials) {
   addNewContactOnSignup(credentials);
   let messageBox = document.querySelector(".signup-message");
-  let newBlur = document.querySelector(".background-fade");
+  let blur = document.querySelector(".background-fade");
   let signup = document.querySelector(".signup");
   messageBox.classList.remove("d-none");
   messageBox.classList.add("d-flex-row-c-c");
-  newBlur.style.backgroundColor = "rgb(0, 0, 0, 0.10)";
+  blur.style.backgroundColor = "rgb(0, 0, 0, 0.10)";
   signup.style.zIndex = "-1";
   setTimeout(() => {
     location.href = "/index.html";
@@ -196,6 +229,7 @@ async function postJSON(path = "", data = {}) {
   });
 }
 
+
 /**
  * This function gets all users-credentials from database and triggers credential-check-function
  *
@@ -217,22 +251,36 @@ async function userLogin(path = "user") {
  *
  * @param {object} responseRef all user credentials from the database
  */
-function checkLogInCredentials(responseRef) {
+async function checkLogInCredentials(responseRef) {
   let x = Object.values(responseRef);
-  let loginError = document.getElementById("password-error");
   let loginInput = document.getElementsByTagName("input");
-  let credentialsMerge = x.map((i) => {
-    return i.email + i.password;
-  });
+  let name =  filterUserName(x, loginInput)
+  let credentialsMerge = x.map((i) => {return i.email + i.password;});
   if (credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
-    location.href = "/templates/desktop_template.html";
+    location.href = "assets/html/summary.html";
+    saveSession(name)
   } else {
-    loginError.classList.remove("d-none");
-    [...loginInput].forEach((input) => {
-      input.parentElement.classList.add("error-border");
-    });
+    showErrorMessage("password",[...loginInput]);
   }
 }
+
+function filterUserName(x, loginInput) {
+  let correctuser = x.filter((x) => x.email == loginInput[0].value)
+  let user = correctuser.map((n) => n.name)
+  return user
+}
+
+function saveSession(name) {
+  setSessionStorage("user",name[0])
+  setSessionStorage("initials", name[0].split(" ").map(i => i[0]?.toUpperCase()).join(""))
+}
+
+function setSessionStorage(key, value) {
+  sessionStorage.setItem(key,value)
+}
+
+
+
 
 /**
  * Function to get database element from firebase server as JSON
