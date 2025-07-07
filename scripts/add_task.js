@@ -147,8 +147,9 @@ function renderAssignedContactsCheckboxes() {
     indexContact < newTaskAssignedContactsIndices.length;
     indexContact++
   ) {
+    let indexAssignedContact = newTaskAssignedContactsIndices[indexContact];
     let assignedContactWrapRef = document.getElementById(
-      "task-assigned-contact-wrap-" + indexContact
+      "task-assigned-contact-wrap-" + indexAssignedContact
     );
     assignedContactWrapRef.classList.add("focus");
   }
@@ -180,6 +181,8 @@ function renderAssignedContactsBadges() {
     indexContact < newTaskAssignedContactsIndices.length;
     indexContact++
   ) {
-    badgesRef.innerHTML += getTaskAssignedContactBadgeTemplate(indexContact);
+    badgesRef.innerHTML += getTaskAssignedContactBadgeTemplate(
+      newTaskAssignedContactsIndices[indexContact]
+    );
   }
 }
