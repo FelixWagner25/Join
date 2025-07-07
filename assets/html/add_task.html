@@ -1,4 +1,4 @@
-<body>
+<body onload="">
 <div class="pd-t-110px pd-lr-96px d-flex-column gap-48px">
     <h1 class="font-Inter-700-61px">Add Task</h1>
     <form class="max-width-976px" onsubmit="addNewTask()">
@@ -6,7 +6,7 @@
             <div class="d-flex-column gap-32px">
                 <div class="d-flex-column gap-8px">
                     <label for="task-title" class="font-Inter-400-20px text-color-2A3647">Title<span class="col-red">*</span></label>
-                    <input class="task-input-border task-input-text-field font-Inter-400-12px" type="text" id="task-title" placeholder="Enter a title">
+                    <input class="task-input-border task-input-text-field font-Inter-400-12px" type="text" id="task-title" placeholder="Enter a title" required>
                 </div>
 
                 <div class="d-flex-column gap-8px">
@@ -16,7 +16,7 @@
 
                 <div class="d-flex-column gap-8px">
                     <label for="task-due-date" class="input-label">Due date<span class="col-red">*</span></label>
-                    <input class="task-input-border task-input-date" type="date" id="task-due-date" placeholder="dd/mm/yyyy">
+                    <input class="task-input-border task-input-date" type="date" id="task-due-date" placeholder="dd/mm/yyyy" required>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                             <span>Urgent</span>
                             <span class="task-priority-btn-icon urgent-icon"></span>
                         </button>
-                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-medium" onclick="setTaskPriority('task-priority-medium')">
+                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium" id="task-priority-medium" onclick="setTaskPriority('task-priority-medium')">
                             <span>Medium</span>
                             <span class="task-priority-btn-icon medium-icon"></span>
                         </button>
@@ -52,7 +52,7 @@
 
                 <div class="d-flex-column gap-8px p-relative">
                     <label for="task-category" class="font-Inter-400-20px text-color-2A3647">Category<span class="col-red">*</span></label>
-                    <input class="p-relative task-input-border task-input-category font-Inter-400-20px" type="text" id="task-category" placeholder="Select task category" readonly onclick="toggleTaskCategoryDropdown()">
+                    <input class="p-relative task-input-border task-input-category font-Inter-400-20px" type="text" id="task-category" placeholder="Select task category" readonly onclick="toggleTaskCategoryDropdown()" required>
                     <span class="p-absolute task-dropdown-icon" id="task-category-dropdown-icon"></span>
                     <div class="d-none p-absolute task-input-dropdown" id="task-category-dropdown">
                         <div class="task-category-option" onclick="setInputTagValue('task-category', this.innerHTML),closeTaskCategoryDropdown() ">Technical Task</div>
@@ -83,7 +83,7 @@
             <div class="font-Inter-400-16px"><span class="col-red">*</span>This field is required</div>
 
             <div class="task-form-btn-wrap d-flex">
-                <button class="task-form-btn d-flex-row-c-c clear-task-btn" type="reset">
+                <button class="task-form-btn d-flex-row-c-c clear-task-btn" type="reset" onclick="clearAddTaskForm()">
                     <span class="font-Inter-400-20px">Clear</span>
                     <span class="clear-task-btn-icon"></span>
                 </button>

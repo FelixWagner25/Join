@@ -1,35 +1,77 @@
 let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
+let newTaskPriority = "medium";
 
 async function addNewTask() {
   let newTaskData = getNewTaskInformation();
-  // await submitObjectToDatabase("tasks", newTaskData);
-  //renderBoard();
-  closeAddTaskOverlay();
+  await submitObjectToDatabase("tasks", newTaskData);
   showNewTaskCreatedMessage();
 }
 
-function getNewTaskInformation() {}
+function clearAddTaskForm() {}
 
-function closeAddTaskOverlay() {}
+function getNewTaskInformation() {
+  let newTaskInfo = {};
+  insertMandatoryTaskInfo(newTaskInfo);
+  insertOptionalTaskInfo(newTaskInfo);
+  return newTaskInfo;
+}
+
+function insertMandatoryTaskInfo(newTaskObj) {
+  newTaskObj.title = getInputTagValue("task-title");
+  newTaskObj.dueDate = getInputTagValue("task-due-date");
+  newTaskObj.category = getInputTagValue("task-category");
+  newTaskObj.priority = newTaskPriority;
+}
+
+function insertOptionalTaskInfo(newTaskObj) {
+  if (getInputTagValue("task-description") !== "") {
+    newTaskObj.description = getInputTagValue("task-description");
+  }
+  if (newTaskAssignedContactsIndices != []) {
+    newTaskObj.assignedTo = getNewTaskAssignedContactsObj();
+  }
+  if (newTaskSubtasks != []) {
+    newTaskObj.subtasks = newTaskSubtasks;
+  }
+}
+
+function getNewTaskAssignedContactsObj() {
+  let assignedContacts = [];
+  for (let index = 0; index < newTaskAssignedContactsIndices.length; index++) {
+    let keyValuePair = {};
+    keyValuePair.Id = contactsArray[newTaskAssignedContactsIndices[index]][0];
+    keyValuePair.name =
+      contactsArray[newTaskAssignedContactsIndices[index]][1].name;
+    assignedContacts[index] = keyValuePair;
+  }
+  return assignedContacts;
+}
 
 function showNewTaskCreatedMessage() {}
 
 function setTaskPriority(htmlId) {
-  let buttons = document.getElementsByClassName("task-priority-btn");
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove("active-urgent", "active-medium", "active-low");
-  }
+  resetAllPriorityBtns();
   let activeBtn = document.getElementById(htmlId);
   switch (htmlId) {
     case "task-priority-urgent":
       activeBtn.classList.add("active-urgent");
+      newTaskPriority = "urgent";
       break;
     case "task-priority-low":
       activeBtn.classList.add("active-low");
+      newTaskPriority = "low";
     default:
       activeBtn.classList.add("active-medium");
+      newTaskPriority = "medium";
       break;
+  }
+}
+
+function resetAllPriorityBtns() {
+  let buttons = document.getElementsByClassName("task-priority-btn");
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active-urgent", "active-medium", "active-low");
   }
 }
 
