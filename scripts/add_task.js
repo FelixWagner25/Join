@@ -6,9 +6,21 @@ async function addNewTask() {
   let newTaskData = getNewTaskInformation();
   await submitObjectToDatabase("tasks", newTaskData);
   showNewTaskCreatedMessage();
+  clearAddTaskForm();
 }
 
-function clearAddTaskForm() {}
+function clearAddTaskForm() {
+  clearInputTagValue("task-title");
+  clearInputTagValue("task-description");
+  clearInputTagValue("task-due-date");
+  setTaskPriority("task-priority-medium");
+  clearInputTagValue("task-assigned-contacts");
+  clearInputTagValue("task-category");
+  clearInputTagValue("task-subtasks");
+  newTaskAssignedContactsIndices = [];
+  renderAssignedContactsBadges();
+  newTaskSubtasks = [];
+}
 
 function getNewTaskInformation() {
   let newTaskInfo = {};
