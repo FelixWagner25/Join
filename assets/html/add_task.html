@@ -21,101 +21,103 @@
 <div class="page">
 <div class="d-contents" w3-include-html="/templates/desktop_template.html"></div>
 <main id="main">
-    <div class="d-flex-align-item-c">
-        <div class="add-task-container">
-            <h1 class="font-Inter-700-61px">Add Task</h1>
 
-            <div class="form-section d-flex mg-t-48px mg-b-40px">
-                <div class="form-column d-flex-column">
-                    <div class="input-group d-flex-column">
-                        <label class="input-label required font-Inter-400-20px">Title</label>
-                        <input class="font-Inter-400-20px text-color-d1d1d1" type="text" id="task-title" placeholder="Enter a title">
-                    </div>
-
-                    <div class="input-group d-flex-column">
-                        <label class="input-label font-Inter-400-20px">Description</label>
-                        <textarea class="font-Inter-400-20px text-color-d1d1d1" id="task-description" placeholder="Enter a Description"></textarea>
-                    </div>
-
-                    <div class="input-group d-flex-column">
-                        <label class="input-label required font-Inter-400-20px">Due Date</label>
-                        <input class="font-Inter-400-20px text-color-d1d1d1" type="date" id="task-due-date" placeholder="dd/mm/yyyy">
-                    </div>
+    <div class="pd-t-110px pd-lr-96px d-flex-column gap-48px">
+    <h1 class="font-Inter-700-61px">Add Task</h1>
+    <form class="max-width-976px" onsubmit="addNewTask()">
+        <div class="d-flex-sb gap-48px pd-b-64px">
+            <div class="d-flex-column gap-32px">
+                <div class="d-flex-column gap-8px">
+                    <label for="task-title" class="font-Inter-400-20px text-color-2A3647">Title<span class="col-red">*</span></label>
+                    <input class="task-input-border task-input-text-field font-Inter-400-12px" type="text" id="task-title" placeholder="Enter a title" required>
                 </div>
 
-                <div class="divider"></div>
-
-                <div class="form-column d-flex-column">
-                    <div class="input-group d-flex-column">
-                        <label class="input-label font-Inter-400-20px">Priority</label>
-                        <div class="priority-buttons">
-                            <button class="priority-btn d-flex-row-c-c" id="priority-urgent" onclick="setPriority('urgent')">
-                                <span class="font-Inter-400-20px text-color-black">Urgent</span>
-                                <img src="/assets/icons/urgent.svg" alt="Urgent">
-                            </button>
-                            <button class="priority-btn d-flex-row-c-c" id="priority-medium" onclick="setPriority('medium')">
-                                <span class="font-Inter-400-20px text-color-black">Medium</span>
-                                <img src="/assets/icons/medium.svg" alt="Medium">
-                            </button>
-                            <button class="priority-btn d-flex-row-c-c" id="priority-low" onclick="setPriority('low')">
-                                <span class="font-Inter-400-20px text-color-black">Low</span>
-                                <img src="/assets/icons/low.svg" alt="Low">
-                            </button>
-                        </div>
-                    </div>
-
-                     <div class="input-group d-flex-column">
-                        <label class="input-label font-Inter-400-20px">Assigned To</label>
-                        <div class="multi-select-wrapper " onfocus="initAssignedToDropdown()">
-                            <div class="multi-select-display d-flex-c-sb" onclick="toggleAssignedDropdown()">
-                                <div class="selected-items d-flex " id="selected-contacts">
-                                    <span>Select contacts to assign</span>
-                                </div>
-                            </div>
-                            <div class="multi-select-dropdown" id="contacts-dropdown">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group d-flex-column">
-                        <label class="input-label required font-Inter-400-20px">Category</label>
-                        <div class="select-wrapper">
-                            <select class="font-Inter-400-20px" id="task-category" onfocus="initCategoryDropdown()">
-                                <option value="" disabled selected>Select task category</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="input-group d-flex-column">
-                        <label class="input-label font-Inter-400-20px">Subtasks</label>
-                        <div class="input-with-icon">
-                            <input class="font-Inter-400-20px text-color-d1d1d1" type="text" id="task-subtasks" placeholder="Add new subtask"
-                                onkeypress="if(event.key === 'Enter') addSubtask();">
-                            <button class="add-subtask" onclick="addSubtask()">+</button>
-                        </div>
-                    </div>
+                <div class="d-flex-column gap-8px">
+                    <label for="task-description" class="font-Inter-400-20px text-color-2A3647">Description</label>
+                    <textarea class="task-input-border task-input-text-area font-Inter-400-12px" id="task-description" placeholder="Enter a Description"></textarea>
+                </div>
+                <div class="d-flex-column gap-8px">
+                    <label for="task-due-date" class="input-label">Due date<span class="col-red">*</span></label>
+                    <input class="task-input-border task-input-date" type="date" id="task-due-date" placeholder="dd/mm/yyyy" required>
                 </div>
             </div>
 
-            <div class="form-footer d-flex-c-sb">
-                <div class="required-info text-color-black font-Inter-400-16px"><span class="font-Inter-400-20px">*</span>This field is required</div>
+            <div class="separator"></div>
 
-                <div class="action-buttons">
-                    <button class="btn  d-flex-align-item-c btn-clear" onclick="clearForm()">
-                        <span class="font-Inter-400-20px">Clear</span>
-                        <span class="checkmark"><img src="/assets/icons/xvector.svg" alt=""></span>
-                    </button>
-                    <button class="btn  d-flex-align-item-c btn-create" onclick="saveTask()">
-                        <span class="font-Inter-700-21px">Create Task</span>
-                        <span class="checkmark"><img src="/assets/icons/checkmarg.svg" alt=""></span>
-                    </button>
+            <div class="d-flex-column gap-32px">
+                <div class="d-flex-column gap-8px">
+                    <label class="font-Inter-400-20px text-color-2A3647">Priority</label>
+                    <div class="d-flex gap-16px">
+                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-urgent" onclick="setTaskPriority('task-priority-urgent')">
+                            <span>Urgent</span>
+                            <span class="task-priority-btn-icon urgent-icon"></span>
+                        </button>
+                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium" id="task-priority-medium" onclick="setTaskPriority('task-priority-medium')">
+                            <span>Medium</span>
+                            <span class="task-priority-btn-icon medium-icon"></span>
+                        </button>
+                        <button class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px" id="task-priority-low" onclick="setTaskPriority('task-priority-low')">
+                            <span>Low</span>
+                            <span class="task-priority-btn-icon low-icon"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-flex-column gap-8px p-relative">
+                    <label for="task-assigned-contacts" class="font-Inter-400-20px text-color-2A3647">Assigned To</label>
+                    <input class="p-relative task-input-border task-input-category font-Inter-400-20px" type="text" id="task-assigned-contacts" placeholder="Select contacts to assign" readonly onclick="toggleTaskAssignedContactsDropdown()">
+                    <span class="p-absolute task-dropdown-icon" id="task-assigend-contacts-dropdown-icon"></span>
+                    <div class="d-none p-absolute task-input-dropdown" id="task-assigned-contacts-dropdown">
+                    </div>
+                    <div class="d-flex gap-8px p-relative" id="task-assigned-contacts-badges"></div>
+                </div>
+
+                <div class="d-flex-column gap-8px p-relative">
+                    <label for="task-category" class="font-Inter-400-20px text-color-2A3647">Category<span class="col-red">*</span></label>
+                    <input class="p-relative task-input-border task-input-category font-Inter-400-20px" type="text" id="task-category" placeholder="Select task category" readonly onclick="toggleTaskCategoryDropdown()" required>
+                    <span class="p-absolute task-dropdown-icon" id="task-category-dropdown-icon"></span>
+                    <div class="d-none p-absolute task-input-dropdown" id="task-category-dropdown">
+                        <div class="task-category-option" onclick="setInputTagValue('task-category', this.innerHTML),closeTaskCategoryDropdown() ">Technical Task</div>
+                        <div class="task-category-option" onclick="setInputTagValue('task-category', this.innerHTML), closeTaskCategoryDropdown()">User Story</div>
+                    </div>
+                </div>
+
+                <div class="d-flex-column gap-8px p-relative">
+                    <label for="task-subtasks" class="font-Inter-400-20px text-color-2A3647">Subtasks</label>
+                    <input oninput="showSubtaskControlButtons()" class="p-relative task-input-border task-input-category font-Inter-400-20px" type="text" id="task-subtasks" placeholder="Add new subtask">
+                    <span class="p-absolute task-subtask-icon task-add-subtask-icon" id="task-add-subtask-icon"></span>
+                    <div class="d-none p-absolute d-flex gap-8px task-subtask-icon" id="task-clear-submit-subtask-icon-wrap">
+                        <div class="d-flex-row-c-c task-subtask-icon-wrap" onclick="clearInputTagValue('task-subtasks')">
+                            <span class="task-clear-subtask-icon"></span>
+                        </div>
+                        <span class="separator"></span>
+                        <div class="d-flex-row-c-c task-subtask-icon-wrap" onclick="addSubtask()">
+                            <span class="task-submit-subtask-icon"></span>
+                        </div>
+                    </div>
+                    <ul id="tasks-subtasks-list">
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="d-flex-row-end-sb">
+            <div class="font-Inter-400-16px"><span class="col-red">*</span>This field is required</div>
+
+            <div class="task-form-btn-wrap d-flex">
+                <button class="task-form-btn d-flex-row-c-c clear-task-btn" type="reset" onclick="clearAddTaskForm()">
+                    <span class="font-Inter-400-20px">Clear</span>
+                    <span class="clear-task-btn-icon"></span>
+                </button>
+                <button class="task-form-btn d-flex-row-c-c text-color-white submit-task-btn" type="submit">
+                    <span class="font-Inter-700-21px">Create Task</span>
+                    <span class="submit-task-btn-icon"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 </main>
 </div>  
 </body>
 </html>
-

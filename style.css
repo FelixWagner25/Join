@@ -35,6 +35,16 @@ button:disabled:hover {
   cursor: default;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
+textarea {
+  border: none;
+  outline: none;
+}
+
 .text-center {
   position: absolute;
   top: 50%;
@@ -83,9 +93,21 @@ button:disabled:hover {
   flex-direction: column;
   justify-content: center;
 }
+
 .d-flex-c-sb {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.d-flex-sb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex-row-end-sb {
+  display: flex;
+  align-items: flex-end;
   justify-content: space-between;
 }
 
@@ -111,6 +133,12 @@ button:disabled:hover {
   align-items: center;
 }
 
+.d-flex-row-c-fs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .d-flex-align-item-b{
   display: flex;
   align-items: baseline;
@@ -123,6 +151,10 @@ button:disabled:hover {
 
 .h-100vh {
   height: 100vh;
+}
+
+.mg-t-8px {
+  margin-top: 8px;
 }
 
 .mg-t-48px {
@@ -291,4 +323,53 @@ button:disabled:hover {
 .padding-t64-r400 {
   padding-top: 64px;
   padding-right: 400px;
+}
+
+.pd-t-110px {
+  padding-top: 110px;
+}
+
+.pd-lr-96px {
+  padding-left: 96px;
+  padding-right: 96px;
+}
+
+.pd-b-64px {
+  padding-bottom: 64px;
+}
+
+.pd-8px-16px {
+  padding: 8px 16px;
+}
+
+.gap-4px {
+  gap: 4px;
+}
+
+.gap-8px {
+  gap: 8px;
+}
+
+.gap-16px {
+  gap: 16px;
+}
+
+.gap-32px {
+  gap: 32px;
+}
+
+.gap-48px {
+  gap: 48px;
+}
+
+.max-width-976px {
+  max-width: 976px;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
 }

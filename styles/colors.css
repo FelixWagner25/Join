@@ -6,11 +6,15 @@
   color: #007cee;
 }
 
-.bg-white{
+.col-red {
+  color: #ff0000;
+}
+
+.bg-white {
   background-color: #ffffff;
 }
 
-.bg-neonblue{
+.bg-neonblue {
   background-color: #00aaff;
 }
 
