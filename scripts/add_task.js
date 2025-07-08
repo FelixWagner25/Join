@@ -3,10 +3,43 @@ let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 
 async function addNewTask() {
-  let newTaskData = getNewTaskInformation();
-  await submitObjectToDatabase("tasks", newTaskData);
+  let newTaskScalarData = getNewTaskScalarInformation();
+  await submitObjectToDatabase("tasks", newTaskScalarData);
+  tasksArray = await getTasksArray();
+  await submitNewTaskOptionalComplexInfo();
   showNewTaskCreatedMessage();
   clearAddTaskForm();
+}
+
+async function submitNewTaskOptionalComplexInfo() {
+  let newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
+  if (newTaskAssignedContactsIndices != []) {
+    await submitNewTaskAssignedContacts(newTaskFirebaseId);
+  }
+  if (newTaskSubtasks != []) {
+    await submitNewTaskSubtasks(newTaskFirebaseId);
+  }
+}
+
+async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
+  let path = "tasks/" + String(newTaskFireBaseId) + "/assignedTo";
+  for (let i = 0; i < newTaskAssignedContactsIndices.length; i++) {
+    let keyValuePairs = {};
+    keyValuePairs.Id = contactsArray[newTaskAssignedContactsIndices[i]][0];
+    keyValuePairs.name =
+      contactsArray[newTaskAssignedContactsIndices[i]][1].name;
+    await submitObjectToDatabase(path, keyValuePairs);
+  }
+}
+
+async function submitNewTaskSubtasks(newTaskFirebaseId) {
+  let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
+  for (let i = 0; i < newTaskSubtasks.length; i++) {
+    let keyValuePairs = {};
+    keyValuePairs.name = newTaskSubtasks[i].name;
+    keyValuePairs.done = newTaskSubtasks[i].done;
+    await submitObjectToDatabase(path, keyValuePairs);
+  }
 }
 
 function clearAddTaskForm() {
@@ -20,13 +53,14 @@ function clearAddTaskForm() {
   newTaskAssignedContactsIndices = [];
   renderAssignedContactsBadges();
   newTaskSubtasks = [];
+  renderSubtasks();
 }
 
-function getNewTaskInformation() {
-  let newTaskInfo = {};
-  insertMandatoryTaskInfo(newTaskInfo);
-  insertOptionalTaskInfo(newTaskInfo);
-  return newTaskInfo;
+function getNewTaskScalarInformation() {
+  let newTaskScalarInfo = {};
+  insertMandatoryTaskInfo(newTaskScalarInfo);
+  insertOptionalScalarTaskInfo(newTaskScalarInfo);
+  return newTaskScalarInfo;
 }
 
 function insertMandatoryTaskInfo(newTaskObj) {
@@ -41,35 +75,29 @@ function getTaskCategoryFirebaseName() {
   let key = getInputTagValue("task-category");
   switch (key) {
     case "Technical Task":
-      return "technical-task"
+      return "technical-task";
     case "User Story":
       return "user-story";
   }
 }
 
-function insertOptionalTaskInfo(newTaskObj) {
+function insertOptionalScalarTaskInfo(newTaskObj) {
   if (getInputTagValue("task-description") !== "") {
     newTaskObj.description = getInputTagValue("task-description");
   }
-  if (newTaskAssignedContactsIndices != []) {
-    newTaskObj.assignedTo = getNewTaskAssignedContactsObj();
-  }
-  if (newTaskSubtasks != []) {
-    newTaskObj.subtasks = newTaskSubtasks;
-  }
 }
 
-function getNewTaskAssignedContactsObj() {
-  let assignedContacts = [];
-  for (let index = 0; index < newTaskAssignedContactsIndices.length; index++) {
-    let keyValuePair = {};
-    keyValuePair.Id = contactsArray[newTaskAssignedContactsIndices[index]][0];
-    keyValuePair.name =
-      contactsArray[newTaskAssignedContactsIndices[index]][1].name;
-    assignedContacts[index] = keyValuePair;
-  }
-  return assignedContacts;
-}
+// function getNewTaskAssignedContactsObj() {
+//   let assignedContacts = {};
+//   for (let index = 0; index < newTaskAssignedContactsIndices.length; index++) {
+//     let keyValuePair = {};
+//     keyValuePair.Id = contactsArray[newTaskAssignedContactsIndices[index]][0];
+//     keyValuePair.name =
+//       contactsArray[newTaskAssignedContactsIndices[index]][1].name;
+//     assignedContacts[index] = keyValuePair;
+//   }
+//   return assignedContacts;
+// }
 
 function showNewTaskCreatedMessage() {}
 

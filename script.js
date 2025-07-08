@@ -8,7 +8,7 @@ let tasksArray = [];
  *
  */
 function guestLogin() {
-  saveSession("Gast")
+  saveSession("Gast");
   location.href = "assets/html/summary.html";
 }
 
@@ -71,37 +71,37 @@ function resetErrorMessage() {
  */
 function signupFormValidation(event) {
   event.preventDefault();
-    if (!regexValidation()){
-    return
-  } 
+  if (!regexValidation()) {
+    return;
+  }
   let userInput = document.getElementsByTagName("input");
   if (userInput[2].value !== userInput[3].value) {
-  showErrorMessage("password", [])
+    showErrorMessage("password", []);
   } else {
-  getNewUserInformation();
+    getNewUserInformation();
   }
 }
 
 function regexValidation() {
-   const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-   const regexPhone = /^\+?\d{8,}$/;
-   let mail = document.querySelectorAll("input");
-   let filteredMail = [...mail].filter((t) =>  t.type == "email")
-   let filteredPhone = [...mail].filter((t) =>  t.type == "tel")
-   let valid = true
+  const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const regexPhone = /^\+?\d{8,}$/;
+  let mail = document.querySelectorAll("input");
+  let filteredMail = [...mail].filter((t) => t.type == "email");
+  let filteredPhone = [...mail].filter((t) => t.type == "tel");
+  let valid = true;
   if (!regexMail.test(filteredMail[0].value)) {
-   showErrorMessage("email", [])
-   valid = false
-  } if (filteredPhone[0]?.value && !regexPhone.test(filteredPhone[0].value)) {
-       showErrorMessage("phone", [])
-       valid = false
+    showErrorMessage("email", []);
+    valid = false;
   }
-  else return valid
+  if (filteredPhone[0]?.value && !regexPhone.test(filteredPhone[0].value)) {
+    showErrorMessage("phone", []);
+    valid = false;
+  } else return valid;
 }
 
 /**
  * This functions adds error-messages, based on the errors-id
- * 
+ *
  * @param {Parameters} field declares the specific error id
  * @param {Array} array fields to iterate, if available
  */
@@ -109,10 +109,10 @@ function showErrorMessage(field, array) {
   let errorRef = document.getElementById(`${field}-error`);
   errorRef.classList.remove("d-none");
   array?.forEach((input) => {
-      input.parentElement.classList.add("error-border");
-    })
+    input.parentElement.classList.add("error-border");
+  });
   errorRef.previousElementSibling.classList.add("error-border");
-} 
+}
 
 /**
  * Function to trigger Password visible/unvisible for user
@@ -138,7 +138,7 @@ function getNewUserInformation() {
   let userInput = document.getElementsByTagName("input");
   let userCredential = {};
   let key = "";
-  let value = ""
+  let value = "";
   for (let index = 0; index < userInput.length; index++) {
     key = userInput[index].name;
     value = userInput[index].value;
@@ -155,7 +155,7 @@ function getNewUserInformation() {
 async function checkMailRedundancy(credentials) {
   let response = await fetch(database + "/user" + ".json");
   let responseRef = await response.json();
-  let mails = getUsedMails(responseRef)
+  let mails = getUsedMails(responseRef);
   if (responseRef === null) {
     postJSON("user", credentials);
     showMessage(credentials);
@@ -164,9 +164,9 @@ async function checkMailRedundancy(credentials) {
   if (!mails.includes(credentials.email)) {
     postJSON("user", credentials);
     showMessage(credentials);
-    return
-  } 
-    showErrorMessage("email-redundancy", [])
+    return;
+  }
+  showErrorMessage("email-redundancy", []);
 }
 
 function getUsedMails(responseRef) {
@@ -174,9 +174,8 @@ function getUsedMails(responseRef) {
   let newMail = mailValue.map((i) => {
     return i.email;
   });
-  return newMail
+  return newMail;
 }
-
 
 /**
  * This Function gives the User feedback, if signup was successful.
@@ -229,7 +228,6 @@ async function postJSON(path = "", data = {}) {
   });
 }
 
-
 /**
  * This function gets all users-credentials from database and triggers credential-check-function
  *
@@ -254,33 +252,38 @@ async function userLogin(path = "user") {
 async function checkLogInCredentials(responseRef) {
   let x = Object.values(responseRef);
   let loginInput = document.getElementsByTagName("input");
-  let name =  filterUserName(x, loginInput)
-  let credentialsMerge = x.map((i) => {return i.email + i.password;});
+  let name = filterUserName(x, loginInput);
+  let credentialsMerge = x.map((i) => {
+    return i.email + i.password;
+  });
   if (credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
     location.href = "assets/html/summary.html";
-    saveSession(name)
+    saveSession(name);
   } else {
-    showErrorMessage("password",[...loginInput]);
+    showErrorMessage("password", [...loginInput]);
   }
 }
 
 function filterUserName(x, loginInput) {
-  let correctuser = x.filter((x) => x.email == loginInput[0].value)
-  let user = correctuser.map((n) => n.name)
-  return user
+  let correctuser = x.filter((x) => x.email == loginInput[0].value);
+  let user = correctuser.map((n) => n.name);
+  return user;
 }
 
 function saveSession(name) {
-  setSessionStorage("user",name[0])
-  setSessionStorage("initials", name[0].split(" ").map(i => i[0]?.toUpperCase()).join(""))
+  setSessionStorage("user", name[0]);
+  setSessionStorage(
+    "initials",
+    name[0]
+      .split(" ")
+      .map((i) => i[0]?.toUpperCase())
+      .join("")
+  );
 }
 
 function setSessionStorage(key, value) {
-  sessionStorage.setItem(key,value)
+  sessionStorage.setItem(key, value);
 }
-
-
-
 
 /**
  * Function to get database element from firebase server as JSON
@@ -300,7 +303,7 @@ async function getDataBaseElement(path = "") {
 }
 
 async function submitObjectToDatabase(path = "", object = {}) {
-  let response = await fetch(databasee + path + ".json", {
+  let response = await fetch(database + path + ".json", {
     method: "POST",
     header: {
       "Content-Type": "application/json",
