@@ -11,6 +11,8 @@ async function addNewTask() {
   clearAddTaskForm();
 }
 
+
+
 async function submitNewTaskOptionalComplexInfo() {
   let newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
   if (newTaskAssignedContactsIndices != []) {
@@ -66,19 +68,20 @@ function getNewTaskScalarInformation() {
 function insertMandatoryTaskInfo(newTaskObj) {
   newTaskObj.title = getInputTagValue("task-title");
   newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.category = getTaskCategoryFirebaseName();
+  newTaskObj.category = getTaskCategoryFirebaseName()
   newTaskObj.status = "todo";
   newTaskObj.priority = newTaskPriority;
 }
 
 function getTaskCategoryFirebaseName() {
   let key = getInputTagValue("task-category");
-  switch (key) {
-    case "Technical Task":
+if (key.includes('Technical')){
       return "technical-task";
-    case "User Story":
+
+} else {
       return "user-story";
-  }
+}
+
 }
 
 function insertOptionalScalarTaskInfo(newTaskObj) {
@@ -279,3 +282,18 @@ function renderAssignedContactsBadges() {
     );
   }
 }
+
+
+
+function editTask(indexTask) {
+ let overlay = document.querySelector(".task-overlay-wrap");
+ overlay.innerHTML = ""
+ overlay.innerHTML = editTaskTemplate(indexTask)
+}
+
+
+async function submitEditTask() {
+
+}
+
+

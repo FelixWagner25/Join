@@ -1,11 +1,14 @@
 async function initBoard() {
   tasksArray = await getTasksArray();
+  console.log(tasksArray);
+  
   renderBoard();
 }
 
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
   tasksArray = Object.entries(tasks);
+    console.log(tasksArray);
   return tasksArray;
 }
 
@@ -62,10 +65,10 @@ function renderBoardCardContacts(indexTask) {
   let htmlId = "task-contacts-" + String(indexTask);
   let taskCardContactsRef = document.getElementById(htmlId);
   taskCardContactsRef.innerHTML = "";
-
+  let objKeys = Object.keys(tasksArray[indexTask][1]?.assignedTo ||{}).length 
   for (
     let indexTaskContact = 0;
-    indexTaskContact < tasksArray[indexTask][1].assignedTo?.length;
+    indexTaskContact < objKeys;
     indexTaskContact++
   ) {
     taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(

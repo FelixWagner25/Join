@@ -78,6 +78,7 @@ main{
 .contact-details-edit-contact {
   display: flex;
   gap: 8px;
+  background-color: unset;
 }
 
 .contact-details-edit-contact:hover {
