@@ -28,6 +28,7 @@ bannerTransitionTimeMilliSeconds = 3000;
  */
 async function initContacs() {
   contactsArray = await getSortedContactsArray();
+  tasksArray = await getTasksArray();
   await renderContactsList();
 }
 
@@ -56,7 +57,6 @@ function showAddContactScreen() {
   setTimeout(() => {
     openAddContactScreen();
     console.log(document.getElementById("contact-card"));
-    
   }, overlayTransitionMiliSeconds);
 }
 
@@ -86,7 +86,8 @@ function openAddContactScreen() {
 function closeContactOverlays() {
   document.getElementById("contact-card").classList.remove("overlay-open");
   document.getElementById("bg-dimmed").classList.add("d-none");
-  setTimeout(() => {document.getElementById("bg-dimmed").classList.add("d-none");
+  setTimeout(() => {
+    document.getElementById("bg-dimmed").classList.add("d-none");
   }, overlayTransitionMiliSeconds);
 }
 
@@ -164,23 +165,21 @@ async function getCurrentContactAttribute(attribute, indexContact) {
   return currentAttribute;
 }
 
-
 /**
  * This function adds a new contact to the database.
  *
  */
 async function addNewContact(event) {
   event.preventDefault();
-    if (!regexValidation()){
-    return
-  } 
+  if (!regexValidation()) {
+    return;
+  }
   let newContactData = getContactInformation("add-contact-input-");
   await submitObjectToDatabase("contacts", newContactData);
   await renderContactsList();
   closeContactOverlays();
   showNewContactCreatedMessage();
 }
-
 
 /**
  * This function collects a new contact's information typed into the form.
@@ -226,10 +225,10 @@ function showNewContactCreatedMessage() {
  * @param {integer} indexContact
  */
 async function updateContact(indexContact, event) {
-    event.preventDefault();
-    if (!regexValidation()){
-    return
-  } 
+  event.preventDefault();
+  if (!regexValidation()) {
+    return;
+  }
   let htmlIdPrefix = "input-" + String(indexContact) + "-";
   let editedContactData = getContactInformation(htmlIdPrefix);
   let contactPath = "contacts/" + contactsArray[indexContact][0];
@@ -310,11 +309,47 @@ function getContactColorClassName(indexContact) {
  */
 async function deleteContact(indexContact) {
   let contactId = contactsArray[indexContact][0];
+  await deleteContactFromTasks(contactId);
   let path = "contacts/" + contactId;
   responseMessage = await deleteDataBaseElement(path);
   clearContactDetails();
   await renderContactsList();
   closeContactOverlays();
+}
+
+async function deleteContactFromTasks(contactFirebaseId) {
+  let taskIdassignedToIdTupels =
+    findTaskIdAssignedToIdTupels(contactFirebaseId);
+  for (let indexId = 0; indexId < taskIdassignedToIdTupels.length; indexId++) {
+    let path =
+      "/tasks/" +
+      taskIdassignedToIdTupels[indexId].taskId +
+      "/assignedTo/" +
+      taskIdassignedToIdTupels[indexId].assignedToId;
+    await deleteDataBaseElement(path);
+  }
+  tasksArray = getTasksArray();
+}
+
+function findTaskIdAssignedToIdTupels(contactFirebaseId) {
+  let taskIdassignedToIdTupels = [];
+  for (let indexTask = 0; indexTask < tasksArray.length; indexTask++) {
+    let taskFirebaseId = tasksArray[indexTask][0];
+    let taskValueObj = tasksArray[indexTask][1];
+    if (taskValueObj.assignedTo == undefined) {
+      continue;
+    }
+    for (let assignedToId in taskValueObj.assignedTo) {
+      let contactObj = taskValueObj.assignedTo[assignedToId];
+      if (contactObj.Id === contactFirebaseId) {
+        taskIdassignedToIdTupels.push({
+          taskId: taskFirebaseId,
+          assignedToId: assignedToId,
+        });
+      }
+    }
+  }
+  return taskIdassignedToIdTupels;
 }
 
 /**
