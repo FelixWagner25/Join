@@ -1,14 +1,21 @@
 async function initBoard() {
-  tasksArray = await getTasksArray();
+  let tasksArray = await getTasksArray();
   console.log(tasksArray);
-  
+
   renderBoard();
 }
 
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
-  tasksArray = Object.entries(tasks);
-    console.log(tasksArray);
+  let tasksArray = Object.entries(tasks).map(([taskId, taskData]) => {
+    if (taskData.assignedTo !== undefined) {
+      taskData.assignedTo = Object.entries(taskData.assignedTo);
+    }
+    if (taskData.subtasks !== undefined) {
+      taskData.subtasks = Object.entries(taskData.subtasks);
+    }
+    return [taskId, taskData];
+  });
   return tasksArray;
 }
 
@@ -24,27 +31,27 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
   boardColRef.innerHTML = "";
   for (let i = 0; i < tasksArray.length; i++) {
     if (!taskHasStatus(taskStatusId, i)) {
-      continue ;
+      continue;
     }
     boardColRef.innerHTML += getBoardCardTemplate(i);
     if (subtasksExist(i)) {
       renderSubtaskProgressInfo(i);
-    } 
+    }
     renderBoardCardContacts(i);
   }
-  checkEmptyColumn(columHTMLid)
+  checkEmptyColumn(columHTMLid);
 }
 
 function checkEmptyColumn(columHTMLid) {
-    let boardColRef = document.getElementById(columHTMLid);
-    let titleRef = boardColRef.parentElement.getElementsByClassName('col-title-wrap');
-    let title= [...titleRef].map((t) => t.innerText)
-    let board = boardColRef.getElementsByClassName('task-card-wrap')
-    if (board.length == 0) {
-    boardColRef.innerHTML += getNoTask(title)  
-    }
+  let boardColRef = document.getElementById(columHTMLid);
+  let titleRef =
+    boardColRef.parentElement.getElementsByClassName("col-title-wrap");
+  let title = [...titleRef].map((t) => t.innerText);
+  let board = boardColRef.getElementsByClassName("task-card-wrap");
+  if (board.length == 0) {
+    boardColRef.innerHTML += getNoTask(title);
+  }
 }
-
 
 function taskHasStatus(taskStatusId, indexTask) {
   return tasksArray[indexTask][1].status === taskStatusId;
@@ -65,7 +72,7 @@ function renderBoardCardContacts(indexTask) {
   let htmlId = "task-contacts-" + String(indexTask);
   let taskCardContactsRef = document.getElementById(htmlId);
   taskCardContactsRef.innerHTML = "";
-  let objKeys = Object.keys(tasksArray[indexTask][1]?.assignedTo ||{}).length 
+  let objKeys = Object.keys(tasksArray[indexTask][1]?.assignedTo || {}).length;
   for (
     let indexTaskContact = 0;
     indexTaskContact < objKeys;
@@ -117,37 +124,41 @@ function getCategoryNameTemplate(taskCategory) {
 }
 
 function searchTask() {
-  let taskWrap = document.getElementsByClassName('task-card-wrap');
-  let inputRef = document.getElementsByClassName('search-input');
-  let searchRef = document.getElementsByClassName('task-description-wrap');
+  let taskWrap = document.getElementsByClassName("task-card-wrap");
+  let inputRef = document.getElementsByClassName("search-input");
+  let searchRef = document.getElementsByClassName("task-description-wrap");
   let foundRef = "";
-  [...taskWrap].forEach((c) => c.classList.add('d-none'));
-  foundRef = [...searchRef].filter((t) => t.innerText.includes(inputRef[0].value));
-  foundRef.forEach((c) => c.parentElement.parentElement.classList.remove('d-none'));
+  [...taskWrap].forEach((c) => c.classList.add("d-none"));
+  foundRef = [...searchRef].filter((t) =>
+    t.innerText.includes(inputRef[0].value)
+  );
+  foundRef.forEach((c) =>
+    c.parentElement.parentElement.classList.remove("d-none")
+  );
 }
 
 function allowDrop(ev) {
-    ev.preventDefault();
+  ev.preventDefault();
 }
 
-let currentTask = ""
+let currentTask = "";
 function startDragging(event) {
-  toggleDragArea()
+  toggleDragArea();
   currentTask = tasksArray[event];
-  return currentTask
+  return currentTask;
 }
 
 async function moveTask(event) {
-  toggleDragArea()
-  let targetTask = event.target.closest('.col-content[id]')
-  targetTask= targetTask.id.replace("-","")
-  await updateStatus(`tasks/${currentTask[0]}/status`,targetTask)
-  await initBoard()
+  toggleDragArea();
+  let targetTask = event.target.closest(".col-content[id]");
+  targetTask = targetTask.id.replace("-", "");
+  await updateStatus(`tasks/${currentTask[0]}/status`, targetTask);
+  await initBoard();
 }
 
 function toggleDragArea() {
-  let area = document.querySelectorAll('.col-empty-wrap:last-of-type');
-  [...area].forEach((c) => c.classList.toggle('d-none'))
+  let area = document.querySelectorAll(".col-empty-wrap:last-of-type");
+  [...area].forEach((c) => c.classList.toggle("d-none"));
 }
 
 async function updateStatus(path = "", taskData = {}) {
@@ -159,4 +170,3 @@ async function updateStatus(path = "", taskData = {}) {
     body: JSON.stringify(taskData),
   });
 }
-

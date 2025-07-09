@@ -302,6 +302,18 @@ function getContactColorClassName(indexContact) {
   return contactColorClasses[index];
 }
 
+function getContactColorClassNameByFirebaseId(contactFirebaseId) {
+  let indexContact = findContactIndexByFirebaseId(contactFirebaseId);
+  let index = indexContact % contactColorClasses.length;
+  return contactColorClasses[index];
+}
+
+function findContactIndexByFirebaseId(contactFirebaseId) {
+  return contactsArray.findIndex(
+    (contactEntry) => contactEntry[0] === contactFirebaseId
+  );
+}
+
 /**
  * This function deletes a contact from firebase server
  *
