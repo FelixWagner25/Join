@@ -35,11 +35,11 @@ function getNoTask(title) {
   return `
     <div class="no-task-feedback font-OpenSans-400-16px d-flex-row-c-c">No Tasks ${title}</div>
     <div class="d-none col-empty-wrap"></div>
-    `
+    `;
 }
 
 function getTaskCardSubtaskTemplate(indexTask) {
-  let objKeys = Object.keys(tasksArray[indexTask][1].subtasks)
+  let objKeys = Object.keys(tasksArray[indexTask][1].subtasks);
   return `
   <div class="progress-bar">
     <div class="progress-bar-status" id="progress-${indexTask}"></div>
@@ -51,21 +51,19 @@ function getTaskCardSubtaskTemplate(indexTask) {
 }
 
 function getTaskCardContactsTemplate(indexTaskContact, indexTask) {
-    let objValues = Object.values(tasksArray[indexTask][1].assignedTo)
+  let objValues = Object.values(tasksArray[indexTask][1].assignedTo);
   return `
-  <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassName(
-          indexTaskContact
-        )}">
+  <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
+    objValues[indexTaskContact][1].Id
+  )}">
     <div class="font-Inter-400-12px">
-      ${getFirstTwoStringInitials(
-        objValues[indexTaskContact]?.name || ""
-      )}
+      ${getFirstTwoStringInitials(objValues[indexTaskContact]?.name || "")}
     </div>
   </div>
   `;
 }
 
- function showTaskOverlay(indexTask) {
+function showTaskOverlay(indexTask) {
   blurBackgroundBoard();
   setTimeout(() => {
     getTaskOverlay(indexTask);
@@ -78,13 +76,17 @@ function blurBackgroundBoard() {
 }
 
 function getTaskOverlay(indexTask) {
-  let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {})
-  let objValuesSubtasks = Object.values(tasksArray[indexTask][1]?.subtasks || {})
+  let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
+  let objValuesSubtasks = Object.values(
+    tasksArray[indexTask][1]?.subtasks || {}
+  );
   let overlay = document.querySelector(".task-overlay-wrap");
   overlay.innerHTML = `
     <div class="task-overlay d-flex-column">
     <div class="d-flex-c-sb">
-      <div class="task-category font-Inter-400-16px ${getTaskCategoryClass(tasksArray[indexTask][1].category)} ">${getCategoryNameTemplate(tasksArray[indexTask][1].category)}</div>
+      <div class="task-category font-Inter-400-16px ${getTaskCategoryClass(
+        tasksArray[indexTask][1].category
+      )} ">${getCategoryNameTemplate(tasksArray[indexTask][1].category)}</div>
         <div class="close-icon-overlay-wrap d-flex-row-c-c">
           <div class="close-icon-overlay d-flex-row-c-c" onclick="closeTaskOverlays()">
             <img src="/assets/icons/close.svg" alt="close" class="close-icon"/>
@@ -92,7 +94,9 @@ function getTaskOverlay(indexTask) {
         </div>
       </div>
 
-    <h2 class="font-Inter-700-61px text-color-black">${tasksArray[indexTask][1].title}</h2>
+    <h2 class="font-Inter-700-61px text-color-black">${
+      tasksArray[indexTask][1].title
+    }</h2>
 
     <div class="font-Inter-400-20px text-color-black task-overlay-desc">${
       tasksArray[indexTask][1]?.description || ""
@@ -110,29 +114,42 @@ function getTaskOverlay(indexTask) {
       <div class="font-Inter-400-20px text-color-black">${
         tasksArray[indexTask][1].priority
       } 
-      <img src=${getTaskPriorityIconSrc(tasksArray[indexTask][1].priority)} ></div>
+      <img src=${getTaskPriorityIconSrc(
+        tasksArray[indexTask][1].priority
+      )} ></div>
     </div>
 
     <div class="task-overlay-assignment-wrap d-flex-column">
       <div class="font-Inter-400-20px text-color-2A3647">Assigned To:</div>
-      <article class="d-flex-column">${objValues.map((p) => `
+      <article class="d-flex-column">${objValues
+        .map(
+          (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassName(
-          0
-        )}">
-              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitials(p.name)}
+              0
+            )}">
+              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitials(
+                p.name
+              )}
               </div>
             </div>
           <div class="font-OpenSans-400-19px">${p.name}</div>
           </div>
-        </div>`).join("")}
+        </div>`
+        )
+        .join("")}
       </article>
     </div>
 
     <div class="task-overlay-assignment-wrap d-flex-column">
       <div class="font-Inter-400-20px text-color-2A3647">Subtasks</div>
-      <article class="d-flex-column">${objValuesSubtasks.map((s) => ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s.name}</div></div></div>`).join("")}</article>
+      <article class="d-flex-column">${objValuesSubtasks
+        .map(
+          (s) =>
+            ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s.name}</div></div></div>`
+        )
+        .join("")}</article>
     </div>
 
     <div class="edit-delete-wrap d-flex">
@@ -172,15 +189,17 @@ function closeTaskOverlays() {
 }
 
 function getCurrentTaskOBj(indexTask) {
-    let newTaskScalarData = tasksArray[indexTask][1]
-    return newTaskScalarData
+  let newTaskScalarData = tasksArray[indexTask][1];
+  return newTaskScalarData;
 }
 
 function editTaskTemplate(indexTask) {
-  let newTaskScalarData = tasksArray[indexTask][1]
-  newTaskScalarData = getCurrentTaskOBj(indexTask)
-  let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {})
-  let objValuesSubtasks = Object.entries(tasksArray[indexTask][1]?.subtasks || {})
+  let newTaskScalarData = tasksArray[indexTask][1];
+  newTaskScalarData = getCurrentTaskOBj(indexTask);
+  let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
+  let objValuesSubtasks = Object.entries(
+    tasksArray[indexTask][1]?.subtasks || {}
+  );
   return `
 <form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
@@ -289,17 +308,23 @@ function editTaskTemplate(indexTask) {
                     class="d-flex gap-8px p-relative"
                     id="task-assigned-contacts-badges"
                   >
-                 ${objValues.map((p) => `
+                 ${objValues
+                   .map(
+                     (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassName(
-          0
-        )}">
-              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitials(p.name)}
+              0
+            )}">
+              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitials(
+                p.name
+              )}
               </div>
             </div>
           </div>
-        </div>`).join("")}
+        </div>`
+                   )
+                   .join("")}
                   </div>
                 </div>
     
@@ -340,7 +365,9 @@ function editTaskTemplate(indexTask) {
                     </div>
                   </div>
                   <ul id="tasks-subtasks-list">
-                  ${objValuesSubtasks.map((s, i) => ` 
+                  ${objValuesSubtasks
+                    .map(
+                      (s, i) => ` 
                             <li id="task-subtask-${i}" class="p-relative font-Inter-400-13px subtask-list-element d-flex-row-c-fs gap-8px">
             <div>&#x2022;</div>
             <span class="new-input">${s[1].name}</span>
@@ -350,7 +377,9 @@ function editTaskTemplate(indexTask) {
                 <span class="task-delete-subtask-icon" onclick="deleteSubtask(${i})"></span>    
             </div>
         </li>
-                    `).join("")}
+                    `
+                    )
+                    .join("")}
 
                   </ul>
                 </div>
@@ -380,5 +409,5 @@ function editTaskTemplate(indexTask) {
                 </button>
               </div>
             </div>
-          </form>`
+          </form>`;
 }
