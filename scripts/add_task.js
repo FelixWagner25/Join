@@ -285,6 +285,9 @@ function renderAssignedContactsBadges() {
 
 
 
+
+//Board editTask Area
+
 function editTask(indexTask) {
  let overlay = document.querySelector(".task-overlay-wrap");
  overlay.innerHTML = ""
@@ -292,8 +295,26 @@ function editTask(indexTask) {
 }
 
 
-async function submitEditTask() {
+async function submitEditTask(indexTask ) {
+let obj = getCurrentTaskOBj(indexTask)
+obj = getEditTaskScalarInformation(obj);
+console.log(obj);
 
+  await submitObjectToDatabase("tasks", obj);
+  tasksArray = await getTasksArray();
+  await submitNewTaskOptionalComplexInfo(); //statt submitnew PUT-rqeust
+  initBoard()
+  getTaskOverlay(indexTask)
 }
 
+function getEditTaskScalarInformation(obj) {
+  insertEditMandatoryTaskInfo(obj);
+  insertOptionalScalarTaskInfo(obj);
+  return obj;
+}
 
+function insertEditMandatoryTaskInfo(newTaskObj) {
+  newTaskObj.title = getInputTagValue("task-title");
+  newTaskObj.dueDate = getInputTagValue("task-due-date");
+  newTaskObj.priority = newTaskPriority;
+}

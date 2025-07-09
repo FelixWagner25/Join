@@ -171,14 +171,18 @@ function closeTaskOverlays() {
   document.getElementById("task-overlay").classList.remove("task-overlay-blur");
 }
 
-
+function getCurrentTaskOBj(indexTask) {
+    let newTaskScalarData = tasksArray[indexTask][1]
+    return newTaskScalarData
+}
 
 function editTaskTemplate(indexTask) {
-  let currentTask = tasksArray[indexTask][1]
+  let newTaskScalarData = tasksArray[indexTask][1]
+  newTaskScalarData = getCurrentTaskOBj(indexTask)
   let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {})
   let objValuesSubtasks = Object.entries(tasksArray[indexTask][1]?.subtasks || {})
   return `
-<form class="max-width-976px" onsubmit="submitEditTask(); event.preventDefault()">
+<form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
               <div class="d-flex-column gap-32px">
                 <div class="d-flex-column gap-8px">
@@ -191,7 +195,7 @@ function editTaskTemplate(indexTask) {
                     class="task-input-border task-input-text-field font-Inter-400-12px editable"
                     type="text"
                     id="task-title"
-                    value="${currentTask.title}"
+                    value="${newTaskScalarData.title}"
                     required
                   />
                 </div>
@@ -205,7 +209,7 @@ function editTaskTemplate(indexTask) {
                   <textarea
                     class="task-input-border task-input-text-area font-Inter-400-12px editable"
                     id="task-description"
-                  >${currentTask?.description || ""}</textarea>
+                  >${newTaskScalarData?.description || ""}</textarea>
                 </div>
                 <div class="d-flex-column gap-8px">
                   <label for="task-due-date" class="input-label"
@@ -215,7 +219,7 @@ function editTaskTemplate(indexTask) {
                     class="task-input-border task-input-date editable"
                     type="date"
                     id="task-due-date"
-                    value="${currentTask.dueDate}"
+                    value="${newTaskScalarData.dueDate}"
                     required
                   />
                 </div>
@@ -311,7 +315,7 @@ function editTaskTemplate(indexTask) {
                     class="p-relative task-input-border task-input-category font-Inter-400-20px"
                     type="text"
                     id="task-subtasks"
-                    value="${currentTask?.subtask || ""}"
+                    value="${newTaskScalarData?.subtask || ""}"
                   />
                   <span
                     class="p-absolute task-subtask-icon task-add-subtask-icon"
