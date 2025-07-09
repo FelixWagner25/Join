@@ -11,8 +11,6 @@ async function addNewTask() {
   clearAddTaskForm();
 }
 
-
-
 async function submitNewTaskOptionalComplexInfo() {
   let newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
   if (newTaskAssignedContactsIndices != []) {
@@ -68,20 +66,18 @@ function getNewTaskScalarInformation() {
 function insertMandatoryTaskInfo(newTaskObj) {
   newTaskObj.title = getInputTagValue("task-title");
   newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.category = getTaskCategoryFirebaseName()
+  newTaskObj.category = getTaskCategoryFirebaseName();
   newTaskObj.status = "todo";
   newTaskObj.priority = newTaskPriority;
 }
 
 function getTaskCategoryFirebaseName() {
   let key = getInputTagValue("task-category");
-if (key.includes('Technical')){
-      return "technical-task";
-
-} else {
-      return "user-story";
-}
-
+  if (key.includes("Technical")) {
+    return "technical-task";
+  } else {
+    return "user-story";
+  }
 }
 
 function insertOptionalScalarTaskInfo(newTaskObj) {
@@ -272,39 +268,41 @@ function toggleValueFromArray(value, array) {
 function renderAssignedContactsBadges() {
   let badgesRef = document.getElementById("task-assigned-contacts-badges");
   badgesRef.innerHTML = "";
+  let maximalShownBadges = Math.min(3, newTaskAssignedContactsIndices.length);
   for (
     let indexContact = 0;
-    indexContact < newTaskAssignedContactsIndices.length;
+    indexContact < maximalShownBadges;
     indexContact++
   ) {
     badgesRef.innerHTML += getTaskAssignedContactBadgeTemplate(
       newTaskAssignedContactsIndices[indexContact]
     );
   }
+  if (maximalShownBadges < newTaskAssignedContactsIndices.length) {
+    badgesRef.innerHTML += getTaskAssignedContactsRemainderTemplate(
+      newTaskAssignedContactsIndices.length - maximalShownBadges
+    );
+  }
 }
-
-
-
 
 //Board editTask Area
 
 function editTask(indexTask) {
- let overlay = document.querySelector(".task-overlay-wrap");
- overlay.innerHTML = ""
- overlay.innerHTML = editTaskTemplate(indexTask)
+  let overlay = document.querySelector(".task-overlay-wrap");
+  overlay.innerHTML = "";
+  overlay.innerHTML = editTaskTemplate(indexTask);
 }
 
-
-async function submitEditTask(indexTask ) {
-let obj = getCurrentTaskOBj(indexTask)
-obj = getEditTaskScalarInformation(obj);
-console.log(obj);
+async function submitEditTask(indexTask) {
+  let obj = getCurrentTaskOBj(indexTask);
+  obj = getEditTaskScalarInformation(obj);
+  console.log(obj);
 
   await submitObjectToDatabase("tasks", obj);
   tasksArray = await getTasksArray();
   await submitNewTaskOptionalComplexInfo(); //statt submitnew PUT-rqeust
-  initBoard()
-  getTaskOverlay(indexTask)
+  initBoard();
+  getTaskOverlay(indexTask);
 }
 
 function getEditTaskScalarInformation(obj) {
