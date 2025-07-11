@@ -35,7 +35,6 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   }
 }
 
-
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
   let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
   for (let i = 0; i < newTaskSubtasks.length; i++) {
@@ -176,11 +175,6 @@ function addSubtask() {
   showSubtaskControlButtons();
 }
 
-
-
-
-
-
 function renderSubtasks() {
   let subtaskListRef = document.getElementById("tasks-subtasks-list");
   subtaskListRef.innerHTML = "";
@@ -303,8 +297,6 @@ async function deleteTask(indexTask) {
   await deleteDataBaseElement(`tasks/${tasksArray[indexTask][0]}`)
   await initBoard()
 }
-
-
 
 //Board editTask Area
 

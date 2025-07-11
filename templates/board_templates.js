@@ -192,16 +192,13 @@ function getCurrentTaskOBj(indexTask) {
 }
 
 
-//renderAssignedContactsCheckboxes anpassen
+//renderAssignedContactsCheckboxes anpassen zur Nutzung Auskommentierter Funktion. 
 function getContactIDs(indexTask) {
 /*   const contactObj = tasksArray[indexTask][1]?.assignedTo || {};
    return Object.keys(contactObj) */  
     let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
     let activeContacts = objValues.map((p) => p[1].Id)
     let contactIndexes = []
-    console.log(contactsArray);
-    console.log(tasksArray[indexTask][1]?.subtasks || {});
-    
   let contactArrayIteration = contactsArray.map((p) => p[0])
   for (let i = 0; i < contactArrayIteration.length; i++) {
     if (activeContacts.includes(contactArrayIteration[i]))
@@ -210,19 +207,15 @@ function getContactIDs(indexTask) {
 return contactIndexes
 }
 
-
-
 function getSubtaskIDs(indexTask) {
   const subtaskObj = tasksArray[indexTask][1]?.subtasks || {};
   return Object.keys(subtaskObj);
 }
 
-
 function editTaskTemplate(indexTask, contactIndexes) {
   let newTaskScalarData = tasksArray[indexTask][1];
   newTaskScalarData = getCurrentTaskOBj(indexTask);
 
-  
   let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
   let objValuesSubtasks = Object.values(tasksArray[indexTask][1]?.subtasks || {});
   return `
