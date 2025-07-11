@@ -330,6 +330,8 @@ async function deleteContact(indexContact) {
 }
 
 async function deleteContactFromTasks(contactFirebaseId) {
+  console.log(contactFirebaseId);
+      console.log(tasksArray);
   let taskIdassignedToIdTupels =
     findTaskIdAssignedToIdTupels(contactFirebaseId);
   for (let indexId = 0; indexId < taskIdassignedToIdTupels.length; indexId++) {
@@ -340,7 +342,9 @@ async function deleteContactFromTasks(contactFirebaseId) {
       taskIdassignedToIdTupels[indexId].assignedToId;
     await deleteDataBaseElement(path);
   }
-  tasksArray = getTasksArray();
+  tasksArray = await getTasksArray();
+  console.log(tasksArray);
+  
 }
 
 function findTaskIdAssignedToIdTupels(contactFirebaseId) {
@@ -348,12 +352,11 @@ function findTaskIdAssignedToIdTupels(contactFirebaseId) {
   for (let indexTask = 0; indexTask < tasksArray.length; indexTask++) {
     let taskFirebaseId = tasksArray[indexTask][0];
     let taskValueObj = tasksArray[indexTask][1];
-    if (taskValueObj.assignedTo == undefined) {
-      continue;
-    }
-    for (let assignedToId in taskValueObj.assignedTo) {
-      let contactObj = taskValueObj.assignedTo[assignedToId];
-      if (contactObj.Id === contactFirebaseId) {
+    if (!taskValueObj.assignedTo) continue;
+    let assignedToObj = Object.fromEntries(taskValueObj.assignedTo);
+    for (let assignedToId in assignedToObj) {
+      let contactObj = assignedToObj[assignedToId];
+      if (contactObj?.Id === contactFirebaseId) {
         taskIdassignedToIdTupels.push({
           taskId: taskFirebaseId,
           assignedToId: assignedToId,
@@ -363,6 +366,7 @@ function findTaskIdAssignedToIdTupels(contactFirebaseId) {
   }
   return taskIdassignedToIdTupels;
 }
+
 
 /**
  * This function renders the details section of a contact

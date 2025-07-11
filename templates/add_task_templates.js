@@ -27,15 +27,15 @@ function getEditSubtaskTemplate(indexSubtask) {
     `;
 }
 
-function getTaskAssigendContactsTemplate(indexContact) {
+function getTaskAssigendContactsTemplate(contactID, indexContact) {
   return `
-    <div class="d-flex-c-sb pd-8px-16px task-assigned-contact-wrap" id="task-assigned-contact-wrap-${indexContact}" onclick="toggleAssignContact(${indexContact})">
+    <div class="d-flex-c-sb pd-8px-16px task-assigned-contact-wrap" id="task-assigned-contact-wrap-${contactID}" onclick="toggleAssignContact('${contactID}')">
         <div class="d-flex-row-c-fs gap-16px">
-            <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
-              indexContact
+            <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
+         contactID
             )}">
-                ${getFirstTwoStringInitials(
-                  contactsArray[indexContact][1].name
+                ${getFirstTwoStringInitialsByFirebaseId(
+                  contactID
                 )}
             </div>
             ${contactsArray[indexContact][1].name}
@@ -45,13 +45,13 @@ function getTaskAssigendContactsTemplate(indexContact) {
     `;
 }
 
-function getTaskAssignedContactBadgeTemplate(indexContact) {
+function getTaskAssignedContactBadgeTemplate(contactID, indexContact) {
   return `
-    <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
-      indexContact
-    )}">
-                ${getFirstTwoStringInitials(
-                  contactsArray[indexContact][1].name
+    <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
+         contactID
+            )}">
+                ${getFirstTwoStringInitialsByFirebaseId(
+                  contactID
                 )}
     </div>
     `;

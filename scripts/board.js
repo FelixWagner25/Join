@@ -1,8 +1,6 @@
 async function initBoard() {
   let tasksArray = await getTasksArray();
-  console.log(tasksArray);
-
-  renderBoard();
+  renderBoard(tasksArray);
 }
 
 async function getTasksArray() {
@@ -19,25 +17,25 @@ async function getTasksArray() {
   return tasksArray;
 }
 
-function renderBoard() {
-  renderBoardColumn("to-do", "todo");
-  renderBoardColumn("in-progress", "inprogress");
-  renderBoardColumn("await-feedback", "awaitfeedback");
-  renderBoardColumn("done", "done");
+function renderBoard(tasksArray) {
+  renderBoardColumn("to-do", "todo", tasksArray);
+  renderBoardColumn("in-progress", "inprogress", tasksArray);
+  renderBoardColumn("await-feedback", "awaitfeedback", tasksArray);
+  renderBoardColumn("done", "done", tasksArray);
 }
 
-function renderBoardColumn(columHTMLid, taskStatusId) {
-  let boardColRef = document.getElementById(columHTMLid);
+function renderBoardColumn(columHTMLid, taskStatusId, tasksArray) {
+  let boardColRef = document.getElementById(columHTMLid);  
   boardColRef.innerHTML = "";
   for (let i = 0; i < tasksArray.length; i++) {
-    if (!taskHasStatus(taskStatusId, i)) {
+    if (!taskHasStatus(taskStatusId, i, tasksArray)) {
       continue;
     }
-    boardColRef.innerHTML += getBoardCardTemplate(i);
-    if (subtasksExist(i)) {
-      renderSubtaskProgressInfo(i);
+    boardColRef.innerHTML += getBoardCardTemplate(i, tasksArray);
+    if (subtasksExist(i,tasksArray)) {
+      renderSubtaskProgressInfo(i, tasksArray);
     }
-    renderBoardCardContacts(i);
+    renderBoardCardContacts(i, tasksArray);
   }
   checkEmptyColumn(columHTMLid);
 }
@@ -53,22 +51,22 @@ function checkEmptyColumn(columHTMLid) {
   }
 }
 
-function taskHasStatus(taskStatusId, indexTask) {
+function taskHasStatus(taskStatusId, indexTask, tasksArray) {
   return tasksArray[indexTask][1].status === taskStatusId;
 }
 
-function subtasksExist(indexTask) {
+function subtasksExist(indexTask, tasksArray) {
   return tasksArray[indexTask][1].subtasks !== undefined;
 }
 
-function renderSubtaskProgressInfo(indexTask) {
+function renderSubtaskProgressInfo(indexTask, tasksArray) {
   let htmlId = "subtasks-progress-" + String(indexTask);
   let taskSubtaskInfoRef = document.getElementById(htmlId);
   taskSubtaskInfoRef.innerHTML = "";
-  taskSubtaskInfoRef.innerHTML = getTaskCardSubtaskTemplate(indexTask);
+  taskSubtaskInfoRef.innerHTML = getTaskCardSubtaskTemplate(indexTask, tasksArray);
 }
 
-function renderBoardCardContacts(indexTask) {
+function renderBoardCardContacts(indexTask, tasksArray) {
   let htmlId = "task-contacts-" + String(indexTask);
   let taskCardContactsRef = document.getElementById(htmlId);
   taskCardContactsRef.innerHTML = "";
@@ -80,7 +78,7 @@ function renderBoardCardContacts(indexTask) {
   ) {
     taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
       indexTaskContact,
-      indexTask
+      indexTask, tasksArray
     );
   }
 }

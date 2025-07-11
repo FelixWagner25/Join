@@ -1,4 +1,4 @@
-function getBoardCardTemplate(indexTask) {
+function getBoardCardTemplate(indexTask, tasksArray) {
   return `
     <div class="task-card-wrap bg-white" draggable="true" ondragstart="startDragging(${indexTask})">
           <div class="task-card d-flex-column" onclick="showTaskOverlay(${indexTask})">
@@ -38,7 +38,7 @@ function getNoTask(title) {
     `;
 }
 
-function getTaskCardSubtaskTemplate(indexTask) {
+function getTaskCardSubtaskTemplate(indexTask, tasksArray) {
   let objKeys = Object.keys(tasksArray[indexTask][1].subtasks);
   return `
   <div class="progress-bar">
@@ -50,14 +50,14 @@ function getTaskCardSubtaskTemplate(indexTask) {
   `;
 }
 
-function getTaskCardContactsTemplate(indexTaskContact, indexTask) {
+function getTaskCardContactsTemplate(indexTaskContact, indexTask, tasksArray) {
   let objValues = Object.values(tasksArray[indexTask][1].assignedTo);
   return `
   <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
     objValues[indexTaskContact][1].Id
   )}">
     <div class="font-Inter-400-12px">
-      ${getFirstTwoStringInitials(objValues[indexTaskContact]?.name || "")}
+      ${getFirstTwoStringInitialsByFirebaseId(objValues[indexTaskContact][1].Id || "")}
     </div>
   </div>
   `;
@@ -77,9 +77,7 @@ function blurBackgroundBoard() {
 
 function getTaskOverlay(indexTask) {
   let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
-  let objValuesSubtasks = Object.values(
-    tasksArray[indexTask][1]?.subtasks || {}
-  );
+  let objValuesSubtasks = Object.values(tasksArray[indexTask][1]?.subtasks || {});
   let overlay = document.querySelector(".task-overlay-wrap");
   overlay.innerHTML = `
     <div class="task-overlay d-flex-column">
@@ -126,15 +124,15 @@ function getTaskOverlay(indexTask) {
           (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
-            <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassName(
-              0
+            <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
+         p[1].Id
             )}">
-              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitials(
-                p.name
+              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
+                p[1].Id
               )}
               </div>
             </div>
-          <div class="font-OpenSans-400-19px">${p.name}</div>
+          <div class="font-OpenSans-400-19px">${p[1].name}</div>
           </div>
         </div>`
         )
@@ -147,7 +145,7 @@ function getTaskOverlay(indexTask) {
       <article class="d-flex-column">${objValuesSubtasks
         .map(
           (s) =>
-            ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s.name}</div></div></div>`
+            ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s[1].name}</div></div></div>`
         )
         .join("")}</article>
     </div>
@@ -164,7 +162,7 @@ function getTaskOverlay(indexTask) {
                 />
                 <span class="edit-contact-text">Edit</span>
                 </button>
-                <div class="contact-details-delete-contact" onclick="">
+                <div class="contact-details-delete-contact" onclick="deleteTask(${indexTask})">
                 <img
                     src="/assets/icons/delete.svg"
                     alt="delete trash bin"
@@ -193,13 +191,40 @@ function getCurrentTaskOBj(indexTask) {
   return newTaskScalarData;
 }
 
-function editTaskTemplate(indexTask) {
+
+//renderAssignedContactsCheckboxes anpassen
+function getContactIDs(indexTask) {
+/*   const contactObj = tasksArray[indexTask][1]?.assignedTo || {};
+   return Object.keys(contactObj) */  
+    let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
+    let activeContacts = objValues.map((p) => p[1].Id)
+    let contactIndexes = []
+    console.log(contactsArray);
+    console.log(tasksArray[indexTask][1]?.subtasks || {});
+    
+  let contactArrayIteration = contactsArray.map((p) => p[0])
+  for (let i = 0; i < contactArrayIteration.length; i++) {
+    if (activeContacts.includes(contactArrayIteration[i]))
+    contactIndexes.push(contactArrayIteration[i])
+  }
+return contactIndexes
+}
+
+
+
+function getSubtaskIDs(indexTask) {
+  const subtaskObj = tasksArray[indexTask][1]?.subtasks || {};
+  return Object.keys(subtaskObj);
+}
+
+
+function editTaskTemplate(indexTask, contactIndexes) {
   let newTaskScalarData = tasksArray[indexTask][1];
   newTaskScalarData = getCurrentTaskOBj(indexTask);
+
+  
   let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
-  let objValuesSubtasks = Object.entries(
-    tasksArray[indexTask][1]?.subtasks || {}
-  );
+  let objValuesSubtasks = Object.values(tasksArray[indexTask][1]?.subtasks || {});
   return `
 <form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
@@ -313,12 +338,13 @@ function editTaskTemplate(indexTask) {
                      (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
-            <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassName(
-              0
+            <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
+         p[1].Id
             )}">
-              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitials(
-                p.name
-              )}
+              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
+                   p[1].Id
+                )}
+            
               </div>
             </div>
           </div>
