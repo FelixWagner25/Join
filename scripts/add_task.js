@@ -229,19 +229,20 @@ function renderAssignedContactsBadges() {
   renderContactsBadges(newTaskAssignedContactsIndices);
 }
 
-function renderContactsBadges(array){
-  let badgesRef = document.getElementById("task-assigned-contacts-badges");
+function renderContactsBadges(array) {
+  const badgesRef = document.getElementById("task-assigned-contacts-badges");
   badgesRef.innerHTML = "";
-  for (
-    let indexContact = 0;
-    indexContact < array.length;
-    indexContact++
-  ) {
-    badgesRef.innerHTML += getTaskAssignedContactBadgeTemplate(
-      array[indexContact], indexContact
+  let maximalShownBadges = Math.min(3, array.length);
+  for (let i = 0; i < maximalShownBadges; i++) {
+    badgesRef.innerHTML += getTaskAssignedContactBadgeTemplate(array[i], i);
+  }
+  if (array.length > maximalShownBadges) {
+    badgesRef.innerHTML += getTaskAssignedContactsRemainderTemplate(
+      array.length - maximalShownBadges
     );
   }
 }
+
 
 function toggleAssignContact(contactID) {
   let assignedContactWrapRef = document.getElementById("task-assigned-contact-wrap-" + contactID);
