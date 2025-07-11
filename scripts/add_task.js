@@ -2,16 +2,14 @@ let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 
-async function addNewTask() {
-  let newTaskScalarData = getNewTaskScalarInformation();
+async function addNewTask(newTaskStatusId) {
+  let newTaskScalarData = getNewTaskScalarInformation(newTaskStatusId);
   await submitObjectToDatabase("tasks", newTaskScalarData);
   tasksArray = await getTasksArray();
   await submitNewTaskOptionalComplexInfo();
   showNewTaskCreatedMessage();
   clearAddTaskForm();
 }
-
-
 
 async function submitNewTaskOptionalComplexInfo() {
   let newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
@@ -62,19 +60,19 @@ function clearAddTaskForm() {
   renderSubtasks();
 }
 
-function getNewTaskScalarInformation() {
+function getNewTaskScalarInformation(newTaskStatusId) {
   let newTaskScalarInfo = {};
-  insertMandatoryTaskInfo(newTaskScalarInfo);
+  insertMandatoryTaskInfo(newTaskScalarInfo, newTaskStatusId);
   insertOptionalScalarTaskInfo(newTaskScalarInfo);
   return newTaskScalarInfo;
 }
 
-function insertMandatoryTaskInfo(newTaskObj) {
+function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId) {
   newTaskObj.title = getInputTagValue("task-title");
   newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.category = getTaskCategoryFirebaseName()
-  newTaskObj.status = "todo";
+  newTaskObj.category = getTaskCategoryFirebaseName();
   newTaskObj.priority = newTaskPriority;
+  newTaskObj.status = newTaskStatusId;
 }
 
 function getTaskCategoryFirebaseName() {

@@ -56,3 +56,11 @@ function getTaskAssignedContactBadgeTemplate(contactID, indexContact) {
     </div>
     `;
 }
+
+function getTaskAssignedContactsRemainderTemplate(numberRemainder) {
+  return `
+  <div class="font-Inter-400-20px d-flex-row-c-c text-color-2A3647">
+    +${numberRemainder}
+  </div>
+  `;
+}
