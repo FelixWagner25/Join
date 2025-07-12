@@ -37,11 +37,17 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
 
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
   let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
+  console.log(newTaskSubtasks);
+  
   for (let i = 0; i < newTaskSubtasks.length; i++) {
     let keyValuePairs = {};
     keyValuePairs.name = newTaskSubtasks[i].name;
     keyValuePairs.done = newTaskSubtasks[i].done;
     await submitObjectToDatabase(path, keyValuePairs);
+    console.log(newTaskFirebaseId);
+    console.log(keyValuePairs);
+    console.log(path);
+    
   }
 }
 
@@ -103,6 +109,7 @@ function setTaskPriority(htmlId) {
     case "task-priority-low":
       activeBtn.classList.add("active-low");
       newTaskPriority = "low";
+      break
     default:
       activeBtn.classList.add("active-medium");
       newTaskPriority = "medium";
@@ -152,10 +159,7 @@ function showSubtaskControlButtons() {
   }
 }
 
-let subtasksNormalized = false;
-
 function addSubtask() {
-  if (!subtasksNormalized) {
     for (let i = 0; i < newTaskSubtasks.length; i++) {
       if (Array.isArray(newTaskSubtasks[i])) {
         const data = newTaskSubtasks[i][1];
@@ -166,8 +170,6 @@ function addSubtask() {
         newTaskSubtasks[i] = obj;
       }
     }
-    subtasksNormalized = true;
-  }
   const subtaskName = getInputTagValue("task-subtasks");
   newTaskSubtasks.push({ name: subtaskName, done: false });
   renderSubtasks();
@@ -300,69 +302,67 @@ async function deleteTask(indexTask) {
 
 //Board editTask Area
 
-function editTask(indexTask) {
- const contactIndexes = getContactIDs(indexTask)
- const subtaskIndexes = getSubtaskIDs(indexTask)
-  newTaskAssignedContactsIndices = [...contactIndexes];
-  newSubtasksIndices = [...subtaskIndexes]
-  const existingSubtasks = tasksArray[indexTask][1]?.subtasks || {};
-  newTaskSubtasks = Object.values(existingSubtasks);
-  subtasksNormalized = false;
+async function editTask(indexTask) {
+tasksArray = await getTasksArray();
  let overlay = document.querySelector(".task-overlay-wrap");
- overlay.innerHTML = ""
- overlay.innerHTML = editTaskTemplate(indexTask)
+ let currentTask =  tasksArray[indexTask][1]
+ let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {} //subtask objectmaker
+ newTaskAssignedContactsIndices = currentTask.assignedTo?.map((i) => i[1].Id) || []
+ newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || []
+ newTaskSubtasks = Object.values(currentSubtasks); //Werte der subtasks
+ overlay.innerHTML = editTaskTemplate(indexTask, currentTask)
 }
 
 async function submitEditTask(indexTask) {
-let obj = getCurrentTaskOBj(indexTask)
-obj = getEditTaskScalarInformation(obj);
-  let taskID = tasksArray[indexTask][0]
-  await updateDatabaseObject(`tasks/${taskID}`, obj);
+let editedTaskObj = tasksArray[indexTask][1]
+let taskID = tasksArray[indexTask][0]
+let newTaskObj = getEditTaskScalarInformation(editedTaskObj); //der ganze neue Task
+  await updateDatabaseObject(`tasks/${taskID}`, newTaskObj);
   tasksArray = await getTasksArray();
   await submitEditTaskOptionalComplexInfo(taskID);
-  await initBoard()
+  await initBoard();
   closeTaskOverlays()
 }
 
-function getEditTaskScalarInformation(obj) {
-  insertEditMandatoryTaskInfo(obj);
-  insertOptionalScalarTaskInfo(obj);
+function getEditTaskScalarInformation(editedTaskObj) {
+  insertEditMandatoryTaskInfo(editedTaskObj);
+  insertOptionalScalarTaskInfo(editedTaskObj);
   if (newTaskAssignedContactsIndices.length > 0) {
-    obj.assignedTo = convertContactToObject(newTaskAssignedContactsIndices);
+    editedTaskObj.assignedTo = convertContactToObject(newTaskAssignedContactsIndices);
   } 
   if (newSubtasksIndices.length > 0) {
-    obj.subtasks = convertSubtasksToObject(newSubtasksIndices);
+    editedTaskObj.subtasks = convertSubtasksToObject(newSubtasksIndices);
   } 
-  return obj;
+  return editedTaskObj;
 }
 
-function convertContactToObject(contactIdsArray) {
-  const result = {};
-  for (let id of contactIdsArray) {
-    const contact = contactsArray.find(entry => entry[0] === id);
+function convertContactToObject(newSubtasksIndices) {
+  const assignedToObj = {};
+  for (let id of newSubtasksIndices) {
+    const contact = contactsArray.find((entry) => entry[0] === id);
     if (contact) {
-      result[id] = {
+      assignedToObj[id] = {
         Id: contact[0],
         name: contact[1].name
       };
     }
   }
-  return result;
+  return assignedToObj;
 }
 
 function convertSubtasksToObject(subtaskIdsArray) {
-  const result = {};
+  const subtaskObj = {};
   for (let id of subtaskIdsArray) {
     const entry = newTaskSubtasks.find(e => Array.isArray(e) && e[0] === id);
     if (entry) {
       const data = entry[1];
-      result[id] = {
+      subtaskObj[id] = {
         name: data.name,
         done: data.done
       };
     }
   }
-  return result;
+  return subtaskObj;
 }
 
 function insertEditMandatoryTaskInfo(newTaskObj) {
@@ -372,7 +372,9 @@ function insertEditMandatoryTaskInfo(newTaskObj) {
 }
 
 async function submitEditTaskOptionalComplexInfo(taskID) {
-  if (newTaskSubtasks != []) {
-    await submitNewTaskSubtasks(taskID);
+  if (Array.isArray(newTaskSubtasks[0])){
+    newTaskSubtasks = newTaskSubtasks.map((i) => i[1]);
   }
+    await submitNewTaskSubtasks(taskID);
+
 }

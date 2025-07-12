@@ -1,7 +1,7 @@
 async function initBoard() {
   let tasksArray = await getTasksArray();
-  renderBoard(tasksArray);
-}
+   await renderBoard(tasksArray);
+   }
 
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
@@ -17,7 +17,7 @@ async function getTasksArray() {
   return tasksArray;
 }
 
-function renderBoard(tasksArray) {
+async function renderBoard(tasksArray) {
   renderBoardColumn("to-do", "todo", tasksArray);
   renderBoardColumn("in-progress", "inprogress", tasksArray);
   renderBoardColumn("await-feedback", "awaitfeedback", tasksArray);

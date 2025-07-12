@@ -314,13 +314,16 @@ async function submitObjectToDatabase(path = "", object = {}) {
 
 async function updateDatabaseObject(path = "", object = {}) {
   let response = await fetch(database + path + ".json", {
-    method: "PATCH",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(object),
+
+    
   });
 }
+
 
 /**
  * This function delets an element form firebase server and collects the response as JSON
@@ -336,7 +339,7 @@ async function deleteDataBaseElement(path = "") {
   return responseJSON;
 }
 
-/* function getFirstTwoStringInitials(inputString) {
+function getFirstTwoStringInitials(inputString) {
   console.log(inputString);
   
   let inputStringSplit = inputString.split(" ");
@@ -349,7 +352,7 @@ async function deleteDataBaseElement(path = "") {
       inputStringSplit[1].charAt(0).toUpperCase();
   }
   return stringInitials;
-} */
+}
 
 function getFirstTwoStringInitialsByFirebaseId(contactID) {
    let stringInitials = "";

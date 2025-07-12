@@ -5,16 +5,12 @@
  * @returns - HMTL template of a contact item in contacts list.
  */
 function getContactsListContactTemplate(indexContact) {
-  let objValues = Object.values(contactsArray[indexContact]);
-  console.log(objValues[0]);
-  
-  
   return `
     <div class="contact-list-item-wrap" onclick="showContactDetails(${indexContact})" id="contacts-list-${indexContact}">
         <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
           indexContact
         )}">${getFirstTwoStringInitialsByFirebaseId(
-                  objValues[0]
+                  contactsArray[indexContact][0]
                 )}</div>
         <div class="contact-name-wrap d-flex-column">
             <div class="contact-name">${
@@ -56,9 +52,9 @@ function getContactDetailsTemplate(indexContact) {
     <div class="contact-details-icon-edit-name-wrap">
         <div class="${getContactColorClassName(
           indexContact
-        )} contact-details-name-icon">${getFirstTwoStringInitials(
-    contactsArray[indexContact][1].name
-  )}</div>
+        )} contact-details-name-icon">${getFirstTwoStringInitialsByFirebaseId(
+                  contactsArray[indexContact][0]
+                )}</div>
             <div class="contact-details-name-wrap">
             <div class="contact-details-name">${
               contactsArray[indexContact][1].name
