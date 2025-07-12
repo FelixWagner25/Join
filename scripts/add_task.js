@@ -149,12 +149,24 @@ function resetAllPriorityBtns() {
   }
 }
 
-function toggleTaskCategoryDropdown() {
-  let categoryDropdownRef = document.getElementById("task-category-dropdown");
-  let categoryDropdownIconRef = document.getElementById(
-    "task-category-dropdown-icon"
-  );
-  clearInputTagValue("task-category");
+function toggleTaskCategoryDropdown(overlay) {
+  let categoryDropdownRef;
+  let categoryDropdownIconRef;
+  if (overlay == true) {
+    categoryDropdownRef = document.getElementById(
+      "task-category-dropdown-overlay"
+    );
+    categoryDropdownIconRef = document.getElementById(
+      "task-category-dropdown-icon"
+    );
+    clearInputTagValue("task-category-overlay");
+  } else {
+    categoryDropdownRef = document.getElementById("task-category-dropdown");
+    categoryDropdownIconRef = document.getElementById(
+      "task-category-dropdown-icon"
+    );
+    clearInputTagValue("task-category");
+  }
   categoryDropdownRef.classList.toggle("d-none");
   categoryDropdownIconRef.classList.toggle("task-dropdown-open-icon");
 }
@@ -269,16 +281,23 @@ function toggleTaskAssignedContactsDropdown(overlay) {
   assignedContactsDropdownIconRef.classList.toggle("task-dropdown-open-icon");
   assignedContactsBadges.classList.toggle("d-none");
   renderTaskAssigendContacts(overlay);
-  //renderAssignedContactsCheckboxes();
+  renderContactCheckboxes(newTaskAssignedContactsIndices, overlay);
   renderAssignedContactsBadges(overlay);
 }
 
-function renderAssignedContactsBadges() {
-  renderContactsBadges(newTaskAssignedContactsIndices);
+function renderAssignedContactsBadges(overlay) {
+  renderContactsBadges(newTaskAssignedContactsIndices, overlay);
 }
 
-function renderContactsBadges(array) {
-  const badgesRef = document.getElementById("task-assigned-contacts-badges");
+function renderContactsBadges(array, overlay) {
+  let badgesRef;
+  if (overlay == true) {
+    badgesRef = document.getElementById(
+      "task-assigned-contacts-badges-overlay"
+    );
+  } else {
+    badgesRef = document.getElementById("task-assigned-contacts-badges");
+  }
   badgesRef.innerHTML = "";
   let maximalShownBadges = Math.min(3, array.length);
   for (let i = 0; i < maximalShownBadges; i++) {
@@ -291,13 +310,23 @@ function renderContactsBadges(array) {
   }
 }
 
-function toggleAssignContact(contactID) {
-  let assignedContactWrapRef = document.getElementById(
-    "task-assigned-contact-wrap-" + contactID
-  );
-  assignedContactWrapRef.classList.toggle("focus");
+function toggleAssignContact(contactID, htmlElement) {
+  // let assignedContactWrapRef;
+  // if (overlay == true) {
+  //   assignedContactWrapRef = document.getElementById(
+  //     "task-assigned-contact-wrap-overlay" + contactID
+  //   );
+  // } else {
+  //   assignedContactWrapRef = document.getElementById(
+  //     "task-assigned-contact-wrap-" + contactID
+  //   );
+  // }
+
+  //assignedContactWrapRef.classList.toggle("focus");
+  htmlElement.classList.toggle("focus");
   toggleValueFromArray(contactID, newTaskAssignedContactsIndices);
-  renderAssignedContactsBadges();
+  renderAssignedContactsBadges(false);
+  renderAssignedContactsBadges(true);
 }
 
 function toggleValueFromArray(value, array) {
@@ -315,40 +344,57 @@ function renderTaskAssigendContacts(overlay) {
     assignedContactsRef = document.getElementById(
       "task-assigned-contacts-dropdown-overlay"
     );
+    assignedContactsRef.innerHTML = "";
+    for (
+      let indexContact = 0;
+      indexContact < contactsArray.length;
+      indexContact++
+    ) {
+      assignedContactsRef.innerHTML += getTaskAssigendContactsOverlayTemplate(
+        contactsArray[indexContact][0],
+        indexContact
+      );
+    }
   } else {
     assignedContactsRef = document.getElementById(
       "task-assigned-contacts-dropdown"
     );
-  }
-
-  assignedContactsRef.innerHTML = "";
-  for (
-    let indexContact = 0;
-    indexContact < contactsArray.length;
-    indexContact++
-  ) {
-    assignedContactsRef.innerHTML += getTaskAssigendContactsTemplate(
-      contactsArray[indexContact][0],
-      indexContact
-    );
+    assignedContactsRef.innerHTML = "";
+    for (
+      let indexContact = 0;
+      indexContact < contactsArray.length;
+      indexContact++
+    ) {
+      assignedContactsRef.innerHTML += getTaskAssigendContactsTemplate(
+        contactsArray[indexContact][0],
+        indexContact
+      );
+    }
   }
 }
 
-function renderAssignedContactsCheckboxes(contactIndexes) {
-  if (contactIndexes) {
-    let contactArray = contactIndexes.split(",");
-    renderContactCheckboxes(contactArray);
+function renderAssignedContactsCheckboxes(contactIndices, overlay) {
+  if (contactIndices) {
+    let contactArray = contactIndices.split(",");
+    renderContactCheckboxes(contactArray, false);
   } else {
-    renderContactCheckboxes(newTaskAssignedContactsIndices);
+    renderContactCheckboxes(newTaskAssignedContactsIndices, overlay);
   }
 }
 
-function renderContactCheckboxes(array) {
+function renderContactCheckboxes(array, overlay) {
   for (let indexContact = 0; indexContact < array.length; indexContact++) {
+    let assignedContactWrapRef;
     let indexAssignedContact = array[indexContact];
-    let assignedContactWrapRef = document.getElementById(
-      "task-assigned-contact-wrap-" + indexAssignedContact
-    );
+    if (overlay == true) {
+      assignedContactWrapRef = document.getElementById(
+        "task-assigned-contact-wrap-overlay-" + indexAssignedContact
+      );
+    } else {
+      assignedContactWrapRef = document.getElementById(
+        "task-assigned-contact-wrap-" + indexAssignedContact
+      );
+    }
     assignedContactWrapRef.classList.add("focus");
   }
 }
@@ -362,9 +408,9 @@ async function deleteTask(indexTask) {
 //Board editTask Area
 
 function editTask(indexTask) {
-  const contactIndexes = getContactIDs(indexTask);
+  const contactIndices = getContactIDs(indexTask);
   const subtaskIndexes = getSubtaskIDs(indexTask);
-  newTaskAssignedContactsIndices = [...contactIndexes];
+  newTaskAssignedContactsIndices = [...contactIndices];
   newSubtasksIndices = [...subtaskIndexes];
   const existingSubtasks = tasksArray[indexTask][1]?.subtasks || {};
   newTaskSubtasks = Object.values(existingSubtasks);
