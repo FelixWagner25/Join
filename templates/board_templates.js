@@ -598,7 +598,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                     >Subtasks</label
                   >
                   <input
-                    oninput="showSubtaskControlButtons()"
+                    oninput="showSubtaskControlButtons(overlay=true)"
                     class="p-relative task-input-border task-input-category font-Inter-400-20px"
                     type="text"
                     id="task-subtasks-overlay"
@@ -606,11 +606,11 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                   />
                   <span
                     class="p-absolute task-subtask-icon task-add-subtask-icon"
-                    id="task-add-subtask-icon"
+                    id="task-add-subtask-icon-overlay"
                   ></span>
                   <div
                     class="d-none p-absolute d-flex gap-8px task-subtask-icon"
-                    id="task-clear-submit-subtask-icon-wrap"
+                    id="task-clear-submit-subtask-icon-overlay-wrap"
                   >
                     <div
                       class="d-flex-row-c-c task-subtask-icon-wrap"
@@ -621,7 +621,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                     <span class="separator"></span>
                     <div
                       class="d-flex-row-c-c task-subtask-icon-wrap"
-                      onclick="addSubtask()"
+                      onclick="addSubtask(overlay=true)"
                     >
                       <span class="task-submit-subtask-icon"></span>
                     </div>
