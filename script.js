@@ -315,6 +315,7 @@ async function submitObjectToDatabase(path = "", object = {}) {
 async function updateDatabaseObject(path = "", object = {}) {
   let response = await fetch(database + path + ".json", {
     method: "PUT",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -341,7 +342,7 @@ async function deleteDataBaseElement(path = "") {
 
 function getFirstTwoStringInitials(inputString) {
   console.log(inputString);
-  
+
   let inputStringSplit = inputString.split(" ");
   let stringInitials = "";
   if (inputStringSplit.length == 1) {
@@ -355,16 +356,17 @@ function getFirstTwoStringInitials(inputString) {
 }
 
 function getFirstTwoStringInitialsByFirebaseId(contactID) {
-   let stringInitials = "";
+  let stringInitials = "";
   for (let elementID of contactsArray) {
-if (contactID === elementID[0]){
-    let inputStringSplit = elementID[1].name.split(" ");
-      stringInitials = inputStringSplit[0].charAt(0).toUpperCase() + inputStringSplit[1].charAt(0).toUpperCase(); 
+    if (contactID === elementID[0]) {
+      let inputStringSplit = elementID[1].name.split(" ");
+      stringInitials =
+        inputStringSplit[0].charAt(0).toUpperCase() +
+        inputStringSplit[1].charAt(0).toUpperCase();
     }
-  } 
+  }
   return stringInitials;
 }
-
 
 function clearInputTagValue(htmlId) {
   let inputRef = document.getElementById(htmlId);
