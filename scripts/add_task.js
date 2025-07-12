@@ -2,13 +2,13 @@ let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 
-async function addNewTask(newTaskStatusId) {
-  let newTaskScalarData = getNewTaskScalarInformation(newTaskStatusId);
+async function addNewTask(newTaskStatusId, overlay = false) {
+  let newTaskScalarData = getNewTaskScalarInformation(newTaskStatusId, overlay);
   await submitObjectToDatabase("tasks", newTaskScalarData);
   tasksArray = await getTasksArray();
   await submitNewTaskOptionalComplexInfo();
   showNewTaskCreatedMessage();
-  clearAddTaskForm();
+  clearAddTaskForm(overlay);
 }
 
 async function submitNewTaskOptionalComplexInfo() {
@@ -47,37 +47,61 @@ async function submitNewTaskSubtasks(newTaskFirebaseId) {
   }
 }
 
-function clearAddTaskForm() {
-  clearInputTagValue("task-title");
-  clearInputTagValue("task-description");
-  clearInputTagValue("task-due-date");
-  setTaskPriority("task-priority-medium");
-  clearInputTagValue("task-assigned-contacts");
-  clearInputTagValue("task-category");
-  clearInputTagValue("task-subtasks");
+function clearAddTaskForm(overlay) {
+  if (overlay == true) {
+    clearInputTagValue("task-title-overlay");
+    clearInputTagValue("task-description-overlay");
+    clearInputTagValue("task-due-date-overlay");
+    setTaskPriority("task-priority-medium-overlay");
+    clearInputTagValue("task-assigned-contacts-overlay");
+    clearInputTagValue("task-category-overlay");
+    clearInputTagValue("task-subtasks-overlay");
+  } else {
+    clearInputTagValue("task-title");
+    clearInputTagValue("task-description");
+    clearInputTagValue("task-due-date");
+    setTaskPriority("task-priority-medium");
+    clearInputTagValue("task-assigned-contacts");
+    clearInputTagValue("task-category");
+    clearInputTagValue("task-subtasks");
+  }
+
   newTaskAssignedContactsIndices = [];
-  renderAssignedContactsBadges();
+  renderAssignedContactsBadges(overlay);
   newTaskSubtasks = [];
-  renderSubtasks();
+  renderSubtasks(overlay);
 }
 
-function getNewTaskScalarInformation(newTaskStatusId) {
+function getNewTaskScalarInformation(newTaskStatusId, overlay) {
   let newTaskScalarInfo = {};
-  insertMandatoryTaskInfo(newTaskScalarInfo, newTaskStatusId);
-  insertOptionalScalarTaskInfo(newTaskScalarInfo);
+  insertMandatoryTaskInfo(newTaskScalarInfo, newTaskStatusId, overlay);
+  insertOptionalScalarTaskInfo(newTaskScalarInfo, overlay);
   return newTaskScalarInfo;
 }
 
-function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId) {
-  newTaskObj.title = getInputTagValue("task-title");
-  newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.category = getTaskCategoryFirebaseName();
-  newTaskObj.priority = newTaskPriority;
-  newTaskObj.status = newTaskStatusId;
+function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId, overlay) {
+  if (overlay == true) {
+    newTaskObj.title = getInputTagValue("task-title-overlay");
+    newTaskObj.dueDate = getInputTagValue("task-due-date-overlay");
+    newTaskObj.category = getTaskCategoryFirebaseName(overlay);
+    newTaskObj.priority = newTaskPriority;
+    newTaskObj.status = newTaskStatusId;
+  } else {
+    newTaskObj.title = getInputTagValue("task-title");
+    newTaskObj.dueDate = getInputTagValue("task-due-date");
+    newTaskObj.category = getTaskCategoryFirebaseName(overlay);
+    newTaskObj.priority = newTaskPriority;
+    newTaskObj.status = newTaskStatusId;
+  }
 }
 
-function getTaskCategoryFirebaseName() {
-  let key = getInputTagValue("task-category");
+function getTaskCategoryFirebaseName(overlay) {
+  let key = "";
+  if (overlay == true) {
+    key = getInputTagValue("task-category-overlay");
+  } else {
+    key = getInputTagValue("task-category");
+  }
   if (key.includes("Technical")) {
     return "technical-task";
   } else {
@@ -85,9 +109,15 @@ function getTaskCategoryFirebaseName() {
   }
 }
 
-function insertOptionalScalarTaskInfo(newTaskObj) {
-  if (getInputTagValue("task-description") !== "") {
-    newTaskObj.description = getInputTagValue("task-description");
+function insertOptionalScalarTaskInfo(newTaskObj, overlay) {
+  if (overlay == true) {
+    if (getInputTagValue("task-description-overlay") !== "") {
+      newTaskObj.description = getInputTagValue("task-description-overlay");
+    } else {
+      if (getInputTagValue("task-description") !== "") {
+        newTaskObj.description = getInputTagValue("task-description");
+      }
+    }
   }
 }
 
@@ -208,23 +238,39 @@ function deleteSubtask(indexSubtask) {
   renderSubtasks();
 }
 
-function toggleTaskAssignedContactsDropdown() {
-  let assignedContactsDropdownRef = document.getElementById(
-    "task-assigned-contacts-dropdown"
-  );
-  let assignedContactsDropdownIconRef = document.getElementById(
-    "task-assigend-contacts-dropdown-icon"
-  );
-  let assignedContactsBadges = document.getElementById(
-    "task-assigned-contacts-badges"
-  );
+function toggleTaskAssignedContactsDropdown(overlay) {
+  let assignedContactsDropdownRef = "";
+  let assignedContactsDropdownIconRef = "";
+  let assignedContactsBadges = "";
+  if (overlay == true) {
+    assignedContactsDropdownRef = document.getElementById(
+      "task-assigned-contacts-dropdown-overlay"
+    );
+    assignedContactsDropdownIconRef = document.getElementById(
+      "task-assigend-contacts-dropdown-icon-overlay"
+    );
+    assignedContactsBadges = document.getElementById(
+      "task-assigned-contacts-badges-overlay"
+    );
+  } else {
+    assignedContactsDropdownRef = document.getElementById(
+      "task-assigned-contacts-dropdown"
+    );
+    assignedContactsDropdownIconRef = document.getElementById(
+      "task-assigend-contacts-dropdown-icon"
+    );
+    assignedContactsBadges = document.getElementById(
+      "task-assigned-contacts-badges"
+    );
+  }
+
   assignedContactsDropdownRef.classList.toggle("d-none");
   assignedContactsDropdownRef.classList.toggle("d-flex-column");
   assignedContactsDropdownIconRef.classList.toggle("task-dropdown-open-icon");
   assignedContactsBadges.classList.toggle("d-none");
-  renderTaskAssigendContacts();
-  renderAssignedContactsCheckboxes();
-  renderAssignedContactsBadges();
+  renderTaskAssigendContacts(overlay);
+  //renderAssignedContactsCheckboxes();
+  renderAssignedContactsBadges(overlay);
 }
 
 function renderAssignedContactsBadges() {
@@ -263,10 +309,18 @@ function toggleValueFromArray(value, array) {
   }
 }
 
-function renderTaskAssigendContacts() {
-  let assignedContactsRef = document.getElementById(
-    "task-assigned-contacts-dropdown"
-  );
+function renderTaskAssigendContacts(overlay) {
+  let assignedContactsRef = "";
+  if (overlay == true) {
+    assignedContactsRef = document.getElementById(
+      "task-assigned-contacts-dropdown-overlay"
+    );
+  } else {
+    assignedContactsRef = document.getElementById(
+      "task-assigned-contacts-dropdown"
+    );
+  }
+
   assignedContactsRef.innerHTML = "";
   for (
     let indexContact = 0;
@@ -332,8 +386,8 @@ async function submitEditTask(indexTask) {
 }
 
 function getEditTaskScalarInformation(obj) {
-  insertEditMandatoryTaskInfo(obj);
-  insertOptionalScalarTaskInfo(obj);
+  insertEditMandatoryTaskInfo(obj, false);
+  insertOptionalScalarTaskInfo(obj, false);
   if (newTaskAssignedContactsIndices.length > 0) {
     obj.assignedTo = convertContactToObject(newTaskAssignedContactsIndices);
   }

@@ -127,7 +127,7 @@
                     id="task-assigned-contacts"
                     placeholder="Select contacts to assign"
                     readonly
-                    onclick="toggleTaskAssignedContactsDropdown()"
+                    onclick="toggleTaskAssignedContactsDropdown(overlay=false)"
                   />
                   <span
                     class="p-absolute task-dropdown-icon"
@@ -155,7 +155,7 @@
                     id="task-category"
                     placeholder="Select task category"
                     readonly
-                    onclick="toggleTaskCategoryDropdown()"
+                    onclick="toggleTaskCategoryDropdown(overlay=false)"
                     required
                   />
                   <span
@@ -168,13 +168,13 @@
                   >
                     <div
                       class="task-category-option"
-                      onclick="setInputTagValue('task-category', this.innerHTML),closeTaskCategoryDropdown() "
+                      onclick="setInputTagValue('task-category', this.innerHTML),closeTaskCategoryDropdown(overlay=false) "
                     >
                       Technical Task
                     </div>
                     <div
                       class="task-category-option"
-                      onclick="setInputTagValue('task-category', this.innerHTML), closeTaskCategoryDropdown()"
+                      onclick="setInputTagValue('task-category', this.innerHTML), closeTaskCategoryDropdown(overlay=false)"
                     >
                       User Story
                     </div>

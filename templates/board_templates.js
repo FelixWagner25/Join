@@ -438,24 +438,24 @@ function editTaskTemplate(indexTask, contactIndexes) {
 
 function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
   return `
-  <div class="pd-t-110px pd-lr-96px d-flex-column gap-48px">
+  <div class="d-flex-column  pd-64px gap-48px">
           <h1 class="font-Inter-700-61px">Add Task</h1>
           <form
             class="max-width-976px"
-            onsubmit="addNewTask(${taskStatusId}); event.preventDefault()"
+            onsubmit="addNewTask(${taskStatusId}, overlay=true); event.preventDefault()"
           >
             <div class="d-flex-sb gap-48px pd-b-64px">
               <div class="d-flex-column gap-32px">
                 <div class="d-flex-column gap-8px">
                   <label
-                    for="task-title"
+                    for="task-title-overlay"
                     class="font-Inter-400-20px text-color-2A3647"
                     >Title<span class="col-red">*</span></label
                   >
                   <input
                     class="task-input-border task-input-text-field font-Inter-400-12px"
                     type="text"
-                    id="task-title"
+                    id="task-title-overlay"
                     placeholder="Enter a title"
                     required
                   />
@@ -463,24 +463,24 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
 
                 <div class="d-flex-column gap-8px">
                   <label
-                    for="task-description"
+                    for="task-description-overlay"
                     class="font-Inter-400-20px text-color-2A3647"
                     >Description</label
                   >
                   <textarea
                     class="task-input-border task-input-text-area font-Inter-400-12px"
-                    id="task-description"
+                    id="task-description-overlay"
                     placeholder="Enter a Description"
                   ></textarea>
                 </div>
                 <div class="d-flex-column gap-8px">
-                  <label for="task-due-date" class="input-label"
+                  <label for="task-due-date-overlay" class="input-label"
                     >Due date<span class="col-red">*</span></label
                   >
                   <input
                     class="task-input-border task-input-date"
                     type="date"
-                    id="task-due-date"
+                    id="task-due-date-overlay"
                     placeholder="dd/mm/yyyy"
                     required
                   />
@@ -498,7 +498,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                     <button
                       type="button"
                       class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
-                      id="task-priority-urgent"
+                      id="task-priority-urgent-overlay"
                       onclick="setTaskPriority('task-priority-urgent')"
                     >
                       <span>Urgent</span>
@@ -507,7 +507,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                     <button
                       type="button"
                       class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium"
-                      id="task-priority-medium"
+                      id="task-priority-medium-overlay"
                       onclick="setTaskPriority('task-priority-medium')"
                     >
                       <span>Medium</span>
@@ -516,7 +516,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                     <button
                       type="button"
                       class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
-                      id="task-priority-low"
+                      id="task-priority-low-overlay"
                       onclick="setTaskPriority('task-priority-low')"
                     >
                       <span>Low</span>
@@ -527,64 +527,64 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
 
                 <div class="d-flex-column gap-8px p-relative">
                   <label
-                    for="task-assigned-contacts"
+                    for="task-assigned-contacts-overlay"
                     class="font-Inter-400-20px text-color-2A3647"
                     >Assigned To</label
                   >
                   <input
                     class="p-relative task-input-border task-input-category font-Inter-400-20px"
                     type="text"
-                    id="task-assigned-contacts"
+                    id="task-assigned-contacts-overlay"
                     placeholder="Select contacts to assign"
                     readonly
-                    onclick="toggleTaskAssignedContactsDropdown()"
+                    onclick="toggleTaskAssignedContactsDropdown(overlay=true)"
                   />
                   <span
                     class="p-absolute task-dropdown-icon"
-                    id="task-assigend-contacts-dropdown-icon"
+                    id="task-assigend-contacts-dropdown-icon-overlay"
                   ></span>
                   <div
                     class="d-none p-absolute task-input-dropdown"
-                    id="task-assigned-contacts-dropdown"
+                    id="task-assigned-contacts-dropdown-overlay"
                   ></div>
                   <div
                     class="d-flex gap-8px p-relative"
-                    id="task-assigned-contacts-badges"
+                    id="task-assigned-contacts-badges-overlay"
                   ></div>
                 </div>
 
                 <div class="d-flex-column gap-8px p-relative">
                   <label
-                    for="task-category"
+                    for="task-category-overlay"
                     class="font-Inter-400-20px text-color-2A3647"
                     >Category<span class="col-red">*</span></label
                   >
                   <input
                     class="p-relative task-input-border task-input-category font-Inter-400-20px"
                     type="text"
-                    id="task-category"
+                    id="task-category-overlay"
                     placeholder="Select task category"
                     readonly
-                    onclick="toggleTaskCategoryDropdown()"
+                    onclick="toggleTaskCategoryDropdown(overlay=true)"
                     required
                   />
                   <span
                     class="p-absolute task-dropdown-icon"
-                    id="task-category-dropdown-icon"
+                    id="task-category-dropdown-icon-overlay"
                   ></span>
                   <div
                     class="d-none p-absolute task-input-dropdown"
-                    id="task-category-dropdown"
+                    id="task-category-dropdown-overlay"
                   >
                     <div
                       class="task-category-option"
-                      onclick="setInputTagValue('task-category', this.innerHTML),closeTaskCategoryDropdown() "
+                      onclick="setInputTagValue('task-category-overlay', this.innerHTML),closeTaskCategoryDropdown(overlay=true) "
                     >
                       Technical Task
                     </div>
                     <div
                       class="task-category-option"
-                      onclick="setInputTagValue('task-category', this.innerHTML), closeTaskCategoryDropdown()"
+                      onclick="setInputTagValue('task-category-overlay', this.innerHTML), closeTaskCategoryDropdown(overlay=true)"
                     >
                       User Story
                     </div>
@@ -601,7 +601,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                     oninput="showSubtaskControlButtons()"
                     class="p-relative task-input-border task-input-category font-Inter-400-20px"
                     type="text"
-                    id="task-subtasks"
+                    id="task-subtasks-overlay"
                     placeholder="Add new subtask"
                   />
                   <span
@@ -614,7 +614,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                   >
                     <div
                       class="d-flex-row-c-c task-subtask-icon-wrap"
-                      onclick="clearInputTagValue('task-subtasks')"
+                      onclick="clearInputTagValue('task-subtasks-overlay')"
                     >
                       <span class="task-clear-subtask-icon"></span>
                     </div>
@@ -626,7 +626,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                       <span class="task-submit-subtask-icon"></span>
                     </div>
                   </div>
-                  <ul id="tasks-subtasks-list"></ul>
+                  <ul id="tasks-subtasks-list-overlay"></ul>
                 </div>
               </div>
             </div>
@@ -640,7 +640,7 @@ function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
                 <button
                   class="task-form-btn d-flex-row-c-c clear-task-btn"
                   type="reset"
-                  onclick="clearAddTaskForm()"
+                  onclick="clearAddTaskForm(overlay=true)"
                 >
                   <span class="font-Inter-400-20px">Clear</span>
                   <span class="clear-task-btn-icon"></span>

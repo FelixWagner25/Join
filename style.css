@@ -2,8 +2,6 @@
   font-family: Inter;
 }
 
-
-
 body {
   margin: 0;
   padding: 0;
@@ -13,11 +11,11 @@ body {
   font-weight: 400;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-ul{
+ul {
   list-style-type: none;
 }
 
@@ -67,7 +65,7 @@ textarea {
   display: block;
 }
 
-.d-contents{
+.d-contents {
   display: contents;
 }
 
@@ -139,12 +137,12 @@ textarea {
   justify-content: flex-start;
 }
 
-.d-flex-align-item-b{
+.d-flex-align-item-b {
   display: flex;
   align-items: baseline;
 }
 
-.d-flex-column-rev{
+.d-flex-column-rev {
   display: flex;
   flex-direction: column-reverse;
 }
@@ -340,6 +338,10 @@ textarea {
 
 .pd-8px-16px {
   padding: 8px 16px;
+}
+
+.pd-64px {
+  padding: 64px;
 }
 
 .gap-4px {

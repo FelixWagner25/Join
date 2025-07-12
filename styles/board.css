@@ -313,4 +313,5 @@
 .add-task-at-board-overlay {
   max-width: 80%;
   max-height: 80%;
+  border-radius: 30px;
 }
