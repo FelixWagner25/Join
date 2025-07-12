@@ -24,7 +24,7 @@ function getBoardCardTemplate(indexTask, tasksArray) {
                     <img src=${getTaskPriorityIconSrc(
                       tasksArray[indexTask][1].priority
                     )} >
-                </div>
+            </div>
         </div> 
     </div>
     <div class="d-none col-empty-wrap"></div>
@@ -57,7 +57,9 @@ function getTaskCardContactsTemplate(indexTaskContact, indexTask, tasksArray) {
     objValues[indexTaskContact][1].Id
   )}">
     <div class="font-Inter-400-12px">
-      ${getFirstTwoStringInitialsByFirebaseId(objValues[indexTaskContact][1].Id || "")}
+      ${getFirstTwoStringInitialsByFirebaseId(
+        objValues[indexTaskContact][1].Id || ""
+      )}
     </div>
   </div>
   `;
@@ -77,7 +79,9 @@ function blurBackgroundBoard() {
 
 function getTaskOverlay(indexTask) {
   let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
-  let objValuesSubtasks = Object.values(tasksArray[indexTask][1]?.subtasks || {});
+  let objValuesSubtasks = Object.values(
+    tasksArray[indexTask][1]?.subtasks || {}
+  );
   let overlay = document.querySelector(".task-overlay-wrap");
   overlay.innerHTML = `
     <div class="task-overlay d-flex-column">
@@ -125,7 +129,7 @@ function getTaskOverlay(indexTask) {
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
-         p[1].Id
+              p[1].Id
             )}">
               <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
                 p[1].Id
@@ -191,20 +195,19 @@ function getCurrentTaskOBj(indexTask) {
   return newTaskScalarData;
 }
 
-
-//renderAssignedContactsCheckboxes anpassen zur Nutzung Auskommentierter Funktion. 
+//renderAssignedContactsCheckboxes anpassen zur Nutzung Auskommentierter Funktion.
 function getContactIDs(indexTask) {
-/*   const contactObj = tasksArray[indexTask][1]?.assignedTo || {};
-   return Object.keys(contactObj) */  
-    let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
-    let activeContacts = objValues.map((p) => p[1].Id)
-    let contactIndexes = []
-  let contactArrayIteration = contactsArray.map((p) => p[0])
+  /*   const contactObj = tasksArray[indexTask][1]?.assignedTo || {};
+   return Object.keys(contactObj) */
+  let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
+  let activeContacts = objValues.map((p) => p[1].Id);
+  let contactIndexes = [];
+  let contactArrayIteration = contactsArray.map((p) => p[0]);
   for (let i = 0; i < contactArrayIteration.length; i++) {
     if (activeContacts.includes(contactArrayIteration[i]))
-    contactIndexes.push(contactArrayIteration[i])
+      contactIndexes.push(contactArrayIteration[i]);
   }
-return contactIndexes
+  return contactIndexes;
 }
 
 function getSubtaskIDs(indexTask) {
@@ -217,7 +220,9 @@ function editTaskTemplate(indexTask, contactIndexes) {
   newTaskScalarData = getCurrentTaskOBj(indexTask);
 
   let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
-  let objValuesSubtasks = Object.values(tasksArray[indexTask][1]?.subtasks || {});
+  let objValuesSubtasks = Object.values(
+    tasksArray[indexTask][1]?.subtasks || {}
+  );
   return `
 <form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
@@ -332,11 +337,11 @@ function editTaskTemplate(indexTask, contactIndexes) {
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
-         p[1].Id
+              p[1].Id
             )}">
               <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
-                   p[1].Id
-                )}
+                p[1].Id
+              )}
             
               </div>
             </div>

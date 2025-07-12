@@ -25,14 +25,14 @@ function renderBoard(tasksArray) {
 }
 
 function renderBoardColumn(columHTMLid, taskStatusId, tasksArray) {
-  let boardColRef = document.getElementById(columHTMLid);  
+  let boardColRef = document.getElementById(columHTMLid);
   boardColRef.innerHTML = "";
   for (let i = 0; i < tasksArray.length; i++) {
     if (!taskHasStatus(taskStatusId, i, tasksArray)) {
       continue;
     }
     boardColRef.innerHTML += getBoardCardTemplate(i, tasksArray);
-    if (subtasksExist(i,tasksArray)) {
+    if (subtasksExist(i, tasksArray)) {
       renderSubtaskProgressInfo(i, tasksArray);
     }
     renderBoardCardContacts(i, tasksArray);
@@ -63,7 +63,10 @@ function renderSubtaskProgressInfo(indexTask, tasksArray) {
   let htmlId = "subtasks-progress-" + String(indexTask);
   let taskSubtaskInfoRef = document.getElementById(htmlId);
   taskSubtaskInfoRef.innerHTML = "";
-  taskSubtaskInfoRef.innerHTML = getTaskCardSubtaskTemplate(indexTask, tasksArray);
+  taskSubtaskInfoRef.innerHTML = getTaskCardSubtaskTemplate(
+    indexTask,
+    tasksArray
+  );
 }
 
 function renderBoardCardContacts(indexTask, tasksArray) {
@@ -78,7 +81,8 @@ function renderBoardCardContacts(indexTask, tasksArray) {
   ) {
     taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
       indexTaskContact,
-      indexTask, tasksArray
+      indexTask,
+      tasksArray
     );
   }
 }
