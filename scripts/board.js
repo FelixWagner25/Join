@@ -172,3 +172,18 @@ async function updateStatus(path = "", taskData = {}) {
     body: JSON.stringify(taskData),
   });
 }
+
+function openAddNewTaskAtBoardOverlay(taskStatusId) {
+  document
+    .getElementById("add-task-at-board-overlay-wrap")
+    .classList.remove("d-none");
+  let overlayRef = document.getElementById("add-task-at-board-overlay");
+  overlayRef.innerHTML = "";
+  overlayRef.innerHTML += renderAddNewTaskAtBoardOverlayTemplate(taskStatusId);
+}
+
+function closeAddTaskAtBoardOverlay() {
+  document
+    .getElementById("add-task-at-board-overlay-wrap")
+    .classList.add("d-none");
+}
