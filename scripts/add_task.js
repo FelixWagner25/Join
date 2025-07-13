@@ -5,6 +5,13 @@ let newTaskPriority = "medium";
 async function addTaskInit() {
   contactsArray = await getSortedContactsArray();
   tasksArray = await getTasksArray();
+  renderAddTaskForm("add-task-form-wrap", "todo");
+}
+
+function renderAddTaskForm(htmlId, taskStatusId) {
+  let ref = document.getElementById(htmlId);
+  ref.innerHTML = "";
+  ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
 }
 
 async function addNewTask(newTaskStatusId) {
