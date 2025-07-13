@@ -173,3 +173,12 @@ async function updateStatus(path = "", taskData = {}) {
     body: JSON.stringify(taskData),
   });
 }
+
+function openAddTaskOverlay(taskStatusId) {
+  document.getElementById("add-task-overlay-wrap").classList.remove("d-none");
+  renderAddTaskForm("add-task-overlay", taskStatusId);
+}
+
+function closeAddTaskOverlay() {
+  document.getElementById("add-task-overlay-wrap").classList.add("d-none");
+}

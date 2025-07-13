@@ -21,6 +21,7 @@ async function addNewTask(newTaskStatusId) {
   await submitNewTaskOptionalComplexInfo();
   showNewTaskCreatedMessage();
   clearAddTaskForm();
+  renderBoard(tasksArray);
 }
 
 async function submitNewTaskOptionalComplexInfo() {
