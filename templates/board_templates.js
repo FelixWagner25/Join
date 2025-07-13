@@ -55,7 +55,9 @@ function getTaskCardContactsTemplate(indexTaskContact, indexTask, tasksArray) {
     tasksArray[indexTask][1].assignedTo[indexTaskContact][1].Id
   )}">
     <div class="font-Inter-400-12px">
-      ${getFirstTwoStringInitialsByFirebaseId(tasksArray[indexTask][1].assignedTo[indexTaskContact][1].Id || "")}
+      ${getFirstTwoStringInitialsByFirebaseId(
+        tasksArray[indexTask][1].assignedTo[indexTaskContact][1].Id || ""
+      )}
     </div>
   </div>
   `;
@@ -64,10 +66,10 @@ function getTaskCardContactsTemplate(indexTaskContact, indexTask, tasksArray) {
 async function showTaskOverlay(indexTask) {
   let overlay = document.querySelector(".task-overlay-wrap");
   tasksArray = await getTasksArray();
-  let currentTask =  tasksArray[indexTask][1]
+  let currentTask = tasksArray[indexTask][1];
   blurBackgroundBoard();
   setTimeout(() => {
-    getTaskOverlay(indexTask,currentTask, overlay);
+    getTaskOverlay(indexTask, currentTask, overlay);
     overlayWipe();
   }, overlayTransitionMiliSeconds);
 }
@@ -90,9 +92,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
         </div>
       </div>
 
-    <h2 class="font-Inter-700-61px text-color-black">${
-      currentTask.title
-    }</h2>
+    <h2 class="font-Inter-700-61px text-color-black">${currentTask.title}</h2>
 
     <div class="font-Inter-400-20px text-color-black task-overlay-desc">${
       currentTask?.description || ""
@@ -107,17 +107,14 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
 
     <div class="task-overlay-meta-wrap d-flex">
       <div class="font-Inter-400-20px text-color-2A3647">Priority: </div>
-      <div class="font-Inter-400-20px text-color-black">${
-        currentTask.priority
-      } 
-      <img src=${getTaskPriorityIconSrc(
-        currentTask.priority
-      )} ></div>
+      <div class="font-Inter-400-20px text-color-black">${currentTask.priority} 
+      <img src=${getTaskPriorityIconSrc(currentTask.priority)} ></div>
     </div>
 
     <div class="task-overlay-assignment-wrap d-flex-column">
       <div class="font-Inter-400-20px text-color-2A3647">Assigned To:</div>
-      <article class="d-flex-column">${currentTask.assignedTo?.map(
+      <article class="d-flex-column">${currentTask.assignedTo
+        ?.map(
           (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
@@ -139,11 +136,14 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
 
     <div class="task-overlay-assignment-wrap d-flex-column">
       <div class="font-Inter-400-20px text-color-2A3647">Subtasks</div>
-      <article class="d-flex-column">${currentTask.subtasks?.map(
-          (s) =>
-            ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s[1].name}</div></div></div>`
-        )
-        .join("") || ""}</article>
+      <article class="d-flex-column">${
+        currentTask.subtasks
+          ?.map(
+            (s) =>
+              ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask"><div>${s[1].name}</div></div></div>`
+          )
+          .join("") || ""
+      }</article>
     </div>
 
     <div class="edit-delete-wrap d-flex">
@@ -311,16 +311,17 @@ function editTaskTemplate(indexTask, currentTask) {
                     class="d-flex gap-8px p-relative"
                     id="task-assigned-contacts-badges"
                   >
-                 ${currentTask.assignedTo?.map(
+                 ${currentTask.assignedTo
+                   ?.map(
                      (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
               p[1].Id
             )}">
-              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
-                   p[1].Id
-                ) || ""}
+              <div class="font-Inter-400-12px text-color-white">${
+                getFirstTwoStringInitialsByFirebaseId(p[1].Id) || ""
+              }
             
               </div>
             </div>
@@ -368,8 +369,10 @@ function editTaskTemplate(indexTask, currentTask) {
                     </div>
                   </div>
                   <ul id="tasks-subtasks-list">
-                  ${currentTask.subtasks?.map(
-                      (s, i) => ` 
+                  ${
+                    currentTask.subtasks
+                      ?.map(
+                        (s, i) => ` 
                             <li id="task-subtask-${i}" class="p-relative font-Inter-400-13px subtask-list-element d-flex-row-c-fs gap-8px">
             <div>&#x2022;</div>
             <span class="new-input">${s[1].name}</span>
@@ -380,8 +383,9 @@ function editTaskTemplate(indexTask, currentTask) {
             </div>
         </li>
                     `
-                    )
-                    .join("") || ""}
+                      )
+                      .join("") || ""
+                  }
 
                   </ul>
                 </div>
@@ -412,227 +416,4 @@ function editTaskTemplate(indexTask, currentTask) {
               </div>
             </div>
           </form>`;
-}
-
-function renderAddNewTaskAtBoardOverlayTemplate(taskStatusId) {
-  return `
-  <div class="d-flex-column  pd-64px gap-48px">
-          <h1 class="font-Inter-700-61px">Add Task</h1>
-          <form
-            class="max-width-976px"
-            onsubmit="addNewTask(${taskStatusId}, overlay=true); event.preventDefault()"
-          >
-            <div class="d-flex-sb gap-48px pd-b-64px">
-              <div class="d-flex-column gap-32px">
-                <div class="d-flex-column gap-8px">
-                  <label
-                    for="task-title-overlay"
-                    class="font-Inter-400-20px text-color-2A3647"
-                    >Title<span class="col-red">*</span></label
-                  >
-                  <input
-                    class="task-input-border task-input-text-field font-Inter-400-12px"
-                    type="text"
-                    id="task-title-overlay"
-                    placeholder="Enter a title"
-                    required
-                  />
-                </div>
-
-                <div class="d-flex-column gap-8px">
-                  <label
-                    for="task-description-overlay"
-                    class="font-Inter-400-20px text-color-2A3647"
-                    >Description</label
-                  >
-                  <textarea
-                    class="task-input-border task-input-text-area font-Inter-400-12px"
-                    id="task-description-overlay"
-                    placeholder="Enter a Description"
-                  ></textarea>
-                </div>
-                <div class="d-flex-column gap-8px">
-                  <label for="task-due-date-overlay" class="input-label"
-                    >Due date<span class="col-red">*</span></label
-                  >
-                  <input
-                    class="task-input-border task-input-date"
-                    type="date"
-                    id="task-due-date-overlay"
-                    placeholder="dd/mm/yyyy"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div class="separator"></div>
-
-              <div class="d-flex-column gap-32px">
-                <div class="d-flex-column gap-8px">
-                  <label class="font-Inter-400-20px text-color-2A3647"
-                    >Priority</label
-                  >
-                  <div class="d-flex gap-16px">
-                    <button
-                      type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
-                      id="task-priority-urgent-overlay"
-                      onclick="setTaskPriority('task-priority-urgent')"
-                    >
-                      <span>Urgent</span>
-                      <span class="task-priority-btn-icon urgent-icon"></span>
-                    </button>
-                    <button
-                      type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium"
-                      id="task-priority-medium-overlay"
-                      onclick="setTaskPriority('task-priority-medium')"
-                    >
-                      <span>Medium</span>
-                      <span class="task-priority-btn-icon medium-icon"></span>
-                    </button>
-                    <button
-                      type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
-                      id="task-priority-low-overlay"
-                      onclick="setTaskPriority('task-priority-low')"
-                    >
-                      <span>Low</span>
-                      <span class="task-priority-btn-icon low-icon"></span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="d-flex-column gap-8px p-relative">
-                  <label
-                    for="task-assigned-contacts-overlay"
-                    class="font-Inter-400-20px text-color-2A3647"
-                    >Assigned To</label
-                  >
-                  <input
-                    class="p-relative task-input-border task-input-category font-Inter-400-20px"
-                    type="text"
-                    id="task-assigned-contacts-overlay"
-                    placeholder="Select contacts to assign"
-                    readonly
-                    onclick="toggleTaskAssignedContactsDropdown(overlay=true)"
-                  />
-                  <span
-                    class="p-absolute task-dropdown-icon"
-                    id="task-assigend-contacts-dropdown-icon-overlay"
-                  ></span>
-                  <div
-                    class="d-none p-absolute task-input-dropdown"
-                    id="task-assigned-contacts-dropdown-overlay"
-                  ></div>
-                  <div
-                    class="d-flex gap-8px p-relative"
-                    id="task-assigned-contacts-badges-overlay"
-                  ></div>
-                </div>
-
-                <div class="d-flex-column gap-8px p-relative">
-                  <label
-                    for="task-category-overlay"
-                    class="font-Inter-400-20px text-color-2A3647"
-                    >Category<span class="col-red">*</span></label
-                  >
-                  <input
-                    class="p-relative task-input-border task-input-category font-Inter-400-20px"
-                    type="text"
-                    id="task-category-overlay"
-                    placeholder="Select task category"
-                    readonly
-                    onclick="toggleTaskCategoryDropdown(overlay=true)"
-                    required
-                  />
-                  <span
-                    class="p-absolute task-dropdown-icon"
-                    id="task-category-dropdown-icon-overlay"
-                  ></span>
-                  <div
-                    class="d-none p-absolute task-input-dropdown"
-                    id="task-category-dropdown-overlay"
-                  >
-                    <div
-                      class="task-category-option"
-                      onclick="setInputTagValue('task-category-overlay', this.innerHTML),closeTaskCategoryDropdown(overlay=true) "
-                    >
-                      Technical Task
-                    </div>
-                    <div
-                      class="task-category-option"
-                      onclick="setInputTagValue('task-category-overlay', this.innerHTML), closeTaskCategoryDropdown(overlay=true)"
-                    >
-                      User Story
-                    </div>
-                  </div>
-                </div>
-
-                <div class="d-flex-column gap-8px p-relative">
-                  <label
-                    for="task-subtasks"
-                    class="font-Inter-400-20px text-color-2A3647"
-                    >Subtasks</label
-                  >
-                  <input
-                    oninput="showSubtaskControlButtons(overlay=true)"
-                    class="p-relative task-input-border task-input-category font-Inter-400-20px"
-                    type="text"
-                    id="task-subtasks-overlay"
-                    placeholder="Add new subtask"
-                  />
-                  <span
-                    class="p-absolute task-subtask-icon task-add-subtask-icon"
-                    id="task-add-subtask-icon-overlay"
-                  ></span>
-                  <div
-                    class="d-none p-absolute d-flex gap-8px task-subtask-icon"
-                    id="task-clear-submit-subtask-icon-overlay-wrap"
-                  >
-                    <div
-                      class="d-flex-row-c-c task-subtask-icon-wrap"
-                      onclick="clearInputTagValue('task-subtasks-overlay')"
-                    >
-                      <span class="task-clear-subtask-icon"></span>
-                    </div>
-                    <span class="separator"></span>
-                    <div
-                      class="d-flex-row-c-c task-subtask-icon-wrap"
-                      onclick="addSubtask(overlay=true)"
-                    >
-                      <span class="task-submit-subtask-icon"></span>
-                    </div>
-                  </div>
-                  <ul id="tasks-subtasks-list-overlay"></ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="d-flex-row-end-sb">
-              <div class="font-Inter-400-16px">
-                <span class="col-red">*</span>This field is required
-              </div>
-
-              <div class="task-form-btn-wrap d-flex">
-                <button
-                  class="task-form-btn d-flex-row-c-c clear-task-btn"
-                  type="reset"
-                  onclick="clearAddTaskForm(overlay=true)"
-                >
-                  <span class="font-Inter-400-20px">Clear</span>
-                  <span class="clear-task-btn-icon"></span>
-                </button>
-                <button
-                  class="task-form-btn d-flex-row-c-c text-color-white submit-task-btn"
-                  type="submit"
-                >
-                  <span class="font-Inter-700-21px">Create Task</span>
-                  <span class="submit-task-btn-icon"></span>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-  `;
 }
