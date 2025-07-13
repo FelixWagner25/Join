@@ -64,7 +64,7 @@ function getTaskAssignedContactBadgeTemplate(contactID, indexContact) {
     <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
       contactID
     )}">
-                ${getFirstTwoStringInitialsByFirebaseId(contactID)}
+        ${getFirstTwoStringInitialsByFirebaseId(contactID)}
     </div>
     `;
 }

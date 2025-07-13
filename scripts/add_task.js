@@ -324,19 +324,19 @@ function renderTaskAssigendContacts() {
   }
 }
 
-function renderAssignedContactsCheckboxes(contactIndices) {
+function renderAssignedContactsCheckboxes() {
   renderContactCheckboxes(newTaskAssignedContactsIndices);
 }
 
 function renderContactCheckboxes(array) {
+  let assignedContactWrapRef;
   for (let indexContact = 0; indexContact < array.length; indexContact++) {
-    let assignedContactWrapRef;
     let indexAssignedContact = array[indexContact];
     assignedContactWrapRef = document.getElementById(
       "task-assigned-contact-wrap-" + indexAssignedContact
     );
+    assignedContactWrapRef.classList.add("focus");
   }
-  assignedContactWrapRef.classList.add("focus");
 }
 
 async function deleteTask(indexTask) {
