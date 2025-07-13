@@ -2,6 +2,11 @@ let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 
+async function addTaskInit() {
+  contactsArray = await getSortedContactsArray();
+  tasksArray = await getTasksArray();
+}
+
 async function addNewTask(newTaskStatusId) {
   let newTaskScalarData = getNewTaskScalarInformation(newTaskStatusId);
   await submitObjectToDatabase("tasks", newTaskScalarData);

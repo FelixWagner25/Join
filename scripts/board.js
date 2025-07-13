@@ -1,4 +1,5 @@
 async function initBoard() {
+  contactsArray = await getSortedContactsArray();
   let tasksArray = await getTasksArray();
   renderBoard(tasksArray);
 }
