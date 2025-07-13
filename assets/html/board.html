@@ -165,9 +165,19 @@
         >
           <div class="d-flex-row-c-c h-100vh">
             <div
-              class="add-task-overlay-wrap bg-white pd-64px"
+              class="add-task-overlay-wrap bg-white pd-64px p-relative"
               onclick="event.stopPropagation()"
             >
+              <div
+                class="close-icon-add-task-overlay-wrap d-flex-row-c-c"
+                onclick="closeAddTaskOverlay()"
+              >
+                <img
+                  src="/assets/icons/close.svg"
+                  alt="close"
+                  class="close-icon"
+                />
+              </div>
               <p class="font-Inter-700-61px mg-b-40px">Add Task</p>
               <div class=" " id="add-task-overlay"></div>
             </div>
