@@ -65,9 +65,6 @@ function getTaskAssignedContactBadgeTemplate(contactID, indexContact) {
       contactID
     )}">
                 ${getFirstTwoStringInitialsByFirebaseId(contactID)}
-      contactID
-    )}">
-                ${getFirstTwoStringInitialsByFirebaseId(contactID)}
     </div>
     `;
 }
