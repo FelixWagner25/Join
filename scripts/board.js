@@ -1,7 +1,8 @@
 async function initBoard() {
+  contactsArray = await getSortedContactsArray();
   let tasksArray = await getTasksArray();
-   await renderBoard(tasksArray);
-   }
+  await renderBoard(tasksArray);
+}
 
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
@@ -173,17 +174,11 @@ async function updateStatus(path = "", taskData = {}) {
   });
 }
 
-function openAddNewTaskAtBoardOverlay(taskStatusId) {
-  document
-    .getElementById("add-task-at-board-overlay-wrap")
-    .classList.remove("d-none");
-  let overlayRef = document.getElementById("add-task-at-board-overlay");
-  overlayRef.innerHTML = "";
-  overlayRef.innerHTML += renderAddNewTaskAtBoardOverlayTemplate(taskStatusId);
+function openAddTaskOverlay(taskStatusId) {
+  document.getElementById("add-task-overlay-wrap").classList.remove("d-none");
+  renderAddTaskForm("add-task-overlay", taskStatusId);
 }
 
-function closeAddTaskAtBoardOverlay() {
-  document
-    .getElementById("add-task-at-board-overlay-wrap")
-    .classList.add("d-none");
+function closeAddTaskOverlay() {
+  document.getElementById("add-task-overlay-wrap").classList.add("d-none");
 }

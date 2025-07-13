@@ -2,13 +2,38 @@ let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 
-async function addNewTask(newTaskStatusId, overlay = false) {
+async function addTaskInit() {
+  contactsArray = await getSortedContactsArray();
+  tasksArray = await getTasksArray();
+  renderAddTaskForm("add-task-form-wrap", "todo");
+}
+
+function renderAddTaskForm(htmlId, taskStatusId) {
+  let ref = document.getElementById(htmlId);
+  ref.innerHTML = "";
+  ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
+}
+
+async function addTaskInit() {
+  contactsArray = await getSortedContactsArray();
+  tasksArray = await getTasksArray();
+  renderAddTaskForm("add-task-form-wrap", "todo");
+}
+
+function renderAddTaskForm(htmlId, taskStatusId) {
+  let ref = document.getElementById(htmlId);
+  ref.innerHTML = "";
+  ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
+}
+
+async function addNewTask(newTaskStatusId) {
   let newTaskScalarData = getNewTaskScalarInformation(newTaskStatusId, overlay);
   await submitObjectToDatabase("tasks", newTaskScalarData);
   tasksArray = await getTasksArray();
   await submitNewTaskOptionalComplexInfo();
   showNewTaskCreatedMessage();
-  clearAddTaskForm(overlay);
+  clearAddTaskForm();
+  renderBoard(tasksArray);
 }
 
 async function submitNewTaskOptionalComplexInfo() {
@@ -40,7 +65,7 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
   let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
   console.log(newTaskSubtasks);
-  
+
   for (let i = 0; i < newTaskSubtasks.length; i++) {
     let keyValuePairs = {};
     keyValuePairs.name = newTaskSubtasks[i].name;
@@ -49,7 +74,6 @@ async function submitNewTaskSubtasks(newTaskFirebaseId) {
     console.log(newTaskFirebaseId);
     console.log(keyValuePairs);
     console.log(path);
-    
   }
 }
 
@@ -217,32 +241,31 @@ function showSubtaskControlButtons(overlay = false) {
 }
 
 function addSubtask() {
-    for (let i = 0; i < newTaskSubtasks.length; i++) {
-      if (Array.isArray(newTaskSubtasks[i])) {
-        const data = newTaskSubtasks[i][1];
-        const obj = {
-          name: data.name,
-          done: data.done,
-        };
-        newTaskSubtasks[i] = obj;
-      }
+  for (let i = 0; i < newTaskSubtasks.length; i++) {
+    if (Array.isArray(newTaskSubtasks[i])) {
+      const data = newTaskSubtasks[i][1];
+      const obj = {
+        name: data.name,
+        done: data.done,
+      };
+      newTaskSubtasks[i] = obj;
     }
-    subtasksNormalized = true;
   }
-  if (overlay == true) {
-    const subtaskName = getInputTagValue("task-subtasks-overlay");
-    newTaskSubtasks.push({ name: subtaskName, done: false });
-    renderSubtasks(overlay);
-    clearInputTagValue("task-subtasks-overlay");
-    showSubtaskControlButtons(overlay);
-  } else {
-    const subtaskName = getInputTagValue("task-subtasks");
-    newTaskSubtasks.push({ name: subtaskName, done: false });
-    renderSubtasks(overlay);
-    clearInputTagValue("task-subtasks");
-    showSubtaskControlButtons(overlay);
-  }
-
+  subtasksNormalized = true;
+}
+if (overlay == true) {
+  const subtaskName = getInputTagValue("task-subtasks-overlay");
+  newTaskSubtasks.push({ name: subtaskName, done: false });
+  renderSubtasks(overlay);
+  clearInputTagValue("task-subtasks-overlay");
+  showSubtaskControlButtons(overlay);
+} else {
+  const subtaskName = getInputTagValue("task-subtasks");
+  newTaskSubtasks.push({ name: subtaskName, done: false });
+  renderSubtasks(overlay);
+  clearInputTagValue("task-subtasks");
+  showSubtaskControlButtons(overlay);
+}
 
 function renderSubtasks(overlay) {
   let subtaskListRef;
@@ -438,36 +461,39 @@ async function deleteTask(indexTask) {
 //Board editTask Area
 
 async function editTask(indexTask) {
-tasksArray = await getTasksArray();
- let overlay = document.querySelector(".task-overlay-wrap");
- let currentTask =  tasksArray[indexTask][1]
- let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {} //subtask objectmaker
- newTaskAssignedContactsIndices = currentTask.assignedTo?.map((i) => i[1].Id) || []
- newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || []
- newTaskSubtasks = Object.values(currentSubtasks); //Werte der subtasks
- overlay.innerHTML = editTaskTemplate(indexTask, currentTask)
+  tasksArray = await getTasksArray();
+  let overlay = document.querySelector(".task-overlay-wrap");
+  let currentTask = tasksArray[indexTask][1];
+  let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {}; //subtask objectmaker
+  newTaskAssignedContactsIndices =
+    currentTask.assignedTo?.map((i) => i[1].Id) || [];
+  newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || [];
+  newTaskSubtasks = Object.values(currentSubtasks); //Werte der subtasks
+  overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
 }
 
 async function submitEditTask(indexTask) {
-let editedTaskObj = tasksArray[indexTask][1]
-let taskID = tasksArray[indexTask][0]
-let newTaskObj = getEditTaskScalarInformation(editedTaskObj); //der ganze neue Task
+  let editedTaskObj = tasksArray[indexTask][1];
+  let taskID = tasksArray[indexTask][0];
+  let newTaskObj = getEditTaskScalarInformation(editedTaskObj); //der ganze neue Task
   await updateDatabaseObject(`tasks/${taskID}`, newTaskObj);
   tasksArray = await getTasksArray();
   await submitEditTaskOptionalComplexInfo(taskID);
   await initBoard();
-  closeTaskOverlays()
+  closeTaskOverlays();
 }
 
 function getEditTaskScalarInformation(editedTaskObj) {
   insertEditMandatoryTaskInfo(editedTaskObj);
   insertOptionalScalarTaskInfo(editedTaskObj);
   if (newTaskAssignedContactsIndices.length > 0) {
-    editedTaskObj.assignedTo = convertContactToObject(newTaskAssignedContactsIndices);
-  } 
+    editedTaskObj.assignedTo = convertContactToObject(
+      newTaskAssignedContactsIndices
+    );
+  }
   if (newSubtasksIndices.length > 0) {
     editedTaskObj.subtasks = convertSubtasksToObject(newSubtasksIndices);
-  } 
+  }
   return editedTaskObj;
 }
 
@@ -507,9 +533,8 @@ function insertEditMandatoryTaskInfo(newTaskObj) {
 }
 
 async function submitEditTaskOptionalComplexInfo(taskID) {
-  if (Array.isArray(newTaskSubtasks[0])){
+  if (Array.isArray(newTaskSubtasks[0])) {
     newTaskSubtasks = newTaskSubtasks.map((i) => i[1]);
   }
-    await submitNewTaskSubtasks(taskID);
-
+  await submitNewTaskSubtasks(taskID);
 }

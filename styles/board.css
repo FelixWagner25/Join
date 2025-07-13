@@ -310,8 +310,21 @@
   flex-direction: row-reverse;
 }
 
-.add-task-at-board-overlay {
+.add-task-overlay-wrap {
   max-width: 80%;
   max-height: 80%;
   border-radius: 30px;
+}
+
+.close-icon-add-task-overlay-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: absolute;
+  top: 64px;
+  right: 48px;
+}
+
+.close-icon-add-task-overlay-wrap:hover {
+  background-color: #e8e8e8;
 }
