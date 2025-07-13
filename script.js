@@ -341,8 +341,6 @@ async function deleteDataBaseElement(path = "") {
 }
 
 function getFirstTwoStringInitials(inputString) {
-  console.log(inputString);
-
   let inputStringSplit = inputString.split(" ");
   let stringInitials = "";
   if (inputStringSplit.length == 1) {

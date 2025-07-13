@@ -2,7 +2,7 @@ let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 
-async function addTaskInit() {
+/* async function addTaskInit() {
   contactsArray = await getSortedContactsArray();
   tasksArray = await getTasksArray();
   renderAddTaskForm("add-task-form-wrap", "todo");
@@ -13,7 +13,7 @@ function renderAddTaskForm(htmlId, taskStatusId) {
   ref.innerHTML = "";
   ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
 }
-
+ */
 async function addTaskInit() {
   contactsArray = await getSortedContactsArray();
   tasksArray = await getTasksArray();
@@ -21,6 +21,7 @@ async function addTaskInit() {
 }
 
 function renderAddTaskForm(htmlId, taskStatusId) {
+  newTaskSubtasks = []
   let ref = document.getElementById(htmlId);
   ref.innerHTML = "";
   ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
@@ -64,8 +65,6 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
 
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
   let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
-  console.log(newTaskSubtasks);
-
   for (let i = 0; i < newTaskSubtasks.length; i++) {
     let keyValuePairs = {};
     keyValuePairs.name = newTaskSubtasks[i].name;
@@ -181,9 +180,19 @@ function showSubtaskControlButtons() {
   controlIconsWrapRef = document.getElementById(
     "task-clear-submit-subtask-icon-wrap"
   );
-  addIconRef.classList.remove("d-none");
-  controlIconsWrapRef.classList.add("d-none");
+  addIconRef.classList.add("d-none");
+  controlIconsWrapRef.classList.remove("d-none");
 }
+
+function resetSubtaskcontrolButtons() {
+  let addIconRef;
+  let controlIconsWrapRef;
+  if (addIconRef) {
+      addIconRef.classList.remove("d-none");
+  controlIconsWrapRef.classList.add("d-none");
+  } else return
+}
+
 
 function addSubtask() {
   for (let i = 0; i < newTaskSubtasks.length; i++) {
@@ -201,6 +210,7 @@ function addSubtask() {
   newTaskSubtasks.push({ name: subtaskName, done: false });
   renderSubtasks();
   clearInputTagValue("task-subtasks");
+  resetSubtaskcontrolButtons();
   showSubtaskControlButtons();
 }
 
@@ -237,18 +247,14 @@ function deleteSubtask(indexSubtask) {
 }
 
 function toggleTaskAssignedContactsDropdown() {
+  console.log(newTaskAssignedContactsIndices);
+  
   let assignedContactsDropdownRef = "";
   let assignedContactsDropdownIconRef = "";
   let assignedContactsBadges = "";
-  assignedContactsDropdownRef = document.getElementById(
-    "task-assigned-contacts-dropdown"
-  );
-  assignedContactsDropdownIconRef = document.getElementById(
-    "task-assigend-contacts-dropdown-icon"
-  );
-  assignedContactsBadges = document.getElementById(
-    "task-assigned-contacts-badges"
-  );
+  assignedContactsDropdownRef = document.getElementById("task-assigned-contacts-dropdown");
+  assignedContactsDropdownIconRef = document.getElementById("task-assigend-contacts-dropdown-icon");
+  assignedContactsBadges = document.getElementById("task-assigned-contacts-badges");
 
   assignedContactsDropdownRef.classList.toggle("d-none");
   assignedContactsDropdownRef.classList.toggle("d-flex-column");
@@ -266,7 +272,6 @@ function renderAssignedContactsBadges() {
 function renderContactsBadges(array) {
   let badgesRef;
   badgesRef = document.getElementById("task-assigned-contacts-badges");
-
   badgesRef.innerHTML = "";
   let maximalShownBadges = Math.min(3, array.length);
   for (let i = 0; i < maximalShownBadges; i++) {
@@ -329,14 +334,13 @@ function renderAssignedContactsCheckboxes() {
 }
 
 function renderContactCheckboxes(array) {
-  let assignedContactWrapRef;
   for (let indexContact = 0; indexContact < array.length; indexContact++) {
     let indexAssignedContact = array[indexContact];
     assignedContactWrapRef = document.getElementById(
       "task-assigned-contact-wrap-" + indexAssignedContact
     );
     assignedContactWrapRef.classList.add("focus");
-  }
+  } 
 }
 
 async function deleteTask(indexTask) {
@@ -352,10 +356,9 @@ async function editTask(indexTask) {
   let overlay = document.querySelector(".task-overlay-wrap");
   let currentTask = tasksArray[indexTask][1];
   let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {}; //subtask objectmaker
-  newTaskAssignedContactsIndices =
-    currentTask.assignedTo?.map((i) => i[1].Id) || [];
+  newTaskAssignedContactsIndices = currentTask.assignedTo?.map((i) => i[1].Id) || [];
   newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || [];
-  newTaskSubtasks = Object.values(currentSubtasks); //Werte der subtasks
+  newTaskSubtasks = Object.values(currentSubtasks).map((i)=> i[1]); //Werte der subtasks
   overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
 }
 
@@ -377,7 +380,7 @@ function getEditTaskScalarInformation(editedTaskObj) {
     editedTaskObj.assignedTo = convertContactToObject(
       newTaskAssignedContactsIndices
     );
-  }
+  } else {editedTaskObj.assignedTo = {}}
   if (newSubtasksIndices.length > 0) {
     editedTaskObj.subtasks = convertSubtasksToObject(newSubtasksIndices);
   }
@@ -420,8 +423,5 @@ function insertEditMandatoryTaskInfo(newTaskObj) {
 }
 
 async function submitEditTaskOptionalComplexInfo(taskID) {
-  if (Array.isArray(newTaskSubtasks[0])) {
-    newTaskSubtasks = newTaskSubtasks.map((i) => i[1]);
-  }
   await submitNewTaskSubtasks(taskID);
 }

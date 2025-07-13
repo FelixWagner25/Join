@@ -303,15 +303,29 @@ function getContactColorClassName(indexContact) {
 }
 
 function getContactColorClassNameByFirebaseId(contactFirebaseId) {
+  if (!contactFirebaseId) {
+    console.log(contactFirebaseId);
+    
+        console.log("undefined");
+    return ""
+  }else {
   let indexContact = findContactIndexByFirebaseId(contactFirebaseId);
   let index = indexContact % contactColorClasses.length;
   return contactColorClasses[index];
 }
+}
 
 function findContactIndexByFirebaseId(contactFirebaseId) {
+  if (!contactFirebaseId) {
+
+    console.log("undefined");
+    
+    return ""
+  }else {
   return contactsArray.findIndex(
     (contactEntry) => contactEntry[0] === contactFirebaseId
   );
+}
 }
 
 /**
@@ -330,10 +344,8 @@ async function deleteContact(indexContact) {
 }
 
 async function deleteContactFromTasks(contactFirebaseId) {
-  console.log(contactFirebaseId);
-      console.log(tasksArray);
   let taskIdassignedToIdTupels =
-    findTaskIdAssignedToIdTupels(contactFirebaseId);
+  await findTaskIdAssignedToIdTupels(contactFirebaseId);
   for (let indexId = 0; indexId < taskIdassignedToIdTupels.length; indexId++) {
     let path =
       "/tasks/" +
@@ -343,11 +355,11 @@ async function deleteContactFromTasks(contactFirebaseId) {
     await deleteDataBaseElement(path);
   }
   tasksArray = await getTasksArray();
-  console.log(tasksArray);
-  
 }
 
-function findTaskIdAssignedToIdTupels(contactFirebaseId) {
+async function findTaskIdAssignedToIdTupels(contactFirebaseId) {
+  console.log(tasksArray);
+    tasksArray = await getTasksArray();
   let taskIdassignedToIdTupels = [];
   for (let indexTask = 0; indexTask < tasksArray.length; indexTask++) {
     let taskFirebaseId = tasksArray[indexTask][0];

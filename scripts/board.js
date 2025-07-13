@@ -145,14 +145,14 @@ function allowDrop(ev) {
 }
 
 let currentTask = "";
-function startDragging(event) {
+async function startDragging(event) {
+  tasksArray = await getTasksArray();
   toggleDragArea();
   currentTask = tasksArray[event];
   return currentTask;
 }
 
 async function moveTask(event) {
-  toggleDragArea();
   let targetTask = event.target.closest(".col-content[id]");
   targetTask = targetTask.id.replace("-", "");
   await updateStatus(`tasks/${currentTask[0]}/status`, targetTask);
@@ -181,4 +181,20 @@ function openAddTaskOverlay(taskStatusId) {
 
 function closeAddTaskOverlay() {
   document.getElementById("add-task-overlay-wrap").classList.add("d-none");
+}
+
+
+async function showTaskOverlay(indexTask) {
+  let overlay = document.querySelector(".task-overlay-wrap");
+  tasksArray = await getTasksArray();
+  let currentTask = tasksArray[indexTask][1];
+  blurBackgroundBoard();
+  setTimeout(() => {
+    getTaskOverlay(indexTask, currentTask, overlay);
+    overlayWipe();
+  }, overlayTransitionMiliSeconds);
+}
+
+function blurBackgroundBoard() {
+  document.getElementById("task-overlay").classList.remove("d-none");
 }

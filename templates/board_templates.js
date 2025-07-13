@@ -56,26 +56,11 @@ function getTaskCardContactsTemplate(indexTaskContact, indexTask, tasksArray) {
   )}">
     <div class="font-Inter-400-12px">
       ${getFirstTwoStringInitialsByFirebaseId(
-        tasksArray[indexTask][1].assignedTo[indexTaskContact][1].Id || ""
+        tasksArray[indexTask][1].assignedTo[indexTaskContact][1].Id
       )}
     </div>
   </div>
   `;
-}
-
-async function showTaskOverlay(indexTask) {
-  let overlay = document.querySelector(".task-overlay-wrap");
-  tasksArray = await getTasksArray();
-  let currentTask = tasksArray[indexTask][1];
-  blurBackgroundBoard();
-  setTimeout(() => {
-    getTaskOverlay(indexTask, currentTask, overlay);
-    overlayWipe();
-  }, overlayTransitionMiliSeconds);
-}
-
-function blurBackgroundBoard() {
-  document.getElementById("task-overlay").classList.remove("d-none");
 }
 
 function getTaskOverlay(indexTask, currentTask, overlay) {
@@ -130,7 +115,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
           </div>
         </div>`
         )
-        .join("")}
+        .join("") || ""}
       </article>
     </div>
 
@@ -177,29 +162,12 @@ function overlayWipe() {
 }
 
 function closeTaskOverlays() {
+  let overlay = document.getElementById("task-overlay-wrap")
   document.getElementById("task-overlay-wrap").classList.remove("open");
   document.getElementById("task-overlay").classList.add("d-none");
   document.getElementById("task-overlay").classList.remove("task-overlay-blur");
-}
-
-//renderAssignedContactsCheckboxes anpassen zur Nutzung Auskommentierter Funktion.
-function getContactIDs(indexTask) {
-  /*   const contactObj = tasksArray[indexTask][1]?.assignedTo || {};
-   return Object.keys(contactObj) */
-  let objValues = Object.values(tasksArray[indexTask][1]?.assignedTo || {});
-  let activeContacts = objValues.map((p) => p[1].Id);
-  let contactIndexes = [];
-  let contactArrayIteration = contactsArray.map((p) => p[0]);
-  for (let i = 0; i < contactArrayIteration.length; i++) {
-    if (activeContacts.includes(contactArrayIteration[i]))
-      contactIndexes.push(contactArrayIteration[i]);
-  }
-  return contactIndexes;
-}
-
-function getSubtaskIDs(indexTask) {
-  const subtaskObj = tasksArray[indexTask][1]?.subtasks || {};
-  return Object.keys(subtaskObj);
+  newTaskAssignedContactsIndices = []
+  overlay.innerHTML = ""
 }
 
 function editTaskTemplate(indexTask, currentTask) {
@@ -221,7 +189,6 @@ function editTaskTemplate(indexTask, currentTask) {
                     required
                   />
                 </div>
-
                 <div class="d-flex-column gap-8px">
                   <label
                     for="task-description"
@@ -317,18 +284,17 @@ function editTaskTemplate(indexTask, currentTask) {
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
-              p[1].Id
+              p[1]?.Id
             )}">
               <div class="font-Inter-400-12px text-color-white">${
-                getFirstTwoStringInitialsByFirebaseId(p[1].Id) || ""
+                getFirstTwoStringInitialsByFirebaseId(p[1]?.Id)
               }
-            
               </div>
             </div>
           </div>
         </div>`
                    )
-                   .join("")}
+                   .join("") || "" }
                   </div>
                 </div>
     
