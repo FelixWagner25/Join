@@ -33,7 +33,6 @@ function getTaskAssigendContactsTemplate(contactID, indexContact) {
         <div class="d-flex-row-c-fs gap-16px">
             <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
               contactID
-              contactID
             )}">
                 ${getFirstTwoStringInitialsByFirebaseId(contactID)}
             </div>
