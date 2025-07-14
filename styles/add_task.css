@@ -143,6 +143,11 @@ h1 {
   background-color: #e8e8e8;
 }
 
+.tasks-subtask-list {
+  max-height: 64px;
+  overflow-y: auto;
+}
+
 .subtask-list-element {
   list-style-position: inside;
   border-radius: 10px;

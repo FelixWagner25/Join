@@ -83,7 +83,7 @@ function getAddTaskFormTemplate(taskStatusId) {
     class="max-width-976px"
     onsubmit="addNewTask('${taskStatusId}'); event.preventDefault()"
   >
-    <div class="d-flex-sb gap-48px pd-b-64px">
+    <div class="d-flex-sb gap-48px pd-b-24px">
       <div class="d-flex-column gap-32px">
         <div class="d-flex-column gap-8px">
           <label
@@ -265,7 +265,7 @@ function getAddTaskFormTemplate(taskStatusId) {
               <span class="task-submit-subtask-icon"></span>
             </div>
           </div>
-          <ul id="tasks-subtasks-list"></ul>
+          <ul class="tasks-subtask-list" id="tasks-subtasks-list"></ul>
         </div>
       </div>
     </div>
