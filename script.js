@@ -357,15 +357,15 @@ function getFirstTwoStringInitialsByFirebaseId(contactID) {
   for (let elementID of contactsArray) {
     if (contactID === elementID[0]) {
       let inputStringSplit = elementID[1].name.split(" ");
-      if (stringInitials >= 2)
-        {stringInitials =
+      if (inputStringSplit.length == 1)
+        {  stringInitials = inputStringSplit[0].charAt(0).toUpperCase()}
+      else {
+        stringInitials =
         inputStringSplit[0].charAt(0).toUpperCase() +
         inputStringSplit[1].charAt(0).toUpperCase();
         }
-      else {
-        stringInitials = inputStringSplit[0].charAt(0).toUpperCase()
       }}
-  }
+  
   return stringInitials;
 }
 
