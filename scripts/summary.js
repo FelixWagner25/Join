@@ -1,5 +1,5 @@
 async function renderTasks() {
-    await getTasksArray();
+    tasksArray = await getTasksArray();
     countTasks(tasksArray);
     getnearestDueDate(tasksArray)
     

@@ -315,7 +315,6 @@ async function submitObjectToDatabase(path = "", object = {}) {
 async function updateDatabaseObject(path = "", object = {}) {
   let response = await fetch(database + path + ".json", {
     method: "PUT",
-    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },

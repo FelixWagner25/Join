@@ -58,6 +58,21 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   }
 }
 
+async function setSubtaskStatus(indexTask) {
+  tasksArray = await getTasksArray();
+  let path = tasksArray[indexTask][0]
+  let check = document.getElementsByName('checkbox-subtask')
+  let checkStatus = ""
+  let subtasksID = tasksArray[indexTask][1].subtasks.map((i) => i[0])
+for (let i = 0; i < [...check].length; i++) {
+  checkStatus = [...check][i].checked;
+  obj = checkStatus
+    updateDatabaseObject(`tasks/${path}/subtasks/${subtasksID[i]}/done`,obj)
+}
+}
+
+
+
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
   let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
     await deleteDataBaseElement(path)
@@ -348,6 +363,8 @@ async function editTask(indexTask) {
   loadOptionalScalarTaskInfo(currentTask, indexTask)
   overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
 }
+
+
 
 function loadOptionalScalarTaskInfo(currentTask, indexTask) {
   let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {};
