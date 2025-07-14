@@ -203,7 +203,6 @@ function getAddTaskFormTemplate(taskStatusId) {
             type="text"
             id="task-category"
             placeholder="Select task category"
-            readonly
             onclick="toggleTaskCategoryDropdown()"
             required
           />
