@@ -14,14 +14,14 @@ function toggleDropdown() {
 }
 
 document.addEventListener("click", function (event) {
-  const dropdownContainer = document.querySelector(".dropdown-menu-container");
-  const profile = document.querySelector(".profile-ellipse");
+  const dropdownWrap = document.querySelector(".dropdown-menu-container");
+  const profileBadge = document.querySelector(".profile-ellipse");
   if (
-    dropdownContainer &&
-    !dropdownContainer.contains(event.target) &&
-    !profile.contains(event.target)
+    dropdownWrap &&
+    !dropdownWrap.contains(event.target) &&
+    !profileBadge.contains(event.target)
   ) {
-    dropdownContainer.classList.add("d-none");
+    dropdownWrap.classList.add("d-none");
   }
 });
 

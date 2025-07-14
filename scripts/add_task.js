@@ -3,18 +3,6 @@ let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 let currentDate = getCurrentDateYYYMMDD();
 
-/* async function addTaskInit() {
-  contactsArray = await getSortedContactsArray();
-  tasksArray = await getTasksArray();
-  renderAddTaskForm("add-task-form-wrap", "todo");
-}
-
-function renderAddTaskForm(htmlId, taskStatusId) {
-  let ref = document.getElementById(htmlId);
-  ref.innerHTML = "";
-  ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
-}
- */
 async function addTaskInit() {
   contactsArray = await getSortedContactsArray();
   tasksArray = await getTasksArray();
@@ -38,18 +26,24 @@ async function addNewTask(newTaskStatusId) {
   renderBoard(tasksArray);
 }
 
-async function submitNewTaskOptionalComplexInfo() {
-  let newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
-  if (newTaskAssignedContactsIndices != []) {
+async function submitNewTaskOptionalComplexInfo(editID) {
+ let newTaskFirebaseId = "";
+  if (editID) {
+     newTaskFirebaseId = editID
+  } else {
+   newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
+    }
+  if (newTaskAssignedContactsIndices.length > 0) {
     await submitNewTaskAssignedContacts(newTaskFirebaseId);
   }
-  if (newTaskSubtasks != []) {
+  if (newTaskSubtasks.length > 0) {
     await submitNewTaskSubtasks(newTaskFirebaseId);
   }
 }
 
 async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   let path = "tasks/" + String(newTaskFireBaseId) + "/assignedTo";
+  await deleteDataBaseElement(path)
   for (let contactID of newTaskAssignedContactsIndices) {
     let assignedContactEntry = contactsArray.find(
       (entry) => entry[0] === contactID
@@ -66,14 +60,12 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
 
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
   let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
+    await deleteDataBaseElement(path)
   for (let i = 0; i < newTaskSubtasks.length; i++) {
     let keyValuePairs = {};
     keyValuePairs.name = newTaskSubtasks[i].name;
     keyValuePairs.done = newTaskSubtasks[i].done;
     await submitObjectToDatabase(path, keyValuePairs);
-    console.log(newTaskFirebaseId);
-    console.log(keyValuePairs);
-    console.log(path);
   }
 }
 
@@ -91,19 +83,27 @@ function clearAddTaskForm() {
   renderSubtasks();
 }
 
-function getNewTaskScalarInformation(newTaskStatusId) {
+function getNewTaskScalarInformation(newTaskStatusId, editedTaskObj) {
+  if (editedTaskObj) {
+  insertMandatoryTaskInfo(editedTaskObj);
+  insertOptionalScalarTaskInfo(editedTaskObj);
+  return editedTaskObj
+  } else {
   let newTaskScalarInfo = {};
   insertMandatoryTaskInfo(newTaskScalarInfo, newTaskStatusId);
   insertOptionalScalarTaskInfo(newTaskScalarInfo);
   return newTaskScalarInfo;
+  }
 }
 
 function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId) {
   newTaskObj.title = getInputTagValue("task-title");
   newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.category = getTaskCategoryFirebaseName();
   newTaskObj.priority = newTaskPriority;
+  if(newTaskStatusId){
+  newTaskObj.category = getTaskCategoryFirebaseName();
   newTaskObj.status = newTaskStatusId;
+} return
 }
 
 function getTaskCategoryFirebaseName() {
@@ -247,8 +247,6 @@ function deleteSubtask(indexSubtask) {
 }
 
 function toggleTaskAssignedContactsDropdown() {
-  console.log(newTaskAssignedContactsIndices);
-
   let assignedContactsDropdownRef = "";
   let assignedContactsDropdownIconRef = "";
   let assignedContactsBadges = "";
@@ -291,18 +289,6 @@ function renderContactsBadges(array) {
 }
 
 function toggleAssignContact(contactID, htmlElement) {
-  // let assignedContactWrapRef;
-  // if (overlay == true) {
-  //   assignedContactWrapRef = document.getElementById(
-  //     "task-assigned-contact-wrap-overlay" + contactID
-  //   );
-  // } else {
-  //   assignedContactWrapRef = document.getElementById(
-  //     "task-assigned-contact-wrap-" + contactID
-  //   );
-  // }
-
-  //assignedContactWrapRef.classList.toggle("focus");
   htmlElement.classList.toggle("focus");
   toggleValueFromArray(contactID, newTaskAssignedContactsIndices);
   renderAssignedContactsBadges();
@@ -355,84 +341,30 @@ async function deleteTask(indexTask) {
   await initBoard();
 }
 
-//Board editTask Area
-
 async function editTask(indexTask) {
   tasksArray = await getTasksArray();
   let overlay = document.querySelector(".task-overlay-wrap");
   let currentTask = tasksArray[indexTask][1];
-  let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {}; //subtask objectmaker
-  newTaskAssignedContactsIndices =
-    currentTask.assignedTo?.map((i) => i[1].Id) || [];
-  newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || [];
-  newTaskSubtasks = Object.values(currentSubtasks).map((i) => i[1]); //Werte der subtasks
+  loadOptionalScalarTaskInfo(currentTask, indexTask)
   overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
+}
+
+function loadOptionalScalarTaskInfo(currentTask, indexTask) {
+  let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {};
+  newTaskAssignedContactsIndices = currentTask.assignedTo?.map((i) => i[1].Id) || [];
+  newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || [];
+  newTaskSubtasks = Object.values(currentSubtasks).map((i) => i[1]); 
 }
 
 async function submitEditTask(indexTask) {
   let editedTaskObj = tasksArray[indexTask][1];
   let taskID = tasksArray[indexTask][0];
-  let newTaskObj = getEditTaskScalarInformation(editedTaskObj); //der ganze neue Task
+  let newTaskObj = getNewTaskScalarInformation("", editedTaskObj);
   await updateDatabaseObject(`tasks/${taskID}`, newTaskObj);
   tasksArray = await getTasksArray();
-  await submitEditTaskOptionalComplexInfo(taskID);
+  await submitNewTaskOptionalComplexInfo(taskID);
   await initBoard();
   closeTaskOverlays();
-}
-
-function getEditTaskScalarInformation(editedTaskObj) {
-  insertEditMandatoryTaskInfo(editedTaskObj);
-  insertOptionalScalarTaskInfo(editedTaskObj);
-  if (newTaskAssignedContactsIndices.length > 0) {
-    editedTaskObj.assignedTo = convertContactToObject(
-      newTaskAssignedContactsIndices
-    );
-  } else {
-    editedTaskObj.assignedTo = {};
-  }
-  if (newSubtasksIndices.length > 0) {
-    editedTaskObj.subtasks = convertSubtasksToObject(newSubtasksIndices);
-  }
-  return editedTaskObj;
-}
-
-function convertContactToObject(newSubtasksIndices) {
-  const assignedToObj = {};
-  for (let id of newSubtasksIndices) {
-    const contact = contactsArray.find((entry) => entry[0] === id);
-    if (contact) {
-      assignedToObj[id] = {
-        Id: contact[0],
-        name: contact[1].name,
-      };
-    }
-  }
-  return assignedToObj;
-}
-
-function convertSubtasksToObject(subtaskIdsArray) {
-  const subtaskObj = {};
-  for (let id of subtaskIdsArray) {
-    const entry = newTaskSubtasks.find((e) => Array.isArray(e) && e[0] === id);
-    if (entry) {
-      const data = entry[1];
-      subtaskObj[id] = {
-        name: data.name,
-        done: data.done,
-      };
-    }
-  }
-  return subtaskObj;
-}
-
-function insertEditMandatoryTaskInfo(newTaskObj) {
-  newTaskObj.title = getInputTagValue("task-title");
-  newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.priority = newTaskPriority;
-}
-
-async function submitEditTaskOptionalComplexInfo(taskID) {
-  await submitNewTaskSubtasks(taskID);
 }
 
 function getCurrentDateYYYMMDD() {

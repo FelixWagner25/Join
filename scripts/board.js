@@ -183,7 +183,6 @@ function closeAddTaskOverlay() {
   document.getElementById("add-task-overlay-wrap").classList.add("d-none");
 }
 
-
 async function showTaskOverlay(indexTask) {
   let overlay = document.querySelector(".task-overlay-wrap");
   tasksArray = await getTasksArray();
@@ -197,4 +196,18 @@ async function showTaskOverlay(indexTask) {
 
 function blurBackgroundBoard() {
   document.getElementById("task-overlay").classList.remove("d-none");
+}
+
+function overlayWipe() {
+  let taskOverlayRef = document.getElementById("task-overlay-wrap");
+  taskOverlayRef.classList.add("open");
+}
+
+function closeTaskOverlays() {
+  let overlay = document.getElementById("task-overlay-wrap");
+  document.getElementById("task-overlay-wrap").classList.remove("open");
+  document.getElementById("task-overlay").classList.add("d-none");
+  document.getElementById("task-overlay").classList.remove("task-overlay-blur");
+  newTaskAssignedContactsIndices = [];
+  overlay.innerHTML = "";
 }

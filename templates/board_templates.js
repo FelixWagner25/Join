@@ -158,20 +158,6 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
   `;
 }
 
-function overlayWipe() {
-  let taskOverlayRef = document.getElementById("task-overlay-wrap");
-  taskOverlayRef.classList.add("open");
-}
-
-function closeTaskOverlays() {
-  let overlay = document.getElementById("task-overlay-wrap");
-  document.getElementById("task-overlay-wrap").classList.remove("open");
-  document.getElementById("task-overlay").classList.add("d-none");
-  document.getElementById("task-overlay").classList.remove("task-overlay-blur");
-  newTaskAssignedContactsIndices = [];
-  overlay.innerHTML = "";
-}
-
 function editTaskTemplate(indexTask, currentTask) {
   return `
 <form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
