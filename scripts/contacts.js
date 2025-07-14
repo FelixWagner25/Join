@@ -178,7 +178,18 @@ async function addNewContact(event) {
   await submitObjectToDatabase("contacts", newContactData);
   await renderContactsList();
   closeContactOverlays();
+  removeFocusFromAllContacts();
+  let addedContactEmail = newContactData.email;
+  let addedContactIndex = getContactIndexByEmail(addedContactEmail);
+  showContactDetails(addedContactIndex);
   showNewContactCreatedMessage();
+}
+
+function getContactIndexByEmail(contactEmail) {
+  let index = contactsArray.findIndex(
+    (contact) => contact[1].email === contactEmail
+  );
+  return index;
 }
 
 /**
@@ -305,27 +316,26 @@ function getContactColorClassName(indexContact) {
 function getContactColorClassNameByFirebaseId(contactFirebaseId) {
   if (!contactFirebaseId) {
     console.log(contactFirebaseId);
-    
-        console.log("undefined");
-    return ""
-  }else {
-  let indexContact = findContactIndexByFirebaseId(contactFirebaseId);
-  let index = indexContact % contactColorClasses.length;
-  return contactColorClasses[index];
-}
+
+    console.log("undefined");
+    return "";
+  } else {
+    let indexContact = findContactIndexByFirebaseId(contactFirebaseId);
+    let index = indexContact % contactColorClasses.length;
+    return contactColorClasses[index];
+  }
 }
 
 function findContactIndexByFirebaseId(contactFirebaseId) {
   if (!contactFirebaseId) {
-
     console.log("undefined");
-    
-    return ""
-  }else {
-  return contactsArray.findIndex(
-    (contactEntry) => contactEntry[0] === contactFirebaseId
-  );
-}
+
+    return "";
+  } else {
+    return contactsArray.findIndex(
+      (contactEntry) => contactEntry[0] === contactFirebaseId
+    );
+  }
 }
 
 /**
@@ -344,8 +354,9 @@ async function deleteContact(indexContact) {
 }
 
 async function deleteContactFromTasks(contactFirebaseId) {
-  let taskIdassignedToIdTupels =
-  await findTaskIdAssignedToIdTupels(contactFirebaseId);
+  let taskIdassignedToIdTupels = await findTaskIdAssignedToIdTupels(
+    contactFirebaseId
+  );
   for (let indexId = 0; indexId < taskIdassignedToIdTupels.length; indexId++) {
     let path =
       "/tasks/" +
@@ -359,7 +370,7 @@ async function deleteContactFromTasks(contactFirebaseId) {
 
 async function findTaskIdAssignedToIdTupels(contactFirebaseId) {
   console.log(tasksArray);
-    tasksArray = await getTasksArray();
+  tasksArray = await getTasksArray();
   let taskIdassignedToIdTupels = [];
   for (let indexTask = 0; indexTask < tasksArray.length; indexTask++) {
     let taskFirebaseId = tasksArray[indexTask][0];
@@ -378,7 +389,6 @@ async function findTaskIdAssignedToIdTupels(contactFirebaseId) {
   }
   return taskIdassignedToIdTupels;
 }
-
 
 /**
  * This function renders the details section of a contact
