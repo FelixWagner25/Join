@@ -182,7 +182,6 @@
 }
 
 .task-card {
-  width: 220px;
   gap: 24px;
   flex-direction: column;
   padding: 16px;

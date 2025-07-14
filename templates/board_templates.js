@@ -1,6 +1,6 @@
 function getBoardCardTemplate(indexTask, tasksArray) {
   return `
-    <div class="task-card-wrap bg-white" draggable="true" ondragstart="startDragging(${indexTask})">
+    <div class="task-card-wrap bg-white d-flex-column-c-c" draggable="true" ondragstart="startDragging(${indexTask})">
           <div class="task-card d-flex-column" onclick="showTaskOverlay(${indexTask})">
             <div>
               <div class="task-category font-Inter-400-16px ${getTaskCategoryClass(
@@ -17,7 +17,7 @@ function getBoardCardTemplate(indexTask, tasksArray) {
                   tasksArray[indexTask][1]?.description || ""
                 }</div>   
             </div>
-            <div class="d-flex-c-sb" id="subtasks-progress-${indexTask}"></div>
+            <div class="d-flex-c-sb gap-8px" id="subtasks-progress-${indexTask}"></div>
             <div class="d-flex-c-sb">
                     <div class="d-flex mg-l-8px" id="task-contacts-${indexTask}">
                     </div>
@@ -43,7 +43,7 @@ function getTaskCardSubtaskTemplate(indexTask, tasksArray) {
   <div class="progress-bar">
     <div class="progress-bar-status" id="progress-${indexTask}"></div>
   </div>
-  <div class="font-Inter-400-12px text-color-black">
+  <div class="font-Inter-400-12px text-color-black d-flex">
     ${tasksArray[indexTask][1].subtasks.length}/${tasksArray[indexTask][1].subtasks.length} Subtasks
   </div>
   `;
@@ -98,9 +98,10 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
 
     <div class="task-overlay-assignment-wrap d-flex-column">
       <div class="font-Inter-400-20px text-color-2A3647">Assigned To:</div>
-      <article class="d-flex-column">${currentTask.assignedTo
-        ?.map(
-          (p) => `
+      <article class="d-flex-column">${
+        currentTask.assignedTo
+          ?.map(
+            (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
@@ -114,8 +115,9 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
           <div class="font-OpenSans-400-19px">${p[1].name}</div>
           </div>
         </div>`
-        )
-        .join("") || ""}
+          )
+          .join("") || ""
+      }
       </article>
     </div>
 
@@ -162,12 +164,12 @@ function overlayWipe() {
 }
 
 function closeTaskOverlays() {
-  let overlay = document.getElementById("task-overlay-wrap")
+  let overlay = document.getElementById("task-overlay-wrap");
   document.getElementById("task-overlay-wrap").classList.remove("open");
   document.getElementById("task-overlay").classList.add("d-none");
   document.getElementById("task-overlay").classList.remove("task-overlay-blur");
-  newTaskAssignedContactsIndices = []
-  overlay.innerHTML = ""
+  newTaskAssignedContactsIndices = [];
+  overlay.innerHTML = "";
 }
 
 function editTaskTemplate(indexTask, currentTask) {
@@ -278,23 +280,25 @@ function editTaskTemplate(indexTask, currentTask) {
                     class="d-flex gap-8px p-relative"
                     id="task-assigned-contacts-badges"
                   >
-                 ${currentTask.assignedTo
-                   ?.map(
-                     (p) => `
+                 ${
+                   currentTask.assignedTo
+                     ?.map(
+                       (p) => `
         <div class=" d-flex-c-sb">
           <div class="task-overlay-contact d-flex-align-item-c">
             <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
               p[1]?.Id
             )}">
-              <div class="font-Inter-400-12px text-color-white">${
-                getFirstTwoStringInitialsByFirebaseId(p[1]?.Id)
-              }
+              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
+                p[1]?.Id
+              )}
               </div>
             </div>
           </div>
         </div>`
-                   )
-                   .join("") || "" }
+                     )
+                     .join("") || ""
+                 }
                   </div>
                 </div>
     
