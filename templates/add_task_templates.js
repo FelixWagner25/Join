@@ -119,6 +119,7 @@ function getAddTaskFormTemplate(taskStatusId) {
           <input
             class="task-input-border task-input-date"
             type="date"
+            min="${currentDate}"
             id="task-due-date"
             placeholder="dd/mm/yyyy"
             required

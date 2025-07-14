@@ -1,6 +1,7 @@
 let newTaskAssignedContactsIndices = [];
 let newTaskSubtasks = [];
 let newTaskPriority = "medium";
+let currentDate = getCurrentDateYYYMMDD();
 
 /* async function addTaskInit() {
   contactsArray = await getSortedContactsArray();
@@ -21,7 +22,7 @@ async function addTaskInit() {
 }
 
 function renderAddTaskForm(htmlId, taskStatusId) {
-  newTaskSubtasks = []
+  newTaskSubtasks = [];
   let ref = document.getElementById(htmlId);
   ref.innerHTML = "";
   ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
@@ -188,11 +189,10 @@ function resetSubtaskcontrolButtons() {
   let addIconRef;
   let controlIconsWrapRef;
   if (addIconRef) {
-      addIconRef.classList.remove("d-none");
-  controlIconsWrapRef.classList.add("d-none");
-  } else return
+    addIconRef.classList.remove("d-none");
+    controlIconsWrapRef.classList.add("d-none");
+  } else return;
 }
-
 
 function addSubtask() {
   for (let i = 0; i < newTaskSubtasks.length; i++) {
@@ -248,13 +248,19 @@ function deleteSubtask(indexSubtask) {
 
 function toggleTaskAssignedContactsDropdown() {
   console.log(newTaskAssignedContactsIndices);
-  
+
   let assignedContactsDropdownRef = "";
   let assignedContactsDropdownIconRef = "";
   let assignedContactsBadges = "";
-  assignedContactsDropdownRef = document.getElementById("task-assigned-contacts-dropdown");
-  assignedContactsDropdownIconRef = document.getElementById("task-assigend-contacts-dropdown-icon");
-  assignedContactsBadges = document.getElementById("task-assigned-contacts-badges");
+  assignedContactsDropdownRef = document.getElementById(
+    "task-assigned-contacts-dropdown"
+  );
+  assignedContactsDropdownIconRef = document.getElementById(
+    "task-assigend-contacts-dropdown-icon"
+  );
+  assignedContactsBadges = document.getElementById(
+    "task-assigned-contacts-badges"
+  );
 
   assignedContactsDropdownRef.classList.toggle("d-none");
   assignedContactsDropdownRef.classList.toggle("d-flex-column");
@@ -340,7 +346,7 @@ function renderContactCheckboxes(array) {
       "task-assigned-contact-wrap-" + indexAssignedContact
     );
     assignedContactWrapRef.classList.add("focus");
-  } 
+  }
 }
 
 async function deleteTask(indexTask) {
@@ -356,9 +362,10 @@ async function editTask(indexTask) {
   let overlay = document.querySelector(".task-overlay-wrap");
   let currentTask = tasksArray[indexTask][1];
   let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {}; //subtask objectmaker
-  newTaskAssignedContactsIndices = currentTask.assignedTo?.map((i) => i[1].Id) || [];
+  newTaskAssignedContactsIndices =
+    currentTask.assignedTo?.map((i) => i[1].Id) || [];
   newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || [];
-  newTaskSubtasks = Object.values(currentSubtasks).map((i)=> i[1]); //Werte der subtasks
+  newTaskSubtasks = Object.values(currentSubtasks).map((i) => i[1]); //Werte der subtasks
   overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
 }
 
@@ -380,7 +387,9 @@ function getEditTaskScalarInformation(editedTaskObj) {
     editedTaskObj.assignedTo = convertContactToObject(
       newTaskAssignedContactsIndices
     );
-  } else {editedTaskObj.assignedTo = {}}
+  } else {
+    editedTaskObj.assignedTo = {};
+  }
   if (newSubtasksIndices.length > 0) {
     editedTaskObj.subtasks = convertSubtasksToObject(newSubtasksIndices);
   }
@@ -424,4 +433,12 @@ function insertEditMandatoryTaskInfo(newTaskObj) {
 
 async function submitEditTaskOptionalComplexInfo(taskID) {
   await submitNewTaskSubtasks(taskID);
+}
+
+function getCurrentDateYYYMMDD() {
+  let today = new Date();
+  let year = String(today.getFullYear());
+  let month = String(today.getMonth() + 1).padStart(2, "0");
+  let day = String(today.getDate()).padStart(2, "0");
+  return year + "-" + month + "-" + day;
 }
