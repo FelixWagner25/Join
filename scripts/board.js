@@ -6,7 +6,11 @@ async function initBoard() {
 
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
-  let tasksArray = Object.entries(tasks).map(([taskId, taskData]) => {
+  let tasksArray = [];
+  if (tasks == null) {
+    return tasksArray;
+  }
+  tasksArray = Object.entries(tasks).map(([taskId, taskData]) => {
     if (taskData.assignedTo !== undefined) {
       taskData.assignedTo = Object.entries(taskData.assignedTo);
     }

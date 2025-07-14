@@ -23,7 +23,7 @@ async function addNewTask(newTaskStatusId) {
   await submitNewTaskOptionalComplexInfo();
   showNewTaskCreatedMessage();
   clearAddTaskForm();
-  initBoard();
+  await initBoard();
 }
 
 async function submitNewTaskOptionalComplexInfo(editID) {
