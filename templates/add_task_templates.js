@@ -81,7 +81,7 @@ function getAddTaskFormTemplate(taskStatusId) {
   return `
   <form
     class="max-width-976px"
-    onsubmit="addNewTask('${taskStatusId}'); event.preventDefault()"
+    onsubmit="addNewTask('${taskStatusId}'); event.preventDefault(); closeAddTaskOverlay();"
   >
     <div class="d-flex-sb gap-48px pd-b-24px">
       <div class="d-flex-column gap-32px">
