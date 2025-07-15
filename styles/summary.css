@@ -171,22 +171,25 @@ body {
   .greeting {
     opacity: 0;
     position: absolute;
-    height: 100%;
     background-color: #f6f7f8;
     width: 100%;
     padding: 0;
-    animation: fadeGreeting 3s ease-in;
 }
+  .greet-animation{
+        animation: fadeGreeting 3s ease-in;
+  }
 
 @keyframes fadeGreeting {
   0% {
+    height: 100%;
     opacity: 1;
   }
   66% {
-    opacity: 1; /* 0%–66% = 2 Sekunden sichtbar */
+    opacity: 1; 
   }
   100% {
-    opacity: 0; /* letzte Sekunde wird ausgeblendet */
+    opacity: 0; 
+    height: 0;
   }
   }
 }

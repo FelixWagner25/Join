@@ -2,7 +2,6 @@ async function renderTasks() {
     tasksArray = await getTasksArray();
     countTasks(tasksArray);
     getnearestDueDate(tasksArray)
-    
 }
 
 function countTasks(tasksArray) {
@@ -49,32 +48,24 @@ function userGreeting(){
   comma.classList.remove('d-none');
   greet.innerHTML = name;
   } 
-
 }
 
-function checkAnimation() {
-    let greetingDiv = document.querySelector('.greeting')
+async function checkAnimation() {
     const alreadyShown = sessionStorage.getItem('greetingShown');
     const width = window.innerWidth
     if (width > 820){
     sessionStorage.setItem('greetingShown', 'true');
-    hideGreeting()
-    }  
-    if (!alreadyShown) {
-    greetingDiv.style.animation = 'fadeGreeting 3s ease-in forwards';
-    greetingDiv.addEventListener('animationend', () => {
-    hideGreeting()
-    });
-    sessionStorage.setItem('greetingShown', 'true');
+    }  else if (!alreadyShown){
+        await showGreetingAnimation();
+        sessionStorage.setItem('greetingShown', 'true');
     } else {
-    hideGreeting()
-}
+        return
+    }
 }
 
-function hideGreeting() {
+async function showGreetingAnimation() {
     let greetingDiv = document.querySelector('.greeting')
-    greetingDiv.classList.add('d-none')
-    greetingDiv.classList.remove('d-flex-column-c-c')
+    greetingDiv.classList.add('greet-animation')
 }
 
 function timeGreeting() {

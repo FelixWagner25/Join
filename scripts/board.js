@@ -132,8 +132,6 @@ function searchTask() {
   let taskWrap = document.getElementsByClassName("task-card-wrap");
   let inputRef = document.getElementsByClassName("search-input");
   let searchRef = document.getElementsByClassName("task-description-wrap");
-  console.log(inputRef[0].value);
-  
   let foundRef = "";
   [...taskWrap].forEach((c) => c.classList.add("d-none"));
   foundRef = [...searchRef].filter((t) => t.innerText.includes(inputRef[0].value));
@@ -213,8 +211,6 @@ function closeTaskOverlays() {
 }
 
 function getTaskCompletedSubtasksNumber(indexTask) {
-  console.log(tasksArray[indexTask][1].subtasks.length);
-  
   let completedSubtasksNumber = 0;
   for (
     let indexSubtask = 0;
