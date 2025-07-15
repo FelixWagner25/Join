@@ -33,13 +33,9 @@ async function submitNewTaskOptionalComplexInfo(editID) {
   } else {
     newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
   }
-  if (newTaskAssignedContactsIndices.length > 0) {
     await submitNewTaskAssignedContacts(newTaskFirebaseId);
-  }
-  if (newTaskSubtasks.length > 0) {
     await submitNewTaskSubtasks(newTaskFirebaseId);
   }
-}
 
 async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   let path = "tasks/" + String(newTaskFireBaseId) + "/assignedTo";
