@@ -224,9 +224,11 @@ function clearAddContactForm(htmlIdPrefix) {
 
 function showNewContactCreatedMessage() {
   bannerRef = document.getElementById("contact-created-banner");
+  bannerRef.classList.remove("d-none");
   bannerRef.classList.add("animate-banner");
   setTimeout(() => {
     bannerRef.classList.remove("animate-banner");
+    bannerRef.classList.add("d-none");
   }, bannerTransitionTimeMilliSeconds);
 }
 

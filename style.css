@@ -379,3 +379,31 @@ textarea {
 .p-absolute {
   position: absolute;
 }
+
+.animate-bg-blur {
+  animation: 0.25s animateBgBlur linear;
+}
+
+.animate-bg-unblur {
+  animation: 0.25s animateBgUnblur linear;
+}
+
+@keyframes animateBgBlur {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes animateBgUnblur {
+  0% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
