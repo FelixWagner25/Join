@@ -1,4 +1,4 @@
-function getBoardCardTemplate(indexTask, tasksArray) {
+function getBoardCardTemplate(indexTask) {
   return `
     <div class="task-card-wrap bg-white d-flex-column-c-c" draggable="true" ondragstart="startDragging(${indexTask})">
           <div class="task-card d-flex-column" onclick="showTaskOverlay(${indexTask})">
@@ -51,7 +51,7 @@ function getTaskCardSubtaskTemplate(indexTask) {
   `;
 }
 
-function getTaskCardContactsTemplate(indexTaskContact, indexTask, tasksArray) {
+function getTaskCardContactsTemplate(indexTaskContact, indexTask) {
   return `
   <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
     tasksArray[indexTask][1].assignedTo[indexTaskContact][1].Id

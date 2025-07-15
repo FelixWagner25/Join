@@ -1,9 +1,9 @@
+let currentTask = "";
+
 async function initBoard() {
   contactsArray = await getSortedContactsArray();
   tasksArray = await getTasksArray();
-  console.log(tasksArray);
-
-  await renderBoard(tasksArray);
+  await renderBoard();
 }
 
 async function getTasksArray() {
@@ -23,25 +23,25 @@ async function getTasksArray() {
   return tasksArray;
 }
 
-async function renderBoard(tasksArray) {
-  renderBoardColumn("to-do", "todo", tasksArray);
-  renderBoardColumn("in-progress", "inprogress", tasksArray);
-  renderBoardColumn("await-feedback", "awaitfeedback", tasksArray);
-  renderBoardColumn("done", "done", tasksArray);
+async function renderBoard() {
+  renderBoardColumn("to-do", "todo");
+  renderBoardColumn("in-progress", "inprogress");
+  renderBoardColumn("await-feedback", "awaitfeedback");
+  renderBoardColumn("done", "done");
 }
 
-function renderBoardColumn(columHTMLid, taskStatusId, tasksArray) {
+function renderBoardColumn(columHTMLid, taskStatusId) {
   let boardColRef = document.getElementById(columHTMLid);
   boardColRef.innerHTML = "";
   for (let i = 0; i < tasksArray.length; i++) {
-    if (!taskHasStatus(taskStatusId, i, tasksArray)) {
+    if (!taskHasStatus(taskStatusId, i)) {
       continue;
     }
-    boardColRef.innerHTML += getBoardCardTemplate(i, tasksArray);
-    if (subtasksExist(i, tasksArray)) {
+    boardColRef.innerHTML += getBoardCardTemplate(i);
+    if (subtasksExist(i)) {
       renderSubtaskProgressInfo(i);
     }
-    renderBoardCardContacts(i, tasksArray);
+    renderBoardCardContacts(i);
   }
   checkEmptyColumn(columHTMLid);
 }
@@ -57,11 +57,11 @@ function checkEmptyColumn(columHTMLid) {
   }
 }
 
-function taskHasStatus(taskStatusId, indexTask, tasksArray) {
+function taskHasStatus(taskStatusId, indexTask) {
   return tasksArray[indexTask][1].status === taskStatusId;
 }
 
-function subtasksExist(indexTask, tasksArray) {
+function subtasksExist(indexTask) {
   return tasksArray[indexTask][1].subtasks !== undefined;
 }
 
@@ -73,7 +73,7 @@ function renderSubtaskProgressInfo(indexTask) {
   renderSubtasksProgressbarFill(indexTask);
 }
 
-function renderBoardCardContacts(indexTask, tasksArray) {
+function renderBoardCardContacts(indexTask) {
   let htmlId = "task-contacts-" + String(indexTask);
   let taskCardContactsRef = document.getElementById(htmlId);
   taskCardContactsRef.innerHTML = "";
@@ -85,8 +85,7 @@ function renderBoardCardContacts(indexTask, tasksArray) {
   ) {
     taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
       indexTaskContact,
-      indexTask,
-      tasksArray
+      indexTask
     );
   }
 }
@@ -147,7 +146,6 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-let currentTask = "";
 async function startDragging(event) {
   tasksArray = await getTasksArray();
   toggleDragArea();
@@ -213,6 +211,7 @@ function closeTaskOverlays() {
   document.getElementById("task-overlay").classList.remove("task-overlay-blur");
   newTaskAssignedContactsIndices = [];
   overlay.innerHTML = "";
+  renderBoard();
 }
 
 function getTaskCompletedSubtasksNumber(indexTask) {
