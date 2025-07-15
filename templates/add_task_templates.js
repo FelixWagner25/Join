@@ -206,6 +206,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             placeholder="Select task category"
             onclick="toggleTaskCategoryDropdown()"
             required
+            autocomplete="off"
           />
           <span
             class="p-absolute task-dropdown-icon"
