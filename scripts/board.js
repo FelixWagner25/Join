@@ -1,14 +1,15 @@
 async function initBoard() {
   contactsArray = await getSortedContactsArray();
-  let tasksArray = await getTasksArray();
+  tasksArray = await getTasksArray();
+  console.log(tasksArray);
+
   await renderBoard(tasksArray);
 }
 
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
-  let tasksArray = [];
   if (tasks == null) {
-    return tasksArray;
+    return;
   }
   tasksArray = Object.entries(tasks).map(([taskId, taskData]) => {
     if (taskData.assignedTo !== undefined) {
@@ -215,3 +216,5 @@ function closeTaskOverlays() {
   newTaskAssignedContactsIndices = [];
   overlay.innerHTML = "";
 }
+
+function getTaskCompletedSubtasksNumber(indexTask) {}

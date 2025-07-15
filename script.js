@@ -319,11 +319,8 @@ async function updateDatabaseObject(path = "", object = {}) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(object),
-
-    
   });
 }
-
 
 /**
  * This function delets an element form firebase server and collects the response as JSON
@@ -357,15 +354,16 @@ function getFirstTwoStringInitialsByFirebaseId(contactID) {
   for (let elementID of contactsArray) {
     if (contactID === elementID[0]) {
       let inputStringSplit = elementID[1].name.split(" ");
-      if (inputStringSplit.length == 1)
-        {  stringInitials = inputStringSplit[0].charAt(0).toUpperCase()}
-      else {
+      if (inputStringSplit.length == 1) {
+        stringInitials = inputStringSplit[0].charAt(0).toUpperCase();
+      } else {
         stringInitials =
-        inputStringSplit[0].charAt(0).toUpperCase() +
-        inputStringSplit[1].charAt(0).toUpperCase();
-        }
-      }}
-  
+          inputStringSplit[0].charAt(0).toUpperCase() +
+          inputStringSplit[1].charAt(0).toUpperCase();
+      }
+    }
+  }
+
   return stringInitials;
 }
 
