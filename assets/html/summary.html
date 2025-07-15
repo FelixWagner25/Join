@@ -1,106 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/assets.css">
-    <link rel="stylesheet" href="/styles/colors.css">
-    <link rel="stylesheet" href="/styles/desktop_template.css">
-    <link rel="stylesheet" href="/style.css">
-    
-    <link rel="stylesheet" href="/styles/summary.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summary</title>
+    <link rel="stylesheet" href="/styles/assets.css" />
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/desktop_template.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/assets/img/faviconLogo.svg" />
+
+    <link rel="stylesheet" href="/styles/summary.css" />
     <script src="/scripts/summary.js"></script>
     <script src="/scripts/board.js"></script>
-
 
     <script src="/script.js"></script>
     <script src="/scripts/desktop_template.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="/scripts/contacts.js"></script>
-</head>
-<body onload="init(), userGreeting(), renderTasks()">
-<div class="page">
-    <div class="d-contents" w3-include-html="/templates/desktop_template.html"></div>
-    <main id="main">
-            <div class="summary d-flex-column-c">
+  </head>
+  <body onload="init(), userGreeting(), renderTasks()">
+    <div class="page">
+      <div
+        class="d-contents"
+        w3-include-html="/templates/desktop_template.html"
+      ></div>
+      <main id="main">
+        <div class="summary d-flex-column-c">
+          <div class="metrics-header d-flex-align-item-c">
+            <h1 class="font-Inter-600-61px text-color-black">Join 360</h1>
+            <div class="header-divider bg-neonblue"></div>
+            <span class="metrics-subtitle">Key metrics at a glance</span>
+          </div>
 
-                <div class="metrics-header d-flex-align-item-c">
-                    <h1 class="font-Inter-600-61px text-color-black">Join 360</h1>
-                    <div class="header-divider bg-neonblue"></div>
-                    <span class="metrics-subtitle">Key metrics at a glance</span>
+          <section class="summary-content d-flex-align-item-c">
+            <div class="cards-wrapper d-flex-column">
+              <div class="card-row d-flex">
+                <a
+                  class="card small-card bg-white d-flex-row-c-c"
+                  href="/assets/html/board.html"
+                  alt="to-board-page"
+                >
+                  <div class="card-icon edit"></div>
+                  <div class="d-flex-column">
+                    <span class="font-Inter-600-64px" id="todo-count"></span>
+                    <span class="card-title">To-do</span>
+                  </div>
+                </a>
+
+                <a
+                  class="card small-card bg-white d-flex-row-c-c"
+                  href="/assets/html/board.html"
+                  alt="to-board-page"
+                >
+                  <div class="card-icon check"></div>
+                  <div class="d-flex-column">
+                    <span class="font-Inter-600-64px" id="done-count"></span>
+                    <span class="card-title">Done</span>
+                  </div>
+                </a>
+              </div>
+
+              <a
+                class="card large-card bg-white"
+                href="/assets/html/board.html"
+                alt="to-board-page"
+              >
+                <div class="urgent-left d-flex-align-item-c">
+                  <img
+                    src="/assets/icons/up.svg"
+                    alt="Urgent"
+                    class="card-icon-large"
+                  />
+                  <div class="d-flex-column">
+                    <span class="font-Inter-600-64px" id="urgent-count"></span>
+                    <span class="card-title">Urgent</span>
+                  </div>
                 </div>
+                <div class="divider-vertical"></div>
+                <div class="urgent-right d-flex-align-item-c">
+                  <div class="d-flex-column">
+                    <span class="font-Inter-700-21px" id="deadline-date"></span>
+                    <span class="card-title">Upcoming Deadline</span>
+                  </div>
+                </div>
+              </a>
 
-                <section class="summary-content d-flex-align-item-c">
-                    <div class="cards-wrapper d-flex-column">
-                        <div class="card-row d-flex">
-                            <a class="card small-card bg-white d-flex-row-c-c" href="/assets/html/board.html" alt="to-board-page">
-                                <div class ="card-icon edit"></div>
-                                <div class=" d-flex-column">
-                                    <span class="font-Inter-600-64px" id="todo-count"></span>
-                                    <span class="card-title">To-do</span>
-                                </div>
-                            </a>
+              <div class="card-row d-flex">
+                <a
+                  class="card small-card bg-white d-flex-row-c-c"
+                  href="/assets/html/board.html"
+                  alt="to-board-page"
+                >
+                  <div class="d-flex-column">
+                    <span
+                      class="font-Inter-600-64px"
+                      id="tasks-board-count"
+                    ></span>
+                    <span class="card-title">Tasks in Board</span>
+                  </div>
+                </a>
 
-                            <a class="card small-card bg-white d-flex-row-c-c" href="/assets/html/board.html" alt="to-board-page">
-                                <div class ="card-icon check"></div>
-                                <div class="d-flex-column">
-                                    <span class="font-Inter-600-64px" id="done-count"></span>
-                                    <span class="card-title">Done</span>
-                                </div>
-                            </a>
-                        </div>
+                <a
+                  class="card small-card bg-white d-flex-row-c-c"
+                  href="/assets/html/board.html"
+                  alt="to-board-page"
+                >
+                  <div class="d-flex-column">
+                    <span
+                      class="font-Inter-600-64px"
+                      id="inprogress-count"
+                    ></span>
+                    <span class="card-title">Tasks In Progress</span>
+                  </div>
+                </a>
 
-
-                        <a class="card large-card bg-white" href="/assets/html/board.html" alt="to-board-page">
-                            <div class="urgent-left d-flex-align-item-c">
-                                <img src="/assets/icons/up.svg" alt="Urgent" class="card-icon-large">
-                                <div class=" d-flex-column">
-                                    <span class="font-Inter-600-64px" id="urgent-count"></span>
-                                    <span class="card-title">Urgent</span>
-                                </div>
-                            </div>
-                            <div class="divider-vertical"></div>
-                            <div class="urgent-right d-flex-align-item-c">
-                                <div class="d-flex-column">
-                                    <span class="font-Inter-700-21px" id="deadline-date"></span>
-                                    <span class="card-title">Upcoming Deadline</span>
-                                </div>
-                            </div>
-                        </a>
-
-
-                        <div class="card-row d-flex">
-                            <a class="card small-card bg-white d-flex-row-c-c" href="/assets/html/board.html" alt="to-board-page">
-                                <div class=" d-flex-column">
-                                    <span class="font-Inter-600-64px" id="tasks-board-count"></span>
-                                    <span class="card-title">Tasks in Board</span>
-                                </div>
-                            </a>
-
-                            <a class="card small-card bg-white d-flex-row-c-c" href="/assets/html/board.html" alt="to-board-page">
-                                <div class=" d-flex-column">
-                                    <span class="font-Inter-600-64px" id="inprogress-count"></span>
-                                    <span class="card-title">Tasks In Progress</span>
-                                </div>
-                            </a>
-
-                            <a class="card small-card bg-white d-flex-row-c-c" href="/assets/html/board.html" alt="to-board-page">
-                                <div class=" d-flex-column">
-                                    <span class="font-Inter-600-64px" id="awaitfeedback-count"></span>
-                                    <span class="card-title">Awaiting Feedback</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="greeting d-flex-column-c-c" >
-                        <div class="d-flex-align-item-b"><div class="font-Inter-500-47px" id="greeting-sentence">Good morning </div> <span id="comma" class="d-none">,</span></div>
-                            <div class="font-Inter-700-64px text-color-29ABE2" id="personal-greeting"></div>
-                    </div>
-                </section>
+                <a
+                  class="card small-card bg-white d-flex-row-c-c"
+                  href="/assets/html/board.html"
+                  alt="to-board-page"
+                >
+                  <div class="d-flex-column">
+                    <span
+                      class="font-Inter-600-64px"
+                      id="awaitfeedback-count"
+                    ></span>
+                    <span class="card-title">Awaiting Feedback</span>
+                  </div>
+                </a>
+              </div>
             </div>
-    </main>
+
+            <div class="greeting d-flex-column-c-c">
+              <div class="d-flex-align-item-b">
+                <div class="font-Inter-500-47px" id="greeting-sentence">
+                  Good morning
+                </div>
+                <span id="comma" class="d-none">,</span>
+              </div>
+              <div
+                class="font-Inter-700-64px text-color-29ABE2"
+                id="personal-greeting"
+              ></div>
+            </div>
+          </section>
+        </div>
+      </main>
     </div>
-</body>
+  </body>
 </html>
