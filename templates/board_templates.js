@@ -1,6 +1,6 @@
 function getBoardCardTemplate(indexTask) {
   return `
-    <div class="task-card-wrap bg-white d-flex-column-c-c" draggable="true" ondragstart="startDragging(${indexTask})">
+    <div class="task-card-wrap bg-white" draggable="true" ondragstart="startDragging(${indexTask})">
           <div class="task-card d-flex-column" onclick="showTaskOverlay(${indexTask})">
             <div>
               <div class="task-category font-Inter-400-16px ${getTaskCategoryClass(
@@ -19,7 +19,7 @@ function getBoardCardTemplate(indexTask) {
             </div>
             <div class="d-flex-c-sb gap-8px" id="subtasks-progress-${indexTask}"></div>
             <div class="d-flex-c-sb">
-                    <div class="d-flex mg-l-8px" id="task-contacts-${indexTask}">
+                    <div class="d-flex mg-l-8px task-badge" id="task-contacts-${indexTask}">
                     </div>
                     <img src=${getTaskPriorityIconSrc(
                       tasksArray[indexTask][1].priority
