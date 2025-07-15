@@ -215,6 +215,8 @@ function closeTaskOverlays() {
 }
 
 function getTaskCompletedSubtasksNumber(indexTask) {
+  console.log(tasksArray[indexTask][1].subtasks.length);
+  
   let completedSubtasksNumber = 0;
   for (
     let indexSubtask = 0;

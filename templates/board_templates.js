@@ -129,7 +129,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
         currentTask.subtasks
           ?.map(
             (s) =>
-              ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask" onclick="setSubtaskStatus(${indexTask})"><div>${s[1].name}</div></div></div>`
+              ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask" ${s[1].done ? "checked" : ''} onclick="setSubtaskStatus(this, ${indexTask}, '${s[0]}')"><div>${s[1].name}</div></div></div>`
           )
           .join("") || ""
       }</article>

@@ -58,17 +58,11 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   }
 }
 
-async function setSubtaskStatus(indexTask) {
-  tasksArray = await getTasksArray();
+async function setSubtaskStatus(currentElement , indexTask, subtaskID) {
   let path = tasksArray[indexTask][0];
-  let check = document.getElementsByName("checkbox-subtask");
-  let checkStatus = "";
-  let subtasksID = tasksArray[indexTask][1].subtasks.map((i) => i[0]);
-  for (let i = 0; i < [...check].length; i++) {
-    checkStatus = [...check][i].checked;
-    obj = checkStatus;
-    updateDatabaseObject(`tasks/${path}/subtasks/${subtasksID[i]}/done`, obj);
-  }
+  obj = currentElement.checked
+  await updateDatabaseObject(`tasks/${path}/subtasks/${subtaskID}/done`, obj);
+  await initBoard()
 }
 
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
