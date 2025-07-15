@@ -38,13 +38,15 @@ function getNoTask(title) {
     `;
 }
 
-function getTaskCardSubtaskTemplate(indexTask, tasksArray) {
+function getTaskCardSubtaskTemplate(indexTask) {
   return `
   <div class="progress-bar">
     <div class="progress-bar-status" id="progress-${indexTask}"></div>
   </div>
   <div class="font-Inter-400-12px text-color-black d-flex">
-    ${tasksArray[indexTask][1].subtasks.length}/${tasksArray[indexTask][1].subtasks.length} Subtasks
+    ${getTaskCompletedSubtasksNumber(indexTask)}/${
+    tasksArray[indexTask][1].subtasks.length
+  } Subtasks
   </div>
   `;
 }

@@ -9,7 +9,7 @@ async function initBoard() {
 async function getTasksArray() {
   let tasks = await getDataBaseElement("tasks");
   if (tasks == null) {
-    return;
+    return tasksArray;
   }
   tasksArray = Object.entries(tasks).map(([taskId, taskData]) => {
     if (taskData.assignedTo !== undefined) {
@@ -39,7 +39,7 @@ function renderBoardColumn(columHTMLid, taskStatusId, tasksArray) {
     }
     boardColRef.innerHTML += getBoardCardTemplate(i, tasksArray);
     if (subtasksExist(i, tasksArray)) {
-      renderSubtaskProgressInfo(i, tasksArray);
+      renderSubtaskProgressInfo(i);
     }
     renderBoardCardContacts(i, tasksArray);
   }
@@ -65,14 +65,12 @@ function subtasksExist(indexTask, tasksArray) {
   return tasksArray[indexTask][1].subtasks !== undefined;
 }
 
-function renderSubtaskProgressInfo(indexTask, tasksArray) {
+function renderSubtaskProgressInfo(indexTask) {
   let htmlId = "subtasks-progress-" + String(indexTask);
   let taskSubtaskInfoRef = document.getElementById(htmlId);
   taskSubtaskInfoRef.innerHTML = "";
-  taskSubtaskInfoRef.innerHTML = getTaskCardSubtaskTemplate(
-    indexTask,
-    tasksArray
-  );
+  taskSubtaskInfoRef.innerHTML = getTaskCardSubtaskTemplate(indexTask);
+  renderSubtasksProgressbarFill(indexTask);
 }
 
 function renderBoardCardContacts(indexTask, tasksArray) {
@@ -217,4 +215,28 @@ function closeTaskOverlays() {
   overlay.innerHTML = "";
 }
 
-function getTaskCompletedSubtasksNumber(indexTask) {}
+function getTaskCompletedSubtasksNumber(indexTask) {
+  let completedSubtasksNumber = 0;
+  for (
+    let indexSubtask = 0;
+    indexSubtask < tasksArray[indexTask][1].subtasks.length;
+    indexSubtask++
+  ) {
+    if (tasksArray[indexTask][1].subtasks[indexSubtask][1].done == true) {
+      completedSubtasksNumber += 1;
+    }
+  }
+  return completedSubtasksNumber;
+}
+
+function renderSubtasksProgressbarFill(indexTask) {
+  let progBarRef = document.getElementById("progress-" + String(indexTask));
+  let widthString =
+    String(
+      (
+        getTaskCompletedSubtasksNumber(indexTask) /
+        tasksArray[indexTask][1].subtasks.length
+      ).toFixed(2) * 100
+    ) + "%";
+  progBarRef.style.width = widthString;
+}
