@@ -317,9 +317,6 @@ function getContactColorClassName(indexContact) {
 
 function getContactColorClassNameByFirebaseId(contactFirebaseId) {
   if (!contactFirebaseId) {
-    console.log(contactFirebaseId);
-
-    console.log("undefined");
     return "";
   } else {
     let indexContact = findContactIndexByFirebaseId(contactFirebaseId);
@@ -330,8 +327,6 @@ function getContactColorClassNameByFirebaseId(contactFirebaseId) {
 
 function findContactIndexByFirebaseId(contactFirebaseId) {
   if (!contactFirebaseId) {
-    console.log("undefined");
-
     return "";
   } else {
     return contactsArray.findIndex(

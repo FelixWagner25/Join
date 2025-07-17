@@ -268,25 +268,7 @@ function editTaskTemplate(indexTask, currentTask) {
                     class="d-flex gap-8px p-relative"
                     id="task-assigned-contacts-badges"
                   >
-                 ${
-                   currentTask.assignedTo
-                     ?.map(
-                       (p) => `
-        <div class=" d-flex-c-sb">
-          <div class="task-overlay-contact d-flex-align-item-c">
-            <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
-              p[1]?.Id
-            )}">
-              <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
-                p[1]?.Id
-              )}
-              </div>
-            </div>
-          </div>
-        </div>`
-                     )
-                     .join("") || ""
-                 }
+                
                   </div>
                 </div>
     
@@ -344,7 +326,6 @@ function editTaskTemplate(indexTask, currentTask) {
                       )
                       .join("") || ""
                   }
-
                   </ul>
                 </div>
               </div>
@@ -357,18 +338,10 @@ function editTaskTemplate(indexTask, currentTask) {
 
               <div class="task-form-btn-wrap d-flex">
                 <button
-                  class="task-form-btn d-flex-row-c-c clear-task-btn"
-                  type="reset"
-                  onclick="clearAddTaskForm()"
-                >
-                  <span class="font-Inter-400-20px">Clear</span>
-                  <span class="clear-task-btn-icon"></span>
-                </button>
-                <button
                   class="task-form-btn d-flex-row-c-c text-color-white submit-task-btn"
                   type="submit"
                 >
-                  <span class="font-Inter-700-21px">Create Task</span>
+                  <span class="font-Inter-700-21px">Ok</span>
                   <span class="submit-task-btn-icon"></span>
                 </button>
               </div>

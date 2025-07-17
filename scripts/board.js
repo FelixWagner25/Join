@@ -78,16 +78,14 @@ function renderBoardCardContacts(indexTask) {
   let taskCardContactsRef = document.getElementById(htmlId);
   taskCardContactsRef.innerHTML = "";
   let objKeys = Object.keys(tasksArray[indexTask][1]?.assignedTo || {}).length;
-  for (
-    let indexTaskContact = 0;
-    indexTaskContact < objKeys;
-    indexTaskContact++
-  ) {
-    taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
-      indexTaskContact,
-      indexTask
-    );
-  }
+  let maximalShownBadges = Math.min(3, objKeys);
+  for (let indexTaskContact = 0; indexTaskContact < maximalShownBadges; indexTaskContact++) {
+    taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(indexTaskContact, indexTask)
+  };
+    if(objKeys > maximalShownBadges){
+      taskCardContactsRef.innerHTML += getTaskAssignedContactsRemainderTemplate(
+      objKeys - maximalShownBadges)
+    }
 }
 
 function getTaskCategoryClass(taskCategory) {
