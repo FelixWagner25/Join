@@ -92,9 +92,7 @@ function closeContactOverlays() {
  */
 function showEditContactScreen(indexContact) {
   blurBackground();
-  setTimeout(() => {
-    openEditContactScreen();
-  }, overlayTransitionMiliSeconds);
+  openEditContactScreen();
   renderEditContactScreen(indexContact);
   prefillContactInputFields(indexContact);
 }
