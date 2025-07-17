@@ -54,10 +54,8 @@ async function getSortedContactsArray() {
  */
 function showAddContactScreen() {
   blurBackground();
-  setTimeout(() => {
-    openAddContactScreen();
-    console.log(document.getElementById("contact-card"));
-  }, overlayTransitionMiliSeconds);
+  openAddContactScreen();
+  console.log(document.getElementById("contact-card"));
 }
 
 /**
@@ -65,7 +63,7 @@ function showAddContactScreen() {
  *
  */
 function blurBackground() {
-  document.getElementById("bg-dimmed").classList.remove("d-none");
+  document.getElementById("bg-dimmed").classList.add("dim-active");
 }
 
 /**
@@ -85,10 +83,7 @@ function openAddContactScreen() {
  */
 function closeContactOverlays() {
   document.getElementById("contact-card").classList.remove("overlay-open");
-  document.getElementById("bg-dimmed").classList.add("d-none");
-  setTimeout(() => {
-    document.getElementById("bg-dimmed").classList.add("d-none");
-  }, overlayTransitionMiliSeconds);
+  document.getElementById("bg-dimmed").classList.remove("dim-active");
 }
 
 /**

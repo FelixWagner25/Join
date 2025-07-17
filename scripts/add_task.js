@@ -33,9 +33,9 @@ async function submitNewTaskOptionalComplexInfo(editID) {
   } else {
     newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
   }
-    await submitNewTaskAssignedContacts(newTaskFirebaseId);
-    await submitNewTaskSubtasks(newTaskFirebaseId);
-  }
+  await submitNewTaskAssignedContacts(newTaskFirebaseId);
+  await submitNewTaskSubtasks(newTaskFirebaseId);
+}
 
 async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   let path = "tasks/" + String(newTaskFireBaseId) + "/assignedTo";
@@ -54,11 +54,11 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   }
 }
 
-async function setSubtaskStatus(currentElement , indexTask, subtaskID) {
+async function setSubtaskStatus(currentElement, indexTask, subtaskID) {
   let path = tasksArray[indexTask][0];
-  obj = currentElement.checked
+  obj = currentElement.checked;
   await updateDatabaseObject(`tasks/${path}/subtasks/${subtaskID}/done`, obj);
-  await initBoard()
+  await initBoard();
 }
 
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
@@ -351,7 +351,6 @@ async function editTask(indexTask) {
   let currentTask = tasksArray[indexTask][1];
   loadOptionalScalarTaskInfo(currentTask, indexTask);
   overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
-  renderContactsBadges(newTaskAssignedContactsIndices)
 }
 
 function loadOptionalScalarTaskInfo(currentTask, indexTask) {
