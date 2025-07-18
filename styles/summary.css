@@ -28,7 +28,6 @@ body {
   font-weight: 400;
 }
 
-
 .summary-content {
   gap: 40px;
 }
@@ -36,16 +35,17 @@ body {
 .cards-wrapper {
   flex: 1;
   gap: 28px;
-  max-width: 560px;
+  width: 100%;
 }
 
 .card-row {
   gap: 28px;
+  max-width: 560px;
   flex-wrap: wrap;
 }
 
 .card {
-  color:#2a3647;
+  color: #2a3647;
   border-radius: 22px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 24px;
@@ -59,12 +59,12 @@ body {
   gap: 18px;
 }
 
-.card:hover{
+.card:hover {
   background-color: #2a3647;
   color: white !important;
-  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   transform: scale(1.1);
-  transition: transform .1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
 }
 
 .card-icon {
@@ -72,24 +72,23 @@ body {
   height: 69px;
 }
 
-.edit{
-  background-image: url('/assets/icons/edit_background.svg');
+.edit {
+  background-image: url("/assets/icons/edit_background.svg");
   background-size: contain;
 }
 
-.check{
-    background-image: url('/assets/icons/check.svg');
-    background-size: contain;
+.check {
+  background-image: url("/assets/icons/check.svg");
+  background-size: contain;
 }
 
-.card:hover > .edit{
-    background-image: url('/assets/icons/edit_hover.svg');
+.card:hover > .edit {
+  background-image: url("/assets/icons/edit_hover.svg");
 }
 
-.card:hover > .check{
-  background-image: url('/assets/icons/check_hover.svg');
+.card:hover > .check {
+  background-image: url("/assets/icons/check_hover.svg");
 }
-
 
 .card-title {
   font-size: 20px;
@@ -98,6 +97,7 @@ body {
 .large-card {
   display: flex;
   min-height: 120px;
+  max-width: 560px;
   text-align: center;
 }
 
@@ -121,7 +121,7 @@ body {
 }
 
 .greeting {
-/*   flex: 0 0 40%; */
+  /*   flex: 0 0 40%; */
   padding-left: 40px;
 }
 
@@ -143,13 +143,16 @@ body {
   font-weight: 700;
 }
 
-
-
 @media screen and (max-width: 820px) {
   .summary {
     margin: 48px 16px;
     padding: 0;
     justify-content: unset;
+  }
+
+  .card-icon, .card-icon-large{
+    width: 40px;
+    height: 40px;
   }
 
   .metrics-header {
@@ -158,14 +161,31 @@ body {
     margin: 16px 0 0 16px;
   }
 
-  .header-divider {
-    rotate: 90deg;
-    margin: 0 32px ;
+  .metrics-subtitle{
+    font-size: 20px;
   }
 
-  .summary-content{
-    height: 384px;
+  .header-divider {
+    rotate: 90deg;
+    margin: 0 32px;
+  }
 
+  .card-row{
+    gap: 16px;
+    max-width: 270px;
+  }
+
+  .count-figure{
+    font-size: 47px;
+  }
+
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .divider-vertical{
+    height: unset;
   }
 
   .greeting {
@@ -174,25 +194,44 @@ body {
     background-color: #f6f7f8;
     width: 100%;
     padding: 0;
-}
-  .greet-animation{
-        animation: fadeGreeting 3s ease-in;
+  }
+  .greet-animation {
+    animation: fadeGreeting 3s ease-in;
   }
 
-@keyframes fadeGreeting {
-  0% {
-    height: 100%;
-    opacity: 1;
+  .urgent-left, .urgent-right{
+        padding: 20px 0;
+        max-width: 108px;
   }
-  66% {
-    opacity: 1; 
-  }
-  100% {
-    opacity: 0; 
-    height: 0;
-  }
-  }
+
+  
+.large-card{
+  max-width: 276px;
+  height: 110px;
+  padding: 28px 0;
 }
 
+.small-card{
+  height: 110px;
+  padding: 25px 0;
+}
+
+#deadline-date{
+  font-size: 16px;
+}
 
 
+  @keyframes fadeGreeting {
+    0% {
+      height: 100%;
+      opacity: 1;
+    }
+    66% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      height: 0;
+    }
+  }
+}

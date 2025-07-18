@@ -63,6 +63,7 @@ aside {
 main {
   grid-area: main;
   height: calc(100vh - 96px);
+  max-width: 1440px;
   overflow-y: hidden;
 }
 
@@ -289,15 +290,8 @@ nav>a:hover{
   font-size: 20px;
 }
 
-.small-card{
-  height: 110px;
-  min-width: 116px;
-}
 
-.large-card{
-  max-width: 396 px;
-  height: 110px;
-}
+
 
 }
 
