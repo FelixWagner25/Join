@@ -318,3 +318,12 @@ h1 {
 .task-assigned-contact-wrap:hover {
   background-color: #d1d1d1;
 }
+
+.add-task-toast-icon {
+  width: 25px;
+  height: 30px;
+  background-image: url("/assets/icons/add-task-toast-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}

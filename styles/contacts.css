@@ -488,42 +488,6 @@ main {
   animation: slideInFromRight 0.25s linear;
 }
 
-.contact-created-toast-msg {
-  position: fixed;
-  top: 75%;
-  left: 50%;
-  transform: translate(300%, -50%);
-  opacity: 0;
-  color: white;
-  background-color: #2a3647;
-  border-radius: 20px;
-  padding: 20px;
-  pointer-events: none;
-}
-
-.contact-created-toast-msg.show {
-  animation: toast-fly-in-out 3s linear;
-}
-
-@keyframes toast-fly-in-out {
-  0% {
-    transform: translate(300%, -50%);
-    opacity: 0;
-  }
-  10% {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-  90% {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(300%, -50%);
-    opacity: 0;
-  }
-}
-
 @media screen and (max-width: 820px) {
   .contacts-details-wrap {
     display: none;

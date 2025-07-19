@@ -23,6 +23,7 @@ async function addNewTask(newTaskStatusId) {
   await submitNewTaskOptionalComplexInfo();
   showNewTaskCreatedMessage();
   clearAddTaskForm();
+  showToastMessage("add-task-toast-msg");
   await initBoard();
 }
 
