@@ -380,3 +380,10 @@ function setInputTagValue(htmlId, valueToSet) {
   let inputRef = document.getElementById(htmlId);
   inputRef.value = valueToSet;
 }
+
+function showToastMessage(htmlId) {
+  msgRef = document.getElementById(htmlId);
+  msgRef.classList.remove("show");
+  void msgRef.offsetWidth;
+  msgRef.classList.add("show");
+}

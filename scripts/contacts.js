@@ -172,7 +172,7 @@ async function addNewContact(event) {
   let addedContactEmail = newContactData.email;
   let addedContactIndex = getContactIndexByEmail(addedContactEmail);
   showContactDetails(addedContactIndex);
-  showNewContactCreatedMessage();
+  showToastMessage("contact-created-toast-msg");
 }
 
 function getContactIndexByEmail(contactEmail) {
@@ -212,13 +212,6 @@ function clearAddContactForm(htmlIdPrefix) {
   phoneRef.value = "";
 }
 
-function showNewContactCreatedMessage() {
-  bannerRef = document.getElementById("contact-created-toast-msg");
-  bannerRef.classList.remove("show");
-  void bannerRef.offsetWidth;
-  bannerRef.classList.add("show");
-}
-
 /**
  * This function updates the current contact information on the firebase server
  *
@@ -236,6 +229,7 @@ async function updateContact(indexContact, event) {
   await renderContactsList();
   renderContactDetails(indexContact);
   closeContactOverlays();
+  showToastMessage("contact-updated-toast-msg");
 }
 
 /**
@@ -335,6 +329,7 @@ async function deleteContact(indexContact) {
   clearContactDetails();
   await renderContactsList();
   closeContactOverlays();
+  showToastMessage("delete-contact-toast-msg");
 }
 
 async function deleteContactFromTasks(contactFirebaseId) {
