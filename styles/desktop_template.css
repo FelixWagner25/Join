@@ -250,7 +250,7 @@ aside{
 nav{
   flex-direction: row;
   gap: 10px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   height: 80px;
 }

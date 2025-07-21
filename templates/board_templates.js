@@ -18,7 +18,7 @@ function getBoardCardTemplate(indexTask) {
                 }</div>   
             </div>
             <div class="d-flex-c-sb gap-8px" id="subtasks-progress-${indexTask}"></div>
-            <div class="d-flex-c-sb">
+            <div class="d-flex-c-sb task-priority-wrap">
                     <div class="d-flex mg-l-8px task-badge" id="task-contacts-${indexTask}">
                     </div>
                     <img src=${getTaskPriorityIconSrc(
@@ -161,9 +161,8 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
 }
 
 function editTaskTemplate(indexTask, currentTask) {
-  console.log(currentTask);
-  
   return `
+  <div class="scroll-overlay">
 <form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
               <div class="d-flex-column gap-32px">
@@ -349,5 +348,6 @@ function editTaskTemplate(indexTask, currentTask) {
                 </button>
               </div>
             </div>
-          </form>`;
+          </form>
+        </div>`;
 }
