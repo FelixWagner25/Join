@@ -29,7 +29,8 @@ function getEditSubtaskTemplate(indexSubtask) {
 
 function getTaskAssigendContactsTemplate(contactID, indexContact) {
   return `
-    <div class="d-flex-c-sb pd-8px-16px task-assigned-contact-wrap" id="task-assigned-contact-wrap-${contactID}" onclick="toggleAssignContact('${contactID}',this)">
+    <div id="task-assigned-contact-wrap-${contactID}" onclick="toggleAssignContact('${contactID}',this)">
+      <div class="pd-8px-16px task-assigned-contact-wrap">
         <div class="d-flex-row-c-fs gap-16px">
             <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
               contactID
@@ -39,14 +40,16 @@ function getTaskAssigendContactsTemplate(contactID, indexContact) {
             ${contactsArray[indexContact][1].name}
         </div>
         <span class="task-assigned-contacts-checkbox-icon"></span>
+      </div>
     </div>
     `;
 }
 
 function getTaskAssigendContactsOverlayTemplate(contactID, indexContact) {
   return `
-    <div class="d-flex-c-sb pd-8px-16px task-assigned-contact-wrap" id="task-assigned-contact-wrap-overlay-${contactID}" onclick="toggleAssignContact('${contactID}',this)">
-        <div class="d-flex-row-c-fs gap-16px">
+    <div id="task-assigned-contact-wrap-overlay-${contactID}" onclick="toggleAssignContact('${contactID}',this)">
+      <div class="d-flex-c-sb pd-8px-16px task-assigned-contact-wrap">  
+      <div class="d-flex-row-c-fs gap-16px">
             <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
               contactID
             )}">
@@ -55,6 +58,7 @@ function getTaskAssigendContactsOverlayTemplate(contactID, indexContact) {
             ${contactsArray[indexContact][1].name}
         </div>
         <span class="task-assigned-contacts-checkbox-icon"></span>
+      </div>
     </div>
     `;
 }
@@ -176,8 +180,9 @@ function getAddTaskFormTemplate(taskStatusId) {
             type="text"
             id="task-assigned-contacts"
             placeholder="Select contacts to assign"
-            readonly
+            oninput="searchContact()"
             onclick="toggleTaskAssignedContactsDropdown()"
+            autocomplete="off"
           />
           <span
             class="p-absolute task-dropdown-icon"

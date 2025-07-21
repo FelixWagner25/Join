@@ -380,3 +380,24 @@ function getCurrentDateYYYMMDD() {
   let day = String(today.getDate()).padStart(2, "0");
   return year + "-" + month + "-" + day;
 }
+
+function searchContact() {
+  let searchKey = document
+    .getElementById("task-assigned-contacts")
+    .value.toLowerCase();
+  let dropdownRef = document.getElementById("task-assigned-contacts-dropdown");
+  let foundRefs = "";
+
+  let contactsRefs = Array.from(
+    document.getElementsByClassName("task-assigned-contact-wrap")
+  );
+  for (let i = 0; i < contactsRefs.length; i++) {
+    contactsRefs[i].classList.add("d-none");
+  }
+  foundRefs = contactsRefs.filter((htmlElement) =>
+    htmlElement.innerText.toLowerCase().includes(searchKey)
+  );
+  for (let i = 0; i < foundRefs.length; i++) {
+    foundRefs[i].classList.remove("d-none");
+  }
+}
