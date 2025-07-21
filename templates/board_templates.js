@@ -198,6 +198,7 @@ function editTaskTemplate(indexTask, currentTask) {
                   <input
                     class="task-input-border task-input-date editable"
                     type="date"
+                    min="${currentDate}"
                     id="task-due-date"
                     value="${currentTask.dueDate}"
                     required
