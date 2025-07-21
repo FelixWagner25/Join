@@ -182,19 +182,26 @@ async function updateStatus(path = "", taskData = {}) {
 }
 
 function openAddTaskOverlay(taskStatusId) {
-  document.getElementById("add-task-overlay-wrap").classList.add("dim-active");
+  document
+    .getElementById("add-task-overlay-bg-wrap")
+    .classList.add("dim-active");
+  document
+    .getElementById("add-task-overlay-wrap")
+    .classList.add("overlay-open");
   renderAddTaskForm("add-task-overlay", taskStatusId);
 }
 
 function closeAddTaskOverlay() {
   document
-    .getElementById("add-task-overlay-wrap")
+    .getElementById("add-task-overlay-bg-wrap")
     .classList.remove("dim-active");
+  document
+    .getElementById("add-task-overlay-wrap")
+    .classList.remove("overlay-open");
 }
 
 async function showTaskOverlay(indexTask) {
   let overlay = document.querySelector(".task-overlay-wrap");
-  tasksArray = await getTasksArray();
   let currentTask = tasksArray[indexTask][1];
   blurBackgroundBoard();
   setTimeout(() => {

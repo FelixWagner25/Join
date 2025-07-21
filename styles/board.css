@@ -314,6 +314,12 @@
   max-width: 85%;
   max-height: 85%;
   border-radius: 30px;
+  transform: translate(200%, 0);
+  transition: transform 250ms linear;
+}
+
+.add-task-overlay-wrap.overlay-open {
+  transform: translate(0, 0);
 }
 
 .close-icon-add-task-overlay-wrap {
@@ -331,7 +337,7 @@
 
 input[type="checkbox"]:checked {
   appearance: none;
-  background-image: url('/assets/icons/checkbox_checked.svg');
+  background-image: url("/assets/icons/checkbox_checked.svg");
   background-color: unset;
   background-position: center;
   background-repeat: no-repeat;
@@ -341,7 +347,7 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"] {
   appearance: none;
-  background-image: url('/assets/icons/checkbox.svg');
+  background-image: url("/assets/icons/checkbox.svg");
   background-color: unset;
   background-position: center;
   background-repeat: no-repeat;
@@ -351,6 +357,6 @@ input[type="checkbox"] {
   margin: 0;
 }
 
-.task-badge{
+.task-badge {
   max-width: 190px;
 }
