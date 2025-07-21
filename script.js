@@ -3,6 +3,7 @@ const database =
 
 let contactsArray = [];
 let tasksArray = [];
+let overlayTransitionMiliSeconds = 300;
 /**
  * Function to log in as guest
  *

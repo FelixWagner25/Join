@@ -79,13 +79,21 @@ function renderBoardCardContacts(indexTask) {
   taskCardContactsRef.innerHTML = "";
   let objKeys = Object.keys(tasksArray[indexTask][1]?.assignedTo || {}).length;
   let maximalShownBadges = Math.min(3, objKeys);
-  for (let indexTaskContact = 0; indexTaskContact < maximalShownBadges; indexTaskContact++) {
-    taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(indexTaskContact, indexTask)
-  };
-    if(objKeys > maximalShownBadges){
-      taskCardContactsRef.innerHTML += getTaskAssignedContactsRemainderTemplate(
-      objKeys - maximalShownBadges)
-    }
+  for (
+    let indexTaskContact = 0;
+    indexTaskContact < maximalShownBadges;
+    indexTaskContact++
+  ) {
+    taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
+      indexTaskContact,
+      indexTask
+    );
+  }
+  if (objKeys > maximalShownBadges) {
+    taskCardContactsRef.innerHTML += getTaskAssignedContactsRemainderTemplate(
+      objKeys - maximalShownBadges
+    );
+  }
 }
 
 function getTaskCategoryClass(taskCategory) {
@@ -132,8 +140,12 @@ function searchTask() {
   let searchRef = document.getElementsByClassName("task-description-wrap");
   let foundRef = "";
   [...taskWrap].forEach((c) => c.classList.add("d-none"));
-  foundRef = [...searchRef].filter((t) => t.innerText.includes(inputRef[0].value));
-  foundRef.forEach((c) => c.parentElement.parentElement.classList.remove("d-none"));
+  foundRef = [...searchRef].filter((t) =>
+    t.innerText.includes(inputRef[0].value)
+  );
+  foundRef.forEach((c) =>
+    c.parentElement.parentElement.classList.remove("d-none")
+  );
 }
 
 function allowDrop(ev) {
@@ -170,12 +182,14 @@ async function updateStatus(path = "", taskData = {}) {
 }
 
 function openAddTaskOverlay(taskStatusId) {
-  document.getElementById("add-task-overlay-wrap").classList.remove("d-none");
+  document.getElementById("add-task-overlay-wrap").classList.add("dim-active");
   renderAddTaskForm("add-task-overlay", taskStatusId);
 }
 
 function closeAddTaskOverlay() {
-  document.getElementById("add-task-overlay-wrap").classList.add("d-none");
+  document
+    .getElementById("add-task-overlay-wrap")
+    .classList.remove("dim-active");
 }
 
 async function showTaskOverlay(indexTask) {
@@ -190,7 +204,7 @@ async function showTaskOverlay(indexTask) {
 }
 
 function blurBackgroundBoard() {
-  document.getElementById("task-overlay").classList.remove("d-none");
+  document.getElementById("task-overlay").classList.add("dim-active");
 }
 
 function overlayWipe() {
@@ -201,8 +215,7 @@ function overlayWipe() {
 function closeTaskOverlays() {
   let overlay = document.getElementById("task-overlay-wrap");
   document.getElementById("task-overlay-wrap").classList.remove("open");
-  document.getElementById("task-overlay").classList.add("d-none");
-  document.getElementById("task-overlay").classList.remove("task-overlay-blur");
+  document.getElementById("task-overlay").classList.remove("dim-active");
   newTaskAssignedContactsIndices = [];
   overlay.innerHTML = "";
   renderBoard();
