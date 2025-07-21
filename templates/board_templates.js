@@ -161,6 +161,8 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
 }
 
 function editTaskTemplate(indexTask, currentTask) {
+  console.log(currentTask);
+  
   return `
 <form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
@@ -214,16 +216,17 @@ function editTaskTemplate(indexTask, currentTask) {
                   <div class="d-flex gap-16px">
                     <button
                       type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
+                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px ${currentTask.priority == 'urgent' ? `active-${currentTask.priority}` : "" }"
                       id="task-priority-urgent"
                       onclick="setTaskPriority('task-priority-urgent')"
+                      
                     >
                       <span>Urgent</span>
                       <span class="task-priority-btn-icon urgent-icon"></span>
                     </button>
                     <button
                       type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium"
+                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px  ${currentTask.priority == 'medium' ? `active-${currentTask.priority}` : "" }"
                       id="task-priority-medium"
                       onclick="setTaskPriority('task-priority-medium')"
                     >
@@ -232,7 +235,7 @@ function editTaskTemplate(indexTask, currentTask) {
                     </button>
                     <button
                       type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
+                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px  ${currentTask.priority == 'low' ? `active-${currentTask.priority}` : "" }"
                       id="task-priority-low"
                       onclick="setTaskPriority('task-priority-low')"
                     >
