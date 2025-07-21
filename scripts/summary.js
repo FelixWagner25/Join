@@ -48,20 +48,25 @@ function userGreeting(){
   comma.classList.remove('d-none');
   greet.innerHTML = name;
   } 
+  return
 }
 
 async function checkAnimation() {
     const alreadyShown = sessionStorage.getItem('greetingShown');
-    const width = window.innerWidth
-    if (width > 820){
+    const screenWidth = window.innerWidth
+    let greetContainer = document.getElementsByClassName('greeting')
+    if (screenWidth > 820 && alreadyShown){
     sessionStorage.setItem('greetingShown', 'true');
-    }  else if (!alreadyShown){
+    }  else if (screenWidth < 820 && !alreadyShown){ 
         await showGreetingAnimation();
         sessionStorage.setItem('greetingShown', 'true');
+    addEventListener('animationend', () => {greetContainer[0].classList.remove('greet-animation')} )
     } else {
         return
-    }
+    } 
 }
+
+
 
 async function showGreetingAnimation() {
     let greetingDiv = document.querySelector('.greeting')
