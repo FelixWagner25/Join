@@ -274,6 +274,54 @@ function toggleTaskAssignedContactsDropdown() {
   renderAssignedContactsBadges();
 }
 
+function openTaskAssignedContactsDropdown() {
+  let assignedContactsDropdownRef = "";
+  let assignedContactsDropdownIconRef = "";
+  let assignedContactsBadges = "";
+  assignedContactsDropdownRef = document.getElementById(
+    "task-assigned-contacts-dropdown"
+  );
+  assignedContactsDropdownIconRef = document.getElementById(
+    "task-assigend-contacts-dropdown-icon"
+  );
+  assignedContactsBadges = document.getElementById(
+    "task-assigned-contacts-badges"
+  );
+
+  assignedContactsDropdownRef.classList.remove("d-none");
+  assignedContactsDropdownRef.classList.add("d-flex-column");
+  assignedContactsDropdownIconRef.classList.add("task-dropdown-open-icon");
+  assignedContactsBadges.classList.add("d-none");
+  renderTaskAssigendContacts();
+  renderContactCheckboxes(newTaskAssignedContactsIndices);
+  renderAssignedContactsBadges();
+  searchContact();
+}
+
+function closeTaskAssignedContactsDropdown() {
+  let assignedContactsDropdownRef = "";
+  let assignedContactsDropdownIconRef = "";
+  let assignedContactsBadges = "";
+  assignedContactsDropdownRef = document.getElementById(
+    "task-assigned-contacts-dropdown"
+  );
+  assignedContactsDropdownIconRef = document.getElementById(
+    "task-assigend-contacts-dropdown-icon"
+  );
+  assignedContactsBadges = document.getElementById(
+    "task-assigned-contacts-badges"
+  );
+
+  assignedContactsDropdownRef.classList.add("d-none");
+  assignedContactsDropdownRef.classList.remove("d-flex-column");
+  assignedContactsDropdownIconRef.classList.remove("task-dropdown-open-icon");
+  assignedContactsBadges.classList.remove("d-none");
+  renderTaskAssigendContacts();
+  renderContactCheckboxes(newTaskAssignedContactsIndices);
+  renderAssignedContactsBadges();
+  clearInputTagValue("task-assigned-contacts");
+}
+
 function renderAssignedContactsBadges() {
   renderContactsBadges(newTaskAssignedContactsIndices);
 }

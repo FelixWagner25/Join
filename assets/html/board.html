@@ -160,13 +160,13 @@
         <div
           class="bg-dimmed"
           id="add-task-overlay-bg-wrap"
-          onclick="closeAddTaskOverlay()"
+          onclick="closeAddTaskOverlay();closeTaskAssignedContactsDropdown()"
         >
           <div class="d-flex-row-c-c h-100vh">
             <div
               class="add-task-overlay-wrap bg-white pd-64px p-relative"
               id="add-task-overlay-wrap"
-              onclick="event.stopPropagation()"
+              onclick="event.stopPropagation(); closeTaskAssignedContactsDropdown()"
             >
               <div
                 class="close-icon-add-task-overlay-wrap d-flex-row-c-c"
