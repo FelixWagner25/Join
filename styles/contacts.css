@@ -240,7 +240,7 @@ main {
 
 .profile-badge {
   height: 42px;
-  width: 42px;
+  min-width: 42px;
   border-radius: 45px;
   color: white;
   border: 2px solid white;
@@ -475,6 +475,33 @@ main {
   color: white;
 }
 
+.add-new-contact-btn-mobile {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a3647;
+  border-radius: 46px;
+  padding: 12px;
+  box-shadow: 0 4px 4px 0 #00000040;
+}
+
+.add-new-contact-btn-mobile:hover {
+  cursor: pointer;
+  background-color: #29abe2;
+}
+
+.add-contact-icon {
+  width: 32px;
+  height: 32px;
+  background-image: url("/assets/icons/person_add.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 @keyframes slideInFromRight {
   from {
     transform: translateX(100vw);
@@ -520,7 +547,8 @@ main {
 
   .contacts-list-wrap {
     width: 100vw;
-    height: calc(100vh - 166px);
+    height: calc(100vh - 60px);
+    padding: 0 24px;
   }
 
   .contacts-list {
@@ -529,5 +557,19 @@ main {
 
   .bookmark-separator {
     width: 100%;
+  }
+
+  .add-new-contact-btn {
+    display: none;
+  }
+
+  .add-new-contact-btn-mobile {
+    display: flex;
+  }
+}
+
+@media (max-width: 820px) {
+  .add-new-contact-btn-mobile {
+    bottom: 96px;
   }
 }
