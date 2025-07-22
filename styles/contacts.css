@@ -3,7 +3,7 @@ body {
 }
 
 main {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .contacts-details-headline-title {

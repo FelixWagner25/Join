@@ -87,7 +87,7 @@ function getAddTaskFormTemplate(taskStatusId) {
     class="max-width-976px"
     onsubmit="addNewTask('${taskStatusId}'); event.preventDefault(); closeAddTaskOverlay();"
   >
-    <div class="d-flex-sb gap-48px pd-b-24px">
+    <div class="form-sub-wraps d-flex-sb gap-48px pd-b-24px">
       <div class="d-flex-column gap-32px">
         <div class="d-flex-column gap-8px">
           <label
@@ -138,7 +138,7 @@ function getAddTaskFormTemplate(taskStatusId) {
           <label class="font-Inter-400-20px text-color-2A3647"
             >Priority</label
           >
-          <div class="d-flex gap-16px">
+          <div class="d-flex gap-16px overlay-priority">
             <button
               type="button"
               class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
@@ -276,7 +276,7 @@ function getAddTaskFormTemplate(taskStatusId) {
       </div>
     </div>
 
-    <div class="d-flex-row-end-sb">
+    <div class="d-flex-row-end-sb task-button-mobile">
       <div class="font-Inter-400-16px">
         <span class="col-red">*</span>This field is required
       </div>

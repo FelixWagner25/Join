@@ -213,7 +213,7 @@ function editTaskTemplate(indexTask, currentTask) {
                   <label class="font-Inter-400-20px text-color-2A3647"
                     >Priority</label
                   >
-                  <div class="d-flex gap-16px">
+                  <div class="d-flex gap-16px overlay-priority">
                     <button
                       type="button"
                       class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px ${currentTask.priority == 'urgent' ? `active-${currentTask.priority}` : "" }"
