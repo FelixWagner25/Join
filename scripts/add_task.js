@@ -24,7 +24,10 @@ async function addNewTask(newTaskStatusId) {
   showNewTaskCreatedMessage();
   clearAddTaskForm();
   showToastMessage("add-task-toast-msg");
-  await initBoard();
+  setTimeout(() => {
+    directToBoardPage();
+  }, 1000);
+  // await initBoard();
 }
 
 async function submitNewTaskOptionalComplexInfo(editID) {

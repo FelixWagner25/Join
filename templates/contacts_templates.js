@@ -10,8 +10,8 @@ function getContactsListContactTemplate(indexContact) {
         <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassName(
           indexContact
         )}">${getFirstTwoStringInitialsByFirebaseId(
-                  contactsArray[indexContact][0]
-                )}</div>
+    contactsArray[indexContact][0]
+  )}</div>
         <div class="contact-name-wrap d-flex-column">
             <div class="contact-name">${
               contactsArray[indexContact][1].name
@@ -53,8 +53,8 @@ function getContactDetailsTemplate(indexContact) {
         <div class="${getContactColorClassName(
           indexContact
         )} contact-details-name-icon">${getFirstTwoStringInitialsByFirebaseId(
-                  contactsArray[indexContact][0]
-                )}</div>
+    contactsArray[indexContact][0]
+  )}</div>
             <div class="contact-details-name-wrap">
             <div class="contact-details-name">${
               contactsArray[indexContact][1].name
@@ -88,9 +88,7 @@ function getContactDetailsTemplate(indexContact) {
             <span class="contact-details-category">Email</span>
             <a href="mailto:${
               contactsArray[indexContact][1].email
-            }" class="contact-email">${
-              contactsArray[indexContact][1].email
-            }</a>
+            }" class="contact-email">${contactsArray[indexContact][1].email}</a>
             </div>
             <div class="contact-details-email-wrap">
             <span class="contact-details-category">Phone</span>
@@ -102,7 +100,6 @@ function getContactDetailsTemplate(indexContact) {
     </div>
   `;
 }
-
 
 function getAddContactsScreenTemplate() {
   return `
@@ -219,10 +216,8 @@ function getAddContactsScreenTemplate() {
             </div>
           </form>
         </div>
-  `
+  `;
 }
-
-
 
 /**
  * This function returns the edit contact srceen template

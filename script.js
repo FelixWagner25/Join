@@ -388,3 +388,7 @@ function showToastMessage(htmlId) {
   void msgRef.offsetWidth;
   msgRef.classList.add("show");
 }
+
+function directToBoardPage() {
+  location.href = "/assets/html/board.html";
+}
