@@ -523,6 +523,12 @@ main {
   gap: 30px;
 }
 
+.contact-details-mobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 1260px) {
   .contacts-details-wrap {
     display: none;
@@ -565,6 +571,10 @@ main {
 
   .add-new-contact-btn-mobile {
     display: flex;
+  }
+
+  .contact-details-mobile {
+    display: block;
   }
 }
 
