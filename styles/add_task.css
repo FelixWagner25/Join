@@ -144,7 +144,7 @@ h1 {
 }
 
 .tasks-subtask-list {
-  max-height: 64px;
+  max-height: 90px;
   overflow-y: auto;
 }
 
@@ -326,4 +326,48 @@ h1 {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+
+@media screen and (max-width:1400px) {
+  .form-sub-wraps{
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  main{
+    overflow: scroll;
+  }
+
+  .pd-lr-96px{
+    padding: 24px 24px 40px 24px;
+  }
+
+  .task-input-text-field{
+    min-width: unset;
+  }
+
+  .tasks-subtask-list{
+    max-height: unset;
+  }
+
+}
+
+@media screen and (max-width:820px) {
+  .font-Inter-700-61px{
+    font-size: 47px
+  }
+
+  span, .font-Inter-400-20px, .font-Inter-700-21px{
+    font-size: 16px;
+  }
+
+.task-button-mobile{
+      flex-direction: column;
+    gap: 16px;
+}
+
+.task-priority-btn{
+  padding: 10px 2px;
+}
 }

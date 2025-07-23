@@ -39,7 +39,10 @@
         </div>
 
         <div class="board-headline">
+          <div class="board-headline-mobile">
           <div class="board-headline-text">Board</div>
+          <button class="d-none add-task-btn-mobile " onclick="openAddTaskOverlay('todo')"></button>
+          </div>
           <div class="board-search-add-task-wrap">
             <div class="search-wrap">
               <input
@@ -168,6 +171,8 @@
               id="add-task-overlay-wrap"
               onclick="event.stopPropagation(); closeTaskAssignedContactsDropdown()"
             >
+        <div class="scroll-overlay">
+
               <div
                 class="close-icon-add-task-overlay-wrap d-flex-row-c-c"
                 onclick="closeAddTaskOverlay()"
@@ -180,6 +185,7 @@
               </div>
               <p class="font-Inter-700-61px mg-b-40px">Add Task</p>
               <div class=" " id="add-task-overlay"></div>
+            </div>
             </div>
           </div>
         </div>
