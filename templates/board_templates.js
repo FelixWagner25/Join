@@ -275,6 +275,30 @@ function editTaskTemplate(indexTask, currentTask) {
                   </div>
                 </div>
     
+                  <div class="task-overlay-assignment-wrap d-flex-column">
+                        <div class="font-Inter-400-20px text-color-2A3647">Assigned To:</div>
+                        <article class="d-flex-column">${
+                          currentTask.assignedTo
+                            ?.map(
+                              (p) => `
+                          <div class=" d-flex-c-sb">
+                            <div class="task-overlay-contact d-flex-align-item-c">
+                              <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
+                                p[1].Id
+                              )}">
+                                <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
+                                  p[1].Id
+                                )}
+                                </div>
+                              </div>
+                            <div class="font-OpenSans-400-19px">${p[1].name}</div>
+                            </div>
+                          </div>`
+                            )
+                            .join("") || ""
+                        }
+                        </article>
+                      </div>
 
                 <div class="d-flex-column gap-8px p-relative">
                   <label
