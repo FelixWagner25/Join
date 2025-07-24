@@ -29,7 +29,6 @@ h1 {
 
 .task-input-text-field {
   height: 48px;
-  min-width: 440px;
   padding: 12px 21px;
 }
 
@@ -236,7 +235,7 @@ h1 {
 }
 
 .task-priority-btn {
-  width: 136px;
+  width: 100%;
   padding: 16px 10px;
   background: white;
   box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
@@ -329,14 +328,14 @@ h1 {
 }
 
 
-@media screen and (max-width:1400px) {
+@media screen and (max-width:1200px) {
   .form-sub-wraps{
     flex-direction: column;
     gap: 24px;
   }
 
-  main{
-    overflow: scroll;
+  .scrollable-y{
+    overflow-y: scroll;
   }
 
   .pd-lr-96px{
@@ -344,7 +343,7 @@ h1 {
   }
 
   .task-input-text-field{
-    min-width: unset;
+    max-width: 100%;
   }
 
   .tasks-subtask-list{

@@ -55,8 +55,11 @@ textarea {
   overflow-y: scroll;
 }
 
+.width-100p{
+  width: 100%;
+}
+
 .scroll-overlay{
-/*   overflow-y: scroll; */
     height: 72vh;
     overflow-x: hidden;
     padding-right: 24px;
@@ -403,6 +406,8 @@ textarea {
 .animate-bg-unblur {
   animation: 0.25s animateBgUnblur linear;
 }
+
+
 
 @keyframes animateBgBlur {
   0% {

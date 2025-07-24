@@ -88,7 +88,7 @@ function getAddTaskFormTemplate(taskStatusId) {
     onsubmit="addNewTask('${taskStatusId}'); event.preventDefault(); closeAddTaskOverlay();"
   >
     <div class="form-sub-wraps d-flex-sb gap-48px pd-b-24px">
-      <div class="d-flex-column gap-32px">
+      <div class="d-flex-column gap-32px width-100p">
         <div class="d-flex-column gap-8px">
           <label
             for="task-title"
@@ -133,7 +133,7 @@ function getAddTaskFormTemplate(taskStatusId) {
 
       <div class="separator"></div>
 
-      <div class="d-flex-column gap-32px">
+      <div class="d-flex-column gap-32px width-100p">
         <div class="d-flex-column gap-8px">
           <label class="font-Inter-400-20px text-color-2A3647"
             >Priority</label

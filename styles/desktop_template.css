@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar-track {
+  background: #2A3647;
+}
+
 .page {
 
     display: grid;
@@ -298,3 +302,22 @@ nav>a:hover{
 }
 }
 
+@media screen and (orientation:landscape)
+and (max-device-height: 600px) 
+{
+.landscape-orientation{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: -0%;
+  background: rgb(0, 0, 0, 0.8);
+  left: -0%;
+  overflow: initial;
+  z-index: 9999;
+  color: #ffffff;
+
+}
+}

@@ -1,3 +1,8 @@
+main{
+  overflow: hidden;
+}
+
+
 .board-headline {
   display: flex;
   justify-content: space-between;
@@ -396,8 +401,7 @@ input[type="checkbox"] {
     height: 272px;
   }
   .task-card {
-    max-width: unset;
-    width: 252px;
+    width: 100%;
   }
 
   [id^="subtasks-progress-"] {
@@ -421,6 +425,18 @@ input[type="checkbox"] {
     max-height: unset;
     padding: 24px;
   }
+
+  .board-col-wrap{
+    scrollbar-width: auto;
+  }
+
+/*   
+main{
+  overflow: scroll;
+} */
+
+
+
 }
 
 @media screen and (max-width: 820px) {
