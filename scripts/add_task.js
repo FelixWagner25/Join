@@ -27,7 +27,6 @@ async function addNewTask(newTaskStatusId) {
   setTimeout(() => {
     directToBoardPage();
   }, 1000);
-  // await initBoard();
 }
 
 async function submitNewTaskOptionalComplexInfo(editID) {

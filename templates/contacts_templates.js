@@ -107,7 +107,7 @@ function getAddContactsScreenTemplate() {
           class="close-icon-wrap d-flex-row-c-c"
           onclick="closeContactOverlays()"
         >
-          <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
+          <span class="close-icon"></span>
         </div>
         <div class="add-contact-title-page">
           <img
@@ -125,7 +125,7 @@ function getAddContactsScreenTemplate() {
             <div class="add-contacts-title-page-hline"></div>
           </div>
         </div>
-        <div class="mg-t-200px">
+        <div class="d-flex-row-c-c p-relative">
           <div class="add-contact-badge-wrap d-flex-row-c-c">
             <img
               src="/assets/icons/person.svg"
@@ -134,12 +134,9 @@ function getAddContactsScreenTemplate() {
             />
           </div>
         </div>
-        <div class="add-contact-input-check mg-t-140px">
+        <div class="add-contact-input-check d-flex-column-c-c">
           <form class="add-contacts-form-wrap" onsubmit="addNewContact(event)">
-            <div class="add-contact-input-wrap">
-            
-            
-           
+            <div class="add-contact-input-wrap">           
             <input
                 required
                 type="text"
@@ -153,7 +150,6 @@ function getAddContactsScreenTemplate() {
                 class="add-contact-input-icon"
               />
             </div>
-             <div class="input-container d-flex-column">
             <div class="add-contact-input-wrap">
               <input
                 required
@@ -170,10 +166,7 @@ function getAddContactsScreenTemplate() {
               />
                           
             </div>
-<div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
-</div>
 
-             <div class="input-container d-flex-column">
             <div class="add-contact-input-wrap">
               <input
                 type="tel"
@@ -188,8 +181,6 @@ function getAddContactsScreenTemplate() {
                 class="add-contact-input-icon"
               />
             </div>
-            <div id="phone-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid phone number</div>
-</div>
             <div class="add-contact-btns-wrap">
               <button
                 type="button"
