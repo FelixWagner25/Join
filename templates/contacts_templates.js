@@ -150,6 +150,7 @@ function getAddContactsScreenTemplate() {
                 class="add-contact-input-icon"
               />
             </div>
+            <div class="input-container d-flex-column">
             <div class="add-contact-input-wrap">
               <input
                 required
@@ -163,10 +164,12 @@ function getAddContactsScreenTemplate() {
                 src="/assets/icons/mail_icon.svg"
                 alt="email-icon"
                 class="add-contact-input-icon"
-              />
-                          
+              />         
             </div>
+              <div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
+            </div>  
 
+            <div class="input-container d-flex-column">
             <div class="add-contact-input-wrap">
               <input
                 type="tel"
@@ -181,6 +184,9 @@ function getAddContactsScreenTemplate() {
                 class="add-contact-input-icon"
               />
             </div>
+              <div id="phone-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid phone number</div>
+            </div>
+
             <div class="add-contact-btns-wrap">
               <button
                 type="button"
