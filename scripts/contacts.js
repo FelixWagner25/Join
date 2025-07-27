@@ -72,6 +72,12 @@ function openAddContactScreen() {
   contactScreenRef.classList.add("overlay-open");
   contactScreenRef.innerHTML = "";
   contactScreenRef.innerHTML = getAddContactsScreenTemplate();
+  setVisibilityAddContactMobileBtn("hidden");
+}
+
+function setVisibilityAddContactMobileBtn(property) {
+  let mobileButtonRef = document.getElementById("add-new-contact-btn-mobile");
+  mobileButtonRef.style.visibility = property;
 }
 
 /**
@@ -81,6 +87,7 @@ function openAddContactScreen() {
 function closeContactOverlays() {
   document.getElementById("contact-card").classList.remove("overlay-open");
   document.getElementById("bg-dimmed").classList.remove("dim-active");
+  setVisibilityAddContactMobileBtn("visible");
 }
 
 /**
