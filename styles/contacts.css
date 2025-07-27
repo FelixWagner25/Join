@@ -153,6 +153,9 @@ main {
   font-weight: 400;
   color: #007cee;
   width: fit-content;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .contact-details-phone {
@@ -236,6 +239,9 @@ main {
 .contact-name {
   font-size: 20px;
   font-weight: 400;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .profile-badge {
@@ -684,5 +690,9 @@ main {
 
   .add-contact-btn {
     font-size: 18px;
+  }
+
+  .bookmark-wrap {
+    width: 100%;
   }
 }
