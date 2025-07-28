@@ -83,21 +83,26 @@ function signupFormValidation(event) {
   }
 }
 
+
+/**
+ * This function checks Mail and Phone Validation according to set regex 
+ * 
+ * @returns Boolean value that determines whether the code block is executed or skipped 
+ */
 function regexValidation() {
   const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   const regexPhone = /^\+?\d{8,}$/;
   let mail = document.querySelectorAll("input");
   let filteredMail = [...mail].filter((t) => t.type == "email");
   let filteredPhone = [...mail].filter((t) => t.type == "tel");
-  let valid = true;
   if (!regexMail.test(filteredMail[0].value)) {
     showErrorMessage("email", []);
-    valid = false;
+    return false
   }
   if (filteredPhone[0]?.value && !regexPhone.test(filteredPhone[0].value)) {
     showErrorMessage("phone", []);
-    valid = false;
-  } else return valid;
+    return  false;
+  } else return true;
 }
 
 /**
@@ -170,12 +175,18 @@ async function checkMailRedundancy(credentials) {
   showErrorMessage("email-redundancy", []);
 }
 
+/**
+ * This function gets all current used mails as an Array
+ * 
+ * @param {*} responseRef all current users in the database 
+ * @returns Array with all already in use emails
+ */
 function getUsedMails(responseRef) {
   let mailValue = Object.values(responseRef);
-  let newMail = mailValue.map((i) => {
+  let usedMails = mailValue.map((i) => {
     return i.email;
   });
-  return newMail;
+  return usedMails;
 }
 
 /**
@@ -251,10 +262,10 @@ async function userLogin(path = "user") {
  * @param {object} responseRef all user credentials from the database
  */
 async function checkLogInCredentials(responseRef) {
-  let x = Object.values(responseRef);
+  let usersObj = Object.values(responseRef);
   let loginInput = document.getElementsByTagName("input");
-  let name = filterUserName(x, loginInput);
-  let credentialsMerge = x.map((i) => {
+  let name = filterUserName(usersObj, loginInput);
+  let credentialsMerge = usersObj.map((i) => {
     return i.email + i.password;
   });
   if (credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
@@ -265,12 +276,24 @@ async function checkLogInCredentials(responseRef) {
   }
 }
 
-function filterUserName(x, loginInput) {
-  let correctuser = x.filter((x) => x.email == loginInput[0].value);
+/**
+ * This function filters the correct users name 
+ * 
+ * @param {*} usersObj current saved users and credentials in the databse 
+ * @param {*} loginInput the email and password input field
+ * @returns the users name
+ */
+function filterUserName(usersObj, loginInput) {
+  let correctuser = usersObj.filter((u) => u.email == loginInput[0].value);
   let user = correctuser.map((n) => n.name);
   return user;
 }
 
+/**
+ * This function sets user credentials initials in session Storage
+ * 
+ * @param {String} name the users name 
+ */
 function saveSession(name) {
   setSessionStorage("user", name[0]);
   setSessionStorage(
@@ -282,6 +305,12 @@ function saveSession(name) {
   );
 }
 
+/**
+ * This Function sets a sessionStorage
+ * 
+ * @param {*} key key name for the session storage
+ * @param {*} value value for the session storage
+ */
 function setSessionStorage(key, value) {
   sessionStorage.setItem(key, value);
 }
@@ -303,6 +332,12 @@ async function getDataBaseElement(path = "") {
   return responseJSON;
 }
 
+/**
+ * This function sends an object to the dedicated path
+ * 
+ * @param {*} path the path of the firebase 
+ * @param {Object} object the object according to the path
+ */
 async function submitObjectToDatabase(path = "", object = {}) {
   let response = await fetch(database + path + ".json", {
     method: "POST",
@@ -313,6 +348,12 @@ async function submitObjectToDatabase(path = "", object = {}) {
   });
 }
 
+/**
+ * This function updates an entry from the firebase
+ * 
+ * @param {*} path the path of the firebase
+ * @param {*} object the object according to the path
+ */
 async function updateDatabaseObject(path = "", object = {}) {
   let response = await fetch(database + path + ".json", {
     method: "PUT",
@@ -327,7 +368,7 @@ async function updateDatabaseObject(path = "", object = {}) {
  * This function delets an element form firebase server and collects the response as JSON
  *
  * @param {string} path
- * @returns
+ * @returns database element as JSON
  */
 async function deleteDataBaseElement(path = "") {
   let response = await fetch(database + path + ".json", {
@@ -337,6 +378,12 @@ async function deleteDataBaseElement(path = "") {
   return responseJSON;
 }
 
+/**
+ * This function sets the initials from the according contact
+ * 
+ * @param {String} inputString the name from the contact
+ * @returns Initials
+ */
 function getFirstTwoStringInitials(inputString) {
   let inputStringSplit = inputString.split(" ");
   let stringInitials = "";
@@ -350,6 +397,12 @@ function getFirstTwoStringInitials(inputString) {
   return stringInitials;
 }
 
+/**
+ * This function sets the initials from the according contact based on the firebase entry
+ * 
+ * @param {*} contactID contact ID from the firebase 
+ * @returns Initials
+ */
 function getFirstTwoStringInitialsByFirebaseId(contactID) {
   let stringInitials = "";
   for (let elementID of contactsArray) {
@@ -368,20 +421,37 @@ function getFirstTwoStringInitialsByFirebaseId(contactID) {
   return stringInitials;
 }
 
+/**
+ * This function clears the Input Tag
+ * 
+ * @param {*} htmlId the ID from the Input Tag
+ */
 function clearInputTagValue(htmlId) {
   let inputRef = document.getElementById(htmlId);
   inputRef.value = "";
 }
 
+/**
+ * This function gets the value form the Input Tag
+ * 
+ * @param {*} htmlId the ID from the Input Tag
+ * @returns value from the according ID
+ */
 function getInputTagValue(htmlId) {
   return document.getElementById(htmlId).value;
 }
 
+//in use??
 function setInputTagValue(htmlId, valueToSet) {
   let inputRef = document.getElementById(htmlId);
   inputRef.value = valueToSet;
 }
 
+/**
+ * This function activates the toast message for user feedback
+ * 
+ * @param {*} htmlId the ID from the according message-box
+ */
 function showToastMessage(htmlId) {
   msgRef = document.getElementById(htmlId);
   msgRef.classList.remove("show");
@@ -389,6 +459,10 @@ function showToastMessage(htmlId) {
   msgRef.classList.add("show");
 }
 
+/**
+ * This function forwards the user to the Board
+ * 
+ */
 function directToBoardPage() {
   location.href = "/assets/html/board.html";
 }
