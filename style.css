@@ -207,17 +207,17 @@ textarea {
 }
 
 .text-area {
-  width: 1016px;
+  max-width: 620px;
   gap: 35px;
 }
 
 .text-paragraph {
-  width: 1016px;
+  width: 100%;
   gap: 10px;
 }
 
 .text {
-  white-space: break-spaces;
+  white-space: pre-line;
   text-align: justify;
 }
 
