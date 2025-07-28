@@ -452,3 +452,12 @@ function backToContactsList() {
   document.getElementById("add-new-contact-btn-mobile").style.display = "flex";
   document.getElementById("edit-contact-btn-mobile").style.display = "none";
 }
+
+function showContactDetailsMobileMenu() {
+  document.getElementById("contact-details-mobile-menu").style.display =
+    "block";
+}
+
+function closeContactDetailsMoblieMenu() {
+  document.getElementById("contact-details-mobile-menu").style.display = "none";
+}

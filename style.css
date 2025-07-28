@@ -50,19 +50,19 @@ textarea {
   transform: translate(-50%, -50%);
 }
 
-.scroll-container{
+.scroll-container {
   scroll-behavior: smooth;
   overflow-y: scroll;
 }
 
-.width-100p{
+.width-100p {
   width: 100%;
 }
 
-.scroll-overlay{
-    height: 72vh;
-    overflow-x: hidden;
-    padding-right: 24px;
+.scroll-overlay {
+  height: 72vh;
+  overflow-x: hidden;
+  padding-right: 24px;
 }
 
 .text-center-relative {
@@ -379,6 +379,10 @@ textarea {
   gap: 16px;
 }
 
+.gap-24px {
+  gap: 24px;
+}
+
 .gap-32px {
   gap: 32px;
 }
@@ -406,8 +410,6 @@ textarea {
 .animate-bg-unblur {
   animation: 0.25s animateBgUnblur linear;
 }
-
-
 
 @keyframes animateBgBlur {
   0% {

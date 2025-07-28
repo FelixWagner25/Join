@@ -26,7 +26,7 @@
         class="d-contents"
         w3-include-html="/templates/desktop_template.html"
       ></div>
-      <main id="main">
+      <main id="main" onclick="closeContactDetailsMoblieMenu()">
         <div
           class="bg-dimmed d-flex-row-c-c"
           id="bg-dimmed"
@@ -105,9 +105,33 @@
         <div
           id="edit-contact-btn-mobile"
           class="edit-contact-btn-mobile"
-          onclick=""
+          onclick="showContactDetailsMobileMenu();stopEventPropagation(event) "
         >
           <span class="edit-contact-mobile-icon"></span>
+        </div>
+
+        <div
+          class="contact-details-mobile-menu"
+          id="contact-details-mobile-menu"
+        >
+          <div class="d-flex-column gap-24px">
+            <div class="contact-details-edit-contact" onclick="">
+              <img
+                src="/assets/icons/edit.svg"
+                alt="edit pencil"
+                class="edit-contact-icon"
+              />
+              <span class="edit-contact-text">Edit</span>
+            </div>
+            <div class="contact-details-delete-contact" onclick="">
+              <img
+                src="/assets/icons/delete.svg"
+                alt="delete trash bin"
+                class="delete-contact-icon"
+              />
+              <span class="edit-contact-text">Delete</span>
+            </div>
+          </div>
         </div>
 
         <div

@@ -109,7 +109,7 @@ main {
 }
 
 .edit-contact-icon {
-  width: 30px;
+  width: 24px;
   height: 19px;
 }
 
@@ -597,6 +597,20 @@ main {
   padding-top: 96px;
   padding-left: 62px;
   padding-right: 24px;
+}
+
+.contact-details-mobile-menu {
+  display: none;
+  position: absolute;
+  bottom: 96px;
+  right: 16px;
+  box-shadow: 0 4px 4px 0 #00000040;
+  background-color: white;
+  z-index: 10;
+  padding: 24px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border-bottom-left-radius: 24px;
 }
 
 @media (max-width: 1260px) {
