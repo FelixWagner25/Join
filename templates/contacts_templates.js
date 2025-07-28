@@ -228,7 +228,7 @@ function getEditContactScreenTemplate(indexContact) {
             class="close-icon-wrap d-flex-row-c-c"
             onclick="closeContactOverlays()"
           >
-            <img src="/assets/icons/close.svg" alt="close" class="close-icon" />
+            <span class="close-icon"></span>
           </div>
           <div class="add-contact-title-page">
             <img
@@ -243,7 +243,7 @@ function getEditContactScreenTemplate(indexContact) {
               <div class="add-contacts-title-page-hline"></div>
             </div>
           </div>
-          <div class="mg-t-200px">
+          <div class="d-flex-row-c-c p-relative">
             <div class="${getContactColorClassName(
               indexContact
             )} contact-badge-wrap d-flex-row-c-c">
@@ -252,7 +252,7 @@ function getEditContactScreenTemplate(indexContact) {
               )}</div>
             </div>
           </div>
-          <div class="add-contact-input-check .d-flex-column mg-t-140px">
+          <div class="add-contact-input-check d-flex-column-c-c">
             <form class="add-contacts-form-wrap d-flex-column" onsubmit="updateContact(${indexContact}, event)">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
