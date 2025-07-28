@@ -561,8 +561,15 @@ main {
   display: none;
 }
 
+.contact-details-mobile-wrap {
+  display: none;
+  padding-top: 96px;
+  padding-left: 62px;
+  padding-right: 24px;
+}
+
 @media (max-width: 1260px) {
-  .contacts-details {
+  .contacts-details-wrap {
     display: none;
   }
 

@@ -54,7 +54,7 @@
             </button>
             <div class="contacts-list" id="contacts-list"></div>
           </div>
-          <div class="contacts-details-wrap d-none" id="contacts-details-wrap">
+          <div class="contacts-details-wrap" id="contacts-details-wrap">
             <div class="contacts-details-headline p-relative">
               <span class="contacts-details-headline-title">Contacts</span>
               <div class="contact-details-headline-mobile-order">
@@ -64,12 +64,29 @@
                 >
               </div>
             </div>
+
             <div class="contact-details" id="contact-details"></div>
-            <div
-              class="contact-details-mobile"
-              id="contact-details-mobile"
-            ></div>
           </div>
+
+          <div
+            class="contact-details-mobile-wrap"
+            id="contact-details-mobile-wrap"
+          >
+            <div class="contacts-details-headline p-relative">
+              <span class="contacts-details-headline-title">Contacts</span>
+              <div class="contact-details-headline-mobile-order">
+                <div class="vline col-lightblue"></div>
+                <span class="contacts-details-headline-subtitle"
+                  >Better with a team</span
+                >
+              </div>
+              <div
+                class="contact-details-mobile"
+                id="contact-details-mobile"
+              ></div>
+            </div>
+          </div>
+
           <button
             onclick="backToContactsList()"
             class="back-to-contacts-list-btn"

@@ -390,6 +390,8 @@ function renderContactDetails(indexContact) {
     contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
     document.getElementById("back-to-contacts-list-btn").style.display =
       "block";
+    document.getElementById("contact-details-mobile-wrap").style.display =
+      "block";
   } else {
     contactDetailsRef = document.getElementById("contact-details");
     contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
@@ -397,7 +399,6 @@ function renderContactDetails(indexContact) {
     void contactDetailsRef.offsetWidth;
     contactDetailsRef.classList.add("contact-details-animate-in");
   }
-  document.getElementById("contacts-details-wrap").classList.remove("d-none");
 }
 
 /**
@@ -442,7 +443,7 @@ function addFocusToContact(indexContact) {
 }
 
 function backToContactsList() {
-  document.getElementById("contacts-details-wrap").classList.add("d-none");
   document.getElementById("contacts-list-wrap").style.display = "flex";
   document.getElementById("back-to-contacts-list-btn").style.display = "none";
+  document.getElementById("contact-details-mobile-wrap").style.display = "none";
 }
