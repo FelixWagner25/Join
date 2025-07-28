@@ -709,6 +709,28 @@ main {
   .add-contact-title-page {
     align-items: start;
   }
+
+  .contact-details-name {
+    font-size: 36px;
+  }
+
+  .contact-details-name-icon {
+    font-size: 27px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .contact-details-icon-edit-name-wrap {
+    gap: 20px;
+  }
+
+  .contacts-details-headline-title {
+    font-size: 47px;
+  }
+
+  .contacts-details-headline-subtitle {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 440px) {
@@ -736,5 +758,9 @@ main {
 
   .bookmark-wrap {
     width: 100%;
+  }
+
+  .contact-details-mobile-wrap {
+    padding: 40px 16px;
   }
 }
