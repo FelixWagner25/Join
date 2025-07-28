@@ -96,7 +96,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             >Title<span class="col-red">*</span></label
           >
           <input
-            class="task-input-border task-input-text-field font-Inter-400-12px"
+            class="task-input-border task-input-text-field font-Inter-400-20px"
             type="text"
             id="task-title"
             placeholder="Enter a title"
@@ -111,7 +111,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             >Description</label
           >
           <textarea
-            class="task-input-border task-input-text-area font-Inter-400-12px"
+            class="task-input-border task-input-text-area font-Inter-400-20px"
             id="task-description"
             placeholder="Enter a Description"
           ></textarea>
