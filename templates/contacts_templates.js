@@ -101,6 +101,29 @@ function getContactDetailsTemplate(indexContact) {
   `;
 }
 
+function getContactDetailsMobileMenuTemplate(indexContact) {
+  return `
+    <div class="d-flex-column gap-24px">
+    <div class="contact-details-edit-contact" onclick="showEditContactScreen(${indexContact})">
+      <img
+        src="/assets/icons/edit.svg"
+        alt="edit pencil"
+        class="edit-contact-icon"
+      />
+      <span class="edit-contact-text">Edit</span>
+    </div>
+    <div class="contact-details-delete-contact" onclick="deleteContact(${indexContact})">
+      <img
+        src="/assets/icons/delete.svg"
+        alt="delete trash bin"
+        class="delete-contact-icon"
+      />
+      <span class="edit-contact-text">Delete</span>
+    </div>
+  </div>
+  `;
+}
+
 function getAddContactsScreenTemplate() {
   return `
         <div

@@ -395,6 +395,7 @@ function renderContactDetails(indexContact) {
     document.getElementById("add-new-contact-btn-mobile").style.display =
       "none";
     document.getElementById("edit-contact-btn-mobile").style.display = "flex";
+    renderContactDetailsMobileMenu(indexContact);
   } else {
     contactDetailsRef = document.getElementById("contact-details");
     contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
@@ -402,6 +403,12 @@ function renderContactDetails(indexContact) {
     void contactDetailsRef.offsetWidth;
     contactDetailsRef.classList.add("contact-details-animate-in");
   }
+}
+
+function renderContactDetailsMobileMenu(indexContact) {
+  mobileMenuRef = document.getElementById("contact-details-mobile-menu");
+  mobileMenuRef.innerHTML = "";
+  mobileMenuRef.innerHTML = getContactDetailsMobileMenuTemplate(indexContact);
 }
 
 /**
