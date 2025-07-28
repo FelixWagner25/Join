@@ -39,8 +39,8 @@
           ></div>
         </div>
 
-        <div class="d-flex">
-          <div class="contacts-list-wrap">
+        <div class="d-flex p-relative">
+          <div class="contacts-list-wrap" id="contacts-list-wrap">
             <button
               class="add-new-contact-btn"
               onclick="showAddContactScreen()"
@@ -54,8 +54,8 @@
             </button>
             <div class="contacts-list" id="contacts-list"></div>
           </div>
-          <div class="contacts-details-wrap">
-            <div class="contacts-details-headline">
+          <div class="contacts-details-wrap d-none" id="contacts-details-wrap">
+            <div class="contacts-details-headline p-relative">
               <span class="contacts-details-headline-title">Contacts</span>
               <div class="contact-details-headline-mobile-order">
                 <div class="vline col-lightblue"></div>
@@ -65,10 +65,17 @@
               </div>
             </div>
             <div class="contact-details" id="contact-details"></div>
+            <div
+              class="contact-details-mobile"
+              id="contact-details-mobile"
+            ></div>
           </div>
+          <button
+            onclick="backToContactsList()"
+            class="back-to-contacts-list-btn"
+            id="back-to-contacts-list-btn"
+          ></button>
         </div>
-
-        <div class="contact-details-mobile" id="contact-details-mobile"></div>
 
         <div
           id="add-new-contact-btn-mobile"

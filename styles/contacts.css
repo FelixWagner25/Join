@@ -31,6 +31,7 @@ main {
 .contacts-details-wrap {
   padding-top: 96px;
   padding-left: 62px;
+  padding-right: 24px;
 }
 
 .contact-details-name-icon {
@@ -512,6 +513,23 @@ main {
   background-size: contain;
 }
 
+.back-to-contacts-list-btn {
+  display: none;
+  position: absolute;
+  top: 120px;
+  right: 48px;
+  background-image: url("/assets/icons/arrow-left.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+}
+
+.back-to-contacts-list-btn:hover {
+  cursor: pointer;
+}
+
 @keyframes slideInFromRight {
   from {
     transform: translateX(100vw);
@@ -539,9 +557,17 @@ main {
   height: 100%;
 }
 
+.contact-details-mobile {
+  display: none;
+}
+
 @media (max-width: 1260px) {
-  .contacts-details-wrap {
+  .contacts-details {
     display: none;
+  }
+
+  .contact-details-mobile {
+    display: flex;
   }
 
   .vline {

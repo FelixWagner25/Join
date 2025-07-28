@@ -382,12 +382,22 @@ async function findTaskIdAssignedToIdTupels(contactFirebaseId) {
  * @param {integer} indexContact
  */
 function renderContactDetails(indexContact) {
-  let contactDetailsRef = document.getElementById("contact-details");
   clearContactDetails();
-  contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
-  contactDetailsRef.classList.remove("contact-details-animate-in");
-  void contactDetailsRef.offsetWidth;
-  contactDetailsRef.classList.add("contact-details-animate-in");
+  let contactDetailsRef;
+  if (window.innerWidth < 1260) {
+    contactDetailsRef = document.getElementById("contact-details-mobile");
+    document.getElementById("contacts-list-wrap").style.display = "none";
+    contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
+    document.getElementById("back-to-contacts-list-btn").style.display =
+      "block";
+  } else {
+    contactDetailsRef = document.getElementById("contact-details");
+    contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
+    contactDetailsRef.classList.remove("contact-details-animate-in");
+    void contactDetailsRef.offsetWidth;
+    contactDetailsRef.classList.add("contact-details-animate-in");
+  }
+  document.getElementById("contacts-details-wrap").classList.remove("d-none");
 }
 
 /**
@@ -395,6 +405,7 @@ function renderContactDetails(indexContact) {
  */
 function clearContactDetails() {
   document.getElementById("contact-details").innerHTML = "";
+  document.getElementById("contact-details-mobile").innerHTML = "";
 }
 
 /**
@@ -428,4 +439,10 @@ function removeFocusFromAllContacts() {
 function addFocusToContact(indexContact) {
   let elementId = "contacts-list-" + String(indexContact);
   document.getElementById(elementId).classList.add("focus");
+}
+
+function backToContactsList() {
+  document.getElementById("contacts-details-wrap").classList.add("d-none");
+  document.getElementById("contacts-list-wrap").style.display = "flex";
+  document.getElementById("back-to-contacts-list-btn").style.display = "none";
 }
