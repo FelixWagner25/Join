@@ -394,6 +394,7 @@ function renderContactDetails(indexContact) {
       "block";
     document.getElementById("add-new-contact-btn-mobile").style.display =
       "none";
+    document.getElementById("edit-contact-btn-mobile").style.display = "flex";
   } else {
     contactDetailsRef = document.getElementById("contact-details");
     contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
@@ -449,4 +450,5 @@ function backToContactsList() {
   document.getElementById("back-to-contacts-list-btn").style.display = "none";
   document.getElementById("contact-details-mobile-wrap").style.display = "none";
   document.getElementById("add-new-contact-btn-mobile").style.display = "flex";
+  document.getElementById("edit-contact-btn-mobile").style.display = "none";
 }

@@ -504,6 +504,26 @@ main {
   background-color: #29abe2;
 }
 
+.edit-contact-btn-mobile {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a3647;
+  border-radius: 46px;
+  padding: 12px;
+  box-shadow: 0 4px 4px 0 #00000040;
+  width: 56px;
+  height: 56px;
+}
+
+.edit-contact-btn-mobile:hover {
+  cursor: pointer;
+  background-color: #29abe2;
+}
+
 .add-contact-icon {
   width: 32px;
   height: 32px;
@@ -513,10 +533,19 @@ main {
   background-size: contain;
 }
 
+.edit-contact-mobile-icon {
+  width: 5px;
+  height: 21px;
+  background-image: url("/assets/icons/mobile-menu.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .back-to-contacts-list-btn {
   display: none;
   position: absolute;
-  top: 120px;
+  top: 128px;
   right: 48px;
   background-image: url("/assets/icons/arrow-left.svg");
   background-repeat: no-repeat;
@@ -695,10 +724,18 @@ main {
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .contract-details-edit-delete-wrap {
+    display: none;
+  }
 }
 
 @media (max-width: 820px) {
   .add-new-contact-btn-mobile {
+    bottom: 96px;
+  }
+
+  .edit-contact-btn-mobile {
     bottom: 96px;
   }
 
