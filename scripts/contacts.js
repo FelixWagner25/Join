@@ -392,6 +392,8 @@ function renderContactDetails(indexContact) {
       "block";
     document.getElementById("contact-details-mobile-wrap").style.display =
       "block";
+    // document.getElementById("add-new-contact-btn-mobile").style.display =
+    //   "none";
   } else {
     contactDetailsRef = document.getElementById("contact-details");
     contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
@@ -446,4 +448,5 @@ function backToContactsList() {
   document.getElementById("contacts-list-wrap").style.display = "flex";
   document.getElementById("back-to-contacts-list-btn").style.display = "none";
   document.getElementById("contact-details-mobile-wrap").style.display = "none";
+  // document.getElementById("add-new-contact-btn-mobile").style.display = "flex";
 }
