@@ -253,3 +253,38 @@ function renderSubtasksProgressbarFill(indexTask) {
     ) + "%";
   progBarRef.style.width = widthString;
 }
+
+
+async function deleteTask(indexTask) {
+  closeTaskOverlays();
+  await deleteDataBaseElement(`tasks/${tasksArray[indexTask][0]}`);
+  await initBoard();
+}
+
+async function editTask(indexTask) {
+  tasksArray = await getTasksArray();
+  let overlay = document.querySelector(".task-overlay-wrap");
+  let currentTask = tasksArray[indexTask][1];
+  loadOptionalScalarTaskInfo(currentTask, indexTask);
+  overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
+}
+
+function loadOptionalScalarTaskInfo(currentTask, indexTask) {
+  let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {};
+  newTaskAssignedContactsIndices =
+    currentTask.assignedTo?.map((i) => i[1].Id) || [];
+  newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || [];
+  newTaskSubtasks = Object.values(currentSubtasks).map((i) => i[1]);
+}
+
+async function submitEditTask(indexTask) {
+  let editedTaskObj = tasksArray[indexTask][1];
+  let taskID = tasksArray[indexTask][0];
+  let newTaskObj = getNewTaskScalarInformation("", editedTaskObj);
+  await updateDatabaseObject(`tasks/${taskID}`, newTaskObj);
+  tasksArray = await getTasksArray();
+  await submitNewTaskOptionalComplexInfo(taskID);
+  await initBoard();
+  closeTaskOverlays();
+}
+

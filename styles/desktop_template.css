@@ -287,12 +287,9 @@ nav>a:hover{
   border-radius: 8px;
 }
 
-
-
 .metrics-subtitle{
   font-size: 20px;
 }
-
 
 .join-logo-mobile{
   display: flex;
@@ -303,7 +300,7 @@ nav>a:hover{
 }
 
 @media screen and (orientation:landscape)
-and (max-device-height: 600px) 
+and (max-height: 600px) 
 {
 .landscape-orientation{
   display: flex;
