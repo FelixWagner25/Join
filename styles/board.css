@@ -1,7 +1,6 @@
-main{
+main {
   overflow: hidden;
 }
-
 
 .board-headline {
   display: flex;
@@ -171,6 +170,7 @@ main{
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   color: #a8a8a8;
   border: 1px dashed #a8a8a8;
+  padding: 8px 24px;
 }
 
 .task-card-wrap {
@@ -199,7 +199,7 @@ main{
   gap: 24px;
   flex-direction: column;
   padding: 16px;
-/*   width: 252px; */
+  /*   width: 252px; */
   min-width: 160px;
 }
 
@@ -261,7 +261,7 @@ main{
   left: 50%;
   z-index: 100;
   width: 525px;
-/*   max-height: 92vh; */
+  /*   max-height: 92vh; */
   border-radius: 30px;
   padding: 48px 40px;
   box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.16);
@@ -377,7 +377,6 @@ input[type="checkbox"] {
   max-width: 190px;
 }
 
-
 @media screen and (max-width: 1280px) {
   .board-col-wrap {
     flex-direction: column;
@@ -400,6 +399,7 @@ input[type="checkbox"] {
   .no-task-feedback {
     height: 272px;
   }
+
   .task-card {
     width: 100%;
   }
@@ -421,22 +421,19 @@ input[type="checkbox"] {
     align-items: start;
   }
 
-  .add-task-overlay-wrap{
+  .add-task-overlay-wrap {
     max-height: unset;
     padding: 24px;
   }
 
-  .board-col-wrap{
+  .board-col-wrap {
     scrollbar-width: auto;
   }
 
-/*   
+  /*   
 main{
   overflow: scroll;
 } */
-
-
-
 }
 
 @media screen and (max-width: 820px) {
@@ -464,11 +461,11 @@ main{
     width: 100%;
   }
 
-  .board-headline{
-    padding: 76px 24px 40px 24px
+  .board-headline {
+    padding: 76px 24px 40px 24px;
   }
 
-  .board-col-wrap{
+  .board-col-wrap {
     padding: 0 32px;
     gap: 40px;
   }
@@ -480,24 +477,24 @@ main{
     max-height: 280px;
   }
 
-  .board-search-add-task-wrap{
+  .board-search-add-task-wrap {
     width: 100%;
   }
 
-  .search-wrap{
+  .search-wrap {
     width: 100%;
   }
 
-  .task-overlay-wrap{
+  .task-overlay-wrap {
     width: 75%;
     padding: 48px 12px;
   }
 
-  .font-Inter-700-61px{
-    font-size:34px;
+  .font-Inter-700-61px {
+    font-size: 34px;
   }
 
-  .overlay-priority{
+  .overlay-priority {
     flex-direction: column;
     align-items: center;
   }

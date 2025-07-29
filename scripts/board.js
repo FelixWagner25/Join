@@ -7,6 +7,7 @@ async function initBoard() {
 }
 
 async function getTasksArray() {
+  tasksArray = [];
   let tasks = await getDataBaseElement("tasks");
   if (tasks == null) {
     return tasksArray;
@@ -254,7 +255,6 @@ function renderSubtasksProgressbarFill(indexTask) {
   progBarRef.style.width = widthString;
 }
 
-
 async function deleteTask(indexTask) {
   closeTaskOverlays();
   await deleteDataBaseElement(`tasks/${tasksArray[indexTask][0]}`);
@@ -287,4 +287,3 @@ async function submitEditTask(indexTask) {
   await initBoard();
   closeTaskOverlays();
 }
-
