@@ -4,6 +4,8 @@ const database =
 let contactsArray = [];
 let tasksArray = [];
 let overlayTransitionMiliSeconds = 300;
+
+
 /**
  * Function to log in as guest
  *
@@ -49,7 +51,7 @@ function checkInput() {
 }
 
 /**
- * Function to reset error-messages on login & signup page
+ * Function to reset error-messages
  *
  *
  */
