@@ -108,11 +108,9 @@ main {
   width: 24px;
 }
 
-.add-btn:active {
+.add-btn:hover {
   background-image: url("/assets/icons/add_press.svg");
   border-color: #29abe2;
-  height: 24px;
-  width: 24px;
 }
 
 .col-content {
