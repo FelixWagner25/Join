@@ -85,7 +85,7 @@ function getAddTaskFormTemplate(taskStatusId) {
   return `
   <form
     class="max-width-976px"
-    onsubmit="addNewTask('${taskStatusId}'); event.preventDefault(); closeAddTaskOverlay();"
+    onsubmit="requiredInputValidation('${taskStatusId}'); event.preventDefault() "
   >
     <div class="form-sub-wraps d-flex-sb gap-48px pd-b-24px">
       <div class="d-flex-column gap-32px width-100p">
@@ -96,12 +96,12 @@ function getAddTaskFormTemplate(taskStatusId) {
             >Title<span class="col-red">*</span></label
           >
           <input
-            class="task-input-border task-input-text-field font-Inter-400-20px"
+            class="task-input-border task-input-text-field font-Inter-400-20px required"
             type="text"
             id="task-title"
             placeholder="Enter a title"
-            required
           />
+          <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
         </div>
 
         <div class="d-flex-column gap-8px">
@@ -121,14 +121,15 @@ function getAddTaskFormTemplate(taskStatusId) {
             >Due date<span class="col-red">*</span></label
           >
           <input
-            class="task-input-border task-input-date"
+            class="task-input-border task-input-date required"
             type="date"
             min="${currentDate}"
             id="task-due-date"
             placeholder="dd/mm/yyyy"
-            required
           />
+           <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
         </div>
+        
       </div>
 
       <div class="separator"></div>
@@ -205,12 +206,11 @@ function getAddTaskFormTemplate(taskStatusId) {
             >Category<span class="col-red">*</span></label
           >
           <input
-            class="p-relative task-input-border task-input-category font-Inter-400-20px"
+            class="p-relative task-input-border task-input-category font-Inter-400-20px required"
             type="text"
             id="task-category"
             placeholder="Select task category"
             onclick="toggleTaskCategoryDropdown()"
-            required
             autocomplete="off"
           />
           <span
@@ -234,6 +234,7 @@ function getAddTaskFormTemplate(taskStatusId) {
               User Story
             </div>
           </div>
+           <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
         </div>
 
         <div class="d-flex-column gap-8px p-relative">

@@ -375,6 +375,7 @@ function loadOptionalScalarTaskInfo(currentTask, indexTask) {
  * @param {String} indexTask index of the task 
  */
 async function submitEditTask(indexTask) {
+  let overlay = document.querySelector(".task-overlay-wrap");
   let editedTaskObj = tasksArray[indexTask][1];
   let taskID = tasksArray[indexTask][0];
   let newTaskObj = getNewTaskScalarInformation("", editedTaskObj);
@@ -383,4 +384,7 @@ async function submitEditTask(indexTask) {
   await submitNewTaskOptionalComplexInfo(taskID);
   await initBoard();
   closeTaskOverlays();
+  setTimeout(() => {
+  overlay.innerHTML = ""
+  }, 500);
 }

@@ -468,3 +468,25 @@ function showToastMessage(htmlId) {
 function directToBoardPage() {
   location.href = "/assets/html/board.html";
 }
+
+/**
+ * This Function replaces HTML5 Validation
+ *  * 
+ * @param {String} taskStatusId TaskId from Firebase
+ */
+function requiredInputValidation(taskStatusId){
+  let requiredFields = document.getElementsByClassName('required');
+  let validationMessageRef = document.getElementsByClassName('validation');
+  let validationTrue = [...requiredFields].every((element) => element.value != "")
+if (validationTrue){
+  addNewTask(taskStatusId)
+} else {
+    [...requiredFields].forEach((element, i) => {
+  if (element.value === "") {
+    validationMessageRef[i].classList.remove('d-none')
+  } else {
+    validationMessageRef[i].classList.add('d-none')
+  }
+})
+}
+}
