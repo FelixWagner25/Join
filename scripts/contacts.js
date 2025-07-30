@@ -1,27 +1,7 @@
-let contactColorClasses = [
-  "bg-orange",
-  "bg-purple",
-  "bg-pink",
-  "bg-darkpurple",
-  "bg-turqoise",
-  "bg-green",
-  "bg-lightred",
-  "bg-lightorange",
-  "bg-lightpink",
-  "bg-gold",
-  "bg-royalblue",
-  "bg-neon",
-  "bg-yellow",
-  "bg-red",
-  "bg-sand",
-];
-
-let databasee =
-  "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
-
 /**
- * Function to initialize contacts object with database entries
+ * Initializes contacts object with database entries
  *
+ * @returns {Promise<void>} A promise that resolves when contacts and task array are initialised completely.
  */
 async function initContacs() {
   contactsArray = await getSortedContactsArray();
@@ -30,9 +10,10 @@ async function initContacs() {
 }
 
 /**
- * This function returns an alphabetically by name sorted array from contacts object input.
+ * Returns an array alphabetically sorted by name.
  *
- * @returns - array with alphabetically by name sorted contacts from firebase server
+ * @async
+ * @returns {Promise<Array<[string,Object]>>} A promise that resolves to an array of [id, contact] pairs sorted by name.
  */
 async function getSortedContactsArray() {
   let contacts = await getDataBaseElement("contacts");
@@ -46,7 +27,7 @@ async function getSortedContactsArray() {
 }
 
 /**
- * This function is used to show the add contact input screen.
+ * Shows add-new-contact overlay.
  *
  */
 function showAddContactScreen() {
@@ -56,7 +37,7 @@ function showAddContactScreen() {
 }
 
 /**
- * This function blurs the background of the main screen.
+ * Blurs background of the main screen.
  *
  */
 function blurBackground() {
@@ -64,7 +45,7 @@ function blurBackground() {
 }
 
 /**
- * This function opens the add contact input screen.
+ * Opens add-contact input screen.
  *
  */
 function openAddContactScreen() {
@@ -75,13 +56,18 @@ function openAddContactScreen() {
   setVisibilityAddContactMobileBtn("hidden");
 }
 
+/**
+ * Sets a CSS property value of the add contact mobile button
+ *
+ * @param {string} property A CSS property
+ */
 function setVisibilityAddContactMobileBtn(property) {
   let mobileButtonRef = document.getElementById("add-new-contact-btn-mobile");
   mobileButtonRef.style.visibility = property;
 }
 
 /**
- * This function closes any overlay at the contacts page.
+ * Closes any overlay at the contacts page.
  *
  */
 function closeContactOverlays() {
@@ -91,7 +77,7 @@ function closeContactOverlays() {
 }
 
 /**
- * This function is used to show the edit contact screen.
+ * Shows the edit contact screen.
  *
  */
 function showEditContactScreen(indexContact) {
@@ -102,7 +88,7 @@ function showEditContactScreen(indexContact) {
 }
 
 /**
- * This function opend the edit contact screen.
+ * Opens the edit contact screen.
  *
  */
 function openEditContactScreen() {
@@ -111,7 +97,7 @@ function openEditContactScreen() {
 }
 
 /**
- * This function renders the edit contact overlay screen.
+ * Renders the edit contact overlay screen.
  *
  * @param {integer} indexContact
  */
@@ -122,7 +108,7 @@ function renderEditContactScreen(indexContact) {
 }
 
 /**
- * This function prefills all input fields of add contact form with current values stored on firebase server.
+ * Prefills all input fields of add contact form with current values stored on firebase server.
  *
  * @param {integer} indexContact
  */
@@ -133,10 +119,10 @@ async function prefillContactInputFields(indexContact) {
 }
 
 /**
- * This function prefills an input field of the add contact form with the respective current value stored on firebase server.
+ * Prefills an input field of the add contact form with the respective current value stored on firebase server.
  *
- * @param {string} inputHtmlId - id of contact input html element
- * @param {string} attributeName - contact attribute name, either "name", "email" or "phone"
+ * @param {string} inputHtmlId Id of contact input html element
+ * @param {string} attributeName Contact attribute name, either "name", "email" or "phone"
  * @param {integer} indexContact
  */
 async function prefillContactInputField(attributeName, indexContact) {
@@ -149,11 +135,11 @@ async function prefillContactInputField(attributeName, indexContact) {
 }
 
 /**
- * This function gets the current contact attribute from firebase server
+ * Gets the current contact attribute from firebase server
  *
- * @param {string} attribute - contact attribute either name, email or phone
+ * @param {string} attribute Contact attribute either name, email or phone
  * @param {integer} indexContact
- * @returns - current contact attribute
+ * @returns Current contact attribute
  */
 async function getCurrentContactAttribute(attribute, indexContact) {
   let contactId = contactsArray[indexContact][0];
@@ -163,7 +149,7 @@ async function getCurrentContactAttribute(attribute, indexContact) {
 }
 
 /**
- * This function adds a new contact to the database.
+ * Adds a new contact to the database.
  *
  */
 async function addNewContact(event) {
@@ -176,12 +162,17 @@ async function addNewContact(event) {
   await renderContactsList();
   closeContactOverlays();
   removeFocusFromAllContacts();
-  let addedContactEmail = newContactData.email;
-  let addedContactIndex = getContactIndexByEmail(addedContactEmail);
+  let addedContactIndex = getContactIndexByEmail(newContactData.email);
   showContactDetails(addedContactIndex);
   showToastMessage("contact-created-toast-msg");
 }
 
+/**
+ * Returns contact index inside of contactsArray by contact email.
+ *
+ * @param {string} contactEmail
+ * @returns {integer} index of contact with above email inside contactsArray
+ */
 function getContactIndexByEmail(contactEmail) {
   let index = contactsArray.findIndex(
     (contact) => contact[1].email === contactEmail
@@ -190,7 +181,7 @@ function getContactIndexByEmail(contactEmail) {
 }
 
 /**
- * This function collects a new contact's information typed into the form.
+ * Collects a new contact's information typed into the form.
  *
  */
 function getContactInformation(htmlIdPrefix) {
@@ -207,7 +198,7 @@ function getContactInformation(htmlIdPrefix) {
 }
 
 /**
- * This function clears the add contact input form.
+ * Clears the add contact input form.
  *
  */
 function clearAddContactForm(htmlIdPrefix) {
@@ -220,7 +211,7 @@ function clearAddContactForm(htmlIdPrefix) {
 }
 
 /**
- * This function updates the current contact information on the firebase server
+ * Updates the current contact information on the firebase server
  *
  * @param {integer} indexContact
  */
@@ -240,7 +231,7 @@ async function updateContact(indexContact, event) {
 }
 
 /**
- * This function renders the contacts list
+ * Renders the contacts list
  *
  */
 async function renderContactsList() {
@@ -258,10 +249,10 @@ async function renderContactsList() {
 }
 
 /**
- * This function checks whether contact in contact list has a first letter predecessor. If the contact has a first letter predecessor there is no need for an additional contact list bookmark related to this contact
+ * Checks whether contact in contact list has a first letter predecessor. If the contact has a first letter predecessor there is no need for an additional contact list bookmark related to this contact
  *
  * @param {integer} indexContact
- * @returns
+ * @returns {boolean} true if predecessor exists
  */
 function contactHasFirstLetterPredecessor(indexContact) {
   if (indexContact == 0) {
@@ -279,11 +270,11 @@ function contactHasFirstLetterPredecessor(indexContact) {
 }
 
 /**
- * Function that checks whether first characters of two strings are equal
+ * Checks whether first characters of two strings are equal
  *
  * @param {string} char1 - first character
  * @param {string} char2 - second character
- * @returns
+ * @returns {boolean} true if first letters are equal
  */
 function firstLettersAreEqual(char1, char2) {
   if (char1.charAt(0).toLowerCase() == char2.charAt(0).toLowerCase()) {
@@ -293,16 +284,22 @@ function firstLettersAreEqual(char1, char2) {
 }
 
 /**
- * This function assigns a icon color to a contact
+ * Assigns a icon color to a contact
  *
  * @param {integer} indexContact
- * @returns - CSS class with color property as string
+ * @returns {string}  CSS class with color property as string
  */
 function getContactColorClassName(indexContact) {
   let index = indexContact % contactColorClasses.length;
   return contactColorClasses[index];
 }
 
+/**
+ * Returns contact color class name by firebase server id
+ *
+ * @param {string} contactFirebaseId
+ * @returns {string} name of CSS class
+ */
 function getContactColorClassNameByFirebaseId(contactFirebaseId) {
   if (!contactFirebaseId) {
     return "";
@@ -313,6 +310,12 @@ function getContactColorClassNameByFirebaseId(contactFirebaseId) {
   }
 }
 
+/**
+ * Returns index of contact in contactsArray by contacts firebase Id
+ *
+ * @param {string} contactFirebaseId
+ * @returns {integer} index of contact in contactsArray
+ */
 function findContactIndexByFirebaseId(contactFirebaseId) {
   if (!contactFirebaseId) {
     return "";
@@ -324,7 +327,7 @@ function findContactIndexByFirebaseId(contactFirebaseId) {
 }
 
 /**
- * This function deletes a contact from firebase server
+ * Deletes a contact from firebase server
  *
  * @param {integer} indexContact
  */
@@ -339,6 +342,11 @@ async function deleteContact(indexContact) {
   showToastMessage("delete-contact-toast-msg");
 }
 
+/**
+ * Deletes contact from all assigned tasks in board.
+ *
+ * @param {string} contactFirebaseId
+ */
 async function deleteContactFromTasks(contactFirebaseId) {
   let taskIdassignedToIdTupels = await findTaskIdAssignedToIdTupels(
     contactFirebaseId
@@ -354,8 +362,12 @@ async function deleteContactFromTasks(contactFirebaseId) {
   tasksArray = await getTasksArray();
 }
 
+/**
+ *
+ * @param {string} contactFirebaseId
+ * @returns {array} tupel of task Id and taks assigned to Id
+ */
 async function findTaskIdAssignedToIdTupels(contactFirebaseId) {
-  console.log(tasksArray);
   tasksArray = await getTasksArray();
   let taskIdassignedToIdTupels = [];
   for (let indexTask = 0; indexTask < tasksArray.length; indexTask++) {
@@ -377,34 +389,54 @@ async function findTaskIdAssignedToIdTupels(contactFirebaseId) {
 }
 
 /**
- * This function renders the details section of a contact
+ * Renders the details section of a contact
  *
  * @param {integer} indexContact
  */
 function renderContactDetails(indexContact) {
   clearContactDetails();
-  let contactDetailsRef;
   if (window.innerWidth < 1260) {
-    contactDetailsRef = document.getElementById("contact-details-mobile");
-    document.getElementById("contacts-list-wrap").style.display = "none";
-    contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
-    document.getElementById("back-to-contacts-list-btn").style.display =
-      "block";
-    document.getElementById("contact-details-mobile-wrap").style.display =
-      "block";
-    document.getElementById("add-new-contact-btn-mobile").style.display =
-      "none";
-    document.getElementById("edit-contact-btn-mobile").style.display = "flex";
-    renderContactDetailsMobileMenu(indexContact);
+    renderContactDetailsMobileWindow(indexContact);
   } else {
-    contactDetailsRef = document.getElementById("contact-details");
-    contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
-    contactDetailsRef.classList.remove("contact-details-animate-in");
-    void contactDetailsRef.offsetWidth;
-    contactDetailsRef.classList.add("contact-details-animate-in");
+    renderContactDetailsDesktopWindow(indexContact);
   }
 }
 
+/**
+ * Renders contact details for mobile screen widths
+ *
+ * @param {integer} indexContact
+ */
+function renderContactDetailsMobileWindow(indexContact) {
+  let contactDetailsRef = document.getElementById("contact-details-mobile");
+  document.getElementById("contacts-list-wrap").style.display = "none";
+  contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
+  document.getElementById("back-to-contacts-list-btn").style.display = "block";
+  document.getElementById("contact-details-mobile-wrap").style.display =
+    "block";
+  document.getElementById("add-new-contact-btn-mobile").style.display = "none";
+  document.getElementById("edit-contact-btn-mobile").style.display = "flex";
+  renderContactDetailsMobileMenu(indexContact);
+}
+
+/**
+ * Renders contact details for desktop screen widths
+ *
+ * @param {integer} indexContact
+ */
+function renderContactDetailsDesktopWindow(indexContact) {
+  let contactDetailsRef = document.getElementById("contact-details");
+  contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
+  contactDetailsRef.classList.remove("contact-details-animate-in");
+  void contactDetailsRef.offsetWidth;
+  contactDetailsRef.classList.add("contact-details-animate-in");
+}
+
+/**
+ * Renders contact details mobile menu
+ *
+ * @param {integer} indexContact
+ */
 function renderContactDetailsMobileMenu(indexContact) {
   mobileMenuRef = document.getElementById("contact-details-mobile-menu");
   mobileMenuRef.innerHTML = "";
@@ -412,7 +444,7 @@ function renderContactDetailsMobileMenu(indexContact) {
 }
 
 /**
- * This function clears the contact details panel
+ * Clears the contact details panel
  */
 function clearContactDetails() {
   document.getElementById("contact-details").innerHTML = "";
@@ -420,7 +452,7 @@ function clearContactDetails() {
 }
 
 /**
- * This function shows a contacts details.
+ * Shows a contacts details.
  *
  * @param {integer} indexContact
  */
@@ -431,7 +463,7 @@ function showContactDetails(indexContact) {
 }
 
 /**
- * This function removes the focus class from all contact list entries
+ * Removes the focus class from all contact list entries
  */
 function removeFocusFromAllContacts() {
   contactsListTagsRef = document.getElementsByClassName(
@@ -443,7 +475,7 @@ function removeFocusFromAllContacts() {
 }
 
 /**
- * This function adds the focus to the selected contact list entry.
+ * Adds the focus to the selected contact list entry.
  *
  * @param {integer} indexContact
  */
@@ -452,6 +484,10 @@ function addFocusToContact(indexContact) {
   document.getElementById(elementId).classList.add("focus");
 }
 
+/**
+ * Closes contact details mobile overlay and returns users view back to contacts list
+ *
+ */
 function backToContactsList() {
   document.getElementById("contacts-list-wrap").style.display = "flex";
   document.getElementById("back-to-contacts-list-btn").style.display = "none";
@@ -460,11 +496,17 @@ function backToContactsList() {
   document.getElementById("edit-contact-btn-mobile").style.display = "none";
 }
 
+/**
+ * Shows contact details mobile menu
+ */
 function showContactDetailsMobileMenu() {
   document.getElementById("contact-details-mobile-menu").style.display =
     "block";
 }
 
-function closeContactDetailsMoblieMenu() {
+/**
+ * Closes contact details mobile Menu
+ */
+function closeContactDetailsMobileMenu() {
   document.getElementById("contact-details-mobile-menu").style.display = "none";
 }

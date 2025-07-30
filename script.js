@@ -5,6 +5,23 @@ let contactsArray = [];
 let tasksArray = [];
 let overlayTransitionMiliSeconds = 300;
 
+let contactColorClasses = [
+  "bg-orange",
+  "bg-purple",
+  "bg-pink",
+  "bg-darkpurple",
+  "bg-turqoise",
+  "bg-green",
+  "bg-lightred",
+  "bg-lightorange",
+  "bg-lightpink",
+  "bg-gold",
+  "bg-royalblue",
+  "bg-neon",
+  "bg-yellow",
+  "bg-red",
+  "bg-sand",
+];
 
 /**
  * Function to log in as guest
@@ -51,7 +68,7 @@ function checkInput() {
 }
 
 /**
- * Function to reset error-messages
+ * Function to reset error-messages on login & signup page
  *
  *
  */
@@ -85,11 +102,10 @@ function signupFormValidation(event) {
   }
 }
 
-
 /**
- * This function checks Mail and Phone Validation according to set regex 
- * 
- * @returns Boolean value that determines whether the code block is executed or skipped 
+ * This function checks Mail and Phone Validation according to set regex
+ *
+ * @returns Boolean value that determines whether the code block is executed or skipped
  */
 function regexValidation() {
   const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -99,11 +115,11 @@ function regexValidation() {
   let filteredPhone = [...mail].filter((t) => t.type == "tel");
   if (!regexMail.test(filteredMail[0].value)) {
     showErrorMessage("email", []);
-    return false
+    return false;
   }
   if (filteredPhone[0]?.value && !regexPhone.test(filteredPhone[0].value)) {
     showErrorMessage("phone", []);
-    return  false;
+    return false;
   } else return true;
 }
 
@@ -179,8 +195,8 @@ async function checkMailRedundancy(credentials) {
 
 /**
  * This function gets all current used mails as an Array
- * 
- * @param {*} responseRef all current users in the database 
+ *
+ * @param {*} responseRef all current users in the database
  * @returns Array with all already in use emails
  */
 function getUsedMails(responseRef) {
@@ -279,9 +295,9 @@ async function checkLogInCredentials(responseRef) {
 }
 
 /**
- * This function filters the correct users name 
- * 
- * @param {*} usersObj current saved users and credentials in the databse 
+ * This function filters the correct users name
+ *
+ * @param {*} usersObj current saved users and credentials in the databse
  * @param {*} loginInput the email and password input field
  * @returns the users name
  */
@@ -293,8 +309,8 @@ function filterUserName(usersObj, loginInput) {
 
 /**
  * This function sets user credentials initials in session Storage
- * 
- * @param {String} name the users name 
+ *
+ * @param {String} name the users name
  */
 function saveSession(name) {
   setSessionStorage("user", name[0]);
@@ -309,7 +325,7 @@ function saveSession(name) {
 
 /**
  * This Function sets a sessionStorage
- * 
+ *
  * @param {*} key key name for the session storage
  * @param {*} value value for the session storage
  */
@@ -336,8 +352,8 @@ async function getDataBaseElement(path = "") {
 
 /**
  * This function sends an object to the dedicated path
- * 
- * @param {*} path the path of the firebase 
+ *
+ * @param {*} path the path of the firebase
  * @param {Object} object the object according to the path
  */
 async function submitObjectToDatabase(path = "", object = {}) {
@@ -352,7 +368,7 @@ async function submitObjectToDatabase(path = "", object = {}) {
 
 /**
  * This function updates an entry from the firebase
- * 
+ *
  * @param {*} path the path of the firebase
  * @param {*} object the object according to the path
  */
@@ -382,7 +398,7 @@ async function deleteDataBaseElement(path = "") {
 
 /**
  * This function sets the initials from the according contact
- * 
+ *
  * @param {String} inputString the name from the contact
  * @returns Initials
  */
@@ -401,8 +417,8 @@ function getFirstTwoStringInitials(inputString) {
 
 /**
  * This function sets the initials from the according contact based on the firebase entry
- * 
- * @param {*} contactID contact ID from the firebase 
+ *
+ * @param {*} contactID contact ID from the firebase
  * @returns Initials
  */
 function getFirstTwoStringInitialsByFirebaseId(contactID) {
@@ -425,7 +441,7 @@ function getFirstTwoStringInitialsByFirebaseId(contactID) {
 
 /**
  * This function clears the Input Tag
- * 
+ *
  * @param {*} htmlId the ID from the Input Tag
  */
 function clearInputTagValue(htmlId) {
@@ -435,7 +451,7 @@ function clearInputTagValue(htmlId) {
 
 /**
  * This function gets the value form the Input Tag
- * 
+ *
  * @param {*} htmlId the ID from the Input Tag
  * @returns value from the according ID
  */
@@ -451,7 +467,7 @@ function setInputTagValue(htmlId, valueToSet) {
 
 /**
  * This function activates the toast message for user feedback
- * 
+ *
  * @param {*} htmlId the ID from the according message-box
  */
 function showToastMessage(htmlId) {
@@ -463,7 +479,7 @@ function showToastMessage(htmlId) {
 
 /**
  * This function forwards the user to the Board
- * 
+ *
  */
 function directToBoardPage() {
   location.href = "/assets/html/board.html";
