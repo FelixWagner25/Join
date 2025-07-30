@@ -194,6 +194,21 @@ function searchTask() {
   foundRef.forEach((c) =>
     c.parentElement.parentElement.classList.remove("d-none")
   );
+  setNoTaskFoundFeedback(foundRef);
+}
+
+/**
+ * This Function toggles a user-feedback, if no searched task was found
+ * 
+ * @param {Object} foundRef  the task element
+ */
+function setNoTaskFoundFeedback(foundRef) {
+  let noTask = document.getElementById('no-task-found')
+    if (foundRef.length == 0) {
+    noTask.classList.remove('d-none')
+  } else {
+     noTask.classList.add('d-none')
+  }
 }
 
 /**
