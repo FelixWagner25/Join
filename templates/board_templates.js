@@ -167,7 +167,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
 function editTaskTemplate(indexTask, currentTask) {
   return `
   <div class="scroll-overlay">
-<form class="max-width-976px" onsubmit="submitEditTask(${indexTask}); event.preventDefault()">
+<form class="max-width-976px" onsubmit="requiredInputValidation(undefined, ${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
               <div class="d-flex-column gap-32px">
                 <div class="d-flex-column gap-8px">
@@ -177,12 +177,13 @@ function editTaskTemplate(indexTask, currentTask) {
                     >Title<span class="col-red">*</span></label
                   >
                   <input
-                    class="task-input-border task-input-text-field font-Inter-400-12px editable"
+                    class="task-input-border task-input-text-field font-Inter-400-12px editable required"
                     type="text"
                     id="task-title"
                     value="${currentTask.title}"
-                    required
+                    
                   />
+                  <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
                 </div>
                 <div class="d-flex-column gap-8px">
                   <label
@@ -200,13 +201,14 @@ function editTaskTemplate(indexTask, currentTask) {
                     >Due date<span class="col-red">*</span></label
                   >
                   <input
-                    class="task-input-border task-input-date editable"
+                    class="task-input-border task-input-date editable required"
                     type="date"
                     min="${currentDate}"
                     id="task-due-date"
                     value="${currentTask.dueDate}"
-                    required
+                    
                   />
+                  <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
                 </div>
               </div>
 

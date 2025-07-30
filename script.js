@@ -490,12 +490,12 @@ function directToBoardPage() {
  *  * 
  * @param {String} taskStatusId TaskId from Firebase
  */
-function requiredInputValidation(taskStatusId){
+function requiredInputValidation(taskStatusId,indexTask){
   let requiredFields = document.getElementsByClassName('required');
   let validationMessageRef = document.getElementsByClassName('validation');
   let validationTrue = [...requiredFields].every((element) => element.value != "")
 if (validationTrue){
-  addNewTask(taskStatusId)
+   setAddOrEditSubmit(taskStatusId,indexTask)
 } else {
     [...requiredFields].forEach((element, i) => {
   if (element.value === "") {
@@ -505,4 +505,19 @@ if (validationTrue){
   }
 })
 }
+}
+
+/**
+ * This Function wether submits a new task, or an editTask, depending on the tasks paramater
+ * 
+ * @param {String} taskStatusId parameter for addNewTask-case
+ * @param {String} indexTask parameter for editTask-case
+ */
+function setAddOrEditSubmit(taskStatusId,indexTask){
+  if (!indexTask){
+    addNewTask(taskStatusId)
+    } else if (indexTask){
+    submitEditTask(indexTask)
+  } else console.log("nickes");
+  
 }
