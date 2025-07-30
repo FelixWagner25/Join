@@ -129,7 +129,11 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
         currentTask.subtasks
           ?.map(
             (s) =>
-              ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask" ${s[1].done ? "checked" : ''} onclick="setSubtaskStatus(this, ${indexTask}, '${s[0]}')"><div>${s[1].name}</div></div></div>`
+              ` <div class="input-container d-flex"><div class="input-checkbox task-overlay-checkbox-wrap d-flex-align-item-c font-Inter-400-16px text-color-black"><input type="checkbox" name="checkbox-subtask" ${
+                s[1].done ? "checked" : ""
+              } onclick="setSubtaskStatus(this, ${indexTask}, '${
+                s[0]
+              }')"><div>${s[1].name}</div></div></div>`
           )
           .join("") || ""
       }</article>
@@ -216,7 +220,11 @@ function editTaskTemplate(indexTask, currentTask) {
                   <div class="d-flex gap-16px overlay-priority">
                     <button
                       type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px ${currentTask.priority == 'urgent' ? `active-${currentTask.priority}` : "" }"
+                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px ${
+                        currentTask.priority == "urgent"
+                          ? `active-${currentTask.priority}`
+                          : ""
+                      }"
                       id="task-priority-urgent"
                       onclick="setTaskPriority('task-priority-urgent')"
                       
@@ -226,7 +234,11 @@ function editTaskTemplate(indexTask, currentTask) {
                     </button>
                     <button
                       type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px  ${currentTask.priority == 'medium' ? `active-${currentTask.priority}` : "" }"
+                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px  ${
+                        currentTask.priority == "medium"
+                          ? `active-${currentTask.priority}`
+                          : ""
+                      }"
                       id="task-priority-medium"
                       onclick="setTaskPriority('task-priority-medium')"
                     >
@@ -235,7 +247,11 @@ function editTaskTemplate(indexTask, currentTask) {
                     </button>
                     <button
                       type="button"
-                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px  ${currentTask.priority == 'low' ? `active-${currentTask.priority}` : "" }"
+                      class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px  ${
+                        currentTask.priority == "low"
+                          ? `active-${currentTask.priority}`
+                          : ""
+                      }"
                       id="task-priority-low"
                       onclick="setTaskPriority('task-priority-low')"
                     >
@@ -274,31 +290,6 @@ function editTaskTemplate(indexTask, currentTask) {
                 
                   </div>
                 </div>
-    
-                  <div class="task-overlay-assignment-wrap d-flex-column">
-                        <div class="font-Inter-400-20px text-color-2A3647"></div>
-                        <article class="d-flex-column">${
-                          currentTask.assignedTo
-                            ?.map(
-                              (p) => `
-                          <div class=" d-flex-c-sb">
-                            <div class="task-overlay-contact d-flex-align-item-c">
-                              <div class="task-card-contact-badge d-flex-row-c-c ${getContactColorClassNameByFirebaseId(
-                                p[1].Id
-                              )}">
-                                <div class="font-Inter-400-12px text-color-white">${getFirstTwoStringInitialsByFirebaseId(
-                                  p[1].Id
-                                )}
-                                </div>
-                              </div>
-                            <div class="font-OpenSans-400-19px">${p[1].name}</div>
-                            </div>
-                          </div>`
-                            )
-                            .join("") || ""
-                        }
-                        </article>
-                      </div>
 
                 <div class="d-flex-column gap-8px p-relative">
                   <label

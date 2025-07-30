@@ -26,7 +26,7 @@ async function getTasksArray() {
 
 /**
  * This Function renders the Board for each Task-Status
- * 
+ *
  */
 async function renderBoard() {
   renderBoardColumn("to-do", "todo");
@@ -37,7 +37,7 @@ async function renderBoard() {
 
 /**
  * This Function renders a Board Column
- * 
+ *
  * @param {String} columHTMLid task status from the DOM
  * @param {String} taskStatusId status from the firebase
  */
@@ -59,12 +59,13 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
 
 /**
  * This Function renders a placeholder if no tasks were found in the dedicated column
- * 
+ *
  * @param {String} columHTMLid task status from the DOM
  */
 function checkEmptyColumn(columHTMLid) {
   let boardColRef = document.getElementById(columHTMLid);
-  let titleRef = boardColRef.parentElement.getElementsByClassName("col-title-wrap");
+  let titleRef =
+    boardColRef.parentElement.getElementsByClassName("col-title-wrap");
   let title = [...titleRef].map((t) => t.innerText);
   let board = boardColRef.getElementsByClassName("task-card-wrap");
   if (board.length == 0) {
@@ -82,7 +83,7 @@ function subtasksExist(indexTask) {
 
 /**
  * This Function renders all subtasks info on dedicated tasks
- * 
+ *
  * @param {String} indexTask index of tasks with subtasks
  */
 function renderSubtaskProgressInfo(indexTask) {
@@ -94,8 +95,8 @@ function renderSubtaskProgressInfo(indexTask) {
 }
 
 /**
- * This Function renders Tasks Contact with a lmit of maximum 3 badges, else indicated by a layer  
- * 
+ * This Function renders Tasks Contact with a lmit of maximum 3 badges, else indicated by a layer
+ *
  * @param {String} indexTask index of tasks with subtasks
  */
 function renderBoardCardContacts(indexTask) {
@@ -105,19 +106,25 @@ function renderBoardCardContacts(indexTask) {
   let objKeys = Object.keys(tasksArray[indexTask][1]?.assignedTo || {}).length;
   let maximalShownBadges = Math.min(3, objKeys);
   for (
-    let indexTaskContact = 0; indexTaskContact < maximalShownBadges; indexTaskContact++
+    let indexTaskContact = 0;
+    indexTaskContact < maximalShownBadges;
+    indexTaskContact++
   ) {
-    taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(indexTaskContact, indexTask
+    taskCardContactsRef.innerHTML += getTaskCardContactsTemplate(
+      indexTaskContact,
+      indexTask
     );
   }
   if (objKeys > maximalShownBadges) {
-    taskCardContactsRef.innerHTML += getTaskAssignedContactsRemainderTemplate(objKeys - maximalShownBadges);
+    taskCardContactsRef.innerHTML += getTaskAssignedContactsRemainderTemplate(
+      objKeys - maximalShownBadges
+    );
   }
 }
 
 /**
  * This Function sets backgroundclass based on tasks category class
- * 
+ *
  * @param {String} current taskCategory class
  * @returns {String} new background class
  */
@@ -135,8 +142,8 @@ function getTaskCategoryClass(taskCategory) {
 }
 
 /**
- * This function turns tasks status into the according status-svg  
- * 
+ * This function turns tasks status into the according status-svg
+ *
  * @param {String} taskUrgency status of the tasks
  * @returns {String} svg-path according to status
  */
@@ -158,7 +165,7 @@ function getTaskPriorityIconSrc(taskUrgency) {
 
 /**
  * this Function turns task status into correct spelling
- * 
+ *
  * @param {String} taskCategory task category: user-story / technical-task
  * @returns {String} correct spelled task Category
  */
@@ -173,7 +180,7 @@ function getCategoryNameTemplate(taskCategory) {
 
 /**
  * This Function allows to search within the boards for title and description
- * 
+ *
  */
 function searchTask() {
   let taskWrap = document.getElementsByClassName("task-card-wrap");
@@ -191,8 +198,8 @@ function searchTask() {
 
 /**
  * This Function activates Drop Function while Drag&Drop
- * 
- * @param {event} ev 
+ *
+ * @param {event} ev
  */
 function allowDrop(ev) {
   ev.preventDefault();
@@ -200,8 +207,8 @@ function allowDrop(ev) {
 
 /**
  * This Function starts Drag
- * 
- * @param {event} event 
+ *
+ * @param {event} event
  * @returns {void}
  */
 async function startDragging(event) {
@@ -212,9 +219,9 @@ async function startDragging(event) {
 }
 
 /**
- * This function sets new status of dropped Tasks 
- * 
- * @param {event} event 
+ * This function sets new status of dropped Tasks
+ *
+ * @param {event} event
  */
 async function moveTask(event) {
   let targetTask = event.target.closest(".col-content[id]");
@@ -225,7 +232,7 @@ async function moveTask(event) {
 
 /**
  * This Function toggles all Drop-Zones
- * 
+ *
  */
 function toggleDragArea() {
   let area = document.querySelectorAll(".col-empty-wrap:last-of-type");
@@ -263,8 +270,8 @@ function closeAddTaskOverlay() {
 
 /**
  * This function sets the overlay from the current clicked task-element
- * 
- * @param {String} indexTask  index of the task 
+ *
+ * @param {String} indexTask  index of the task
  */
 async function showTaskOverlay(indexTask) {
   let overlay = document.querySelector(".task-overlay-wrap");
@@ -278,7 +285,7 @@ async function showTaskOverlay(indexTask) {
 
 /**
  * adds a darker background to get a better focus on current overlay
- * 
+ *
  */
 function blurBackgroundBoard() {
   document.getElementById("task-overlay").classList.add("dim-active");
@@ -286,7 +293,7 @@ function blurBackgroundBoard() {
 
 /**
  * This Function shows the overlay element
- * 
+ *
  */
 function overlayWipe() {
   let taskOverlayRef = document.getElementById("task-overlay-wrap");
@@ -295,7 +302,7 @@ function overlayWipe() {
 
 /**
  * This Function removes the Task Overlay
- * 
+ *
  */
 function closeTaskOverlays() {
   let overlay = document.getElementById("task-overlay-wrap");
@@ -333,8 +340,8 @@ function renderSubtasksProgressbarFill(indexTask) {
 
 /**
  * This Function deletes the current active Task
- * 
- * @param {String} indexTask  index of the task 
+ *
+ * @param {String} indexTask  index of the task
  */
 async function deleteTask(indexTask) {
   closeTaskOverlays();
@@ -344,8 +351,8 @@ async function deleteTask(indexTask) {
 
 /**
  * This Function opens edit-Task Overlay and loads its specific content
- * 
- * @param {String} indexTask index of the task 
+ *
+ * @param {String} indexTask index of the task
  */
 async function editTask(indexTask) {
   tasksArray = await getTasksArray();
@@ -353,26 +360,27 @@ async function editTask(indexTask) {
   let currentTask = tasksArray[indexTask][1];
   loadOptionalScalarTaskInfo(currentTask, indexTask);
   overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
+  renderAssignedContactsBadges();
 }
 
 /**
  * This Function sets the optional content from the to-edit-Task (assignedTo / subtasks)
- * 
+ *
  * @param {Object} currentTask the current edited Task
- * @param {String} indexTask index of the task 
+ * @param {String} indexTask index of the task
  */
 function loadOptionalScalarTaskInfo(currentTask, indexTask) {
   let currentSubtasks = tasksArray[indexTask][1]?.subtasks || {};
   newTaskAssignedContactsIndices =
-  currentTask.assignedTo?.map((i) => i[1].Id) || [];
+    currentTask.assignedTo?.map((i) => i[1].Id) || [];
   newSubtasksIndices = currentTask.subtasks?.map((i) => i[1].Id) || [];
   newTaskSubtasks = Object.values(currentSubtasks).map((i) => i[1]);
 }
 
 /**
- * This Function submits the edited Task to the firebase and reloads the board 
- * 
- * @param {String} indexTask index of the task 
+ * This Function submits the edited Task to the firebase and reloads the board
+ *
+ * @param {String} indexTask index of the task
  */
 async function submitEditTask(indexTask) {
   let overlay = document.querySelector(".task-overlay-wrap");
@@ -385,6 +393,6 @@ async function submitEditTask(indexTask) {
   await initBoard();
   closeTaskOverlays();
   setTimeout(() => {
-  overlay.innerHTML = ""
+    overlay.innerHTML = "";
   }, 500);
 }
