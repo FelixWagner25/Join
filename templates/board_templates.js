@@ -79,7 +79,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
         </div>
       </div>
 
-    <h2 class="font-Inter-700-61px text-color-black">${currentTask.title}</h2>
+    <h2 class="font-Inter-700-47px text-color-black">${currentTask.title}</h2>
 
     <div class="font-Inter-400-20px text-color-black task-overlay-desc">${
       currentTask?.description || ""
@@ -276,7 +276,7 @@ function editTaskTemplate(indexTask, currentTask) {
                 </div>
     
                   <div class="task-overlay-assignment-wrap d-flex-column">
-                        <div class="font-Inter-400-20px text-color-2A3647">Assigned To:</div>
+                        <div class="font-Inter-400-20px text-color-2A3647"></div>
                         <article class="d-flex-column">${
                           currentTask.assignedTo
                             ?.map(

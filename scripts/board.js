@@ -182,7 +182,7 @@ function searchTask() {
   let foundRef = "";
   [...taskWrap].forEach((c) => c.classList.add("d-none"));
   foundRef = [...searchRef].filter((t) =>
-    t.innerText.includes(inputRef[0].value)
+    t.innerText.toLowerCase().includes(inputRef[0].value.toLowerCase())
   );
   foundRef.forEach((c) =>
     c.parentElement.parentElement.classList.remove("d-none")
@@ -302,7 +302,6 @@ function closeTaskOverlays() {
   document.getElementById("task-overlay-wrap").classList.remove("open");
   document.getElementById("task-overlay").classList.remove("dim-active");
   newTaskAssignedContactsIndices = [];
-  overlay.innerHTML = "";
   renderBoard();
 }
 

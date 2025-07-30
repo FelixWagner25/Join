@@ -197,8 +197,9 @@ main {
   gap: 24px;
   flex-direction: column;
   padding: 16px;
-  /*   width: 252px; */
-  min-width: 160px;
+  width: 252px;
+  min-width: 210px;
+  height: 240px;
 }
 
 .task-category {
@@ -220,7 +221,10 @@ main {
   color: #2a3647;
 }
 
-.task-description {
+.task-description{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: #a8a8a8;
 }
 
@@ -282,8 +286,11 @@ main {
 }
 
 .task-overlay-desc {
-  min-height: 24px;
+  max-height: 130px;
   max-width: 445px;
+  overflow: overlay;
+/*   text-overflow: ellipsis; */
+  white-space: pre;
 }
 
 .task-overlay-meta-wrap {
@@ -375,7 +382,7 @@ input[type="checkbox"] {
   max-width: 190px;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1360px) {
   .board-col-wrap {
     flex-direction: column;
   }
@@ -390,7 +397,7 @@ input[type="checkbox"] {
   }
 
   .task-card-wrap {
-    max-height: 312px;
+    max-height: 268px;
     width: 204px;
   }
 
@@ -405,12 +412,6 @@ input[type="checkbox"] {
   [id^="subtasks-progress-"] {
     flex-direction: column;
     align-items: baseline;
-  }
-
-  .task-priority-wrap {
-    flex-direction: column-reverse;
-    align-items: baseline;
-    gap: 16px;
   }
 
   .board-headline {
@@ -469,6 +470,10 @@ main{
   }
   .add-task-btn {
     display: none;
+  }
+
+  .task-card{
+    gap: 8px;
   }
 
   .task-card-wrap {
