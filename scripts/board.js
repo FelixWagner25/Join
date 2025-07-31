@@ -325,6 +325,9 @@ function closeTaskOverlays() {
   document.getElementById("task-overlay").classList.remove("dim-active");
   newTaskAssignedContactsIndices = [];
   renderBoard();
+   setTimeout(() => {
+    overlay.innerHTML = "";
+  }, 500);
 }
 
 function getTaskCompletedSubtasksNumber(indexTask) {

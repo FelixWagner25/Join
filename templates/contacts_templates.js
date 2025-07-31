@@ -158,27 +158,31 @@ function getAddContactsScreenTemplate() {
           </div>
         </div>
         <div class="add-contact-input-check d-flex-column-c-c">
-          <form class="add-contacts-form-wrap" onsubmit="addNewContact(event)">
-            <div class="add-contact-input-wrap">           
+          <form novalidate class="add-contacts-form-wrap" onsubmit="requiredInputValidation(undefined, undefined, newContact, undefined); event.preventDefault()">
+          <div> 
+          <div class="add-contact-input-wrap">           
             <input
-                required
                 type="text"
-                class="add-contact-input"
+                class="add-contact-input required"
                 placeholder="Name"
                 id="add-contact-input-name"
+                oninput="resetErrorMessage()"
               />
               <img
                 src="/assets/icons/person_icon.svg"
                 alt="person-icon"
                 class="add-contact-input-icon"
               />
-            </div>
+              </div>
+               <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
+
+               </div>
             <div class="input-container d-flex-column">
+            <div> 
             <div class="add-contact-input-wrap">
               <input
-                required
                 type="email"
-                class="add-contact-input"
+                class="add-contact-input required"
                 placeholder="Email"
                 id="add-contact-input-email"
                 oninput="resetErrorMessage()"
@@ -187,7 +191,10 @@ function getAddContactsScreenTemplate() {
                 src="/assets/icons/mail_icon.svg"
                 alt="email-icon"
                 class="add-contact-input-icon"
-              />         
+              /> 
+             </div>  
+              <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
+         
             </div>
               <div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
             </div>  
@@ -270,20 +277,21 @@ function getEditContactScreenTemplate(indexContact) {
             <div class="${getContactColorClassName(
               indexContact
             )} contact-badge-wrap d-flex-row-c-c">
-              <div class="font-sz-47px">${getFirstTwoStringInitials(
-                contactsArray[indexContact][1].name
+              <div class="font-sz-47px">${getFirstTwoStringInitialsByFirebaseId(
+    contactsArray[indexContact][0]
               )}</div>
             </div>
           </div>
           <div class="add-contact-input-check d-flex-column-c-c">
-            <form class="add-contacts-form-wrap d-flex-column" onsubmit="updateContact(${indexContact}, event)">
+            <form novalidate class="add-contacts-form-wrap d-flex-column" onsubmit="requiredInputValidation(undefined, undefined, undefined, ${indexContact}); event.preventDefault()">
+            
+            <div>
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="text"
-                  class="add-contact-input"
+                  class="add-contact-input required"
                   placeholder="Name"
                   id="input-${indexContact}-name"
-                  required
                   oninput="resetErrorMessage()"
                 />
                 <img
@@ -291,16 +299,18 @@ function getEditContactScreenTemplate(indexContact) {
                   alt="person-icon"
                   class="add-contact-input-icon"
                 />
-              </div>
-
+                 </div>
+                  <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
+            </div>
               <div class="input-container d-flex-column">
+              <div>
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="email"
-                  class="add-contact-input"
+                  class="add-contact-input required"
                   placeholder="Email"
                   id="input-${indexContact}-email"
-                  required
+                  oninput="resetErrorMessage()"
                 />
                 <img
                   src="/assets/icons/mail_icon.svg"
@@ -308,8 +318,10 @@ function getEditContactScreenTemplate(indexContact) {
                   class="add-contact-input-icon"
                 />
               </div>
+               <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
+               </div>
               <div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
-</div>
+              </div>
 
               <div class="input-container d-flex-column">
               <div class="add-contact-input-wrap d-flex-c-sb">

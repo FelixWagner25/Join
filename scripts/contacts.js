@@ -152,8 +152,7 @@ async function getCurrentContactAttribute(attribute, indexContact) {
  * Adds a new contact to the database.
  *
  */
-async function addNewContact(event) {
-  event.preventDefault();
+async function addNewContact() {
   if (!regexValidation()) {
     return;
   }
@@ -215,8 +214,7 @@ function clearAddContactForm(htmlIdPrefix) {
  *
  * @param {integer} indexContact
  */
-async function updateContact(indexContact, event) {
-  event.preventDefault();
+async function updateContact(indexContact) {
   if (!regexValidation()) {
     return;
   }

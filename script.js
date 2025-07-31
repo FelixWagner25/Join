@@ -397,25 +397,6 @@ async function deleteDataBaseElement(path = "") {
 }
 
 /**
- * This function sets the initials from the according contact
- *
- * @param {String} inputString the name from the contact
- * @returns Initials
- */
-function getFirstTwoStringInitials(inputString) {
-  let inputStringSplit = inputString.split(" ");
-  let stringInitials = "";
-  if (inputStringSplit.length == 1) {
-    stringInitials = inputStringSplit[0].charAt(0).toUpperCase();
-  } else {
-    stringInitials =
-      inputStringSplit[0].charAt(0).toUpperCase() +
-      inputStringSplit[1].charAt(0).toUpperCase();
-  }
-  return stringInitials;
-}
-
-/**
  * This function sets the initials from the according contact based on the firebase entry
  *
  * @param {*} contactID contact ID from the firebase
@@ -435,7 +416,6 @@ function getFirstTwoStringInitialsByFirebaseId(contactID) {
       }
     }
   }
-
   return stringInitials;
 }
 
@@ -459,7 +439,7 @@ function getInputTagValue(htmlId) {
   return document.getElementById(htmlId).value;
 }
 
-//in use??
+
 function setInputTagValue(htmlId, valueToSet) {
   let inputRef = document.getElementById(htmlId);
   inputRef.value = valueToSet;
@@ -488,15 +468,18 @@ function directToBoardPage() {
 /**
  * This Function replaces HTML5 Validation
  *  * 
- * @param {String} taskStatusId TaskId from Firebase
+ * @param {String} taskStatusId parameter for addNewTask-case
+ * @param {String} indexTask parameter for editTask-case
+ * @param {String} newContact parameter for addNewContact-case
+ * @param {String} indexContact parameter for editContact-case
  */
-function requiredInputValidation(taskStatusId,indexTask){
+function requiredInputValidation(taskStatusId,indexTask, newContact,indexContact){
   let requiredFields = document.getElementsByClassName('required');
   let validationMessageRef = document.getElementsByClassName('validation');
   let validationTrue = [...requiredFields].every((element) => element.value != "")
-if (validationTrue){
-   setAddOrEditSubmit(taskStatusId,indexTask)
-} else {
+ if (validationTrue){ 
+   setAddOrEditSubmit(taskStatusId,indexTask, newContact,indexContact)
+ }  else {
     [...requiredFields].forEach((element, i) => {
   if (element.value === "") {
     validationMessageRef[i].classList.remove('d-none')
@@ -507,17 +490,24 @@ if (validationTrue){
 }
 }
 
+let newContact = "newContact";
+
 /**
  * This Function wether submits a new task, or an editTask, depending on the tasks paramater
  * 
  * @param {String} taskStatusId parameter for addNewTask-case
  * @param {String} indexTask parameter for editTask-case
+ * @param {String} newContact parameter for addNewContact-case
+ * @param {String} indexContact parameter for editContact-case
  */
-function setAddOrEditSubmit(taskStatusId,indexTask){
-  if (!indexTask){
+function setAddOrEditSubmit(taskStatusId,indexTask, newContact,indexContact){
+  if (taskStatusId){
     addNewTask(taskStatusId)
-    } else if (indexTask){
+  } else if (indexTask){
     submitEditTask(indexTask)
-  } else console.log("nickes");
-  
-}
+  } else if (newContact){
+    addNewContact()
+  } else if (indexContact){
+    updateContact(indexContact)
+    }
+} 
