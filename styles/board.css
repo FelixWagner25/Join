@@ -348,9 +348,6 @@ main {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  position: absolute;
-  top: 64px;
-  right: 48px;
 }
 
 .close-icon-add-task-overlay-wrap:hover {
@@ -387,6 +384,23 @@ input[type="checkbox"] {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+
+.scroll-overlay {
+  overflow-y: overlay;
+  scrollbar-width: none;
+}
+
+.title-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.task-overlay-wrap > .scroll-overlay{
+  height: 72vh;
 }
 
 @media screen and (max-width: 1360px) {
@@ -435,11 +449,13 @@ input[type="checkbox"] {
   .board-col-wrap {
     scrollbar-width: auto;
   }
+}
 
-  /*   
-main{
-  overflow: scroll;
-} */
+@media screen and (max-width: 1200px) {
+  .scroll-overlay {
+  height: 72vh;
+
+}
 }
 
 @media screen and (max-width: 820px) {
@@ -496,7 +512,7 @@ main{
   }
 
   .task-overlay-wrap {
-    width: 75%;
+    max-width: 75%;
     padding: 48px 12px;
   }
 
@@ -507,5 +523,14 @@ main{
   .overlay-priority {
     flex-direction: column;
     align-items: center;
+  }
+
+  .add-task-overlay-wrap{
+  max-height: unset;
+  max-width: unset;
+  height: 83vh;
+  width: 100vw;
+  border-radius: 0;
+  background-color: #F6F7F8;
   }
 }

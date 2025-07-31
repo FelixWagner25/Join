@@ -170,7 +170,7 @@ function editTaskTemplate(indexTask, currentTask) {
 <form class="max-width-976px" onsubmit="requiredInputValidation(undefined, ${indexTask}); event.preventDefault()">
             <div class="d-flex-column gap-8px pd-b-64px">
               <div class="d-flex-column gap-32px">
-                <div class="d-flex-column gap-8px">
+                <div class="d-flex-column gap-8px height-96px">
                   <label
                     for="task-title"
                     class="font-Inter-400-20px text-color-2A3647"
@@ -196,12 +196,12 @@ function editTaskTemplate(indexTask, currentTask) {
                     id="task-description"
                   >${currentTask?.description || ""}</textarea>
                 </div>
-                <div class="d-flex-column gap-8px">
+                <div class="d-flex-column gap-8px height-96px">
                   <label for="task-due-date" class="input-label"
                     >Due date<span class="col-red">*</span></label
                   >
                   <input
-                    class="task-input-border task-input-date editable required"
+                    class="task-input-border task-input-date font-Inter-400-20px editable required"
                     type="date"
                     min="${currentDate}"
                     id="task-due-date"
@@ -351,7 +351,7 @@ function editTaskTemplate(indexTask, currentTask) {
               </div>
             </div>
 
-            <div class="d-flex-row-end-sb">
+            <div class="d-flex-c-sb">
               <div class="font-Inter-400-16px">
                 <span class="col-red">*</span>This field is required
               </div>

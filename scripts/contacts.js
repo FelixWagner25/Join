@@ -33,7 +33,6 @@ async function getSortedContactsArray() {
 function showAddContactScreen() {
   blurBackground();
   openAddContactScreen();
-  console.log(document.getElementById("contact-card"));
 }
 
 /**

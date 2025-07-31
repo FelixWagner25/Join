@@ -159,7 +159,7 @@ function getAddContactsScreenTemplate() {
         </div>
         <div class="add-contact-input-check d-flex-column-c-c">
           <form novalidate class="add-contacts-form-wrap" onsubmit="requiredInputValidation(undefined, undefined, newContact, undefined); event.preventDefault()">
-          <div> 
+          <div class="height-52px"> 
           <div class="add-contact-input-wrap">           
             <input
                 type="text"
@@ -178,7 +178,7 @@ function getAddContactsScreenTemplate() {
 
                </div>
             <div class="input-container d-flex-column">
-            <div> 
+            <div class="height-52px"> 
             <div class="add-contact-input-wrap">
               <input
                 type="email"
@@ -194,12 +194,10 @@ function getAddContactsScreenTemplate() {
               /> 
              </div>  
               <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
-         
-            </div>
               <div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
             </div>  
-
-            <div class="input-container d-flex-column">
+ </div>
+            <div class="input-container d-flex-column height-52px">
             <div class="add-contact-input-wrap">
               <input
                 type="tel"
@@ -285,7 +283,7 @@ function getEditContactScreenTemplate(indexContact) {
           <div class="add-contact-input-check d-flex-column-c-c">
             <form novalidate class="add-contacts-form-wrap d-flex-column" onsubmit="requiredInputValidation(undefined, undefined, undefined, ${indexContact}); event.preventDefault()">
             
-            <div>
+            <div class="height-52px">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="text"
@@ -303,7 +301,7 @@ function getEditContactScreenTemplate(indexContact) {
                   <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
             </div>
               <div class="input-container d-flex-column">
-              <div>
+              <div class="height-52px">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="email"
@@ -317,13 +315,12 @@ function getEditContactScreenTemplate(indexContact) {
                   alt="email-icon"
                   class="add-contact-input-icon"
                 />
-              </div>
-               <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
-               </div>
+               </div>  
+              <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
               <div id="email-error" class="d-none validation email font-Inter-400-13px text-color-FF8190">Please enter a valid e-mail address</div>
+            </div>
               </div>
-
-              <div class="input-container d-flex-column">
+              <div class="input-container d-flex-column height-52px">
               <div class="add-contact-input-wrap d-flex-c-sb">
                 <input
                   type="tel"

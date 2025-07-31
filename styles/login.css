@@ -119,6 +119,10 @@ li{
   gap: 16px;
 }
 
+.signup > .login-headline-container{
+    margin-top: -110px;
+}
+
 .login-headline {
   width: 315px;
   height: 73px;
@@ -149,7 +153,7 @@ input:hover{
 
 .input-container {
   width: 100%;
-  max-height: 52px;
+  min-height: 52px;
   max-width: 422px;
   gap: 8px;
 }
@@ -267,7 +271,7 @@ input[type="checkbox"]:checked:hover {
   max-height: 630px;
   max-width: 598px;
   padding: 48px 88px;
-  justify-content: space-around !important;
+  justify-content: space-evenly;
   animation: none;
   z-index: 0;
   box-shadow: 0 0 14px 3px rgb(0, 0, 0, 0.04);
@@ -314,14 +318,7 @@ input[type="checkbox"]:checked:hover {
 
 .arrow-left {
   position: absolute;
-  top: 160px;
   left: 32px;
-}
-
-
-.validation{
-  height: 16px;
-  width: 364px;
 }
 
 .email {

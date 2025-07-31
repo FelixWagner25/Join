@@ -507,7 +507,7 @@ function setAddOrEditSubmit(taskStatusId,indexTask, newContact,indexContact){
     submitEditTask(indexTask)
   } else if (newContact){
     addNewContact()
-  } else if (indexContact){
+  } else if (indexContact >=0){
     updateContact(indexContact)
     }
 } 

@@ -51,12 +51,12 @@ h1 {
   padding: 16px;
   border-radius: 10px;
   cursor: pointer;
-  gap: 17px;
+  gap: 12px;
 }
 
 .task-input-category {
   padding: 12px 16px;
-  height: 48px;
+  min-height: 52px;
 }
 
 .task-input-dropdown {
@@ -362,8 +362,9 @@ h1 {
   }
 
 .task-button-mobile{
-      flex-direction: column;
+    flex-direction: column;
     gap: 16px;
+    height: 90px;
 }
 
 .task-priority-btn{

@@ -88,8 +88,8 @@ function getAddTaskFormTemplate(taskStatusId) {
     onsubmit="requiredInputValidation('${taskStatusId}'); event.preventDefault() "
   >
     <div class="form-sub-wraps d-flex-sb gap-48px pd-b-24px">
-      <div class="d-flex-column gap-32px width-100p">
-        <div class="d-flex-column gap-8px">
+      <div class="d-flex-column gap-16px width-100p">
+        <div class="d-flex-column gap-8px height-96px">
           <label
             for="task-title"
             class="font-Inter-400-20px text-color-2A3647"
@@ -116,12 +116,12 @@ function getAddTaskFormTemplate(taskStatusId) {
             placeholder="Enter a Description"
           ></textarea>
         </div>
-        <div class="d-flex-column gap-8px">
+        <div class="d-flex-column gap-8px height-96px">
           <label for="task-due-date" class="input-label"
             >Due date<span class="col-red">*</span></label
           >
           <input
-            class="task-input-border task-input-date required"
+            class="task-input-border task-input-date font-Inter-400-20px required"
             type="date"
             min="${currentDate}"
             id="task-due-date"
@@ -199,7 +199,7 @@ function getAddTaskFormTemplate(taskStatusId) {
           ></div>
         </div>
 
-        <div class="d-flex-column gap-8px p-relative">
+        <div class="d-flex-column gap-8px p-relative height-96px">
           <label
             for="task-category"
             class="font-Inter-400-20px text-color-2A3647"
