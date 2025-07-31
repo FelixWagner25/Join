@@ -299,18 +299,18 @@ nav>a:hover{
 }
 }
 
-@media screen and (orientation:landscape)
-and (max-height: 600px) 
+@media screen 
+and (max-height: 840px) 
 {
 .landscape-orientation{
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
   position: fixed;
   top: -0%;
-  background: rgb(0, 0, 0, 0.8);
+  background: rgb(0, 0, 0, 0.9);
   left: -0%;
   overflow: initial;
   z-index: 9999;
