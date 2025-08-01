@@ -3,12 +3,21 @@ let newTaskSubtasks = [];
 let newTaskPriority = "medium";
 let currentDate = getCurrentDateYYYMMDD();
 
+/**
+ * Initializes the add task form
+ */
 async function addTaskInit() {
   contactsArray = await getSortedContactsArray();
   tasksArray = await getTasksArray();
   renderAddTaskForm("add-task-form-wrap", "todo");
 }
 
+/**
+ * Renders add task form into html container
+ *
+ * @param {string} htmlId HTML Tag Id where task form shall be rendered
+ * @param {string} taskStatusId Id of task status
+ */
 function renderAddTaskForm(htmlId, taskStatusId) {
   newTaskSubtasks = [];
   let ref = document.getElementById(htmlId);
@@ -16,6 +25,11 @@ function renderAddTaskForm(htmlId, taskStatusId) {
   ref.innerHTML = getAddTaskFormTemplate(taskStatusId);
 }
 
+/**
+ * Adds new task to firebase server and directs user to board page
+ *
+ * @param {string} newTaskStatusId task status id
+ */
 async function addNewTask(newTaskStatusId) {
   let newTaskScalarData = getNewTaskScalarInformation(newTaskStatusId);
   await submitObjectToDatabase("tasks", newTaskScalarData);
@@ -28,6 +42,11 @@ async function addNewTask(newTaskStatusId) {
   }, 1000);
 }
 
+/**
+ * Submits a new task's optional complex information to firebase server
+ *
+ * @param {string} editID
+ */
 async function submitNewTaskOptionalComplexInfo(editID) {
   let newTaskFirebaseId = "";
   if (editID) {
@@ -39,6 +58,11 @@ async function submitNewTaskOptionalComplexInfo(editID) {
   await submitNewTaskSubtasks(newTaskFirebaseId);
 }
 
+/**
+ * Submits a new task's assigned contacts to firebase server
+ *
+ * @param {string} newTaskFireBaseId task firebase id
+ */
 async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   let path = "tasks/" + String(newTaskFireBaseId) + "/assignedTo";
   await deleteDataBaseElement(path);
@@ -56,6 +80,13 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
   }
 }
 
+/**
+ * Sets a subtask's status
+ *
+ * @param {htmlElement} currentElement
+ * @param {integer} indexTask
+ * @param {string} subtaskID
+ */
 async function setSubtaskStatus(currentElement, indexTask, subtaskID) {
   let path = tasksArray[indexTask][0];
   obj = currentElement.checked;
@@ -63,6 +94,11 @@ async function setSubtaskStatus(currentElement, indexTask, subtaskID) {
   await initBoard();
 }
 
+/**
+ * Submits a new task's subtask
+ *
+ * @param {string} newTaskFirebaseId
+ */
 async function submitNewTaskSubtasks(newTaskFirebaseId) {
   let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
   await deleteDataBaseElement(path);
@@ -74,6 +110,9 @@ async function submitNewTaskSubtasks(newTaskFirebaseId) {
   }
 }
 
+/**
+ * Clears the add task form
+ */
 function clearAddTaskForm() {
   clearInputTagValue("task-title");
   clearInputTagValue("task-description");
@@ -88,6 +127,13 @@ function clearAddTaskForm() {
   renderSubtasks();
 }
 
+/**
+ * Gets new task scalar information from input fields
+ *
+ * @param {string} newTaskStatusId
+ * @param {object} editedTaskObj
+ * @returns
+ */
 function getNewTaskScalarInformation(newTaskStatusId, editedTaskObj) {
   if (editedTaskObj) {
     insertMandatoryTaskInfo(editedTaskObj);
@@ -101,6 +147,11 @@ function getNewTaskScalarInformation(newTaskStatusId, editedTaskObj) {
   }
 }
 
+/**
+ *
+ * @param {object} newTaskObj
+ * @param {string} newTaskStatusId
+ */
 function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId) {
   newTaskObj.title = getInputTagValue("task-title");
   newTaskObj.dueDate = getInputTagValue("task-due-date");
@@ -109,9 +160,13 @@ function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId) {
     newTaskObj.category = getTaskCategoryFirebaseName();
     newTaskObj.status = newTaskStatusId;
   }
-  return;
 }
 
+/**
+ * Gets taks category firebase name
+ *
+ * @returns task category firebase name
+ */
 function getTaskCategoryFirebaseName() {
   let key = "";
   key = getInputTagValue("task-category");
@@ -122,12 +177,22 @@ function getTaskCategoryFirebaseName() {
   }
 }
 
+/**
+ * Inserts optional scalar task information into new Task object
+ *
+ * @param {object} newTaskObj
+ */
 function insertOptionalScalarTaskInfo(newTaskObj) {
   if (getInputTagValue("task-description") !== "") {
     newTaskObj.description = getInputTagValue("task-description");
   }
 }
 
+/**
+ * Sets new task priority button
+ *
+ * @param {string} htmlId
+ */
 function setTaskPriority(htmlId) {
   resetAllPriorityBtns();
   let activeBtn = document.getElementById(htmlId);
@@ -147,6 +212,9 @@ function setTaskPriority(htmlId) {
   }
 }
 
+/**
+ * Resets all priority buttons to inactive
+ */
 function resetAllPriorityBtns() {
   let buttons = document.getElementsByClassName("task-priority-btn");
   for (let i = 0; i < buttons.length; i++) {
@@ -154,6 +222,9 @@ function resetAllPriorityBtns() {
   }
 }
 
+/**
+ * Toggles Task Category Dropdown
+ */
 function toggleTaskCategoryDropdown() {
   let categoryDropdownRef;
   let categoryDropdownIconRef;
@@ -166,6 +237,9 @@ function toggleTaskCategoryDropdown() {
   categoryDropdownIconRef.classList.toggle("task-dropdown-open-icon");
 }
 
+/**
+ * Closes Task Category Dropdown
+ */
 function closeTaskCategoryDropdown() {
   let categoryDropdownRef = document.getElementById("task-category-dropdown");
   let categoryDropdownIconRef = document.getElementById(
@@ -175,6 +249,9 @@ function closeTaskCategoryDropdown() {
   categoryDropdownIconRef.classList.remove("task-dropdown-open-icon");
 }
 
+/**
+ * Shows a subtask's control buttons (sumit and clear)
+ */
 function showSubtaskControlButtons() {
   let subtaskInputValueLength;
   let addIconRef;
@@ -189,6 +266,9 @@ function showSubtaskControlButtons() {
   controlIconsWrapRef.classList.remove("d-none");
 }
 
+/**
+ * Resets subtask control buttons
+ */
 function resetSubtaskcontrolButtons() {
   let addIconRef;
   let controlIconsWrapRef;
@@ -198,6 +278,9 @@ function resetSubtaskcontrolButtons() {
   } else return;
 }
 
+/**
+ * Adds a subtask
+ */
 function addSubtask() {
   normalizeSubtasksArray();
   const subtaskName = getInputTagValue("task-subtasks");
@@ -208,6 +291,9 @@ function addSubtask() {
   showSubtaskControlButtons();
 }
 
+/**
+ * Removes firebase id from subtasks array pulled from firebase server.
+ */
 function normalizeSubtasksArray() {
   for (let i = 0; i < newTaskSubtasks.length; i++) {
     if (Array.isArray(newTaskSubtasks[i])) {
@@ -222,6 +308,9 @@ function normalizeSubtasksArray() {
   subtasksNormalized = true;
 }
 
+/**
+ * Renders a task's subtasks
+ */
 function renderSubtasks() {
   let subtaskListRef;
   subtaskListRef = document.getElementById("tasks-subtasks-list");
@@ -235,6 +324,11 @@ function renderSubtasks() {
   }
 }
 
+/**
+ * Edits a subtask
+ *
+ * @param {integer} indexSubtask
+ */
 function editSubtask(indexSubtask) {
   let editedSubtaskRef = document.getElementById(
     "task-subtask-" + indexSubtask
@@ -242,6 +336,11 @@ function editSubtask(indexSubtask) {
   editedSubtaskRef.innerHTML = getEditSubtaskTemplate(indexSubtask);
 }
 
+/**
+ * Adds a new subtask to add task input form
+ *
+ * @param {integer} indexSubtask
+ */
 function addEditedSubtask(indexSubtask) {
   let inputRef = "task-subtask-edit-" + String(indexSubtask);
   editedSubtaskName = getInputTagValue(inputRef);
@@ -249,11 +348,19 @@ function addEditedSubtask(indexSubtask) {
   renderSubtasks();
 }
 
+/**
+ * Deletes a subtask from add task form
+ *
+ * @param {integer} indexSubtask
+ */
 function deleteSubtask(indexSubtask) {
   newTaskSubtasks.splice(indexSubtask, 1);
   renderSubtasks();
 }
 
+/**
+ * Toggles task assigned contacts dropdown menu
+ */
 function toggleTaskAssignedContactsDropdown() {
   let assignedContactsDropdownRef = document.getElementById(
     "task-assigned-contacts-dropdown"
@@ -267,6 +374,9 @@ function toggleTaskAssignedContactsDropdown() {
   renderAssignedContactsBadges();
 }
 
+/**
+ * Toggles the icon of task assigned contacts dropdown menu
+ */
 function toggleTaskAssignedContactsDropdownIcon() {
   let assignedContactsDropdownIconRef = document.getElementById(
     "task-assigend-contacts-dropdown-icon"
@@ -274,6 +384,9 @@ function toggleTaskAssignedContactsDropdownIcon() {
   assignedContactsDropdownIconRef.classList.toggle("task-dropdown-open-icon");
 }
 
+/**
+ * Toggles the badges task assigned contacts
+ */
 function toggleTaskAssignedContactsBadges() {
   let assignedContactsBadges = document.getElementById(
     "task-assigned-contacts-badges"
@@ -281,6 +394,9 @@ function toggleTaskAssignedContactsBadges() {
   assignedContactsBadges.classList.toggle("d-none");
 }
 
+/**
+ * Opens taks assigned contacts dropdown menu
+ */
 function openTaskAssignedContactsDropdown() {
   let assignedContactsDropdownRef = document.getElementById(
     "task-assigned-contacts-dropdown"
@@ -295,6 +411,9 @@ function openTaskAssignedContactsDropdown() {
   searchContact();
 }
 
+/**
+ * Opens task assigned contacts dropdown icon
+ */
 function openTaskAssignedContactsDropdownIcon() {
   let assignedContactsDropdownIconRef = document.getElementById(
     "task-assigend-contacts-dropdown-icon"
@@ -302,6 +421,9 @@ function openTaskAssignedContactsDropdownIcon() {
   assignedContactsDropdownIconRef.classList.add("task-dropdown-open-icon");
 }
 
+/**
+ * Shows badges of task assigned contacts
+ */
 function openTaskAssignedContactsDropdownBadges() {
   let assignedContactsBadges = document.getElementById(
     "task-assigned-contacts-badges"
@@ -309,6 +431,9 @@ function openTaskAssignedContactsDropdownBadges() {
   assignedContactsBadges.classList.add("d-none");
 }
 
+/**
+ * Closes task assigned contacts dropdown menu
+ */
 function closeTaskAssignedContactsDropdown() {
   let assignedContactsDropdownRef = document.getElementById(
     "task-assigned-contacts-dropdown"
@@ -323,6 +448,9 @@ function closeTaskAssignedContactsDropdown() {
   clearInputTagValue("task-assigned-contacts");
 }
 
+/**
+ * Hides task assigned contacts dropdown icon
+ */
 function closeTaskAssignedContactsDropdownIcon() {
   let assignedContactsDropdownIconRef = document.getElementById(
     "task-assigend-contacts-dropdown-icon"
@@ -330,6 +458,9 @@ function closeTaskAssignedContactsDropdownIcon() {
   assignedContactsDropdownIconRef.classList.remove("task-dropdown-open-icon");
 }
 
+/**
+ * Hides task assigned contacts badges
+ */
 function closeTaskAssignedContactsDropdownBadges() {
   let assignedContactsBadges = document.getElementById(
     "task-assigned-contacts-badges"
@@ -337,10 +468,17 @@ function closeTaskAssignedContactsDropdownBadges() {
   assignedContactsBadges.classList.remove("d-none");
 }
 
+/**
+ * Renders assigned contact badges
+ */
 function renderAssignedContactsBadges() {
   renderContactsBadges(newTaskAssignedContactsIndices);
 }
 
+/**
+ * Renders contact Badges
+ * @param {array} array
+ */
 function renderContactsBadges(array) {
   let badgesRef;
   badgesRef = document.getElementById("task-assigned-contacts-badges");
@@ -356,12 +494,24 @@ function renderContactsBadges(array) {
   }
 }
 
+/**
+ * Toggle assignment of a contact
+ *
+ * @param {string} contactID
+ * @param {htmlElement} htmlElement
+ */
 function toggleAssignContact(contactID, htmlElement) {
   htmlElement.classList.toggle("focus");
   toggleValueFromArray(contactID, newTaskAssignedContactsIndices);
   renderAssignedContactsBadges();
 }
 
+/**
+ * Toggle an arbitrary value from an array
+ *
+ * @param {*} value arbitrary value
+ * @param {*} array array
+ */
 function toggleValueFromArray(value, array) {
   let index = array.indexOf(value);
   if (index !== -1) {
@@ -371,6 +521,9 @@ function toggleValueFromArray(value, array) {
   }
 }
 
+/**
+ * Renders a taks assigned contacts
+ */
 function renderTaskAssigendContacts() {
   let assignedContactsRef = "";
   assignedContactsRef = document.getElementById(
@@ -389,6 +542,11 @@ function renderTaskAssigendContacts() {
   }
 }
 
+/**
+ * Renders checkboxes of assigned contacts in add task form
+ *
+ * @param {array} array
+ */
 function renderContactCheckboxes(array) {
   for (let indexContact = 0; indexContact < array.length; indexContact++) {
     let indexAssignedContact = array[indexContact];
@@ -399,6 +557,10 @@ function renderContactCheckboxes(array) {
   }
 }
 
+/**
+ * Returns current date.
+ * @returns current day in format YYYYMMDD
+ */
 function getCurrentDateYYYMMDD() {
   let today = new Date();
   let year = String(today.getFullYear());
@@ -407,6 +569,9 @@ function getCurrentDateYYYMMDD() {
   return year + "-" + month + "-" + day;
 }
 
+/**
+ * Searches a contact to assign via contact's name
+ */
 function searchContact() {
   let searchKey = document
     .getElementById("task-assigned-contacts")
