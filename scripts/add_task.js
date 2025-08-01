@@ -389,10 +389,6 @@ function renderTaskAssigendContacts() {
   }
 }
 
-function renderAssignedContactsCheckboxes() {
-  renderContactCheckboxes(newTaskAssignedContactsIndices);
-}
-
 function renderContactCheckboxes(array) {
   for (let indexContact = 0; indexContact < array.length; indexContact++) {
     let indexAssignedContact = array[indexContact];
