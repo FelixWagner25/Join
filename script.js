@@ -85,7 +85,7 @@ function resetErrorMessage() {
 
 /**
  * Function to validate users credentials after button submit
- * Prevent if email format is invalid or passwords don't match
+ * Prevent if email is invalid, initial password too short, or passwords don't match
  *
  * @param {Event} event event-object to stop page-reload after submit
  */
@@ -95,7 +95,9 @@ function signupFormValidation(event) {
     return;
   }
   let userInput = document.getElementsByTagName("input");
-  if (userInput[2].value !== userInput[3].value) {
+if (userInput[2].value.length < 8){
+  showErrorMessage("password-length", []);
+} else if (userInput[2].value !== userInput[3].value) {
     showErrorMessage("password", []);
   } else {
     getNewUserInformation();
