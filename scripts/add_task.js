@@ -21,7 +21,6 @@ async function addNewTask(newTaskStatusId) {
   await submitObjectToDatabase("tasks", newTaskScalarData);
   tasksArray = await getTasksArray();
   await submitNewTaskOptionalComplexInfo();
-  showNewTaskCreatedMessage();
   clearAddTaskForm();
   showToastMessage("add-task-toast-msg");
   setTimeout(() => {
@@ -129,8 +128,6 @@ function insertOptionalScalarTaskInfo(newTaskObj) {
   }
 }
 
-function showNewTaskCreatedMessage() {}
-
 function setTaskPriority(htmlId) {
   resetAllPriorityBtns();
   let activeBtn = document.getElementById(htmlId);
@@ -202,6 +199,16 @@ function resetSubtaskcontrolButtons() {
 }
 
 function addSubtask() {
+  normalizeSubtasksArray();
+  const subtaskName = getInputTagValue("task-subtasks");
+  newTaskSubtasks.push({ name: subtaskName, done: false });
+  renderSubtasks();
+  clearInputTagValue("task-subtasks");
+  resetSubtaskcontrolButtons();
+  showSubtaskControlButtons();
+}
+
+function normalizeSubtasksArray() {
   for (let i = 0; i < newTaskSubtasks.length; i++) {
     if (Array.isArray(newTaskSubtasks[i])) {
       const data = newTaskSubtasks[i][1];
@@ -213,12 +220,6 @@ function addSubtask() {
     }
   }
   subtasksNormalized = true;
-  const subtaskName = getInputTagValue("task-subtasks");
-  newTaskSubtasks.push({ name: subtaskName, done: false });
-  renderSubtasks();
-  clearInputTagValue("task-subtasks");
-  resetSubtaskcontrolButtons();
-  showSubtaskControlButtons();
 }
 
 function renderSubtasks() {
@@ -254,74 +255,86 @@ function deleteSubtask(indexSubtask) {
 }
 
 function toggleTaskAssignedContactsDropdown() {
-  let assignedContactsDropdownRef = "";
-  let assignedContactsDropdownIconRef = "";
-  let assignedContactsBadges = "";
-  assignedContactsDropdownRef = document.getElementById(
+  let assignedContactsDropdownRef = document.getElementById(
     "task-assigned-contacts-dropdown"
   );
-  assignedContactsDropdownIconRef = document.getElementById(
-    "task-assigend-contacts-dropdown-icon"
-  );
-  assignedContactsBadges = document.getElementById(
-    "task-assigned-contacts-badges"
-  );
-
   assignedContactsDropdownRef.classList.toggle("d-none");
   assignedContactsDropdownRef.classList.toggle("d-flex-column");
-  assignedContactsDropdownIconRef.classList.toggle("task-dropdown-open-icon");
-  assignedContactsBadges.classList.toggle("d-none");
+  toggleTaskAssignedContactsDropdownIcon();
+  toggleTaskAssignedContactsBadges();
   renderTaskAssigendContacts();
   renderContactCheckboxes(newTaskAssignedContactsIndices);
   renderAssignedContactsBadges();
 }
 
-function openTaskAssignedContactsDropdown() {
-  let assignedContactsDropdownRef = "";
-  let assignedContactsDropdownIconRef = "";
-  let assignedContactsBadges = "";
-  assignedContactsDropdownRef = document.getElementById(
-    "task-assigned-contacts-dropdown"
-  );
-  assignedContactsDropdownIconRef = document.getElementById(
+function toggleTaskAssignedContactsDropdownIcon() {
+  let assignedContactsDropdownIconRef = document.getElementById(
     "task-assigend-contacts-dropdown-icon"
   );
-  assignedContactsBadges = document.getElementById(
+  assignedContactsDropdownIconRef.classList.toggle("task-dropdown-open-icon");
+}
+
+function toggleTaskAssignedContactsBadges() {
+  let assignedContactsBadges = document.getElementById(
     "task-assigned-contacts-badges"
   );
+  assignedContactsBadges.classList.toggle("d-none");
+}
 
+function openTaskAssignedContactsDropdown() {
+  let assignedContactsDropdownRef = document.getElementById(
+    "task-assigned-contacts-dropdown"
+  );
   assignedContactsDropdownRef.classList.remove("d-none");
   assignedContactsDropdownRef.classList.add("d-flex-column");
-  assignedContactsDropdownIconRef.classList.add("task-dropdown-open-icon");
-  assignedContactsBadges.classList.add("d-none");
+  openTaskAssignedContactsDropdownIcon();
+  openTaskAssignedContactsDropdownBadges();
   renderTaskAssigendContacts();
   renderContactCheckboxes(newTaskAssignedContactsIndices);
   renderAssignedContactsBadges();
   searchContact();
 }
 
-function closeTaskAssignedContactsDropdown() {
-  let assignedContactsDropdownRef = "";
-  let assignedContactsDropdownIconRef = "";
-  let assignedContactsBadges = "";
-  assignedContactsDropdownRef = document.getElementById(
-    "task-assigned-contacts-dropdown"
-  );
-  assignedContactsDropdownIconRef = document.getElementById(
+function openTaskAssignedContactsDropdownIcon() {
+  let assignedContactsDropdownIconRef = document.getElementById(
     "task-assigend-contacts-dropdown-icon"
   );
-  assignedContactsBadges = document.getElementById(
+  assignedContactsDropdownIconRef.classList.add("task-dropdown-open-icon");
+}
+
+function openTaskAssignedContactsDropdownBadges() {
+  let assignedContactsBadges = document.getElementById(
     "task-assigned-contacts-badges"
   );
+  assignedContactsBadges.classList.add("d-none");
+}
 
+function closeTaskAssignedContactsDropdown() {
+  let assignedContactsDropdownRef = document.getElementById(
+    "task-assigned-contacts-dropdown"
+  );
   assignedContactsDropdownRef.classList.add("d-none");
   assignedContactsDropdownRef.classList.remove("d-flex-column");
-  assignedContactsDropdownIconRef.classList.remove("task-dropdown-open-icon");
-  assignedContactsBadges.classList.remove("d-none");
+  closeTaskAssignedContactsDropdownIcon();
+  closeTaskAssignedContactsDropdownBadges();
   renderTaskAssigendContacts();
   renderContactCheckboxes(newTaskAssignedContactsIndices);
   renderAssignedContactsBadges();
   clearInputTagValue("task-assigned-contacts");
+}
+
+function closeTaskAssignedContactsDropdownIcon() {
+  let assignedContactsDropdownIconRef = document.getElementById(
+    "task-assigend-contacts-dropdown-icon"
+  );
+  assignedContactsDropdownIconRef.classList.remove("task-dropdown-open-icon");
+}
+
+function closeTaskAssignedContactsDropdownBadges() {
+  let assignedContactsBadges = document.getElementById(
+    "task-assigned-contacts-badges"
+  );
+  assignedContactsBadges.classList.remove("d-none");
 }
 
 function renderAssignedContactsBadges() {
@@ -402,9 +415,7 @@ function searchContact() {
   let searchKey = document
     .getElementById("task-assigned-contacts")
     .value.toLowerCase();
-  let dropdownRef = document.getElementById("task-assigned-contacts-dropdown");
   let foundRefs = "";
-
   let contactsRefs = Array.from(
     document.getElementsByClassName("task-assigned-contact-wrap")
   );
