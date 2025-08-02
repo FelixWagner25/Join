@@ -301,6 +301,7 @@ function editTaskTemplate(indexTask, currentTask) {
                   >
                   <input
                     oninput="showSubtaskControlButtons()"
+                    onkeypress="addSubtaskOnEnterPress(event)"
                     class="p-relative task-input-border task-input-category font-Inter-400-20px"
                     type="text"
                     id="task-subtasks"

@@ -279,7 +279,7 @@ function resetSubtaskcontrolButtons() {
 }
 
 /**
- * Adds a subtask
+ * Adds a subtask to add task form
  */
 function addSubtask() {
   normalizeSubtasksArray();
@@ -588,5 +588,17 @@ function searchContact() {
   );
   for (let i = 0; i < foundRefs.length; i++) {
     foundRefs[i].classList.remove("d-none");
+  }
+}
+
+/**
+ * Submits a new subtask to add task form if user presses enter key
+ *
+ * @param {event} event
+ */
+function addSubtaskOnEnterPress(event) {
+  if (event.key === "Enter") {
+    addSubtask();
+    event.preventDefault();
   }
 }
