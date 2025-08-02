@@ -1,11 +1,19 @@
 let currentTask = "";
 
+/**
+ * Initializes board page. Initializes contacts and task arrays and renders board columns.
+ */
 async function initBoard() {
   contactsArray = await getSortedContactsArray();
   tasksArray = await getTasksArray();
   await renderBoard();
 }
 
+/**
+ * Pulls task data from firebase server and put them into an array
+ *
+ * @returns array with all tasks from firebase server
+ */
 async function getTasksArray() {
   tasksArray = [];
   let tasks = await getDataBaseElement("tasks");
@@ -25,7 +33,7 @@ async function getTasksArray() {
 }
 
 /**
- * This Function renders the Board for each Task-Status
+ * Renders the Board for each task status column
  *
  */
 async function renderBoard() {
@@ -36,7 +44,7 @@ async function renderBoard() {
 }
 
 /**
- * This Function renders a Board Column
+ * Renders a Board Column
  *
  * @param {String} columHTMLid task status from the DOM
  * @param {String} taskStatusId status from the firebase
@@ -58,7 +66,7 @@ function renderBoardColumn(columHTMLid, taskStatusId) {
 }
 
 /**
- * This Function renders a placeholder if no tasks were found in the dedicated column
+ * Renders a placeholder if no tasks were found in the dedicated column
  *
  * @param {String} columHTMLid task status from the DOM
  */
@@ -73,10 +81,23 @@ function checkEmptyColumn(columHTMLid) {
   }
 }
 
+/**
+ * Checks whether a task has a certain task status
+ *
+ * @param {string} taskStatusId
+ * @param {integer} indexTask
+ * @returns {boolean} true if the task has the specified status, otherwise false
+ */
 function taskHasStatus(taskStatusId, indexTask) {
   return tasksArray[indexTask][1].status === taskStatusId;
 }
 
+/**
+ * Checks whether a task has subtasks
+ *
+ * @param {integer} indexTask
+ * @returns {boolean} true if task has subtasks, otherwise false
+ */
 function subtasksExist(indexTask) {
   return tasksArray[indexTask][1].subtasks !== undefined;
 }
@@ -199,15 +220,15 @@ function searchTask() {
 
 /**
  * This Function toggles a user-feedback, if no searched task was found
- * 
+ *
  * @param {Object} foundRef  the task element
  */
 function setNoTaskFoundFeedback(foundRef) {
-  let noTask = document.getElementById('no-task-found')
-    if (foundRef.length == 0) {
-    noTask.classList.remove('d-none')
+  let noTask = document.getElementById("no-task-found");
+  if (foundRef.length == 0) {
+    noTask.classList.remove("d-none");
   } else {
-     noTask.classList.add('d-none')
+    noTask.classList.add("d-none");
   }
 }
 
@@ -241,7 +262,7 @@ async function startDragging(event) {
 async function moveTask(event) {
   let targetTask = event.target.closest(".col-content[id]");
   targetTask = targetTask.id.replace("-", "");
-  await updateStatus(`tasks/${currentTask[0]}/status`, targetTask);
+  await updateDatabaseObject(`tasks/${currentTask[0]}/status`, targetTask);
   await initBoard();
 }
 
@@ -254,16 +275,11 @@ function toggleDragArea() {
   [...area].forEach((c) => c.classList.toggle("d-none"));
 }
 
-async function updateStatus(path = "", taskData = {}) {
-  let response = await fetch(database + path + ".json", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(taskData),
-  });
-}
-
+/**
+ * Opens add task overlay
+ *
+ * @param {string} taskStatusId
+ */
 function openAddTaskOverlay(taskStatusId) {
   document
     .getElementById("add-task-overlay-bg-wrap")
@@ -274,6 +290,9 @@ function openAddTaskOverlay(taskStatusId) {
   renderAddTaskForm("add-task-overlay", taskStatusId);
 }
 
+/**
+ * Closes add task overlay
+ */
 function closeAddTaskOverlay() {
   document
     .getElementById("add-task-overlay-bg-wrap")
@@ -299,7 +318,7 @@ async function showTaskOverlay(indexTask) {
 }
 
 /**
- * adds a darker background to get a better focus on current overlay
+ * Adds a darker background to get a better focus on current overlay
  *
  */
 function blurBackgroundBoard() {
@@ -325,11 +344,17 @@ function closeTaskOverlays() {
   document.getElementById("task-overlay").classList.remove("dim-active");
   newTaskAssignedContactsIndices = [];
   renderBoard();
-   setTimeout(() => {
+  setTimeout(() => {
     overlay.innerHTML = "";
   }, 500);
 }
 
+/**
+ * Calculates the completed subtasks of a task
+ *
+ * @param {integer} indexTask
+ * @returns {integer} number of completed subtasks
+ */
 function getTaskCompletedSubtasksNumber(indexTask) {
   let completedSubtasksNumber = 0;
   for (
@@ -344,6 +369,11 @@ function getTaskCompletedSubtasksNumber(indexTask) {
   return completedSubtasksNumber;
 }
 
+/**
+ * Renders subtask progress bar progression fill
+ *
+ * @param {integer} indexTask
+ */
 function renderSubtasksProgressbarFill(indexTask) {
   let progBarRef = document.getElementById("progress-" + String(indexTask));
   let widthString =
