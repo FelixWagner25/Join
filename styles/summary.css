@@ -5,10 +5,14 @@ body {
   overflow-x: hidden;
 }
 
+/* main{
+  height: unset !important;
+} */
+
 .summary {
   flex: 1;
   gap: 40px;
-  padding: 110px 96px 0 96px;
+  padding: 0 96px;
 }
 
 .metrics-header h1 {

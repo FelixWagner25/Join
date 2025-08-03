@@ -57,7 +57,7 @@ aside {
   background-color: #2a3647;
   display: flex;
   width: 232px;
-/*   height: 1024px; */
+/*   height: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,8 +69,8 @@ aside {
 main {
   grid-area: main;
   height: calc(100vh - 96px);
-  max-width: 1440px;
-  overflow-y: hidden;
+  max-width: 1920px;
+
 }
 
 menu {
@@ -161,7 +161,7 @@ nav > a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 243px 0 0 0;
+/*   padding: 243px 0 0 0; */
   gap: 8px;
 }
 
