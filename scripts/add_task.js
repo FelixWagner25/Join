@@ -26,91 +26,6 @@ function renderAddTaskForm(htmlId, taskStatusId) {
 }
 
 /**
- * Adds new task to firebase server and directs user to board page
- *
- * @param {string} newTaskStatusId task status id
- */
-async function addNewTask(newTaskStatusId) {
-  let newTaskScalarData = getNewTaskScalarInformation(newTaskStatusId);
-  await submitObjectToDatabase("tasks", newTaskScalarData);
-  tasksArray = await getTasksArray();
-  await submitNewTaskOptionalComplexInfo();
-  clearAddTaskForm();
-  showToastMessage("add-task-toast-msg");
-  setTimeout(() => {
-    directToBoardPage();
-  }, 1000);
-}
-
-/**
- * Submits a new task's optional complex information to firebase server
- *
- * @param {string} editID
- */
-async function submitNewTaskOptionalComplexInfo(editID) {
-  let newTaskFirebaseId = "";
-  if (editID) {
-    newTaskFirebaseId = editID;
-  } else {
-    newTaskFirebaseId = tasksArray[tasksArray.length - 1][0];
-  }
-  await submitNewTaskAssignedContacts(newTaskFirebaseId);
-  await submitNewTaskSubtasks(newTaskFirebaseId);
-}
-
-/**
- * Submits a new task's assigned contacts to firebase server
- *
- * @param {string} newTaskFireBaseId task firebase id
- */
-async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
-  let path = "tasks/" + String(newTaskFireBaseId) + "/assignedTo";
-  await deleteDataBaseElement(path);
-  for (let contactID of newTaskAssignedContactsIndices) {
-    let assignedContactEntry = contactsArray.find(
-      (entry) => entry[0] === contactID
-    );
-    if (assignedContactEntry) {
-      let keyValuePairs = {
-        Id: contactID,
-        name: assignedContactEntry[1].name,
-      };
-      await submitObjectToDatabase(path, keyValuePairs);
-    }
-  }
-}
-
-/**
- * Sets a subtask's status
- *
- * @param {htmlElement} currentElement
- * @param {integer} indexTask
- * @param {string} subtaskID
- */
-async function setSubtaskStatus(currentElement, indexTask, subtaskID) {
-  let path = tasksArray[indexTask][0];
-  obj = currentElement.checked;
-  await updateDatabaseObject(`tasks/${path}/subtasks/${subtaskID}/done`, obj);
-  await initBoard();
-}
-
-/**
- * Submits a new task's subtask
- *
- * @param {string} newTaskFirebaseId
- */
-async function submitNewTaskSubtasks(newTaskFirebaseId) {
-  let path = "tasks/" + String(newTaskFirebaseId) + "/subtasks";
-  await deleteDataBaseElement(path);
-  for (let i = 0; i < newTaskSubtasks.length; i++) {
-    let keyValuePairs = {};
-    keyValuePairs.name = newTaskSubtasks[i].name;
-    keyValuePairs.done = newTaskSubtasks[i].done;
-    await submitObjectToDatabase(path, keyValuePairs);
-  }
-}
-
-/**
  * Clears the add task form
  */
 function clearAddTaskForm() {
@@ -122,44 +37,9 @@ function clearAddTaskForm() {
   clearInputTagValue("task-category");
   clearInputTagValue("task-subtasks");
   newTaskAssignedContactsIndices = [];
-  renderAssignedContactsBadges();
+  renderContactsBadges(newTaskAssignedContactsIndices);
   newTaskSubtasks = [];
   renderSubtasks();
-}
-
-/**
- * Gets new task scalar information from input fields
- *
- * @param {string} newTaskStatusId
- * @param {object} editedTaskObj
- * @returns
- */
-function getNewTaskScalarInformation(newTaskStatusId, editedTaskObj) {
-  if (editedTaskObj) {
-    insertMandatoryTaskInfo(editedTaskObj);
-    insertOptionalScalarTaskInfo(editedTaskObj);
-    return editedTaskObj;
-  } else {
-    let newTaskScalarInfo = {};
-    insertMandatoryTaskInfo(newTaskScalarInfo, newTaskStatusId);
-    insertOptionalScalarTaskInfo(newTaskScalarInfo);
-    return newTaskScalarInfo;
-  }
-}
-
-/**
- *
- * @param {object} newTaskObj
- * @param {string} newTaskStatusId
- */
-function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId) {
-  newTaskObj.title = getInputTagValue("task-title");
-  newTaskObj.dueDate = getInputTagValue("task-due-date");
-  newTaskObj.priority = newTaskPriority;
-  if (newTaskStatusId) {
-    newTaskObj.category = getTaskCategoryFirebaseName();
-    newTaskObj.status = newTaskStatusId;
-  }
 }
 
 /**
@@ -279,36 +159,6 @@ function resetSubtaskcontrolButtons() {
 }
 
 /**
- * Adds a subtask to add task form
- */
-function addSubtask() {
-  normalizeSubtasksArray();
-  const subtaskName = getInputTagValue("task-subtasks");
-  newTaskSubtasks.push({ name: subtaskName, done: false });
-  renderSubtasks();
-  clearInputTagValue("task-subtasks");
-  resetSubtaskcontrolButtons();
-  showSubtaskControlButtons();
-}
-
-/**
- * Removes firebase id from subtasks array pulled from firebase server.
- */
-function normalizeSubtasksArray() {
-  for (let i = 0; i < newTaskSubtasks.length; i++) {
-    if (Array.isArray(newTaskSubtasks[i])) {
-      const data = newTaskSubtasks[i][1];
-      const obj = {
-        name: data.name,
-        done: data.done,
-      };
-      newTaskSubtasks[i] = obj;
-    }
-  }
-  subtasksNormalized = true;
-}
-
-/**
  * Renders a task's subtasks
  */
 function renderSubtasks() {
@@ -325,40 +175,6 @@ function renderSubtasks() {
 }
 
 /**
- * Edits a subtask
- *
- * @param {integer} indexSubtask
- */
-function editSubtask(indexSubtask) {
-  let editedSubtaskRef = document.getElementById(
-    "task-subtask-" + indexSubtask
-  );
-  editedSubtaskRef.innerHTML = getEditSubtaskTemplate(indexSubtask);
-}
-
-/**
- * Adds a new subtask to add task input form
- *
- * @param {integer} indexSubtask
- */
-function addEditedSubtask(indexSubtask) {
-  let inputRef = "task-subtask-edit-" + String(indexSubtask);
-  editedSubtaskName = getInputTagValue(inputRef);
-  newTaskSubtasks[indexSubtask].name = editedSubtaskName;
-  renderSubtasks();
-}
-
-/**
- * Deletes a subtask from add task form
- *
- * @param {integer} indexSubtask
- */
-function deleteSubtask(indexSubtask) {
-  newTaskSubtasks.splice(indexSubtask, 1);
-  renderSubtasks();
-}
-
-/**
  * Toggles task assigned contacts dropdown menu
  */
 function toggleTaskAssignedContactsDropdown() {
@@ -371,7 +187,7 @@ function toggleTaskAssignedContactsDropdown() {
   toggleTaskAssignedContactsBadges();
   renderTaskAssigendContacts();
   renderContactCheckboxes(newTaskAssignedContactsIndices);
-  renderAssignedContactsBadges();
+  renderContactsBadges(newTaskAssignedContactsIndices);
 }
 
 /**
@@ -407,7 +223,7 @@ function openTaskAssignedContactsDropdown() {
   openTaskAssignedContactsDropdownBadges();
   renderTaskAssigendContacts();
   renderContactCheckboxes(newTaskAssignedContactsIndices);
-  renderAssignedContactsBadges();
+  renderContactsBadges(newTaskAssignedContactsIndices);
   searchContact();
 }
 
@@ -444,7 +260,7 @@ function closeTaskAssignedContactsDropdown() {
   closeTaskAssignedContactsDropdownBadges();
   renderTaskAssigendContacts();
   renderContactCheckboxes(newTaskAssignedContactsIndices);
-  renderAssignedContactsBadges();
+  renderContactsBadges(newTaskAssignedContactsIndices);
   clearInputTagValue("task-assigned-contacts");
 }
 
@@ -466,13 +282,6 @@ function closeTaskAssignedContactsDropdownBadges() {
     "task-assigned-contacts-badges"
   );
   assignedContactsBadges.classList.remove("d-none");
-}
-
-/**
- * Renders assigned contact badges
- */
-function renderAssignedContactsBadges() {
-  renderContactsBadges(newTaskAssignedContactsIndices);
 }
 
 /**
@@ -503,22 +312,7 @@ function renderContactsBadges(array) {
 function toggleAssignContact(contactID, htmlElement) {
   htmlElement.classList.toggle("focus");
   toggleValueFromArray(contactID, newTaskAssignedContactsIndices);
-  renderAssignedContactsBadges();
-}
-
-/**
- * Toggle an arbitrary value from an array
- *
- * @param {*} value arbitrary value
- * @param {*} array array
- */
-function toggleValueFromArray(value, array) {
-  let index = array.indexOf(value);
-  if (index !== -1) {
-    array.splice(index, 1);
-  } else {
-    array.push(value);
-  }
+  renderContactsBadges(newTaskAssignedContactsIndices);
 }
 
 /**
@@ -554,51 +348,5 @@ function renderContactCheckboxes(array) {
       "task-assigned-contact-wrap-" + indexAssignedContact
     );
     assignedContactWrapRef.classList.add("focus");
-  }
-}
-
-/**
- * Returns current date.
- * @returns current day in format YYYYMMDD
- */
-function getCurrentDateYYYMMDD() {
-  let today = new Date();
-  let year = String(today.getFullYear());
-  let month = String(today.getMonth() + 1).padStart(2, "0");
-  let day = String(today.getDate()).padStart(2, "0");
-  return year + "-" + month + "-" + day;
-}
-
-/**
- * Searches a contact to assign via contact's name
- */
-function searchContact() {
-  let searchKey = document
-    .getElementById("task-assigned-contacts")
-    .value.toLowerCase();
-  let foundRefs = "";
-  let contactsRefs = Array.from(
-    document.getElementsByClassName("task-assigned-contact-wrap")
-  );
-  for (let i = 0; i < contactsRefs.length; i++) {
-    contactsRefs[i].classList.add("d-none");
-  }
-  foundRefs = contactsRefs.filter((htmlElement) =>
-    htmlElement.innerText.toLowerCase().includes(searchKey)
-  );
-  for (let i = 0; i < foundRefs.length; i++) {
-    foundRefs[i].classList.remove("d-none");
-  }
-}
-
-/**
- * Submits a new subtask to add task form if user presses enter key
- *
- * @param {event} event
- */
-function addSubtaskOnEnterPress(event) {
-  if (event.key === "Enter") {
-    addSubtask();
-    event.preventDefault();
   }
 }

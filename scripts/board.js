@@ -408,7 +408,7 @@ async function editTask(indexTask) {
   let currentTask = tasksArray[indexTask][1];
   loadOptionalScalarTaskInfo(currentTask, indexTask);
   overlay.innerHTML = editTaskTemplate(indexTask, currentTask);
-  renderAssignedContactsBadges();
+  renderContactsBadges(newTaskAssignedContactsIndices);
 }
 
 /**

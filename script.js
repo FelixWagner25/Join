@@ -304,3 +304,30 @@ function firstLettersAreEqual(char1, char2) {
   }
   return false;
 }
+
+/**
+ * Returns current date.
+ * @returns current day in format YYYYMMDD
+ */
+function getCurrentDateYYYMMDD() {
+  let today = new Date();
+  let year = String(today.getFullYear());
+  let month = String(today.getMonth() + 1).padStart(2, "0");
+  let day = String(today.getDate()).padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
+
+/**
+ * Toggle an arbitrary value from an array
+ *
+ * @param {*} value arbitrary value
+ * @param {*} array array
+ */
+function toggleValueFromArray(value, array) {
+  let index = array.indexOf(value);
+  if (index !== -1) {
+    array.splice(index, 1);
+  } else {
+    array.push(value);
+  }
+}
