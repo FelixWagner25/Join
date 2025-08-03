@@ -34,11 +34,7 @@ li{
   animation: backgroundFade 2s ease-in-out;
 }
 
-@keyframes backgroundFade {
-  0% {
-    background-color: #f6f7f8;
-  }
-}
+
 
 .join-logo-index {
   position: absolute;
@@ -49,13 +45,6 @@ li{
   z-index: 2;
 }
 
-@keyframes easein {
-  100% {
-    top: 80px;
-    left: 77px;
-    transform: translate(0, 0);
-  }
-}
 
 .policy-notice{
   height: 35px;

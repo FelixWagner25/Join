@@ -59,7 +59,6 @@ textarea {
   width: 100%;
 }
 
-
 .text-center-relative {
   position: relative;
   top: 50%;
@@ -216,117 +215,6 @@ textarea {
   text-align: justify;
 }
 
-.font-Inter-400-12px {
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-400-13px {
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-400-16px {
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-400-20px {
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-400-27px {
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 27px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-500-47px {
-  font-family: Inter;
-  font-weight: 500;
-  font-size: 47px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-600-61px {
-  font-family: Inter;
-  font-weight: 600;
-  font-size: 61px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-600-64px {
-  font-family: Inter;
-  font-weight: 600;
-  font-size: 64px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-700-16px {
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-700-21px {
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 21px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-700-61px {
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 61px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-Inter-700-64px {
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-OpenSans-400-16px {
-  font-family: OpenSans;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
-
-.font-OpenSans-400-19px {
-  font-family: OpenSans;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 120%;
-  letter-spacing: 0;
-}
 
 .padding-t64-r400 {
   padding-top: 64px;
@@ -347,7 +235,7 @@ textarea {
 }
 
 .pd-b-8px {
-    padding-bottom: 8px;
+  padding-bottom: 8px;
 }
 
 .pd-b-24px {
@@ -390,11 +278,11 @@ textarea {
   gap: 48px;
 }
 
-.height-96px{
+.height-96px {
   height: 96px;
 }
 
-.height-52px{
+.height-52px {
   height: 52px;
 }
 
@@ -418,26 +306,6 @@ textarea {
   animation: 0.25s animateBgUnblur linear;
 }
 
-@keyframes animateBgBlur {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 100%;
-  }
-}
-
-@keyframes animateBgUnblur {
-  0% {
-    opacity: 100%;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
 .toast-msg {
   position: fixed;
   top: 75%;
@@ -453,23 +321,4 @@ textarea {
 
 .toast-msg.show {
   animation: toast-fly-in-out 3s linear;
-}
-
-@keyframes toast-fly-in-out {
-  0% {
-    transform: translate(300%, -50%);
-    opacity: 0;
-  }
-  10% {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-  90% {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(300%, -50%);
-    opacity: 0;
-  }
 }

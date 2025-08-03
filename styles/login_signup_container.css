@@ -12,17 +12,7 @@
   z-index: -1;
   transition: ease-in-out 0.5s 
 }
-@keyframes hide {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    z-index: 0;
-  }
-  100% {
-    z-index: 0;
-  }
-}
+
 
 .signup-container {
   width: 279px;
@@ -301,20 +291,6 @@ input[type="checkbox"]:checked:hover {
  animation: slide-up 1s forwards;
 }
 
-@keyframes slide-up{
-  from {    
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%) translateY(-50%);
-}
-  to{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%) translateY(-50%);
-  }
-}
 
 .signup-message-text{
   padding: 0 25px;

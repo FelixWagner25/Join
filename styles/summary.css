@@ -245,17 +245,4 @@ body {
     font-size: 16px;
   }
 
-  @keyframes fadeGreeting {
-    0% {
-      height: calc(100vh - 160px);
-      opacity: 1;
-    }
-    66% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      height: calc(100vh - 160px);
-    }
-  }
 }

@@ -134,16 +134,7 @@ main {
   visibility: visible;
 }
 
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100vw);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
+
 
 .contact-details-animate-in {
   animation: slideInFromRight 0.4s linear;
