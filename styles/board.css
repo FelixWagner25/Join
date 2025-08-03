@@ -211,6 +211,7 @@
   border-radius: 10px;
   gap: 8px;
   flex-direction: column;
+  overflow-x: clip;
 }
 
 .task-headline {

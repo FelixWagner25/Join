@@ -79,7 +79,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
         </div>
       </div>
 
-    <h2 class="font-Inter-700-47px text-color-black">${currentTask.title}</h2>
+    <h2 class="font-Inter-700-47px text-color-black  task-overlay-title">${currentTask.title}</h2>
 
     <div class="font-Inter-400-20px text-color-black task-overlay-desc">${
       currentTask?.description || ""
