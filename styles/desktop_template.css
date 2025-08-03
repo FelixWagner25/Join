@@ -11,6 +11,7 @@
 
     display: grid;
     grid-template-columns: 232px auto;
+    grid-template-rows: 96px auto;
     grid-template-areas: 
     'aside nav'
     'aside main';
@@ -299,8 +300,7 @@ nav>a:hover{
 }
 }
 
-@media screen 
-and (max-height: 840px) 
+@media screen and (max-height: 600px) 
 {
 .landscape-orientation{
   display: flex !important;
@@ -315,6 +315,5 @@ and (max-height: 840px)
   overflow: initial;
   z-index: 9999;
   color: #ffffff;
-
 }
 }

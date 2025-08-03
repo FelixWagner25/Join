@@ -146,9 +146,9 @@ body {
 }
 
 @media screen and (max-width: 1440px) {
-  .greeting{
-  display: none;
-}
+  .greeting {
+    display: none;
+  }
 
   .metrics-header h1 {
     font-size: 47px;
@@ -244,5 +244,4 @@ body {
   #deadline-date {
     font-size: 16px;
   }
-
 }
