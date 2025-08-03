@@ -22,6 +22,8 @@
     <script src="/scripts/desktop_template.js"></script>
     <script src="/scripts/w3_include.js"></script>
     <script src="/scripts/contacts.js"></script>
+    <script src="/scripts/contact_operations.js"></script>
+    <script src="/scripts/contacts_mobile.js"></script>
   </head>
   <body onload="init(); initBoard()">
     <div class="page">
@@ -40,8 +42,11 @@
 
         <div class="board-headline">
           <div class="board-headline-mobile">
-          <div class="board-headline-text">Board</div>
-          <button class="d-none add-task-btn-mobile " onclick="openAddTaskOverlay('todo')"></button>
+            <div class="board-headline-text">Board</div>
+            <button
+              class="d-none add-task-btn-mobile"
+              onclick="openAddTaskOverlay('todo')"
+            ></button>
           </div>
           <div class="board-search-add-task-wrap">
             <div class="search-wrap">
@@ -158,7 +163,9 @@
               </div>
             </div>
           </div>
-          <div id="no-task-found" class="d-none no-task-found">No Task found</div>
+          <div id="no-task-found" class="d-none no-task-found">
+            No Task found
+          </div>
         </div>
 
         <div
@@ -172,16 +179,22 @@
               id="add-task-overlay-wrap"
               onclick="event.stopPropagation(); closeTaskAssignedContactsDropdown()"
             >
-        <div class="scroll-overlay">
-
-          <div class="title-wrap mg-b-40px">
-              <div class="close-icon-add-task-overlay-wrap d-flex-row-c-c" onclick="closeAddTaskOverlay()">
-                <img                  src="/assets/icons/close.svg"                  alt="close"                  class="close-icon"                />
+              <div class="scroll-overlay">
+                <div class="title-wrap mg-b-40px">
+                  <div
+                    class="close-icon-add-task-overlay-wrap d-flex-row-c-c"
+                    onclick="closeAddTaskOverlay()"
+                  >
+                    <img
+                      src="/assets/icons/close.svg"
+                      alt="close"
+                      class="close-icon"
+                    />
+                  </div>
+                  <p class="font-Inter-700-61px">Add Task</p>
+                </div>
+                <div class=" " id="add-task-overlay"></div>
               </div>
-              <p class="font-Inter-700-61px ">Add Task</p>
-          </div>
-              <div class=" " id="add-task-overlay"></div>
-            </div>
             </div>
           </div>
         </div>

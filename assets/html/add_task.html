@@ -18,6 +18,8 @@
     <script src="/scripts/desktop_template.js"></script>
     <script src="/scripts/w3_include.js"></script>
     <script src="/scripts/contacts.js"></script>
+    <script src="/scripts/contact_operations.js"></script>
+    <script src="/scripts/contacts_mobile.js"></script>
   </head>
   <body onload="init(); addTaskInit()">
     <div class="page">
@@ -25,7 +27,11 @@
         class="d-contents"
         w3-include-html="/templates/desktop_template.html"
       ></div>
-      <main id="main" class="scrollable-y" onclick="closeTaskAssignedContactsDropdown()">
+      <main
+        id="main"
+        class="scrollable-y"
+        onclick="closeTaskAssignedContactsDropdown()"
+      >
         <div class="pd-t-60px pd-lr-96px d-flex-column gap-48px">
           <h1 class="font-Inter-700-61px">Add Task</h1>
           <div id="add-task-form-wrap"></div>

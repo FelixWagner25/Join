@@ -282,3 +282,25 @@ function setAddOrEditSubmit(taskStatusId, indexTask, newContact, indexContact) {
     updateContact(indexContact);
   }
 }
+
+/**
+ * Blurs background of the main screen.
+ *
+ */
+function blurBackground() {
+  document.getElementById("bg-dimmed").classList.add("dim-active");
+}
+
+/**
+ * Checks whether first characters of two strings are equal
+ *
+ * @param {string} char1 - first character
+ * @param {string} char2 - second character
+ * @returns {boolean} true if first letters are equal
+ */
+function firstLettersAreEqual(char1, char2) {
+  if (char1.charAt(0).toLowerCase() == char2.charAt(0).toLowerCase()) {
+    return true;
+  }
+  return false;
+}

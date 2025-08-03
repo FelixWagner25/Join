@@ -36,14 +36,6 @@ function showAddContactScreen() {
 }
 
 /**
- * Blurs background of the main screen.
- *
- */
-function blurBackground() {
-  document.getElementById("bg-dimmed").classList.add("dim-active");
-}
-
-/**
  * Opens add-contact input screen.
  *
  */
@@ -148,24 +140,6 @@ async function getCurrentContactAttribute(attribute, indexContact) {
 }
 
 /**
- * Adds a new contact to the database.
- *
- */
-async function addNewContact() {
-  if (!regexValidation()) {
-    return;
-  }
-  let newContactData = getContactInformation("add-contact-input-");
-  await submitObjectToDatabase("contacts", newContactData);
-  await renderContactsList();
-  closeContactOverlays();
-  removeFocusFromAllContacts();
-  let addedContactIndex = getContactIndexByEmail(newContactData.email);
-  showContactDetails(addedContactIndex);
-  showToastMessage("contact-created-toast-msg");
-}
-
-/**
  * Returns contact index inside of contactsArray by contact email.
  *
  * @param {string} contactEmail
@@ -209,25 +183,6 @@ function clearAddContactForm(htmlIdPrefix) {
 }
 
 /**
- * Updates the current contact information on the firebase server
- *
- * @param {integer} indexContact
- */
-async function updateContact(indexContact) {
-  if (!regexValidation()) {
-    return;
-  }
-  let htmlIdPrefix = "input-" + String(indexContact) + "-";
-  let editedContactData = getContactInformation(htmlIdPrefix);
-  let contactPath = "contacts/" + contactsArray[indexContact][0];
-  await updateDatabaseObject(contactPath, editedContactData);
-  await renderContactsList();
-  renderContactDetails(indexContact);
-  closeContactOverlays();
-  showToastMessage("contact-updated-toast-msg");
-}
-
-/**
  * Renders the contacts list
  *
  */
@@ -264,20 +219,6 @@ function contactHasFirstLetterPredecessor(indexContact) {
   } else {
     return false;
   }
-}
-
-/**
- * Checks whether first characters of two strings are equal
- *
- * @param {string} char1 - first character
- * @param {string} char2 - second character
- * @returns {boolean} true if first letters are equal
- */
-function firstLettersAreEqual(char1, char2) {
-  if (char1.charAt(0).toLowerCase() == char2.charAt(0).toLowerCase()) {
-    return true;
-  }
-  return false;
 }
 
 /**
@@ -324,42 +265,6 @@ function findContactIndexByFirebaseId(contactFirebaseId) {
 }
 
 /**
- * Deletes a contact from firebase server
- *
- * @param {integer} indexContact
- */
-async function deleteContact(indexContact) {
-  let contactId = contactsArray[indexContact][0];
-  await deleteContactFromTasks(contactId);
-  let path = "contacts/" + contactId;
-  responseMessage = await deleteDataBaseElement(path);
-  clearContactDetails();
-  await renderContactsList();
-  closeContactOverlays();
-  showToastMessage("delete-contact-toast-msg");
-}
-
-/**
- * Deletes contact from all assigned tasks in board.
- *
- * @param {string} contactFirebaseId
- */
-async function deleteContactFromTasks(contactFirebaseId) {
-  let taskIdassignedToIdTupels = await findTaskIdAssignedToIdTupels(
-    contactFirebaseId
-  );
-  for (let indexId = 0; indexId < taskIdassignedToIdTupels.length; indexId++) {
-    let path =
-      "/tasks/" +
-      taskIdassignedToIdTupels[indexId].taskId +
-      "/assignedTo/" +
-      taskIdassignedToIdTupels[indexId].assignedToId;
-    await deleteDataBaseElement(path);
-  }
-  tasksArray = await getTasksArray();
-}
-
-/**
  *
  * @param {string} contactFirebaseId
  * @returns {array} tupel of task Id and taks assigned to Id
@@ -400,23 +305,6 @@ function renderContactDetails(indexContact) {
 }
 
 /**
- * Renders contact details for mobile screen widths
- *
- * @param {integer} indexContact
- */
-function renderContactDetailsMobileWindow(indexContact) {
-  let contactDetailsRef = document.getElementById("contact-details-mobile");
-  document.getElementById("contacts-list-wrap").style.display = "none";
-  contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
-  document.getElementById("back-to-contacts-list-btn").style.display = "block";
-  document.getElementById("contact-details-mobile-wrap").style.display =
-    "block";
-  document.getElementById("add-new-contact-btn-mobile").style.display = "none";
-  document.getElementById("edit-contact-btn-mobile").style.display = "flex";
-  renderContactDetailsMobileMenu(indexContact);
-}
-
-/**
  * Renders contact details for desktop screen widths
  *
  * @param {integer} indexContact
@@ -427,17 +315,6 @@ function renderContactDetailsDesktopWindow(indexContact) {
   contactDetailsRef.classList.remove("contact-details-animate-in");
   void contactDetailsRef.offsetWidth;
   contactDetailsRef.classList.add("contact-details-animate-in");
-}
-
-/**
- * Renders contact details mobile menu
- *
- * @param {integer} indexContact
- */
-function renderContactDetailsMobileMenu(indexContact) {
-  mobileMenuRef = document.getElementById("contact-details-mobile-menu");
-  mobileMenuRef.innerHTML = "";
-  mobileMenuRef.innerHTML = getContactDetailsMobileMenuTemplate(indexContact);
 }
 
 /**
@@ -479,31 +356,4 @@ function removeFocusFromAllContacts() {
 function addFocusToContact(indexContact) {
   let elementId = "contacts-list-" + String(indexContact);
   document.getElementById(elementId).classList.add("focus");
-}
-
-/**
- * Closes contact details mobile overlay and returns users view back to contacts list
- *
- */
-function backToContactsList() {
-  document.getElementById("contacts-list-wrap").style.display = "flex";
-  document.getElementById("back-to-contacts-list-btn").style.display = "none";
-  document.getElementById("contact-details-mobile-wrap").style.display = "none";
-  document.getElementById("add-new-contact-btn-mobile").style.display = "flex";
-  document.getElementById("edit-contact-btn-mobile").style.display = "none";
-}
-
-/**
- * Shows contact details mobile menu
- */
-function showContactDetailsMobileMenu() {
-  document.getElementById("contact-details-mobile-menu").style.display =
-    "block";
-}
-
-/**
- * Closes contact details mobile Menu
- */
-function closeContactDetailsMobileMenu() {
-  document.getElementById("contact-details-mobile-menu").style.display = "none";
 }
