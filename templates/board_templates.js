@@ -329,7 +329,7 @@ function editTaskTemplate(indexTask, currentTask) {
                       <span class="task-submit-subtask-icon"></span>
                     </div>
                   </div>
-                  <ul id="tasks-subtasks-list">
+                  <ul class="tasks-subtask-list" id="tasks-subtasks-list">
                   ${
                     currentTask.subtasks
                       ?.map(

@@ -75,8 +75,8 @@
 }
 
 .add-task-overlay-wrap {
-  max-width: 85%;
-  max-height: 85%;
+  max-width: 95%;
+  max-height: 95%;
   border-radius: 30px;
   transform: translate(200%, 0);
   transition: transform 250ms linear;
@@ -122,6 +122,7 @@ input[type="checkbox"] {
 .scroll-overlay {
   overflow-y: overlay;
   scrollbar-width: none;
+  height: 85vh;
 }
 
 .task-overlay-wrap > .scroll-overlay{
