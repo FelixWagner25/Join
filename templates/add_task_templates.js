@@ -212,6 +212,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             placeholder="Select task category"
             onclick="openTaskCategoryDropdown()"
             autocomplete="off"
+            readonly
           />
           <span
             class="p-absolute task-dropdown-icon"

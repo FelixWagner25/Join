@@ -1,11 +1,3 @@
-body {
-  overflow: hidden;
-}
-
-main {
-  overflow-x: hidden;
-}
-
 .contacts-list-wrap {
   width: 456px;
   display: flex;
@@ -133,8 +125,6 @@ main {
   background-color: rgba(0, 0, 0, 0.25);
   visibility: visible;
 }
-
-
 
 .contact-details-animate-in {
   animation: slideInFromRight 0.4s linear;
