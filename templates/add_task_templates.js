@@ -199,7 +199,7 @@ function getAddTaskFormTemplate(taskStatusId) {
           ></div>
         </div>
 
-        <div class="d-flex-column gap-8px p-relative height-96px" onclick="event.stopPropagation()">
+        <div class="d-flex-column gap-8px p-relative height-86px" onclick="event.stopPropagation()">
           <label
             for="task-category"
             class="font-Inter-400-20px text-color-2A3647"

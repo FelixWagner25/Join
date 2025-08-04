@@ -277,6 +277,10 @@ textarea {
   gap: 48px;
 }
 
+.height-86px {
+  height: 86px;
+}
+
 .height-96px {
   height: 96px;
 }
