@@ -2,6 +2,12 @@ body{
   overflow: hidden;
 }
 
+#login-view{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
 li > a:visited{
   color: #a8a8a8;
 }
@@ -34,8 +40,6 @@ li{
   animation: backgroundFade 2s ease-in-out;
 }
 
-
-
 .join-logo-index {
   position: absolute;
   top: 50%;
@@ -49,7 +53,7 @@ li{
 .policy-notice{
   height: 35px;
   position: absolute;
-  bottom: 8%;
+  bottom: 11%;
   left: 50%;
   transform: translate(-50% , -50%);
   animation: hide 2s forwards;
@@ -95,9 +99,21 @@ li{
 }
 }
 
-@media screen and ( max-width: 600px ) {
-  .policy-notice{
-    position: unset;
-    transform: unset;
-  }
+@media screen and (max-height: 650px) 
+{
+.landscape-orientation{
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: -0%;
+  background: rgb(0, 0, 0, 0.9);
+  left: -0%;
+  overflow: initial;
+  z-index: 9999;
+  color: #ffffff;
+}
+
 }

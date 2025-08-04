@@ -247,14 +247,15 @@ function requiredInputValidation(
 ) {
   let requiredFields = document.getElementsByClassName("required");
   let validationMessageRef = document.getElementsByClassName("validation");
+  let whitespacePattern = /^[ \t]*$/;
   let validationTrue = [...requiredFields].every(
-    (element) => element.value != ""
+    (element) => element.value != "" && !whitespacePattern.test(element.value)
   );
   if (validationTrue) {
     setAddOrEditSubmit(taskStatusId, indexTask, newContact, indexContact);
   } else {
     [...requiredFields].forEach((element, i) => {
-      if (element.value === "") {
+      if (element.value === "" || whitespacePattern.test(element.value)) {
         validationMessageRef[i].classList.remove("d-none");
       } else {
         validationMessageRef[i].classList.add("d-none");

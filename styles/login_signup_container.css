@@ -10,12 +10,10 @@
   background-color: #ffffff;
   animation: hide 2s forwards;
   z-index: -1;
-  transition: ease-in-out 0.5s 
+  transition: ease-in-out 0.5s;
 }
 
-
 .signup-container {
-  width: 279px;
   max-height: 49px;
   position: sticky;
   top: 67px;
@@ -50,8 +48,8 @@
   gap: 16px;
 }
 
-.signup > .login-headline-container{
-    margin-top: -110px;
+.signup > .login-headline-container {
+  margin-top: -110px;
 }
 
 .login-headline {
@@ -78,7 +76,7 @@ input {
   font-size: 20px;
 }
 
-input:hover{
+input:hover {
   cursor: pointer;
 }
 
@@ -149,6 +147,13 @@ input[type="checkbox"]:checked:hover {
   border-radius: 51px;
 }
 
+.header-index {
+  padding: 48px 48px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .login-btn-container {
   width: 322px;
   max-height: 48px;
@@ -187,7 +192,8 @@ input[type="checkbox"]:checked:hover {
   background-color: #2a3647;
 }
 
-.login-btn:hover , .signup-btn:hover {
+.login-btn:hover,
+.signup-btn:hover {
   cursor: pointer;
   background-color: #29abe2;
   box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
@@ -213,6 +219,7 @@ input[type="checkbox"]:checked:hover {
   top: 80px;
   left: 77px;
   transform: translate(-50%) translateY(-50%);
+  z-index: 1;
 }
 
 .form-signup {
@@ -234,18 +241,17 @@ input[type="checkbox"]:checked:hover {
   height: 25px;
 }
 
-.forgot-password{
+.forgot-password {
   background-color: unset;
   width: 160px;
   padding: 0;
 }
 
-.forgot-password:hover{
+.forgot-password:hover {
   font-weight: 500;
   text-decoration: underline;
   text-decoration-style: solid;
 }
-
 
 .arrow-left {
   position: absolute;
@@ -253,66 +259,66 @@ input[type="checkbox"]:checked:hover {
 }
 
 .email {
-  margin: -6px 0 ;
+  margin: -6px 0;
 }
 
-.error-border{
-  border-color: #FF8190;
+.error-border {
+  border-color: #ff8190;
 }
 
-.error-border:focus-within{
-  border-color: #FF001F
+.error-border:focus-within {
+  border-color: #ff001f;
 }
 
-.pw-icon{
+.pw-icon {
   height: 24px;
   width: 24px;
-  background-image: url('/assets/icons/lock_icon.svg');
+  background-image: url("/assets/icons/lock_icon.svg");
 }
 
 .input-content input:not(:placeholder-shown) ~ .pw-icon {
-  background-image: url('/assets/icons/visibility_off.svg');
+  background-image: url("/assets/icons/visibility_off.svg");
 }
 
-.pw-icon-on{
+.pw-icon-on {
   height: 24px;
   width: 24px;
-  background-image: url('/assets/icons/visibility_on.svg');
+  background-image: url("/assets/icons/visibility_on.svg");
   background-size: cover;
 }
 
-
-.signup-message{
- background-color: #2a3647;
- width: 312px;
- height: 74px;
- border-radius: 20px;
- box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.15);
- animation: slide-up 1s forwards;
+.signup-message {
+  background-color: #2a3647;
+  width: 312px;
+  height: 74px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.15);
+  animation: slide-up 1s forwards;
 }
 
-
-.signup-message-text{
+.signup-message-text {
   padding: 0 25px;
   height: 24px;
   width: 262px;
-  background-color: rgb(56, 56, 56, 0.10);
+  background-color: rgb(56, 56, 56, 0.1);
 }
 
-@media  screen and (max-width: 992px) {
-  .login-container{
+@media screen and (max-width: 992px) {
+  .login-container {
     width: 322px;
   }
 }
 
-
-@media screen and ( max-width: 600px ) {
-
-  .signup-container{
+@media screen and (max-width: 600px) {
+  .header-index {
     position: unset;
   }
 
-  .signup{
+  .signup-container {
+    position: unset;
+  }
+
+  .signup {
     max-height: unset;
     max-width: unset;
     padding: unset;
@@ -320,7 +326,7 @@ input[type="checkbox"]:checked:hover {
     justify-content: space-evenly !important;
   }
 
-  .login-container{
+  .login-container {
     width: 300px;
     max-height: 400px;
     height: 100%;
@@ -329,29 +335,29 @@ input[type="checkbox"]:checked:hover {
     align-items: center;
   }
 
-  form{
+  form {
     width: 280px;
   }
 
-  .login-btn-container{
+  .login-btn-container {
     flex-direction: column;
   }
 
-  .login-btn-container > button{
+  .login-btn-container > button {
     width: 180px;
   }
 
-  .login-headline{
+  .login-headline {
     font-size: 47px;
   }
 
-  .background-fade{
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
+  .background-fade {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
   }
 
-  .site-container{
+  .site-container {
     height: 9%;
     flex-direction: column;
     padding-bottom: 32px;
