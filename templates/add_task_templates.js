@@ -225,14 +225,12 @@ function getAddTaskFormTemplate(taskStatusId) {
             <div
               class="task-category-option"
               onclick="setInputTagValue('task-category', this.innerHTML),closeTaskCategoryDropdown() "
-            >
-              Technical Task
+            >Technical Task
             </div>
             <div
               class="task-category-option"
               onclick="setInputTagValue('task-category', this.innerHTML), closeTaskCategoryDropdown()"
-            >
-              User Story
+            >User Story
             </div>
           </div>
            <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
