@@ -23,11 +23,18 @@ function showAddContactScreen() {
  *
  */
 function openAddContactScreen() {
+  document.body.style.overflow = "hidden";
   let contactScreenRef = document.getElementById("contact-card");
-  contactScreenRef.classList.add("overlay-open");
-  contactScreenRef.innerHTML = "";
-  contactScreenRef.innerHTML = getAddContactsScreenTemplate();
-  setVisibilityAddContactMobileBtn("hidden");
+  contactScreenRef.style.display = "flex";
+  setTimeout(() => {
+    contactScreenRef.classList.add("overlay-open");
+    contactScreenRef.innerHTML = "";
+    contactScreenRef.innerHTML = getAddContactsScreenTemplate();
+    setVisibilityAddContactMobileBtn("hidden");
+  }, 10);
+  setTimeout(() => {
+    document.body.style.overflow = "auto";
+  }, 500);
 }
 
 /**
@@ -35,9 +42,15 @@ function openAddContactScreen() {
  *
  */
 function closeContactOverlays() {
-  document.getElementById("contact-card").classList.remove("overlay-open");
+  document.body.style.overflow = "hidden";
+  let contactScreenRef = document.getElementById("contact-card");
+  contactScreenRef.classList.remove("overlay-open");
   document.getElementById("bg-dimmed").classList.remove("dim-active");
   setVisibilityAddContactMobileBtn("visible");
+  setTimeout(() => {
+    contactScreenRef.style.display = "none";
+    document.body.style.overflow = "auto";
+  }, 500);
 }
 
 /**

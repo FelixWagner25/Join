@@ -8,9 +8,9 @@
   width: 1212px;
   height: 592px;
   border-radius: 30px;
-  display: flex;
   gap: 70px;
   padding-right: 48px;
+  display: none;
 }
 
 .overlay-open {
