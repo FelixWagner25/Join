@@ -103,9 +103,9 @@ function resetAllPriorityBtns() {
 }
 
 /**
- * Toggles Task Category Dropdown
+ * Opens Task Category Dropdown
  */
-function toggleTaskCategoryDropdown() {
+function openTaskCategoryDropdown() {
   let categoryDropdownRef;
   let categoryDropdownIconRef;
   categoryDropdownRef = document.getElementById("task-category-dropdown");
@@ -113,8 +113,8 @@ function toggleTaskCategoryDropdown() {
     "task-category-dropdown-icon"
   );
   clearInputTagValue("task-category");
-  categoryDropdownRef.classList.toggle("d-none");
-  categoryDropdownIconRef.classList.toggle("task-dropdown-open-icon");
+  categoryDropdownRef.classList.remove("d-none");
+  categoryDropdownIconRef.classList.add("task-dropdown-open-icon");
 }
 
 /**
