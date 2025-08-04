@@ -30,7 +30,7 @@ function getEditSubtaskTemplate(indexSubtask) {
 function getTaskAssigendContactsTemplate(contactID, indexContact) {
   return `
     <div id="task-assigned-contact-wrap-${contactID}" onclick="toggleAssignContact('${contactID}',this)">
-      <div class="pd-8px-16px task-assigned-contact-wrap">
+      <div class="pd-8px-16px task-assigned-contact-wrap d-flex-c-sb">
         <div class="d-flex-row-c-fs gap-16px">
             <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
               contactID

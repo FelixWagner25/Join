@@ -298,6 +298,7 @@ h1 {
 }
 
 .task-assigned-contacts-checkbox-icon {
+  display: block;
   background-image: url("/assets/icons/checkbox.svg");
   background-position: center;
   background-repeat: no-repeat;
@@ -327,42 +328,43 @@ h1 {
   background-position: center;
 }
 
-
-@media screen and (max-width:1200px) {
-  .form-sub-wraps{
+@media screen and (max-width: 1200px) {
+  .form-sub-wraps {
     flex-direction: column;
     gap: 24px;
   }
 
-  .scrollable-y{
+  .scrollable-y {
     overflow-y: scroll;
   }
 
-  .pd-lr-96px{
+  .pd-lr-96px {
     padding: 24px 24px 40px 24px;
   }
 
-  .task-input-text-field{
+  .task-input-text-field {
     max-width: 100%;
   }
 }
 
-@media screen and (max-width:820px) {
-  .font-Inter-700-61px{
-    font-size: 47px
+@media screen and (max-width: 820px) {
+  .font-Inter-700-61px {
+    font-size: 47px;
   }
 
-  span, .font-Inter-400-20px, .font-Inter-700-21px{
+  span,
+  .font-Inter-400-20px,
+  .font-Inter-700-21px {
     font-size: 16px;
   }
 
-.task-button-mobile{
+  .task-button-mobile {
     flex-direction: column;
     gap: 16px;
     height: 90px;
-}
+  }
 
-.task-priority-btn{
-  padding: 10px 2px;
-}
+  .task-priority-btn {
+    padding: 10px 2px;
+  }
 }
