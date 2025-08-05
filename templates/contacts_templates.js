@@ -98,6 +98,11 @@ function getContactDetailsTemplate(indexContact) {
             </div>
         </div>
     </div>
+              <button
+            onclick="backToContactsList()"
+            class="back-to-contacts-list-btn"
+            id="back-to-contacts-list-btn"
+          ></button>
   `;
 }
 
@@ -276,7 +281,7 @@ function getEditContactScreenTemplate(indexContact) {
               indexContact
             )} contact-badge-wrap d-flex-row-c-c">
               <div class="font-sz-47px">${getFirstTwoStringInitialsByFirebaseId(
-    contactsArray[indexContact][0]
+                contactsArray[indexContact][0]
               )}</div>
             </div>
           </div>
