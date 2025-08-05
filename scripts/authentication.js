@@ -34,21 +34,6 @@ function checkInput() {
 }
 
 /**
- * Function to reset error-messages on login & signup page
- *
- */
-function resetErrorMessage() {
-  let error = document.getElementsByTagName("input");
-  let message = document.getElementsByClassName("validation");
-  [...error].forEach((element) => {
-    element.parentElement.classList.remove("error-border");
-  });
-  [...message].forEach((message) => {
-    message.classList.add("d-none");
-  });
-}
-
-/**
  * Function to validate users credentials after button submit
  * Prevent if email is invalid, initial password too short, or passwords don't match
  *
