@@ -340,3 +340,18 @@ function toggleValueFromArray(value, array) {
     array.push(value);
   }
 }
+
+/**
+ * Function to reset error-messages on login & signup page
+ *
+ */
+function resetErrorMessage() {
+  let error = document.getElementsByTagName("input");
+  let message = document.getElementsByClassName("validation");
+  [...error].forEach((element) => {
+    element.parentElement.classList.remove("error-border");
+  });
+  [...message].forEach((message) => {
+    message.classList.add("d-none");
+  });
+}
