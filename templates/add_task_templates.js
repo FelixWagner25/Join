@@ -100,6 +100,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             type="text"
             id="task-title"
             placeholder="Enter a title"
+            oninput="resetErrorMessage()"
           />
           <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
         </div>
@@ -126,6 +127,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             min="${currentDate}"
             id="task-due-date"
             placeholder="dd/mm/yyyy"
+            oninput="resetErrorMessage()"
           />
            <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
         </div>
@@ -212,6 +214,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             placeholder="Select task category"
             onclick="openTaskCategoryDropdown()"
             autocomplete="off"
+            oninput="resetErrorMessage()"
             readonly
           />
           <span

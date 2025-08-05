@@ -212,6 +212,7 @@ async function submitEditTask(indexTask) {
   tasksArray = await getTasksArray();
   await submitNewTaskOptionalComplexInfo(taskID);
   await initBoard();
+  showToastMessage("add-task-toast-msg");
   closeTaskOverlays();
   setTimeout(() => {
     overlay.innerHTML = "";
