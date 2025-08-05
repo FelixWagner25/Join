@@ -70,8 +70,7 @@ function closeContactOverlays() {
   setTimeout(() => {
     contactScreenRef.style.display = "none";
     document.body.style.overflow = "auto";
-    document.getElementById("back-to-contacts-list-btn").style.display =
-      "block";
+    document.getElementById("back-to-contacts-list-btn").style.display = "";
   }, 500);
 }
 
@@ -195,7 +194,7 @@ function renderContactDetailsMobileWindow(indexContact) {
   document.getElementById("back-to-contacts-list-btn").style.display = "block";
   document.getElementById("contact-details-mobile-wrap").style.display =
     "block";
-  document.getElementById("add-new-contact-btn-mobile").style.display = "none";
+  //document.getElementById("add-new-contact-btn-mobile").style.display = "none";
   document.getElementById("edit-contact-btn-mobile").style.display = "flex";
   renderContactDetailsMobileMenu(indexContact);
 }

@@ -122,6 +122,9 @@
   .contact-details-mobile {
     display: block;
   }
+  .back-to-contacts-list-btn {
+    display: block;
+  }
 }
 
 @media (max-width: 820px) {
