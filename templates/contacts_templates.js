@@ -54,8 +54,9 @@ function getContactDetailsTemplate(indexContact) {
           indexContact
         )} contact-details-name-icon">${getFirstTwoStringInitialsByFirebaseId(
     contactsArray[indexContact][0]
-  )}</div>
-            <div class="contact-details-name-wrap">
+  )}
+    </div>
+    <div class="contact-details-name-wrap">
             <div class="contact-details-name">${
               contactsArray[indexContact][1].name
             }</div>

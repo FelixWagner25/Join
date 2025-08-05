@@ -60,19 +60,18 @@
   }
 }
 
-
-@keyframes slide-up{
-  from {    
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%) translateY(-50%);
-}
-  to{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%) translateY(-50%);
+@keyframes slide-up {
+  from {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%) translateY(-50%);
+  }
+  to {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%) translateY(-50%);
   }
 }
 
@@ -90,16 +89,16 @@
   }
 }
 
-  @keyframes fadeGreeting {
-    0% {
-      height: calc(100vh - 160px);
-      opacity: 1;
-    }
-    66% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      height: calc(100vh - 160px);
-    }
+@keyframes fadeGreeting {
+  0% {
+    height: calc(100vh - 160px);
+    opacity: 1;
   }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    height: calc(100vh - 160px);
+  }
+}

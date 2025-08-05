@@ -124,7 +124,11 @@ function renderContactDetails(indexContact) {
   if (window.innerWidth < 1260) {
     renderContactDetailsMobileWindow(indexContact);
   } else {
+    document.body.style.overflow = "hidden";
     renderContactDetailsDesktopWindow(indexContact);
+    setTimeout(() => {
+      document.body.style.overflow = "auto";
+    }, 500);
   }
 }
 
@@ -135,10 +139,15 @@ function renderContactDetails(indexContact) {
  */
 function renderContactDetailsDesktopWindow(indexContact) {
   let contactDetailsRef = document.getElementById("contact-details");
-  contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
-  contactDetailsRef.classList.remove("contact-details-animate-in");
-  void contactDetailsRef.offsetWidth;
-  contactDetailsRef.classList.add("contact-details-animate-in");
+  contactDetailsRef.style.display = "none";
+  contactDetailsRef.classList.remove("contact-details-show");
+  setTimeout(() => {
+    contactDetailsRef.innerHTML = getContactDetailsTemplate(indexContact);
+    contactDetailsRef.style.display = "flex";
+  }, 10);
+  setTimeout(() => {
+    contactDetailsRef.classList.add("contact-details-show");
+  }, 250);
 }
 
 /**

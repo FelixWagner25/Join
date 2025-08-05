@@ -119,6 +119,7 @@
   height: 100vh;
   visibility: hidden;
   transition: background-color 300ms linear, visibility 300ms linear;
+  z-index: 100;
 }
 
 .bg-dimmed.dim-active {
