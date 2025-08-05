@@ -1,5 +1,5 @@
 main{
-  overflow: scroll;
+  overflow: clip;
 }
 
 .board-headline {
@@ -119,7 +119,8 @@ main{
   width: 100%;
   overflow-y: scroll;
   scrollbar-width: none;
-  height: calc(100vh - 326px);
+ /*  height: calc(100vh - 326px); */
+ height: 100%
 }
 .col-content-wrap {
   max-width: 246px;
@@ -271,6 +272,10 @@ main{
 }
 
 @media screen and (max-width: 1360px) {
+  main{
+  overflow: scroll;
+}
+
   .board-col-wrap {
     flex-direction: column;
   }
@@ -291,6 +296,7 @@ main{
 
   .no-task-feedback {
     height: 272px;
+    width: 100px;
   }
 
   .task-card {
