@@ -37,17 +37,6 @@
   }
 }
 
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100vw);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 @keyframes hide {
   0% {
     opacity: 0;

@@ -127,10 +127,6 @@
   visibility: visible;
 }
 
-.contact-details-animate-in {
-  animation: slideInFromRight 0.4s linear;
-}
-
 @media (max-width: 1260px) {
   .contacts-list-wrap {
     width: calc(100vw - 232px);
