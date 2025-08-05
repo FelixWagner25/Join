@@ -1,3 +1,7 @@
+main{
+  overflow: scroll;
+}
+
 .board-headline {
   display: flex;
   justify-content: space-between;

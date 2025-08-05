@@ -68,7 +68,6 @@ main {
   grid-area: main;
   height: calc(100vh - 96px);
   max-width: 1920px;
-  overflow: scroll;
 }
 
 menu {
