@@ -26,6 +26,7 @@ function showAddContactScreen() {
  */
 function openContactOverlay(mode, indexContact = null) {
   document.body.style.overflow = "hidden";
+  let contactScreenRef = document.getElementById("contact-card");
   contactScreenRef.style.display = "flex";
   setTimeout(() => {
     manageRenderContactOverlay(mode, indexContact);
@@ -34,6 +35,7 @@ function openContactOverlay(mode, indexContact = null) {
   setTimeout(() => {
     document.body.style.overflow = "auto";
   }, 500);
+  document.getElementById("back-to-contacts-list-btn").style.display = "none";
 }
 
 /**
@@ -68,6 +70,8 @@ function closeContactOverlays() {
   setTimeout(() => {
     contactScreenRef.style.display = "none";
     document.body.style.overflow = "auto";
+    document.getElementById("back-to-contacts-list-btn").style.display =
+      "block";
   }, 500);
 }
 
