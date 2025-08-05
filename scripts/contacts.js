@@ -15,26 +15,44 @@ async function initContacs() {
  */
 function showAddContactScreen() {
   blurBackground();
-  openAddContactScreen();
+  openContactOverlay("add-contact");
 }
 
 /**
- * Opens add-contact input screen.
+ * Opens contact overlay
  *
+ * @param {string} mode Mode of contact overlay
+ * @param {integer} indexContact
  */
-function openAddContactScreen() {
+function openContactOverlay(mode, indexContact = null) {
   document.body.style.overflow = "hidden";
-  let contactScreenRef = document.getElementById("contact-card");
   contactScreenRef.style.display = "flex";
   setTimeout(() => {
-    contactScreenRef.classList.add("overlay-open");
-    contactScreenRef.innerHTML = "";
-    contactScreenRef.innerHTML = getAddContactsScreenTemplate();
+    manageRenderContactOverlay(mode, indexContact);
     setVisibilityAddContactMobileBtn("hidden");
   }, 10);
   setTimeout(() => {
     document.body.style.overflow = "auto";
   }, 500);
+}
+
+/**
+ * Renders contact overlay according to required mode
+ *
+ * @param {string} mode Modue of contact overlay
+ * @param {integer} indexContact
+ */
+function manageRenderContactOverlay(mode, indexContact) {
+  let contactScreenRef = document.getElementById("contact-card");
+  contactScreenRef.classList.add("overlay-open");
+  contactScreenRef.innerHTML = "";
+  if (mode === "add-contact") {
+    contactScreenRef.innerHTML = getAddContactsScreenTemplate();
+  }
+  if (mode === "edit-contact") {
+    contactScreenRef.innerHTML = getEditContactScreenTemplate(indexContact);
+    prefillContactInputFields(indexContact);
+  }
 }
 
 /**
@@ -59,29 +77,7 @@ function closeContactOverlays() {
  */
 function showEditContactScreen(indexContact) {
   blurBackground();
-  openEditContactScreen();
-  renderEditContactScreen(indexContact);
-  prefillContactInputFields(indexContact);
-}
-
-/**
- * Opens the edit contact screen.
- *
- */
-function openEditContactScreen() {
-  let contactScreenRef = document.getElementById("contact-card");
-  contactScreenRef.classList.add("overlay-open");
-}
-
-/**
- * Renders the edit contact overlay screen.
- *
- * @param {integer} indexContact
- */
-function renderEditContactScreen(indexContact) {
-  let editContactScreenRef = document.getElementById("contact-card");
-  editContactScreenRef.innerHTML = "";
-  editContactScreenRef.innerHTML = getEditContactScreenTemplate(indexContact);
+  openContactOverlay("edit-contact", indexContact);
 }
 
 /**
