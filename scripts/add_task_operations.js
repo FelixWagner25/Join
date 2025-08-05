@@ -87,6 +87,9 @@ async function submitNewTaskSubtasks(newTaskFirebaseId) {
  * Adds a subtask to add task form
  */
 function addSubtask() {
+  if (subtaskValidation()) {
+    return
+  } else {
   normalizeSubtasksArray();
   const subtaskName = getInputTagValue("task-subtasks");
   newTaskSubtasks.push({ name: subtaskName, done: false });
@@ -94,7 +97,25 @@ function addSubtask() {
   clearInputTagValue("task-subtasks");
   resetSubtaskcontrolButtons();
   showSubtaskControlButtons();
+  }
 }
+
+/**
+ * This Function validates subtask Input Pattern. Only whitespaces are note allowed
+ * 
+ * @returns true or false according to if-statement
+ *          true = Input is validated according to Pattern
+ *          false = Input is not validated according to Pattern
+ */
+function subtaskValidation() {
+  let subtaskInput = document.getElementById('task-subtasks')
+  let whitespacePattern = /^[ \t]*$/;
+  if (subtaskInput.value !="" && !whitespacePattern.test(subtaskInput.value)){
+    return false
+  } else return  true
+}
+
+
 
 /**
  * Edits a subtask
