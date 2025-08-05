@@ -36,7 +36,7 @@
       <main id="main">
         <div id="task-overlay" class="bg-dimmed" onclick="closeTaskOverlays()">
           <div
-            class="task-overlay-wrap bg-white"
+            class="d-none task-overlay-wrap bg-white"
             id="task-overlay-wrap"
             onclick="event.stopPropagation()"
           ></div>
@@ -177,7 +177,7 @@
         >
           <div class="d-flex-row-c-c h-100vh">
             <div
-              class="add-task-overlay-wrap bg-white pd-64px p-relative"
+              class="add-task-overlay-wrap bg-white pd-64px p-relative d-none"
               id="add-task-overlay-wrap"
               onclick="event.stopPropagation(); closeTaskAssignedContactsDropdown()"
             >
