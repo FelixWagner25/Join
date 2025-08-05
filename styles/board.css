@@ -119,9 +119,9 @@ main{
   width: 100%;
   overflow-y: scroll;
   scrollbar-width: none;
- /*  height: calc(100vh - 326px); */
- height: 100%
+  height: calc(100vh - 326px);
 }
+
 .col-content-wrap {
   max-width: 246px;
   width: 100%;
@@ -287,6 +287,7 @@ main{
 
   .col-content {
     flex-direction: row;
+    height: 100%;
   }
 
   .task-card-wrap {
