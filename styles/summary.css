@@ -12,7 +12,7 @@ main {
 .summary {
   flex: 1;
   gap: 40px;
-  padding: 24px 96px;
+  padding: 64px 96px;
 }
 
 .metrics-header h1 {
@@ -61,7 +61,7 @@ main {
 .small-card {
   flex: 1;
   text-align: center;
-/*   min-height: 120px; */
+  /*   min-height: 120px; */
   gap: 18px;
 }
 
@@ -102,7 +102,7 @@ main {
 
 .large-card {
   display: flex;
-/*   min-height: 120px; */
+  /*   min-height: 120px; */
   max-width: 560px;
   text-align: center;
 }
@@ -127,8 +127,8 @@ main {
 }
 
 .greeting {
-  width: 100%;
-  max-width: 385px;
+  /*   width: 100%; */
+  /*   max-width: 385px; */
 }
 
 .greeting h2 {
@@ -161,9 +161,9 @@ main {
 
 @media screen and (max-width: 820px) {
   .summary {
-    margin: 48px 16px;
+    margin: 0;
     padding: 0;
-    justify-content: unset;
+    align-items: center;
   }
 
   .card-icon,
@@ -175,7 +175,7 @@ main {
   .metrics-header {
     align-items: flex-start;
     flex-direction: column;
-    margin: 16px 0 0 16px;
+    margin: 16px 8px 0 8px;
   }
 
   .metrics-header h1 {
@@ -197,6 +197,7 @@ main {
   }
   .cards-wrapper {
     width: 100%;
+    padding: 0 16px;
   }
 
   .card-row {
@@ -209,7 +210,7 @@ main {
   }
 
   .card-title {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .divider-vertical {
@@ -222,10 +223,17 @@ main {
     background-color: #f6f7f8;
     display: flex;
     top: 80px;
-    max-width: 100%;
   }
   .greet-animation {
     animation: fadeGreeting 2s ease-out;
+    height: calc(100vh - 160px);
+    width: 100%;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -160px;
+    align-items: center;
   }
 
   .urgent-left,
@@ -246,6 +254,10 @@ main {
   }
 
   #deadline-date {
+    font-size: 16px;
+  }
+
+  .text-center {
     font-size: 16px;
   }
 }

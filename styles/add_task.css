@@ -345,6 +345,13 @@ h1 {
   .task-input-text-field {
     max-width: 100%;
   }
+  .d-flex-row-end-sb {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+}
 }
 
 @media screen and (max-width: 820px) {

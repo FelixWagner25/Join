@@ -87,7 +87,7 @@ function getAddTaskFormTemplate(taskStatusId) {
     class="max-width-976px"
     onsubmit="requiredInputValidation('${taskStatusId}'); event.preventDefault() "
   >
-    <div class="form-sub-wraps d-flex-sb gap-48px pd-b-24px">
+    <div class="form-sub-wraps d-flex-sb gap-48px">
       <div class="d-flex-column gap-16px width-100p">
         <div class="d-flex-column gap-8px height-96px">
           <label

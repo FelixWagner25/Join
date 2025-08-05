@@ -273,7 +273,7 @@ main{
 
 @media screen and (max-width: 1360px) {
   main{
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
   .board-col-wrap {
