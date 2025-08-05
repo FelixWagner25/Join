@@ -81,7 +81,7 @@ async function checkAnimation() {
     const alreadyShown = sessionStorage.getItem('greetingShown');
     const screenWidth = window.innerWidth
     let greetContainer = document.getElementsByClassName('greeting')
-    if (screenWidth > 820 && alreadyShown){
+    if (screenWidth > 820){
     sessionStorage.setItem('greetingShown', 'true');
     }  else if (screenWidth < 820 && !alreadyShown){ 
         await showGreetingAnimation();
