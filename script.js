@@ -217,10 +217,18 @@ function setInputTagValue(htmlId, valueToSet) {
  * @param {*} htmlId the ID from the according message-box
  */
 function showToastMessage(htmlId) {
-  msgRef = document.getElementById(htmlId);
-  msgRef.classList.remove("show");
-  void msgRef.offsetWidth;
-  msgRef.classList.add("show");
+  document.body.style.overflow = "hidden";
+  document.getElementById(htmlId).style.display = "block";
+  setTimeout(() => {
+    msgRef = document.getElementById(htmlId);
+    msgRef.classList.remove("show");
+    void msgRef.offsetWidth;
+    msgRef.classList.add("show");
+  }, 10);
+  setTimeout(() => {
+    document.body.style.overflow = "auto";
+    document.getElementById(htmlId).style.display = "none";
+  }, 3000);
 }
 
 /**
