@@ -42,7 +42,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1920px;
   box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.1);
   z-index: 0;
 }
@@ -52,6 +51,7 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: 1920px;
   align-items: center;
 }
 
