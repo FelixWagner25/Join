@@ -82,23 +82,21 @@
 
 .contact-details-edit-contact:hover {
   color: #29abe2;
-  cursor: pointer;
 }
 
 .contact-details-edit-contact:hover .edit-contact-icon {
   content: url("/assets/icons/edit-blue.svg");
-  cursor: pointer;
 }
 
 .contact-details-delete-contact {
   display: flex;
   gap: 8px;
+  background-color: unset;
 }
 
 .contact-details-delete-contact:hover {
   color: #29abe2;
   font-weight: 700;
-  cursor: pointer;
 }
 
 .contact-details-delete-contact:hover .delete-contact-icon {

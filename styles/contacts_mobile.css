@@ -12,8 +12,8 @@
 }
 
 .add-new-contact-btn-mobile:hover {
-  cursor: pointer;
   background-color: #29abe2;
+  cursor: pointer;
 }
 
 .edit-contact-btn-mobile {
@@ -32,8 +32,8 @@
 }
 
 .edit-contact-btn-mobile:hover {
-  cursor: pointer;
   background-color: #29abe2;
+  cursor: pointer;
 }
 
 .add-contact-icon {
@@ -69,7 +69,6 @@
 }
 
 .back-to-contacts-list-btn:hover {
-  cursor: pointer;
   transform: scale(1.1);
 }
 

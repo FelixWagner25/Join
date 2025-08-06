@@ -128,6 +128,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             id="task-due-date"
             placeholder="dd/mm/yyyy"
             oninput="resetErrorMessage()"
+            onclick="this.showPicker()"
           />
            <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
         </div>

@@ -21,6 +21,7 @@ h1 {
 .task-input-border {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
+  cursor: pointer;
 }
 
 .task-input-border:focus {
@@ -50,13 +51,13 @@ h1 {
   border: 1px solid #2a3647;
   padding: 16px;
   border-radius: 10px;
-  cursor: pointer;
   gap: 12px;
 }
 
 .task-input-category {
   padding: 12px 16px;
   min-height: 52px;
+  cursor: pointer;
 }
 
 .task-input-dropdown {
@@ -94,6 +95,7 @@ h1 {
 
 .task-category-option:hover {
   background-color: #d1d1d1;
+  cursor: pointer;
 }
 
 .task-subtask-icon {
@@ -140,6 +142,7 @@ h1 {
 
 .task-subtask-icon-wrap:hover {
   background-color: #e8e8e8;
+  cursor: pointer;
 }
 
 .tasks-subtask-list {
@@ -171,6 +174,7 @@ h1 {
 
 .subtask-list-element:hover .task-subtask-control-icon-wrap {
   display: flex;
+  cursor: pointer;
 }
 
 .task-edit-subtask-icon {
@@ -240,7 +244,6 @@ h1 {
   background: white;
   box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
   border-radius: 10px;
-  cursor: pointer;
 }
 
 .task-priority-btn:hover {
@@ -317,6 +320,7 @@ h1 {
 
 .task-assigned-contact-wrap:hover {
   background-color: #d1d1d1;
+  cursor: pointer;
 }
 
 .add-task-toast-icon {

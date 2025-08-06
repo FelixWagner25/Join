@@ -82,7 +82,7 @@ main{
 
 .board-col-wrap {
   display: flex;
-  padding: 0 64px;
+  padding: 0 12px 0 48px;
   gap: 26px;
   scrollbar-width: none;
   height: 100%;
@@ -145,7 +145,6 @@ main{
 
 .add-task-btn:hover {
   background-color: #354355;
-  cursor: pointer;
 }
 
 .add-taks-btn-icon {
@@ -178,6 +177,7 @@ main{
   gap: 10px;
   color: #ffffff;
   width: 100%;
+  cursor: pointer;
 }
 
 .task-card-wrap:active {
@@ -198,7 +198,6 @@ main{
   gap: 24px;
   flex-direction: column;
   padding: 16px;
-  width: 252px;
   min-width: 210px;
   height: 240px;
 }

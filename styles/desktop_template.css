@@ -7,6 +7,10 @@
   background: #2a3647;
 }
 
+button:hover{
+  cursor: pointer;
+}
+
 .page {
   display: grid;
   grid-template-columns: 232px auto;
@@ -38,7 +42,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1920px;
   box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.1);
   z-index: 0;
 }
@@ -48,6 +51,7 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: 1920px;
   align-items: center;
 }
 
@@ -101,12 +105,10 @@ nav > span {
 }
 
 nav > a:hover {
-  cursor: pointer;
   background-color: #2a3d59;
 }
 
 .policy-legal > a:hover {
-  cursor: pointer;
   background-color: #2a3d59;
 }
 
@@ -193,11 +195,23 @@ nav > a:hover {
 
 .profile-ellipse:hover {
   background-color: rgb(12, 46, 98, 0.12);
+}
+
+input[type="checkbox"] {
+  background: url(/assets/icons/checkbox.svg) no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  padding: 0 0 0 0px;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
   cursor: pointer;
 }
-.help-icon {
-  cursor: pointer;
-}
+
+ input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
 
 .disable-scroll{
   overflow: hidden;

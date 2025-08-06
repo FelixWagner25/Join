@@ -114,10 +114,6 @@
   font-weight: 400;
 }
 
-.add-contact-input-wrap:hover {
-  cursor: pointer;
-}
-
 .add-contacts-form-wrap {
   display: flex;
   flex-direction: column;
@@ -174,13 +170,11 @@
 
 .add-contact-btn:hover {
   background-color: #29abe2;
-  cursor: pointer;
 }
 
 .add-contact-btn-cancel:hover {
   color: #29abe2;
   border: 1px solid #29abe2;
-  cursor: pointer;
 }
 
 .contact-badge-wrap {

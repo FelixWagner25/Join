@@ -2,6 +2,10 @@ body{
   overflow: hidden;
 }
 
+button:hover{
+  cursor: pointer;
+}
+
 #login-view{
   height: 100vh;
   display: flex;
@@ -49,6 +53,10 @@ li{
   z-index: 2;
 }
 
+.login-container > form  {
+  height: 120px;
+  position: relative;
+}
 
 .policy-notice{
   height: 35px;

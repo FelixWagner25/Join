@@ -185,6 +185,9 @@ function resetrequiredFields() {
  */
 async function showTaskOverlay(indexTask) {
   let currentTask = tasksArray[indexTask][1];
+
+  console.log(tasksArray[indexTask]);
+  
   let taskOverlayWrap = document.getElementById("task-overlay-wrap");
   let taskOverlay = document.getElementById("task-overlay"); 
     taskOverlayWrap?.classList.remove("d-none");
