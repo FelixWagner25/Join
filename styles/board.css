@@ -82,7 +82,7 @@ main{
 
 .board-col-wrap {
   display: flex;
-  padding: 0 64px;
+  padding: 0 12px 0 48px;
   gap: 26px;
   scrollbar-width: none;
   height: 100%;
