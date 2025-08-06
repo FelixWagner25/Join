@@ -198,7 +198,6 @@ main{
   gap: 24px;
   flex-direction: column;
   padding: 16px;
-  width: 252px;
   min-width: 210px;
   height: 240px;
 }

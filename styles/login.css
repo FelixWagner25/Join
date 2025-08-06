@@ -53,6 +53,10 @@ li{
   z-index: 2;
 }
 
+.login-container > form  {
+  height: 120px;
+  position: relative;
+}
 
 .policy-notice{
   height: 35px;
