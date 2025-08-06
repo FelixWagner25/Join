@@ -79,7 +79,9 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
         </div>
       </div>
 
-    <h2 class="font-Inter-700-47px text-color-black  task-overlay-title">${currentTask.title}</h2>
+    <h2 class="font-Inter-700-47px text-color-black  task-overlay-title">${
+      currentTask.title
+    }</h2>
 
     <div class="font-Inter-400-20px text-color-black task-overlay-desc">${
       currentTask?.description || ""
@@ -263,7 +265,7 @@ function editTaskTemplate(indexTask, currentTask) {
                   </div>
                 </div>
 
-                <div class="d-flex-column gap-8px p-relative">
+                <div class="d-flex-column gap-8px p-relative" onclick="event.stopPropagation()">
                   <label
                     for="task-assigned-contacts"
                     class="font-Inter-400-20px text-color-2A3647"
@@ -275,7 +277,7 @@ function editTaskTemplate(indexTask, currentTask) {
                     id="task-assigned-contacts"
                     placeholder="Select contacts to assign"
                     readonly
-                    onclick="toggleTaskAssignedContactsDropdown()"
+                    onclick="openTaskAssignedContactsDropdown()"
                   />
                   <span
                     class="p-absolute task-dropdown-icon"
