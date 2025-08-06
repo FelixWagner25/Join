@@ -277,8 +277,9 @@ function editTaskTemplate(indexTask, currentTask) {
                     type="text"
                     id="task-assigned-contacts"
                     placeholder="Select contacts to assign"
-                    readonly
+                    oninput="searchContact()"
                     onclick="openTaskAssignedContactsDropdown()"
+                    autocomplete="off"
                   />
                   <span
                     class="p-absolute task-dropdown-icon"
