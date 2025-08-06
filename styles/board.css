@@ -145,7 +145,6 @@ main{
 
 .add-task-btn:hover {
   background-color: #354355;
-  cursor: pointer;
 }
 
 .add-taks-btn-icon {
@@ -178,6 +177,7 @@ main{
   gap: 10px;
   color: #ffffff;
   width: 100%;
+  cursor: pointer;
 }
 
 .task-card-wrap:active {

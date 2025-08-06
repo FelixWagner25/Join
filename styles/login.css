@@ -2,6 +2,10 @@ body{
   overflow: hidden;
 }
 
+button:hover{
+  cursor: pointer;
+}
+
 #login-view{
   height: 100vh;
   display: flex;

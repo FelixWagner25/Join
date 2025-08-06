@@ -37,7 +37,6 @@
 }
 
 .signup-container > button:hover {
-  cursor: pointer;
   background-color: #29abe2;
   box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
 }
@@ -74,10 +73,6 @@ input {
   width: 100%;
   border: 0;
   font-size: 20px;
-}
-
-input:hover {
-  cursor: pointer;
 }
 
 .input-container {
@@ -125,6 +120,7 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
+  cursor: pointer;
 }
 
 input[type="checkbox"]:hover {
@@ -194,7 +190,6 @@ input[type="checkbox"]:checked:hover {
 
 .login-btn:hover,
 .signup-btn:hover {
-  cursor: pointer;
   background-color: #29abe2;
   box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
 }
@@ -271,6 +266,7 @@ input[type="checkbox"]:checked:hover {
 }
 
 .pw-icon {
+  cursor: pointer;
   height: 24px;
   width: 24px;
   background-image: url("/assets/icons/lock_icon.svg");
@@ -281,10 +277,15 @@ input[type="checkbox"]:checked:hover {
 }
 
 .pw-icon-on {
+  cursor: pointer;
   height: 24px;
   width: 24px;
   background-image: url("/assets/icons/visibility_on.svg");
   background-size: cover;
+}
+
+#accept-policy:hover{
+  cursor: pointer;
 }
 
 .signup-message {

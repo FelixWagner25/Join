@@ -151,14 +151,14 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
                 />
                 <span class="edit-contact-text">Edit</span>
                 </button>
-                <div class="contact-details-delete-contact" onclick="deleteTask(${indexTask})">
+                <button class="contact-details-delete-contact" onclick="deleteTask(${indexTask})">
                 <img
                     src="/assets/icons/delete.svg"
                     alt="delete trash bin"
                     class="delete-contact-icon"
                 />
                 <span class="edit-contact-text">Delete</span>
-                </div>
+                </button>
             </div>
       </div>
   `;
@@ -206,6 +206,7 @@ function editTaskTemplate(indexTask, currentTask) {
                     min="${currentDate}"
                     id="task-due-date"
                     value="${currentTask.dueDate}"
+                    onclick="this.showPicker()"
                     
                   />
                   <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
