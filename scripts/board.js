@@ -137,15 +137,17 @@ function setNoTaskFoundFeedback(foundRef) {
 /**
  * Opens add task overlay
  *
- * @param {string} taskStatusId
+ * @param {string} taskStatusId 
  */
 function openAddTaskOverlay(taskStatusId) {
-  document.getElementById("add-task-overlay-wrap").classList.remove("d-none");
-  document.getElementById("add-task-overlay-bg-wrap").classList.add("disable-scroll")
-  document.getElementById("add-task-overlay-bg-wrap").classList.add("dim-active");
+  let addTaskOverlayWrap = document.getElementById("add-task-overlay-wrap");
+  let addTaskOverlayBGWrap = document.getElementById("add-task-overlay-bg-wrap")
+    addTaskOverlayWrap.classList.remove("d-none");
+    addTaskOverlayBGWrap.classList.add("disable-scroll")
+    addTaskOverlayBGWrap.classList.add("dim-active");
   setTimeout(() => {
   renderAddTaskForm("add-task-overlay", taskStatusId);
-  document.getElementById("add-task-overlay-wrap").classList.add("overlay-open");
+    addTaskOverlayWrap.classList.add("overlay-open");
   }, overlayTransitionMiliSeconds);
 }
 
@@ -153,12 +155,27 @@ function openAddTaskOverlay(taskStatusId) {
  * Closes add task overlay
  */
 function closeAddTaskOverlay() {
-  document.getElementById("add-task-overlay-wrap").classList.remove("overlay-open");
-  document.getElementById("add-task-overlay-bg-wrap").classList.remove("dim-active");
+  let addTaskOverlayWrap = document.getElementById("add-task-overlay-wrap");
+  let taskOverlayWrap = document.getElementById("task-overlay-wrap");
+  let addTaskOverlayBGWrap = document.getElementById("add-task-overlay-bg-wrap")
+    addTaskOverlayWrap.classList.remove("overlay-open");
+    addTaskOverlayBGWrap.classList.remove("dim-active");
+    resetrequiredFields()
+   renderBoard();
    setTimeout(() => {
-  document.getElementById("add-task-overlay-wrap").classList.add("d-none");
-  document.getElementById("add-task-overlay-bg-wrap").classList.remove("disable-scroll")
-  }, 500);
+    taskOverlayWrap.innerHTML = "";
+    addTaskOverlayWrap.classList.add("d-none");
+    addTaskOverlayBGWrap.classList.remove("disable-scroll")
+  }, 200);
+}
+
+/**
+ * This Function resets required Input Fields for Form Validation in addtask 
+ * 
+ */
+function resetrequiredFields() {
+  let requiredFields = document.getElementsByClassName("required");
+  [...requiredFields].forEach((element) => element.className = "") 
 }
 
 /**
@@ -167,13 +184,14 @@ function closeAddTaskOverlay() {
  * @param {String} indexTask  index of the task
  */
 async function showTaskOverlay(indexTask) {
-  let overlay = document.querySelector(".task-overlay-wrap");
   let currentTask = tasksArray[indexTask][1];
-    document.getElementById("task-overlay").classList.add("disable-scroll")
-    document.getElementById("task-overlay-wrap").classList.remove("d-none");
+  let taskOverlayWrap = document.getElementById("task-overlay-wrap");
+  let taskOverlay = document.getElementById("task-overlay"); 
+    taskOverlayWrap?.classList.remove("d-none");
+    taskOverlay.classList.add("disable-scroll")
   blurBackgroundBoard();
   setTimeout(() => {
-    getTaskOverlay(indexTask, currentTask, overlay);
+    getTaskOverlay(indexTask, currentTask, taskOverlayWrap);
     overlayWipe();
   }, overlayTransitionMiliSeconds);
 }
@@ -183,17 +201,19 @@ async function showTaskOverlay(indexTask) {
  *
  */
 function closeTaskOverlays() {
-  let overlay = document.getElementById("task-overlay-wrap");
-  document.getElementById("task-overlay-wrap").classList.remove("open");
-  document.getElementById("task-overlay").classList.remove("dim-active");
-  newTaskAssignedContactsIndices = [];
+  let taskOverlayWrap = document.getElementById("task-overlay-wrap");
+  let taskOverlay = document.getElementById("task-overlay");
+  let addTaskOverlayWrap = document.getElementById("add-task-overlay-wrap");
+    taskOverlayWrap.classList.remove("open");
+   taskOverlay.classList.remove("dim-active");
+    newTaskAssignedContactsIndices = [];
   renderBoard();
   setTimeout(() => {
-    overlay.innerHTML = "";
-  document.getElementById("task-overlay-wrap").classList.add("d-none");
-  document.getElementById("add-task-overlay-wrap").classList.add("d-none");
-  document.getElementById("task-overlay").classList.remove("disable-scroll")
-  }, 500);
+    taskOverlayWrap.innerHTML = "";
+    taskOverlayWrap.classList.add("d-none");
+    addTaskOverlayWrap.classList.add("d-none");
+    taskOverlay.classList.remove("disable-scroll")
+  }, 200);
 }
 
 /**

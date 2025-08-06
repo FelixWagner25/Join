@@ -320,8 +320,10 @@ textarea {
   border-radius: 20px;
   padding: 20px;
   pointer-events: none;
+  z-index: 100;
 }
 
 .toast-msg.show {
   animation: toast-fly-in-out 3s linear;
+  opacity: 1 !important;
 }

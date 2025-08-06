@@ -251,8 +251,11 @@ function requiredInputValidation(
   taskStatusId,
   indexTask,
   newContact,
-  indexContact
+  indexContact,
+  subtask
 ) {
+  console.log(subtask);
+  
   let requiredFields = document.getElementsByClassName("required");
   let validationMessageRef = document.getElementsByClassName("validation");
   let whitespacePattern = /^[ \t]*$/;
