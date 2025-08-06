@@ -254,6 +254,7 @@ function closeTaskAssignedContactsDropdown() {
   let assignedContactsDropdownRef = document.getElementById(
     "task-assigned-contacts-dropdown"
   );
+  if (assignedContactsDropdownRef === null) return;
   assignedContactsDropdownRef.classList.add("d-none");
   assignedContactsDropdownRef.classList.remove("d-flex-column");
   closeTaskAssignedContactsDropdownIcon();
