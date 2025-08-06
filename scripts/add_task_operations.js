@@ -88,34 +88,32 @@ async function submitNewTaskSubtasks(newTaskFirebaseId) {
  */
 function addSubtask() {
   if (subtaskValidation()) {
-    return
+    return;
   } else {
-  normalizeSubtasksArray();
-  const subtaskName = getInputTagValue("task-subtasks");
-  newTaskSubtasks.push({ name: subtaskName, done: false });
-  renderSubtasks();
-  clearInputTagValue("task-subtasks");
-  resetSubtaskcontrolButtons();
-  showSubtaskControlButtons();
+    normalizeSubtasksArray();
+    const subtaskName = getInputTagValue("task-subtasks");
+    newTaskSubtasks.push({ name: subtaskName, done: false });
+    renderSubtasks();
+    clearInputTagValue("task-subtasks");
+    resetSubtaskcontrolButtons();
+    showSubtaskControlButtons();
   }
 }
 
 /**
  * This Function validates subtask Input Pattern. Only whitespaces are note allowed
- * 
+ *
  * @returns true or false according to if-statement
  *          true = Input is validated according to Pattern
  *          false = Input is not validated according to Pattern
  */
 function subtaskValidation() {
-  let subtaskInput = document.getElementById('task-subtasks')
+  let subtaskInput = document.getElementById("task-subtasks");
   let whitespacePattern = /^[ \t]*$/;
-  if (subtaskInput.value !="" && !whitespacePattern.test(subtaskInput.value)){
-    return false
-  } else return  true
+  if (subtaskInput.value != "" && !whitespacePattern.test(subtaskInput.value)) {
+    return false;
+  } else return true;
 }
-
-
 
 /**
  * Edits a subtask
@@ -163,13 +161,13 @@ function searchContact() {
     document.getElementsByClassName("task-assigned-contact-wrap")
   );
   for (let i = 0; i < contactsRefs.length; i++) {
-    contactsRefs[i].classList.add("d-none");
+    contactsRefs[i].style.display = "none";
   }
   foundRefs = contactsRefs.filter((htmlElement) =>
     htmlElement.innerText.toLowerCase().includes(searchKey)
   );
   for (let i = 0; i < foundRefs.length; i++) {
-    foundRefs[i].classList.remove("d-none");
+    foundRefs[i].style.display = "";
   }
 }
 
