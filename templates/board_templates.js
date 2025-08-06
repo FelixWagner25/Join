@@ -167,6 +167,8 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
 }
 
 function editTaskTemplate(indexTask, currentTask) {
+  console.log(typeof indexTask);
+  
   return `
   <div class="scroll-overlay">
 <form class="max-width-976px" onsubmit="requiredInputValidation(undefined, ${indexTask}); event.preventDefault()">

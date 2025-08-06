@@ -255,7 +255,9 @@ function requiredInputValidation(
   subtask
 ) {
   console.log(subtask);
+  console.log(indexTask);
   
+
   let requiredFields = document.getElementsByClassName("required");
   let validationMessageRef = document.getElementsByClassName("validation");
   let whitespacePattern = /^[ \t]*$/;
@@ -286,7 +288,7 @@ function requiredInputValidation(
 function setAddOrEditSubmit(taskStatusId, indexTask, newContact, indexContact) {
   if (taskStatusId) {
     addNewTask(taskStatusId);
-  } else if (indexTask) {
+  } else if (indexTask >= 0) {
     submitEditTask(indexTask);
   } else if (newContact) {
     addNewContact();
