@@ -7,7 +7,7 @@
   background: #2a3647;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 
@@ -195,6 +195,7 @@ nav > a:hover {
 
 .profile-ellipse:hover {
   background-color: rgb(12, 46, 98, 0.12);
+  cursor: pointer;
 }
 
 input[type="checkbox"] {
@@ -209,11 +210,11 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
- input::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-  }
+input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
 
-.disable-scroll{
+.disable-scroll {
   overflow: hidden;
 }
 
