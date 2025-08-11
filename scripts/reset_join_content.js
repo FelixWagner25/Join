@@ -4,6 +4,7 @@ async function resetJoinContent() {
   deleteAllUsers();
   resetContacts();
   submitInitialContacts();
+  showToastMessage("reset-join-msg");
 }
 
 async function resetContacts() {
