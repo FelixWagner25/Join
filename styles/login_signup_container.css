@@ -285,7 +285,7 @@ input[type="checkbox"]:checked:hover {
   background-size: cover;
 }
 
-#accept-policy:hover{
+#accept-policy:hover {
   cursor: pointer;
 }
 
@@ -364,4 +364,9 @@ input[type="checkbox"]:checked:hover {
     flex-direction: column;
     padding-bottom: 32px;
   }
+}
+
+.reset-join-btn:hover {
+  cursor: pointer;
+  color: #007cee;
 }
