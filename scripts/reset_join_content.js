@@ -1,6 +1,7 @@
 let initialContacts = [];
 
 async function resetJoinContent() {
+  deleteAllUsers();
   resetContacts();
   submitInitialContacts();
 }
@@ -23,6 +24,10 @@ async function submitInitialContacts() {
 function addInitalContact(name, email, phone) {
   initialContact = new InitialContact(name, email, phone);
   initialContacts.push(initialContact);
+}
+
+async function deleteAllUsers() {
+  await deleteDataBaseElement("user");
 }
 
 addInitalContact("Anja Schmidt", "schmidt@gmail.com", "49111111111");

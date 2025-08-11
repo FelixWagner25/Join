@@ -116,6 +116,9 @@ async function checkMailRedundancy(credentials) {
  * @returns Array with all already in use emails
  */
 function getUsedMails(responseRef) {
+  if (responseRef === null) {
+    return "";
+  }
   let mailValue = Object.values(responseRef);
   let usedMails = mailValue.map((i) => {
     return i.email;
