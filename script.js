@@ -119,13 +119,17 @@ async function getDataBaseElement(path = "") {
  * @param {Object} object the object according to the path
  */
 async function submitObjectToDatabase(path = "", object = {}) {
+  console.log(object);
+  
   let response = await fetch(database + path + ".json", {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(object),
-  });
+    
+  }
+);
 }
 
 /**
@@ -254,10 +258,6 @@ function requiredInputValidation(
   indexContact,
   subtask
 ) {
-  console.log(subtask);
-  console.log(indexTask);
-  
-
   let requiredFields = document.getElementsByClassName("required");
   let validationMessageRef = document.getElementsByClassName("validation");
   let whitespacePattern = /^[ \t]*$/;
@@ -344,6 +344,8 @@ function toggleValueFromArray(value, array) {
   } else {
     array.push(value);
   }
+  console.log(array);
+  
 }
 
 /**
