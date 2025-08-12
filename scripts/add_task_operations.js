@@ -10,12 +10,8 @@ async function addNewTask(newTaskStatusId) {
   await submitNewTaskOptionalComplexInfo();
   clearAddTaskForm();
   showToastMessage("add-task-toast-msg");
-  console.log(newTaskScalarData);
-  console.log(tasksArray);
-  console.log(newTaskStatusId);
-  
   setTimeout(() => {
-    /* directToBoardPage(); */
+    directToBoardPage();
   }, 1000);
 }
 
@@ -33,10 +29,6 @@ async function submitNewTaskOptionalComplexInfo(editID) {
   }
   await submitNewTaskAssignedContacts(newTaskFirebaseId);
   await submitNewTaskSubtasks(newTaskFirebaseId);
-  console.log(tasksArray[tasksArray.length - 1][0]);
-  console.log(newTaskFirebaseId);
-  console.log(tasksArray);
-  
 }
 
 /**
@@ -57,12 +49,6 @@ async function submitNewTaskAssignedContacts(newTaskFireBaseId) {
         name: assignedContactEntry[1].name,
       };
       await submitObjectToDatabase(path, keyValuePairs);
-      console.log(keyValuePairs);
-      console.log(assignedContactEntry);
-      console.log(contactsArray);
-      console.log(newTaskAssignedContactsIndices);
-      
-      
     }
   }
 }
@@ -95,8 +81,6 @@ async function submitNewTaskSubtasks(newTaskFirebaseId) {
     keyValuePairs.done = newTaskSubtasks[i].done;
     await submitObjectToDatabase(path, keyValuePairs);
   }
-  console.log(newTaskSubtasks);
-  
 }
 
 /**

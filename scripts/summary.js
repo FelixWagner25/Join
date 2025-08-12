@@ -33,9 +33,6 @@ function renderSummaryBoard(countToTasks, taskID, priority) {
     let board = document.getElementById(`${taskID}-count`);
     let totalTasksRef = document.getElementById('tasks-board-count');
     let priorityTaskRef = document.getElementById('urgent-count');
-    console.log(tasksArray);
-    console.log(tasksArray.length);
-    
     board.innerHTML = countToTasks.length;
     totalTasksRef.innerHTML = tasksArray.length ;
     priorityTaskRef.innerHTML = priority.length

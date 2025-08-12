@@ -119,8 +119,6 @@ async function getDataBaseElement(path = "") {
  * @param {Object} object the object according to the path
  */
 async function submitObjectToDatabase(path = "", object = {}) {
-  console.log(object);
-  
   let response = await fetch(database + path + ".json", {
     method: "POST",
     headers: {
@@ -344,8 +342,6 @@ function toggleValueFromArray(value, array) {
   } else {
     array.push(value);
   }
-  console.log(array);
-  
 }
 
 /**

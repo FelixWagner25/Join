@@ -9,7 +9,6 @@ async function resetJoinContent() {
 
 async function resetContacts() {
   await deleteDataBaseElements();
-  /* await submitInitialContacts(); */
 }
 
 async function deleteDataBaseElements() {
