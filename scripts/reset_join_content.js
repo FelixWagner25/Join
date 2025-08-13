@@ -128,7 +128,7 @@ async function submitInitialTasks() {
  * Creates new object classed as task
  *
  * @param {string} category task category
- * @param {sting} description task description
+ * @param {string} description task description
  * @param {string} dueDate task due date
  * @param {string} priority task priority
  * @param {string} status task status
