@@ -359,12 +359,6 @@ input[type="checkbox"]:checked:hover {
     align-items: center;
   }
 
-  .site-container {
-    height: 9%;
-    flex-direction: column;
-    padding-bottom: 32px;
-  }
-
   .reset-join {
     display: none;
   }
