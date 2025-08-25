@@ -4,7 +4,7 @@
  */
 function guestLogin() {
   saveSession("Gast");
-  location.href = "assets/html/summary.html";
+  location.href = "html/summary.html";
 }
 
 /**
@@ -12,7 +12,7 @@ function guestLogin() {
  *
  */
 function signupPage() {
-  location.href = "assets/html/signup.html";
+  location.href = "html/signup.html";
 }
 
 /**
@@ -190,7 +190,7 @@ async function checkLogInCredentials(responseRef) {
     return i.email + i.password;
   });
   if (credentialsMerge.includes(loginInput[0].value + loginInput[1].value)) {
-    location.href = "assets/html/summary.html";
+    location.href = "html/summary.html";
     saveSession(name);
   } else {
     showErrorMessage("password", [...loginInput]);

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task</title>
+    <link rel="stylesheet" href="../styles/assets.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/colors.css" />
+    <link rel="stylesheet" href="../styles/desktop_template.css" />
+    <link rel="stylesheet" href="../styles/add_task.css" />
+    <link rel="stylesheet" href="../styles/contacts.css" />
+    <link rel="stylesheet" href="../styles/keyframes.css" />
+    <script src="../script.js"></script>
+    <script src="../scripts/board.js"></script>
+    <script src="../scripts/board_operations.js"></script>
+    <script src="../scripts/add_task.js"></script>
+    <script src="../scripts/add_task_operations.js"></script>
+    <script src="../templates/add_task_templates.js"></script>
+    <link rel="icon" href="../assets/img/faviconLogo.svg" />
+    <script src="../scripts/desktop_template.js"></script>
+    <script src="../scripts/w3_include.js"></script>
+    <script src="../scripts/contacts.js"></script>
+    <script src="../scripts/contact_operations.js"></script>
+  </head>
+  <body onload="init(); addTaskInit()">
+    <div class="page">
+      <div
+        class="d-contents"
+        w3-include-html="/templates/desktop_template.html"
+      ></div>
+      <main
+        id="main"
+        class="scrollable-y"
+        onclick="closeTaskAssignedContactsDropdown();closeTaskCategoryDropdown()"
+      >
+        <div class="pd-t-60px pd-lr-96px d-flex-column gap-48px">
+          <h1 class="font-Inter-700-61px">Add Task</h1>
+          <div id="add-task-form-wrap"></div>
+        </div>
+        <div class="toast-msg font-Inter-400-20px" id="add-task-toast-msg">
+          <div class="d-flex-c-sb gap-32px">
+            <span>Task added to board</span>
+            <span class="add-task-toast-icon"></span>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
