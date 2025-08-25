@@ -74,7 +74,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
       )} ">${getCategoryNameTemplate(currentTask.category)}</div>
         <div class="close-icon-overlay-wrap d-flex-row-c-c">
           <div class="close-icon-overlay d-flex-row-c-c" onclick="closeTaskOverlays()">
-            <img src="/assets/icons/close.svg" alt="close" class="close-icon"/>
+            <img src="../assets/icons/close.svg" alt="close" class="close-icon"/>
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
                 onclick="editTask(${indexTask})"
                 >
                 <img
-                    src="/assets/icons/edit.svg"
+                    src="../assets/icons/edit.svg"
                     alt="edit pencil"
                     class="edit-contact-icon"
                 />
@@ -155,7 +155,7 @@ function getTaskOverlay(indexTask, currentTask, overlay) {
                 </button>
                 <button class="contact-details-delete-contact" onclick="deleteTask(${indexTask})">
                 <img
-                    src="/assets/icons/delete.svg"
+                    src="../assets/icons/delete.svg"
                     alt="delete trash bin"
                     class="delete-contact-icon"
                 />

@@ -125,9 +125,7 @@ async function submitObjectToDatabase(path = "", object = {}) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(object),
-    
-  }
-);
+  });
 }
 
 /**
@@ -238,7 +236,7 @@ function showToastMessage(htmlId) {
  *
  */
 function directToBoardPage() {
-  location.href = "/assets/html/board.html";
+  location.href = "board.html";
 }
 
 /**

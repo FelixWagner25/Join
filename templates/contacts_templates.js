@@ -66,7 +66,7 @@ function getContactDetailsTemplate(indexContact) {
                 onclick="showEditContactScreen(${indexContact})"
                 >
                 <img
-                    src="/assets/icons/edit.svg"
+                    src="../assets/icons/edit.svg"
                     alt="edit pencil"
                     class="edit-contact-icon"
                 />
@@ -74,7 +74,7 @@ function getContactDetailsTemplate(indexContact) {
                 </button>
                 <button class="contact-details-delete-contact" onclick="deleteContact(${indexContact})">
                 <img
-                    src="/assets/icons/delete.svg"
+                    src="../assets/icons/delete.svg"
                     alt="delete trash bin"
                     class="delete-contact-icon"
                 />
@@ -112,7 +112,7 @@ function getContactDetailsMobileMenuTemplate(indexContact) {
     <div class="d-flex-column gap-24px">
     <button class="contact-details-edit-contact" onclick="showEditContactScreen(${indexContact})">
       <img
-        src="/assets/icons/edit.svg"
+        src="../assets/icons/edit.svg"
         alt="edit pencil"
         class="edit-contact-icon"
       />
@@ -120,7 +120,7 @@ function getContactDetailsMobileMenuTemplate(indexContact) {
     </button>
     <button class="contact-details-delete-contact" onclick="deleteContact(${indexContact})">
       <img
-        src="/assets/icons/delete.svg"
+        src="../assets/icons/delete.svg"
         alt="delete trash bin"
         class="delete-contact-icon"
       />
@@ -140,7 +140,7 @@ function getAddContactsScreenTemplate() {
         </div>
         <div class="add-contact-title-page">
           <img
-            src="/assets/icons/join_icon.svg"
+            src="../assets/icons/join_icon.svg"
             alt="Join Logo"
             class="add-contacts-screen-logo mg-t-80px"
           />
@@ -157,7 +157,7 @@ function getAddContactsScreenTemplate() {
         <div class="d-flex-row-c-c p-relative">
           <div class="add-contact-badge-wrap d-flex-row-c-c">
             <img
-              src="/assets/icons/person.svg"
+              src="../assets/icons/person.svg"
               alt="person icon"
               class="add-contact-badge"
             />
@@ -175,7 +175,7 @@ function getAddContactsScreenTemplate() {
                 oninput="resetErrorMessage()"
               />
               <img
-                src="/assets/icons/person_icon.svg"
+                src="../assets/icons/person_icon.svg"
                 alt="person-icon"
                 class="add-contact-input-icon"
               />
@@ -194,7 +194,7 @@ function getAddContactsScreenTemplate() {
                 oninput="resetErrorMessage()"
               />
               <img
-                src="/assets/icons/mail_icon.svg"
+                src="../assets/icons/mail_icon.svg"
                 alt="email-icon"
                 class="add-contact-input-icon"
               /> 
@@ -213,7 +213,7 @@ function getAddContactsScreenTemplate() {
                 oninput="resetErrorMessage()"
               />
               <img
-                src="/assets/icons/call.svg"
+                src="../assets/icons/call.svg"
                 alt="call icon"
                 class="add-contact-input-icon"
               />
@@ -229,7 +229,7 @@ function getAddContactsScreenTemplate() {
               >
                 <span>Cancel</span>
                 <img
-                  src="/assets/icons/cancel.svg"
+                  src="../assets/icons/cancel.svg"
                   alt="cancel"
                   class="add-contact-btn-icon-cancel"
                   onmouseover="this.src='/assets/icons/close-blue.svg';"
@@ -239,7 +239,7 @@ function getAddContactsScreenTemplate() {
               <button type="submit" class="add-contact-btn">
                 <span>Create contact</span>
                 <img
-                  src="/assets/icons/check_withoutBorder.svg"
+                  src="../assets/icons/check_withoutBorder.svg"
                   alt="check"
                   class="add-contact-btn-icon-check"
                 />
@@ -266,7 +266,7 @@ function getEditContactScreenTemplate(indexContact) {
           </div>
           <div class="add-contact-title-page">
             <img
-              src="/assets/icons/join_icon.svg"
+              src="../assets/icons/join_icon.svg"
               alt="Join Logo"
               class="add-contacts-screen-logo mg-t-80px"
             />
@@ -299,7 +299,7 @@ function getEditContactScreenTemplate(indexContact) {
                   oninput="resetErrorMessage()"
                 />
                 <img
-                  src="/assets/icons/person_icon.svg"
+                  src="../assets/icons/person_icon.svg"
                   alt="person-icon"
                   class="add-contact-input-icon"
                 />
@@ -317,7 +317,7 @@ function getEditContactScreenTemplate(indexContact) {
                   oninput="resetErrorMessage()"
                 />
                 <img
-                  src="/assets/icons/mail_icon.svg"
+                  src="../assets/icons/mail_icon.svg"
                   alt="email-icon"
                   class="add-contact-input-icon"
                 />
@@ -336,7 +336,7 @@ function getEditContactScreenTemplate(indexContact) {
                   oninput="resetErrorMessage()"
                 />
                 <img
-                  src="/assets/icons/call.svg"
+                  src="../assets/icons/call.svg"
                   alt="call icon"
                   class="add contact-input-icon"
                 />
@@ -350,7 +350,7 @@ function getEditContactScreenTemplate(indexContact) {
                 <button type="submit" class="add-contact-btn d-flex-row-c-c">
                   <span>Save</span>
                   <img
-                    src="/assets/icons/check_withoutBorder.svg"
+                    src="../assets/icons/check_withoutBorder.svg"
                     alt="check"
                     class="add-contact-btn-icon-check"
                   />
