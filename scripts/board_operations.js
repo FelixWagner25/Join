@@ -50,13 +50,13 @@ function getTaskPriorityIconSrc(taskUrgency) {
   let iconSrc = "";
   switch (taskUrgency) {
     case "urgent":
-      iconSrc = "/assets/icons/urgent.svg";
+      iconSrc = "../assets/icons/urgent.svg";
       break;
     case "medium":
-      iconSrc = "/assets/icons/medium.svg";
+      iconSrc = "../assets/icons/medium.svg";
       break;
     case "low":
-      iconSrc = "/assets/icons/low.svg";
+      iconSrc = "../assets/icons/low.svg";
       break;
   }
   return iconSrc;
