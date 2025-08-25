@@ -85,7 +85,7 @@
 }
 
 .contact-details-edit-contact:hover .edit-contact-icon {
-  content: url("/assets/icons/edit-blue.svg");
+  content: url("../assets/icons/edit-blue.svg");
 }
 
 .contact-details-delete-contact {
@@ -100,7 +100,7 @@
 }
 
 .contact-details-delete-contact:hover .delete-contact-icon {
-  content: url("/assets/icons/delete-blue.svg");
+  content: url("../assets/icons/delete-blue.svg");
   cursor: pointer;
 }
 

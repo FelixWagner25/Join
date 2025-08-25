@@ -79,13 +79,13 @@ h1 {
   transform: translateY(-50%);
   right: 16px;
   pointer-events: none;
-  background-image: url("/assets/icons/arrow_drop_down.svg");
+  background-image: url("../assets/icons/arrow_drop_down.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .task-dropdown-open-icon {
-  background-image: url("/assets/icons/arrow_drop_up.svg");
+  background-image: url("../assets/icons/arrow_drop_up.svg");
 }
 
 .task-category-option {
@@ -107,7 +107,7 @@ h1 {
 .task-add-subtask-icon {
   width: 14px;
   height: 14px;
-  background-image: url("/assets/icons/add.svg");
+  background-image: url("../assets/icons/add.svg");
   background-repeat: no-repeat;
   background-position: center;
   pointer-events: none;
@@ -116,7 +116,7 @@ h1 {
 .task-clear-subtask-icon {
   width: 11px;
   height: 11px;
-  background-image: url("/assets/icons/cancel.svg");
+  background-image: url("../assets/icons/cancel.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -124,7 +124,7 @@ h1 {
 .task-submit-subtask-icon {
   width: 16px;
   height: 11px;
-  background-image: url("/assets/icons/check_blue.svg");
+  background-image: url("../assets/icons/check_blue.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -180,7 +180,7 @@ h1 {
 .task-edit-subtask-icon {
   height: 13px;
   width: 13px;
-  background-image: url("/assets/icons/edit.svg");
+  background-image: url("../assets/icons/edit.svg");
   background-size: contain;
 }
 
@@ -191,7 +191,7 @@ h1 {
 .task-delete-subtask-icon {
   height: 13px;
   width: 13px;
-  background-image: url("/assets/icons/delete.svg");
+  background-image: url("../assets/icons/delete.svg");
   background-size: contain;
 }
 
@@ -202,7 +202,7 @@ h1 {
 .clear-task-btn-icon {
   width: 11px;
   height: 11px;
-  background-image: url("/assets/icons/cancel.svg");
+  background-image: url("../assets/icons/cancel.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -218,7 +218,7 @@ h1 {
 }
 
 .clear-task-btn:hover .clear-task-btn-icon {
-  background-image: url("/assets/icons/close-blue.svg");
+  background-image: url("../assets/icons/close-blue.svg");
 }
 
 .submit-task-btn {
@@ -232,7 +232,7 @@ h1 {
 .submit-task-btn-icon {
   width: 16px;
   height: 11px;
-  background-image: url("/assets/icons/check_withoutBorder.svg");
+  background-image: url("../assets/icons/check_withoutBorder.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -257,17 +257,17 @@ h1 {
 }
 
 .urgent-icon {
-  background-image: url("/assets/icons/urgent.svg");
+  background-image: url("../assets/icons/urgent.svg");
 }
 
 .medium-icon {
-  background-image: url("/assets/icons/medium.svg");
+  background-image: url("../assets/icons/medium.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .low-icon {
-  background-image: url("/assets/icons/low.svg");
+  background-image: url("../assets/icons/low.svg");
 }
 
 .active-urgent {
@@ -289,20 +289,20 @@ h1 {
 }
 
 .active-urgent .urgent-icon {
-  background-image: url("/assets/icons/urgent_white.svg");
+  background-image: url("../assets/icons/urgent_white.svg");
 }
 
 .active-medium .medium-icon {
-  background-image: url("/assets/icons/medium_white.svg");
+  background-image: url("../assets/icons/medium_white.svg");
 }
 
 .active-low .low-icon {
-  background-image: url("/assets/icons/low_white.svg");
+  background-image: url("../assets/icons/low_white.svg");
 }
 
 .task-assigned-contacts-checkbox-icon {
   display: block;
-  background-image: url("/assets/icons/checkbox.svg");
+  background-image: url("../assets/icons/checkbox.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -311,7 +311,7 @@ h1 {
 }
 
 .focus .task-assigned-contacts-checkbox-icon {
-  background-image: url("/assets/icons/checkbox_checked_white.svg");
+  background-image: url("../assets/icons/checkbox_checked_white.svg");
 }
 
 .task-assigned-contact-wrap {
@@ -326,7 +326,7 @@ h1 {
 .add-task-toast-icon {
   width: 25px;
   height: 30px;
-  background-image: url("/assets/icons/add-task-toast-icon.svg");
+  background-image: url("../assets/icons/add-task-toast-icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -355,7 +355,7 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     gap: 8px;
-}
+  }
 }
 
 @media screen and (max-width: 820px) {
