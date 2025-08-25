@@ -129,7 +129,7 @@ input[type="checkbox"]:hover {
 }
 
 input[type="checkbox"]:checked {
-  background: url("/assets/icons/checkbox_checked.svg") no-repeat;
+  background: url("../assets/icons/checkbox_checked.svg") no-repeat;
   background-position: center;
   width: 24px;
   height: 24px;
@@ -270,18 +270,18 @@ input[type="checkbox"]:checked:hover {
   cursor: pointer;
   height: 24px;
   width: 24px;
-  background-image: url("/assets/icons/lock_icon.svg");
+  background-image: url("../assets/icons/lock_icon.svg");
 }
 
 .input-content input:not(:placeholder-shown) ~ .pw-icon {
-  background-image: url("/assets/icons/visibility_off.svg");
+  background-image: url("../assets/icons/visibility_off.svg");
 }
 
 .pw-icon-on {
   cursor: pointer;
   height: 24px;
   width: 24px;
-  background-image: url("/assets/icons/visibility_on.svg");
+  background-image: url("../assets/icons/visibility_on.svg");
   background-size: cover;
 }
 
