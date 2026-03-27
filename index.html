@@ -6,12 +6,14 @@
     <title>Join</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./styles/assets.css" />
-    <link rel="stylesheet" href="./styles/login.css" />
-    <link rel="stylesheet" href="./styles/login_signup_container.css" />
+    <link rel="stylesheet" href="./styles/css/main.css">
+    <link rel="stylesheet" href="./styles/css/login.css">
+    <link rel="stylesheet" href="./styles/css/triage.css">
     <link rel="stylesheet" href="./styles/colors.css" />
     <link rel="stylesheet" href="./styles/keyframes.css" />
     <link rel="icon" href="./assets/img/faviconLogo.svg" />
   <script src="./script.js"></script>
+  <script src="./scripts/db.js"></script>
   <script src="./scripts/add_task_operations.js"></script>
   <script src="./scripts/board_operations.js"></script>
   <script src="./scripts/add_task.js"></script>
@@ -25,95 +27,75 @@
   </head>
   <body>
 
-     <div class="landscape-orientation d-none">This screen size isn't supported in this view. <br>Please adjust your screen width.
-        </div>
+   <div class="landscape-orientation d-none">
+      This screen size isn't supported in this view. <br />Please adjust your
+      screen width.
+    </div>
+
+      <div class="background-fade bg-dark"></div>
 
         
-    <div id="login-view">
-      <div class="background-fade">
 
-
-        <div class="header-index">
-
-        <div class="join-logo-index">
-          <img src="./assets/img/faviconLogo.svg" alt="join-logo" />
-        </div>
-
-          <div class="site-container">
-          <div class="signup-container d-flex-row-c-fe ">
-            <span class="font-Inter-400-20px not-a-join-user">Not a Join user?</span>
-            <button class="font-Inter-700-16px text-color-white" onclick="signupPage()">Sign Up</button>
+    <div class="grid triage-wrap" id="login-view">
+        <header class="header-index">
+          <div class="site-container"></div>
+          <div class="signup-container d-none">
+            <span class="text-to-signup">Not a Join user?</span>
+            <a href="signup.html"><button class="btn-primary">Sign Up</button></a>
           </div>
+           <aside>
+             <div class="join-logo">
+            <img src="./assets/icons/join_icon_white.svg" alt="join-logo" />
+           </div>
+          </aside>
+      </header>
+
+
+
+          <main class="triage-container">
+
+<div class="container-wrap">
+<div class="headline-container triage-headline">
+  <h1>Welcome</h1>
+  <div class="headline-underline"></div>
+  <span> Pick the option that suits your role: create a request as a stakeholder or log in if you're part of the team.</span>
+</div>
+
+<div class="choice-wrap">
+
+<div class="choice-container">
+  <div class="role-check"> <img src="./assets/icons/work.svg" alt=""> <span>Are you a stakeholder?</span></div>
+<a href="./html/stakeholder.html"><button class="btn-highlight btn-triage" onclick="urlencode(this)">Create request </button></a>
+</div>
+
+<div class="choice-container">
+  <div class="role-check">
+  <img src="./assets/icons/group.svg" alt=""><span>Are you a team member?</span></div>
+<a href="./html/login.html"><button class="btn-transparent btn-triage">Member log in </button></a>
 </div>
 </div>
 
-        </div>
+</main>
 
 
-        <div class="login-container d-flex-column-c text-center">
-          <div class="login-headline-container d-flex-column-c-c">
-            <div class="login-headline d-flex-row-c-c font-Inter-700-61px text-color-black">Log In</div>
-            <div class="login-headline-underline text-color-29ABE2"></div>
-          </div>
-          <form class="d-flex-column-c-c">
-            <div class="input-container d-flex-column-c">
-              <div class="input-content d-flex-c-sb">
-                <input placeholder="Email" type="email" name="" id="email" oninput="resetErrorMessage()"/><img src="./assets/icons/mail_icon.svg" alt="" />
-              </div> <div class="d-none" class="login-error"></div>
-            </div>
-          <div
-                id="user-existance-error"
-                class="d-none validation email-login font-Inter-400-13px text-color-FF8190"
-              >
-                User does not exist. Please sign up before login.
-          </div>
-            
-            <div class="input-container d-flex-column">
-              <div class="input-content d-flex-c-sb">
-                <input placeholder="Password" type="password" name="" id="password" oninput="resetErrorMessage()"/><div class="pw-icon" onclick="showPassword(this)"></div>
-                </div>
-                <div id="password-error" class="d-none validation email font-Inter-400-13px login-error text-color-FF8190">Check your email and password. Please try again.</div>
-            </div>
-
-          </form>
-
-          <div class="login-btn-container d-flex-c-sb">
-            <button onclick="userLogin()" class="login-btn font-Inter-700-21px text-color-white" type="button">
-              <span class="d-flex text-center-relative">Log in</span>
-            </button>
-            <button onclick="guestLogin()" id="guest-login" class="guest-login-btn font-Inter-700-21px text-color-2A3647" type="button">
-              <span class="d-flex text-center-relative">Guest Log In</span>
-            </button>           
-          </div>
-          <div class="reset-join d-flex-column-c-c gap-8px font-Inter-400-13px">
-              <div>For resetting and pulling fresh join content data: <span class="reset-join-btn text-color-29ABE2" onclick="resetJoinContent()">click here</span>.</div>
-              <div class="col-red">Caution: this will reset all sign up data.</div>
-          </div> 
-
-       </div>
-
-        <div class="toast-msg font-Inter-400-20px" id="reset-join-msg">
-          <div class="d-flex-c-sb gap-32px">
-            Join content resetted successfully
+ <div class="signup-message d-none">
+          <div class="signup-message-text">
+            You Signed Up successfully
           </div>
         </div>
 
            <footer class="policy-notice">
-            <ul class="d-flex-row-c-c policy-notice-list nav-links font-Inter-400-16px text-color-A8A8A8">
-              <li class=""><a href="./html/privacy_policy.html">Privacy Policy</a></li>
-              <li class=""><a href="./html/legal_notice.html">Legal Notice</a></li>
+            <ul class="policy-notice-list nav-links">
+              <li class=""><a href="./privacy_policy.html">Privacy Policy</a></li>
+              <li class=""><a href="./legal_notice.html">Legal Notice</a></li>
             </ul>
-     
-
           </footer>
-
 
         </div>
 
 
+      </div>
 
 
-
-    </div>
   </body>
 </html>

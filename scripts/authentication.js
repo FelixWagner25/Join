@@ -4,7 +4,7 @@
  */
 function guestLogin() {
   saveSession("Gast");
-  location.href = "html/summary.html";
+  location.href = "summary.html";
 }
 
 /**
@@ -12,7 +12,7 @@ function guestLogin() {
  *
  */
 function signupPage() {
-  location.href = "html/signup.html";
+  location.href = "./signup.html";
 }
 
 /**
@@ -22,7 +22,7 @@ function signupPage() {
 function checkInput() {
   let checkbox = document.getElementById("accept-policy");
   let requiredInputs = document.querySelectorAll("input");
-  let button = document.querySelector(".signup-btn");
+  let button = document.querySelector(".btn-primary");
   if (
     [...requiredInputs].every((input) => input.value !== "") &&
     checkbox.checked
@@ -63,10 +63,10 @@ function showPassword(x) {
   let password = x.previousElementSibling;
   if (password.type === "password" && password.value.length > 0) {
     password.type = "text";
-    x.setAttribute("class", "pw-icon-on");
+    x.src = '/assets/icons/visibility_on.svg' 
   } else {
     password.type = "password";
-    x.setAttribute("class", "pw-icon");
+    x.src = '/assets/icons/visibility_off.svg' 
   }
 }
 
@@ -86,13 +86,14 @@ function getNewUserInformation() {
   }
   checkMailRedundancy(userCredential);
 }
-
+  
 /**
  * This function validates, if the mail during sign-up-process is already used in the database
  *
  * @param {object} credentials the sign-up credentials
  */
 async function checkMailRedundancy(credentials) {
+
   let response = await fetch(database + "/user" + ".json");
   let responseRef = await response.json();
   let mails = getUsedMails(responseRef);
@@ -136,13 +137,13 @@ function showMessage(credentials) {
   addNewContactOnSignup(credentials);
   let messageBox = document.querySelector(".signup-message");
   let blur = document.querySelector(".background-fade");
-  let signup = document.querySelector(".signup");
+  let signup = document.querySelector(".login-container");
   messageBox.classList.remove("d-none");
   messageBox.classList.add("d-flex-row-c-c");
   blur.style.backgroundColor = "rgb(0, 0, 0, 0.10)";
-  signup.style.zIndex = "-1";
+  signup.classList.add('index-1')
   setTimeout(() => {
-    location.href = "../index.html";
+    location.href = "./login.html";
   }, 1800);
 }
 

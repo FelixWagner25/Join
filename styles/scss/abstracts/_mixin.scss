@@ -1,0 +1,58 @@
+@use "variables" as *;
+
+@mixin buttton($bgc: $color-primary) {
+  background-color: $bgc;
+}
+
+@mixin size($h: auto, $w: auto) {
+  height: $h;
+  width: $w;
+}
+
+@mixin dFlex($d: flex, $jc: center, $ai: center, $fd: column, $g: 0) {
+  display: $d;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+  gap: $g;
+}
+
+@mixin font($ff: "Inter", $fs: 1rem, $fw: 400, $lh: 120%) {
+  font-family: $ff;
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
+
+@mixin text($c: black) {
+  color: $c;
+}
+
+@mixin padding($p: 0) {
+  padding: $p;
+}
+
+@mixin position($p: absolute, $t: unset, $r: unset, $b: unset, $l: unset) {
+  position: $p;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+  /* transform: translate(-50%, -50%); */
+}
+
+@mixin inputBorder() {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d1d1d1;
+}
+
+@mixin underline() {
+  border-style: solid;
+  border-top: unset;
+  border-color: #29abe2;
+  border-left: unset;
+  border-right: unset;
+  border-width: 3px;
+}

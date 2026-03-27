@@ -1,0 +1,27 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixin" as *;
+
+
+.task-dropdown-icon {
+  @include size($h: 5px, $w: 7px);
+  @include position($p: absolute, $t: 56px, $r: 16px);
+  transform: translateY(-50%);
+  pointer-events: none;
+  background-image: url("./../../../assets/icons/arrow_drop_down.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.task-input-dropdown {
+  background-color: white;
+  @include position($p: absolute, $t: 100%, $r: 0, $l: 0);
+  z-index: 2;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.z-index-1{
+  z-index: 1 !important;
+}

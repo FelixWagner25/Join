@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="../styles/assets.css" />
     <link rel="stylesheet" href="../styles/colors.css" />
     <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../styles/desktop_template.css" />
-    <link rel="stylesheet" href="../styles/summary.css" />
+    <link rel="stylesheet" href="../styles/css/main.css" />
+    <link rel="stylesheet" href="../styles/css/summary.css" />
     <link rel="stylesheet" href="../styles/keyframes.css" />
     <link rel="icon" href="../assets/img/faviconLogo.svg" />
     <script src="../scripts/summary.js"></script>
+    <script src="../scripts/db.js"></script>
     <script src="../scripts/board.js"></script>
     <script src="../scripts/board_operations.js"></script>
     <script src="../script.js"></script>
@@ -26,27 +27,27 @@
         w3-include-html="../templates/desktop_template.html"
       ></div>
       <main id="main">
-        <div class="summary d-flex-column-c">
-          <div class="metrics-header d-flex-align-item-c">
-            <h1 class="font-Inter-600-61px text-color-black">Join 360</h1>
+        <div class="summary">
+          <div class="metrics-header">
+            <h1 class="">Join 360</h1>
             <div class="divider">
-              <div class="header-divider bg-neonblue"></div>
+              <div class="header-divider"></div>
               <span class="metrics-subtitle">Key metrics at a glance</span>
             </div>
           </div>
 
-          <section class="summary-content d-flex-align-item-c">
-            <div class="cards-wrapper d-flex-column">
-              <div class="card-row d-flex">
+          <section class="summary-content">
+            <div class="cards-wrapper">
+              <div class="card-row">
                 <a
-                  class="card small-card bg-white d-flex-row-c-c"
+                  class="card medium-card"
                   href="board.html"
                   alt="to-board-page"
                 >
                   <div class="card-icon edit"></div>
-                  <div class="d-flex-column">
+                  <div class="figure-wrap">
                     <span
-                      class="font-Inter-600-64px count-figure"
+                      class="count-figure"
                       id="todo-count"
                     ></span>
                     <span class="card-title">To-do</span>
@@ -54,14 +55,14 @@
                 </a>
 
                 <a
-                  class="card small-card bg-white d-flex-row-c-c"
+                  class="card medium-card"
                   href="board.html"
                   alt="to-board-page"
                 >
                   <div class="card-icon check"></div>
-                  <div class="d-flex-column">
+                  <div class="figure-wrap">
                     <span
-                      class="font-Inter-600-64px count-figure"
+                      class="count-figure"
                       id="done-count"
                     ></span>
                     <span class="card-title">Done</span>
@@ -69,43 +70,60 @@
                 </a>
               </div>
 
+              <div class="card-row">
               <a
-                class="card large-card bg-white"
+                class="card large-card"
                 href="board.html"
                 alt="to-board-page"
               >
-                <div class="urgent-left d-flex-row-c-c">
+                <div class="urgent-left">
                   <img
                     src="../assets/icons/up.svg"
                     alt="Urgent"
                     class="card-icon-large"
                   />
-                  <div class="d-flex-column">
+                  <div class="figure-wrap">
                     <span
-                      class="font-Inter-600-64px count-figure"
+                      class="count-figure"
                       id="urgent-count"
                     ></span>
                     <span class="card-title">Urgent</span>
                   </div>
                 </div>
                 <div class="divider-vertical"></div>
-                <div class="urgent-right d-flex-row-c-c">
-                  <div class="d-flex-column">
-                    <span class="font-Inter-700-21px" id="deadline-date"></span>
+                <div class="urgent-right">
+                  <div class="figure-wrap">
+                    <span  id="deadline-date"></span>
                     <span class="card-title">Upcoming Deadline</span>
                   </div>
                 </div>
               </a>
 
-              <div class="card-row d-flex">
-                <a
-                  class="card small-card bg-white d-flex-row-c-c"
+               <a
+                  class="card small-card"
                   href="board.html"
                   alt="to-board-page"
                 >
-                  <div class="d-flex-column">
+                  <div class="figure-wrap">
                     <span
-                      class="font-Inter-600-64px count-figure"
+                      class="count-figure ai"
+                      id="email-request-count"
+                    ></span>
+                    <span class="card-title">Email Requests</span>
+                  </div>
+                </a>
+              </div>
+
+
+              <div class="card-row">
+                <a
+                  class="card small-card"
+                  href="board.html"
+                  alt="to-board-page"
+                >
+                  <div class="figure-wrap">
+                    <span
+                      class="count-figure"
                       id="tasks-board-count"
                     ></span>
                     <span class="card-title">Tasks in Board</span>
@@ -113,13 +131,13 @@
                 </a>
 
                 <a
-                  class="card small-card bg-white d-flex-row-c-c"
+                  class="card small-card"
                   href="board.html"
                   alt="to-board-page"
                 >
-                  <div class="d-flex-column">
+                  <div class="figure-wrap">
                     <span
-                      class="font-Inter-600-64px count-figure"
+                      class="count-figure"
                       id="inprogress-count"
                     ></span>
                     <span class="card-title">Tasks In Progress</span>
@@ -127,13 +145,13 @@
                 </a>
 
                 <a
-                  class="card small-card bg-white d-flex-row-c-c"
+                  class="card small-card"
                   href="board.html"
                   alt="to-board-page"
                 >
-                  <div class="d-flex-column">
+                  <div class="figure-wrap">
                     <span
-                      class="font-Inter-600-64px count-figure"
+                      class="count-figure"
                       id="awaitfeedback-count"
                     ></span>
                     <span class="card-title">Awaiting Feedback</span>
@@ -142,15 +160,15 @@
               </div>
             </div>
 
-            <div class="greeting d-flex-column-c">
-              <div class="d-flex-align-item-b">
-                <div class="font-Inter-500-47px" id="greeting-sentence">
+            <div class="greeting-container">
+              <div class="greeting-wrap">
+                <div id="greeting-sentence">
                   Good morning
                 </div>
                 <span id="comma" class="d-none">,</span>
               </div>
               <div
-                class="font-Inter-700-64px text-color-29ABE2"
+                
                 id="personal-greeting"
               ></div>
             </div>

@@ -1,0 +1,42 @@
+@use './../abstracts/mixin' as *;
+@use './../abstracts/variables' as *;
+
+
+.signup-message {
+  background-color: #2a3647;
+  width: 312px;
+  height: 74px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.15);
+  animation: slide-up 1s forwards;
+}
+
+.signup-message-text {
+  padding: 0 25px;
+  height: 24px;
+  width: 262px;
+  background-color: rgb(56, 56, 56, 0.1);
+  color: $color-secondary;
+}
+
+
+.toast-msg {
+  @include position($p: fixed, $t: 75%, $l: 50%);
+  @include padding($p: 20px);
+  @include font($fs: 20px);
+  transform: translate(300%, -50%);
+  color: white;
+  background-color: #2a3647;
+  opacity: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 100;
+
+  > .toast-msg-spans {
+    @include dFlex($fd: unset, $jc: space-between, $g: 32px);
+  }
+}
+
+.toast-msg.show {
+  animation: toast-fly-in-out 2s linear;
+}

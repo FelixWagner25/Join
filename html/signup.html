@@ -6,44 +6,60 @@
     <title>Join</title>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../styles/assets.css" />
-    <link rel="stylesheet" href="../styles/login.css" />
-    <link rel="stylesheet" href="../styles/login_signup_container.css" />
+    <link rel="stylesheet" href="../styles/css/main.css">
+    <link rel="stylesheet" href="../styles/css/grid.css">
+    <link rel="stylesheet" href="../styles/css/login.css">
+    <link rel="stylesheet" href="../styles/css/signup.css">
     <link rel="stylesheet" href="../styles/colors.css" />
     <link rel="stylesheet" href="../styles/keyframes.css" />
     <link rel="icon" href="../assets/img/faviconLogo.svg" />
     <script src="../script.js"></script>
+    <script src="../scripts/db.js"></script>
     <script src="../scripts/authentication.js"></script>
   </head>
   <body>
+
     <div class="landscape-orientation d-none">
       This screen size isn't supported in this view. <br />Please adjust your
       screen width.
     </div>
 
-    <div id="signup-view">
       <div class="background-fade">
-        <div class="join-logo-index-signup">
-          <img src="../assets/img/faviconLogo.svg" alt="join-logo" />
-        </div>
-        <div class="login-container signup d-flex-column-c-c text-center">
-          <div class="login-headline-container d-flex-align-item-c">
-            <a href="../index.html" class="arrow-left"
-              ><img src="../assets/icons/arrow-left.svg" alt=""
-            /></a>
-            <div class="d-flex-column-c-c">
-              <div class="login-headline d-flex-row-c-c font-Inter-700-61px">
-                Sign up
-              </div>
-              <div class="login-headline-underline text-color-29ABE2"></div>
+    </div>
+        
+
+    <div class="grid" id="login-view">
+          <div class="site-container"></div>
+           <aside>
+             <div class="join-logo --signup">
+            <img src="./../assets/img/faviconLogo.svg" alt="join-logo" />
+           </div>
+          </aside>
+
+
+
+        <main class="login-container">
+         
+          <div class="headline-container headline-signup-container">
+            <a href="login.html" class="arrow-left">
+              <img src="../assets/icons/arrow-left.svg" alt=""/>
+            </a>
+            <div class="title">
+              <h1>Sign Up</h1>
+              <div class="headline-underline"></div>
             </div>
+            <div></div>
           </div>
+
+
+
           <form
             novalidate
-            class="form-signup d-flex-column-c-c"
+            class="form-signup"
             onsubmit="signupFormValidation(event)"
           >
-            <div class="input-container d-flex">
-              <div class="input-content d-flex-c-sb">
+            <div class="input-container">
+              <div class="input-content">
                 <input
                   required
                   placeholder="Name"
@@ -53,8 +69,9 @@
                 /><img src="../assets/icons/person_icon.svg" alt="" />
               </div>
             </div>
-            <div class="input-container d-flex-column">
-              <div class="input-content d-flex-c-sb">
+            
+            <div class="input-container">
+              <div class="input-content">
                 <input
                   required
                   placeholder="Email"
@@ -63,23 +80,24 @@
                   id="add-contact-input-email"
                   oninput="resetErrorMessage(), checkInput()"
                 /><img src="../assets/icons/mail_icon.svg" alt="" />
-              </div>
-              <div
+          </div>
+
+                <div
                 id="email-error"
-                class="d-none validation email font-Inter-400-13px text-color-FF8190"
-              >
+                class="d-none validation email login-error"
+                >
                 Please enter a valid e-mail address.
               </div>
               <div
-                id="email-redundancy-error"
-                class="d-none validation email font-Inter-400-13px text-color-FF8190"
+              id="email-redundancy-error"
+              class="d-none validation email login-error"
               >
-                E-mail address already exists!
-              </div>
+              E-mail address already exists!
+            </div>
             </div>
 
-            <div class="input-container d-flex-column pd-b-8px">
-              <div class="input-content d-flex-c-sb">
+            <div class="input-container">
+              <div class="input-content">
                 <input
                   required
                   placeholder="Password"
@@ -88,18 +106,18 @@
                   id="password"
                   oninput="resetErrorMessage(), checkInput()"
                 />
-                <div class="pw-icon" onclick="showPassword(this)"></div>
+                <img src="./../assets/icons/visibility_off.svg" class="pw-icon" onclick="showPassword(this)"/>
               </div>
               <div
                 id="password-length-error"
-                class="d-none validation font-Inter-400-13px text-color-FF8190"
+                class="d-none validation login-error"
               >
                 Your password must be at least 8 characters long!
               </div>
             </div>
 
-            <div class="input-container d-flex-column pd-b-8px">
-              <div class="input-content d-flex-c-sb">
+            <div class="input-container">
+              <div class="input-content">
                 <input
                   required
                   placeholder="Confirm Password"
@@ -108,60 +126,60 @@
                   id="password-confirm"
                   oninput="resetErrorMessage(), checkInput()"
                 />
-                <div class="pw-icon" onclick="showPassword(this)"></div>
+                <img src="./../assets/icons/visibility_off.svg" class="pw-icon" onclick="showPassword(this)"/>
               </div>
               <div
                 id="password-error"
-                class="d-none validation font-Inter-400-13px text-color-FF8190"
+                class="d-none validation login-error"
               >
                 Your passwords don't match. Please try again.
               </div>
             </div>
 
-            <div class="input-container d-flex-row-c-c">
+            <div class="input-container">
               <div
-                class="input-checkbox d-flex-c-se font-Inter-400-16px text-color-A8A8A8"
+                class="input-checkbox"
               >
                 <input
                   type="checkbox"
                   name="checkbox"
                   id="accept-policy"
                   onchange="checkInput()"
-                />I accept the<a
-                  href="../assets/html/privacy_policy.html"
-                  class="d-flex text-color-29ABE2 accept-policy"
-                  >Privacy Policy</a
+                />
+                <span>I accept the <a
+                  href="./privacy_policy.html"
+                  class="accept-policy"
+                  >Privacy Policy</span></a
                 >
               </div>
             </div>
             <button
               disabled
-              class="signup-btn d-flex-row-c-c font-Inter-700-21px"
+              class="btn-primary"
               type="submit"
-            >
-              <span class="d-flex text-center-relative text-color-white"
-                >Sign up</span
-              >
+            > Sign up
             </button>
           </form>
-        </div>
-        <div class="signup-message d-none">
-          <div class="signup-message-text font-Inter-400-20px text-color-white">
+
+       </main>
+
+ <div class="signup-message d-none">
+          <div class="signup-message-text">
             You Signed Up successfully
           </div>
         </div>
 
-        <footer class="policy-notice-secondary">
-          <ul class="d-flex-row-c-c policy-notice-list">
-            <li class="nav-links font-Inter-400-16px text-color-A8A8A8">
-              <a href="../assets/html/privacy_policy.html">Privacy Policy</a>
-            </li>
-            <li class="nav-links font-Inter-400-16px text-color-A8A8A8">
-              <a href="../assets/html/legal_notice.html">Legal Notice</a>
-            </li>
-          </ul>
-        </footer>
+           <footer class="policy-notice">
+            <ul class="policy-notice-list nav-links">
+              <li class=""><a href="./privacy_policy.html">Privacy Policy</a></li>
+              <li class=""><a href="./legal_notice.html">Legal Notice</a></li>
+            </ul>
+          </footer>
+
+        </div>
+
+
       </div>
-    </div>
+
   </body>
 </html>

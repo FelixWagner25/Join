@@ -70,17 +70,27 @@
   }
 }
 
-@keyframes easein {
-  100% {
-    top: 80px;
-    left: 77px;
+/* @keyframes easein {
+  0% {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    top: 0;
+    left: 0;
     transform: translate(0, 0);
   }
-}
+
+  100% {
+    position: relative;
+  }
+} */
 
 @keyframes fadeGreeting {
   0% {
-    height: calc(100vh - 160px);
     opacity: 1;
   }
   66% {
@@ -88,6 +98,5 @@
   }
   100% {
     opacity: 0;
-    height: calc(100vh - 160px);
   }
 }

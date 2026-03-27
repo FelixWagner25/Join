@@ -12,7 +12,7 @@ async function addNewTask(newTaskStatusId) {
   showToastMessage("add-task-toast-msg");
   setTimeout(() => {
     directToBoardPage();
-  }, 1000);
+  }, 2000);
 }
 
 /**
@@ -229,6 +229,7 @@ function insertMandatoryTaskInfo(newTaskObj, newTaskStatusId) {
   newTaskObj.title = getInputTagValue("task-title");
   newTaskObj.dueDate = getInputTagValue("task-due-date");
   newTaskObj.priority = newTaskPriority;
+  newTaskObj.source = "human"
   if (newTaskStatusId) {
     newTaskObj.category = getTaskCategoryFirebaseName();
     newTaskObj.status = newTaskStatusId;

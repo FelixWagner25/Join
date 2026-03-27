@@ -1,6 +1,6 @@
 function getSubtaskListTemplate(indexSubtask) {
   return `
-        <li id="task-subtask-${indexSubtask}" class="p-relative font-Inter-400-13px subtask-list-element d-flex-row-c-fs gap-8px">
+        <li id="task-subtask-${indexSubtask}" class="p-relative subtask-list-element">
             <div>&#x2022;</div>
             ${newTaskSubtasks[indexSubtask].name}
             <div class=" p-absolute d-flex-row-c-c gap-4px task-subtask-control-icon-wrap">
@@ -65,7 +65,7 @@ function getTaskAssigendContactsOverlayTemplate(contactID, indexContact) {
 
 function getTaskAssignedContactBadgeTemplate(contactID, indexContact) {
   return `
-    <div class="profile-badge font-Inter-400-12px d-flex-row-c-c text-color-white ${getContactColorClassNameByFirebaseId(
+    <div class="profile-badge ${getContactColorClassNameByFirebaseId(
       contactID
     )}">
         ${getFirstTwoStringInitialsByFirebaseId(contactID)}
@@ -75,7 +75,7 @@ function getTaskAssignedContactBadgeTemplate(contactID, indexContact) {
 
 function getTaskAssignedContactsRemainderTemplate(numberRemainder) {
   return `
-  <div class="font-Inter-400-20px d-flex-row-c-c text-color-2A3647">
+  <div class="assigned-user-remainder">
     +${numberRemainder}
   </div>
   `;
@@ -84,45 +84,44 @@ function getTaskAssignedContactsRemainderTemplate(numberRemainder) {
 function getAddTaskFormTemplate(taskStatusId) {
   return `
   <form
-    class="max-width-976px"
     onsubmit="requiredInputValidation('${taskStatusId}'); event.preventDefault() "
   >
-    <div class="form-sub-wraps d-flex-sb gap-48px">
-      <div class="d-flex-column gap-16px width-100p">
-        <div class="d-flex-column gap-8px height-96px">
+    <div class="form-sub-wraps">
+      <div class="task-main">
+        <div class="task-area task-title">
           <label
             for="task-title"
-            class="font-Inter-400-20px text-color-2A3647"
-            >Title<span class="col-red">*</span></label
+            class=""
+            >Title<span class="text-red">*</span></label
           >
           <input
-            class="task-input-border task-input-text-field font-Inter-400-20px required"
+            class="task-input-border task-input-text-field required"
             type="text"
             id="task-title"
             placeholder="Enter a title"
             oninput="resetErrorMessage()"
           />
-          <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
+          <div class="d-none validation">This field is required!</div>
         </div>
 
-        <div class="d-flex-column gap-8px">
+        <div class="task-area">
           <label
             for="task-description"
-            class="font-Inter-400-20px text-color-2A3647"
+            class=""
             >Description</label
           >
           <textarea
-            class="task-input-border task-input-text-area font-Inter-400-20px"
+            class="task-input-border task-input-text-area"
             id="task-description"
             placeholder="Enter a Description"
           ></textarea>
         </div>
-        <div class="d-flex-column gap-8px height-96px">
+        <div class="task-area tas-title">
           <label for="task-due-date" class="input-label"
             >Due date<span class="col-red">*</span></label
           >
           <input
-            class="task-input-border task-input-date font-Inter-400-20px required"
+            class="task-input-border task-input-date required"
             type="date"
             min="${currentDate}"
             id="task-due-date"
@@ -130,57 +129,57 @@ function getAddTaskFormTemplate(taskStatusId) {
             oninput="resetErrorMessage()"
             onclick="this.showPicker()"
           />
-           <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
+           <div class="d-none validation">This field is required!</div>
         </div>
         
       </div>
 
       <div class="separator"></div>
 
-      <div class="d-flex-column gap-32px width-100p">
-        <div class="d-flex-column gap-8px">
-          <label class="font-Inter-400-20px text-color-2A3647"
+      <div class="task-meta">
+        <div class="task-area">
+          <label class=""
             >Priority</label
           >
-          <div class="d-flex gap-16px overlay-priority">
+          <div class="overlay-priority">
             <button
               type="button"
-              class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
+              class="btn-priority"
               id="task-priority-urgent"
               onclick="setTaskPriority('task-priority-urgent')"
             >
               <span>Urgent</span>
-              <span class="task-priority-btn-icon urgent-icon"></span>
+              <span class="btn-priority-icon urgent-icon"></span>
             </button>
             <button
               type="button"
-              class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px active-medium"
+              class="btn-priority active-medium"
               id="task-priority-medium"
               onclick="setTaskPriority('task-priority-medium')"
             >
               <span>Medium</span>
-              <span class="task-priority-btn-icon medium-icon"></span>
+              <span class="btn-priority-icon medium-icon"></span>
             </button>
             <button
               type="button"
-              class="task-priority-btn d-flex-row-c-c gap-8px font-Inter-400-20px"
+              class="btn-priority"
               id="task-priority-low"
               onclick="setTaskPriority('task-priority-low')"
             >
               <span>Low</span>
-              <span class="task-priority-btn-icon low-icon"></span>
+              <span class="btn-priority-icon low-icon"></span>
             </button>
           </div>
         </div>
 
-        <div class="d-flex-column gap-8px p-relative" onclick="event.stopPropagation()">
+        <div class="task-area" onclick="event.stopPropagation(), setZIndex(this)">
           <label
             for="task-assigned-contacts"
-            class="font-Inter-400-20px text-color-2A3647"
+            class=""
             >Assigned To</label
           >
           <input
-            class="p-relative task-input-border task-input-category font-Inter-400-20px"
+            class="task-input-border task-input-category"
             type="text"
             id="task-assigned-contacts"
             placeholder="Select contacts to assign"
@@ -189,27 +188,27 @@ function getAddTaskFormTemplate(taskStatusId) {
             autocomplete="off"
           />
           <span
-            class="p-absolute task-dropdown-icon"
+            class="task-dropdown-icon p-relative"
             id="task-assigend-contacts-dropdown-icon"
           ></span>
           <div
-            class="d-none p-absolute task-input-dropdown"
+            class="d-none task-input-dropdown p-absolute"
             id="task-assigned-contacts-dropdown"
           ></div>
           <div
-            class="d-flex gap-8px p-relative"
+            class="profile-wrap"
             id="task-assigned-contacts-badges"
           ></div>
         </div>
 
-        <div class="d-flex-column gap-8px p-relative height-86px" onclick="event.stopPropagation()">
+        <div class="task-area task-category" onclick="event.stopPropagation() , setZIndex(this)">
           <label
             for="task-category"
-            class="font-Inter-400-20px text-color-2A3647"
-            >Category<span class="col-red">*</span></label
+            class=""
+            >Category<span class="text-red">*</span></label
           >
           <input
-            class="p-relative task-input-border task-input-category font-Inter-400-20px required"
+            class="task-input-border task-input-category required"
             type="text"
             id="task-category"
             placeholder="Select task category"
@@ -219,7 +218,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             readonly
           />
           <span
-            class="p-absolute task-dropdown-icon"
+            class="task-dropdown-icon"
             id="task-category-dropdown-icon"
           ></span>
           <div
@@ -237,19 +236,19 @@ function getAddTaskFormTemplate(taskStatusId) {
             >User Story
             </div>
           </div>
-           <div class="d-none validation font-Inter-400-13px text-color-FF8190">This field is required!</div>
+           <div class="d-none validation">This field is required!</div>
         </div>
 
-        <div class="d-flex-column gap-8px p-relative">
+        <div class="task-area">
           <label
             for="task-subtasks"
-            class="font-Inter-400-20px text-color-2A3647"
+            class=""
             >Subtasks</label
           >
           <input
             oninput="showSubtaskControlButtons()"
             onkeypress="addSubtaskOnEnterPress(event)"
-            class="p-relative task-input-border task-input-category font-Inter-400-20px"
+            class="p-relative task-input-border task-input-category "
             type="text"
             id="task-subtasks"
             placeholder="Add new subtask"
@@ -259,7 +258,7 @@ function getAddTaskFormTemplate(taskStatusId) {
             id="task-add-subtask-icon"
           ></span>
           <div
-            class="d-none p-absolute d-flex gap-8px task-subtask-icon"
+            class="d-none p-absolute task-subtask-icon"
             id="task-clear-submit-subtask-icon-wrap"
           >
             <div
@@ -281,25 +280,25 @@ function getAddTaskFormTemplate(taskStatusId) {
       </div>
     </div>
 
-    <div class="d-flex-row-end-sb task-button-mobile">
-      <div class="font-Inter-400-16px">
-        <span class="col-red">*</span>This field is required
+    <div class="task-button-mobile">
+      <div class="text-required">
+        <span class="text-red">*</span>This field is required
       </div>
 
-      <div class="task-form-btn-wrap d-flex">
+      <div class="task-form-btn-wrap">
         <button
-          class="task-form-btn d-flex-row-c-c clear-task-btn"
+          class="btn-clear"
           type="reset"
           onclick="clearAddTaskForm()"
         >
-          <span class="font-Inter-400-20px">Clear</span>
-          <span class="clear-task-btn-icon"></span>
+          <span class="">Clear</span>
+          <span class="btn-clear-icon"></span>
         </button>
         <button
-          class="task-form-btn d-flex-row-c-c text-color-white submit-task-btn"
+          class="task-form-btn btn-submit"
           type="submit"
         >
-          <span class="font-Inter-700-21px">Create Task</span>
+          <span class="">Create Task</span>
           <span class="submit-task-btn-icon"></span>
         </button>
       </div>

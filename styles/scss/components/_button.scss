@@ -1,0 +1,198 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixin" as *;
+
+button {
+  border-radius: 8px;
+  border-style: unset;
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: gray;
+  }
+
+  &:disabled:hover {
+    background-color: gray;
+    box-shadow: none;
+    cursor: default;
+  }
+}
+
+.btn-primary {
+  background-color: $color-primary;
+  @include size($h: 48px, $w: 100%);
+  max-width: 110px;
+  @include text($c: #ffffff);
+  @include font($fs: 21px, $fw: 700);
+  &:hover {
+    background-color: #29abe2;
+    box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
+  }
+}
+
+.btn-transparent {
+  @include size($h: 48px, $w: 100%);
+  max-width: 177px;
+  @include text($c: #2a3647);
+  @include font($fs: 21px, $fw: 700);
+  background-color: transparent;
+  border-color: #2a3647;
+  border-style: solid;
+
+  &:hover {
+    color: #29abe2;
+    border-color: #29abe2;
+    box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
+    border-width: 2px;
+  }
+  > span {
+    width: 129px;
+    height: 25px;
+  }
+}
+
+.btn-highlight {
+  background-color: $color-highlight;
+  @include size($h: 48px, $w: 100%);
+  max-width: 100%;
+  @include text($c: #ffffff);
+  @include font($fs: 23px, $fw: 400);
+  &:hover {
+    background-color: #29abe2;
+    box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.25);
+  }
+}
+
+.btn-priority {
+  @include dFlex($fd: unset, $g: 8px);
+  @include padding($p: 16px 10px);
+  @include font($fs: 20px);
+  @include size($w: 100%);
+  background: white;
+  box-shadow: 0 0 4px 0 rgb(0, 0, 0, 0.1);
+  border-radius: 10px;
+  &:hover {
+    box-shadow: 2px 4px 4px rgb(0, 0, 0, 0.1);
+  }
+}
+
+.btn-priority-icon {
+  display: inline-block;
+  @include size($w: 20px, $h: 15px);
+}
+
+
+
+.urgent-icon {
+  background-image: url("./../../../assets/icons/urgent.svg");
+}
+
+.medium-icon {
+  background-image: url("./../../../assets/icons/medium.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.low-icon {
+  background-image: url("./../../../assets/icons/low.svg");
+}
+
+
+.active-urgent {
+  color: white;
+  font-weight: 700;
+  background-color: #ff3a00;
+}
+
+.active-medium {
+  color: white;
+  font-weight: 700;
+  background-color: #ffa800;
+}
+
+.active-low {
+  color: white;
+  font-weight: 700;
+  background-color: #7ae229;
+}
+
+.active-urgent .urgent-icon {
+  background-image: url("./../../../assets/icons/urgent_white.svg");
+}
+
+.active-medium .medium-icon {
+  background-image: url("./../../../assets/icons/medium_white.svg");
+}
+
+.active-low .low-icon {
+  background-image: url("./../../../assets/icons/low_white.svg");
+}
+
+
+.btn-clear-icon {
+  @include size($w: 11px, $h: 11px);
+  background-image: url("./../../../assets/icons/cancel.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-clear {
+  @include dFlex($fd: unset, $g: 12px);
+  color: #2a3647;
+  border: 1px solid #2a3647;
+  padding: 16px;
+  border-radius: 10px;
+  &:hover {
+    color: $color-highlight;
+    border: 1px solid $color-highlight;
+  }
+  > span {
+    @include font($fs: 20px);
+  }
+}
+
+
+
+.btn-clear:hover .btn-clear-icon {
+  background-image: url("./../../../assets/icons/close-blue.svg");
+}
+
+.btn-submit {
+  @include dFlex($fd: unset, $g: 12px);
+  border: 1px solid $color-primary;
+  background-color: $color-primary;
+  @include padding($p: 16px);
+  border-radius: 10px;
+  color: white;
+  &:hover {
+    background-color: $color-highlight;
+  }
+  > span{
+     @include font($fs: 21px);
+  }
+}
+
+.btn-edit{
+  @include dFlex($fd: unset, $g: 12px);
+  border: 1px solid $color-primary;
+  background-color: $color-primary;
+  @include padding($p: 8px);
+  border-radius: 10px;
+  color: white;
+  &:hover {
+    background-color: $color-highlight;
+  }
+  > span{
+     @include font($fs: 21px);
+  }
+}
+
+.btn-submit-icon {
+  @include size($w: 16px, $h: 11px);
+  background-image: url("./../../../assets/icons/check_withoutBorder.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

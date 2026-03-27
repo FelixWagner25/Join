@@ -1,0 +1,23 @@
+.join-span {
+  color: #29ABE2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.join-span > a:visited {
+  color: #29ABE2;
+}
+
+main {
+  overflow-y: scroll;
+}
+
+ul {
+  list-style: disc;
+}
+
+.help-legal-polilcy-wrap {
+  padding: 0 64px;
+}
+
+/*# sourceMappingURL=help_legal_policy.css.map */

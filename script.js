@@ -1,10 +1,8 @@
-const database =
-  "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
-
 let contactsArray = [];
 let tasksArray = [];
 let overlayTransitionMiliSeconds = 300;
 let newContact = "newContact";
+let emptyJSON = {};
 
 let contactColorClasses = [
   "bg-orange",
@@ -141,6 +139,7 @@ async function updateDatabaseObject(path = "", object = {}) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(object),
+    
   });
 }
 
@@ -218,7 +217,7 @@ function setInputTagValue(htmlId, valueToSet) {
  */
 function showToastMessage(htmlId) {
   document.body.style.overflow = "hidden";
-  document.getElementById(htmlId).style.display = "block";
+  document.getElementById(htmlId).classList.add("d-block");
   setTimeout(() => {
     msgRef = document.getElementById(htmlId);
     msgRef.classList.remove("show");
@@ -227,8 +226,9 @@ function showToastMessage(htmlId) {
   }, 10);
   setTimeout(() => {
     document.body.style.overflow = "auto";
-    document.getElementById(htmlId).style.display = "none";
-  }, 3000);
+
+    document.getElementById(htmlId).classList.remove("d-none");
+  }, 500);
 }
 
 /**
@@ -252,13 +252,13 @@ function requiredInputValidation(
   indexTask,
   newContact,
   indexContact,
-  subtask
+  subtask,
 ) {
   let requiredFields = document.getElementsByClassName("required");
   let validationMessageRef = document.getElementsByClassName("validation");
   let whitespacePattern = /^[ \t]*$/;
   let validationTrue = [...requiredFields].every(
-    (element) => element.value != "" && !whitespacePattern.test(element.value)
+    (element) => element.value != "" && !whitespacePattern.test(element.value),
   );
   if (validationTrue) {
     setAddOrEditSubmit(taskStatusId, indexTask, newContact, indexContact);
@@ -354,5 +354,57 @@ function resetErrorMessage() {
   });
   [...message].forEach((message) => {
     message.classList.add("d-none");
+  });
+}
+
+/**
+ * This Function adds z-index-1 - class to current clicked element
+ * It removes all current set z-index-1. classes
+ *
+ * @param {ThisType} dropdown - the clicked element
+ */
+function setZIndex(dropdown) {
+  hasIndex = dropdown.classList.value.includes("z-index-1");
+  hasIndizes = document.querySelectorAll(".z-index-1");
+  hasIndizes.forEach((i) => {
+    i.classList.remove("z-index-1");
+  });
+  dropdown.classList.add("z-index-1");
+}
+
+function sendMail(e) {
+  e.preventDefault();
+  let form = new FormData(e.target);
+  
+  for (const [key, values] of form) {
+    emptyJSON[key] = values;
+  }
+  console.log(emptyJSON);
+
+  fetch(webhook, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(emptyJSON)
+  })
+  .then(response => response.text())
+  .then(result => {
+    console.log("Mail sent:", result);
+    alert("Mail wurde gesendet ✅");
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert("Fehler beim Senden ❌");
+  });
+
+  resetInputs()
+
+}
+
+function resetInputs() {
+  let requiredFields = document.querySelectorAll('[required]');
+  [...requiredFields].forEach(e => { 
+   e.value = ""
   });
 }

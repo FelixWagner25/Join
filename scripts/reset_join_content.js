@@ -62,13 +62,14 @@ async function submitInitialTasks() {
     "put here Description",
     "2025-12-12",
     "low",
-    "todo",
+    "triage",
     "First Test Task",
     [{ Id: contactsObj[1][0], name: contactsObj[1][1].name }],
     [
       { name: "subtask1", done: true },
       { name: "subtask2", done: false },
-    ]
+    ],
+    "human"
   );
   taskNew(
     "technical-task",
@@ -84,7 +85,8 @@ async function submitInitialTasks() {
     [
       { name: "subtask1", done: true },
       { name: "subtask2", done: false },
-    ]
+    ],
+    "human"
   );
   taskNew(
     "user-story",
@@ -97,7 +99,8 @@ async function submitInitialTasks() {
     [
       { name: "call Boss", done: false },
       { name: "cry", done: false },
-    ]
+    ],
+    "human"
   );
   taskNew(
     "user-story",
@@ -110,7 +113,8 @@ async function submitInitialTasks() {
     [
       { name: "subtask1", done: true },
       { name: "subtask2", done: true },
-    ]
+    ],
+    "human"
   );
   taskNew(
     "technical-task",
@@ -120,7 +124,8 @@ async function submitInitialTasks() {
     "inprogress",
     "El Pollo Loco!",
     [{ Id: contactsObj[6][0], name: contactsObj[6][1].name }],
-    []
+    [],
+    "human"
   );
 }
 
@@ -144,7 +149,8 @@ function taskNew(
   status,
   title,
   assignedTo,
-  subtasks
+  subtasks,
+  source
 ) {
   new Task(
     category,
@@ -154,6 +160,7 @@ function taskNew(
     status,
     title,
     assignedTo,
-    subtasks
+    subtasks,
+    source
   );
 }

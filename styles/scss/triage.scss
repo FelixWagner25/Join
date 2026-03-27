@@ -1,0 +1,279 @@
+@use "abstracts" as *;
+
+body {
+  overflow: unset;
+}
+
+main {
+  top: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%);
+}
+
+aside {
+  align-items: flex-start;
+  width: 100%;
+}
+
+.join-logo {
+  > img {
+    position: absolute;
+    top: 4%;
+    left: 4%;
+  }
+}
+
+.container-wrap {
+  @include dFlex($g: 48px);
+}
+
+.stakeholder-container {
+  max-width: 964px;
+  background-color: $color-secondary;
+}
+
+.stakeholder-wrap {
+  @include dFlex($ai: flex-start);
+}
+
+.btn-stakeholder {
+  max-width: 300px;
+}
+
+.figure {
+  @include dFlex($fd: row-reverse);
+  > img {
+    @include size($w: 416px, $h: 280px);
+  }
+}
+
+.paragraph {
+  @include font($fs: 19px);
+  max-width: 500px;
+  text-align: justify;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  @include font($fs: 28px, $fw: 400);
+  margin: 0.25rem;
+}
+
+.triage-headline {
+  @include dFlex($g: 24px);
+  max-width: unset;
+  max-height: unset;
+  > span {
+    @include font($fs: 23px);
+  }
+}
+
+.stakeholder-headline {
+  @include dFlex($g: 42px);
+  @include size($w: 100%);
+  > h1 {
+    @include font($fs: 64px, $fw: 700);
+  }
+}
+
+.headline-navigate {
+  @include dFlex($fd: row, $jc: space-between);
+  @include size($w: 100%);
+  > span {
+    @include text($c: $color-highlight);
+    @include font($fs: 19px);
+  }
+}
+
+.choice-wrap {
+  @include dFlex($g: 64px, $fd: row);
+}
+
+.choice-container {
+  @include dFlex($ai: flex-start, $g: 24px);
+  @include size($w: 277px);
+  > .role-check {
+    @include dFlex($fd: row, $g: 8px);
+  }
+}
+
+.signup-container {
+  @include dFlex($d: none, $fd: row);
+  > .text-to-signup {
+    @include text($c: white);
+  }
+  > a {
+    @include text($c: white);
+  }
+}
+
+.btn-group{
+  @include dFlex($fd: row, $g: 16px, $ai: unset, $jc: unset);
+  @include size($w: 100%);
+}
+
+
+body:has(strong.mail-hover:hover) button.mail-hover {
+  animation: pulse 1s;
+}
+
+body:has(strong.form-hover:hover) button.form-hover {
+  animation: pulse 1s;
+}
+
+strong[class*="hover"]{
+  color: $color-highlight;
+}
+
+@media screen and (max-width: 992px) {
+  .choice-wrap {
+    padding: 20px;
+    width: 80%;
+  }
+  .choice-container {
+    width: 204px;
+  }
+
+  .triage-headline {
+    max-width: 72%;
+    > span {
+      font-size: 1.25rem;
+    }
+  }
+
+  .stakeholder-headline {
+    > h1 {
+      font-size: 40px;
+    }
+  }
+
+  .stakeholder-wrap {
+    align-items: center;
+  }
+
+  .figure {
+    flex-direction: column;
+    width: 100%;
+    > img {
+      width: 292px;
+      height: 202px;
+    }
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .paragraph {
+    max-width: unset;
+    font-size: 16px;
+  }
+
+  .btn-stakeholder {
+    width: 212px;
+    font-size: 16px;
+    padding: 15px 24px;
+  }
+
+  .btn-highlight {
+    background-color: $color-primary;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid {
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    /* grid-template-rows: 30% calc(100dvh - 40%) 10%; */
+    grid-template-rows: 25% calc(100dvh - 40%) 10%;
+    max-height: 560px;
+  }
+
+  .header-index {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+
+    > aside {
+      width: 100%;
+    }
+  }
+  .choice-wrap {
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+  .triage-headline {
+    > span {
+      font-size: 1rem;
+    }
+  }
+
+  .role-check {
+    > span {
+      font-size: 14px;
+    }
+  }
+
+  .container-wrap {
+    gap: 16px;
+  }
+
+  .choice-wrap {
+    gap: 16px;
+  }
+
+  .choice-container {
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .btn-triage {
+    font-size: 16px;
+    padding: 15px 24px;
+  }
+
+  .signup-container {
+    display: flex;
+  }
+
+  .stakeholder-headline {
+    align-items: unset;
+    flex-direction: column-reverse;
+    gap: unset;
+  }
+
+  .headline-navigate {
+    flex-direction: row-reverse;
+  }
+
+  .stakeholder-wrap {
+    width: 100%;
+  }
+
+  .arrow-left {
+    position: relative;
+    bottom: 100%;
+  }
+
+  .figure {
+    > img {
+      width: 292px;
+      height: 107;
+    }
+  }
+}
+
+@media screen and (max-height: 766px) {
+  .grid {
+    grid-template-rows: 10% 86dvh 0%;
+  }
+}

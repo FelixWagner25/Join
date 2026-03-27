@@ -11,16 +11,16 @@ button:hover {
   cursor: pointer;
 }
 
-.page {
+/* .page {
   display: grid;
   grid-template-columns: 232px auto;
   grid-template-rows: 96px auto;
   grid-template-areas:
     "aside nav"
     "aside main";
-}
+} */
 
-.join-logo {
+/* .join-logo {
   display: flex;
   justify-content: center;
 }
@@ -32,9 +32,9 @@ button:hover {
 
 .join-logo-mobile {
   display: none;
-}
+} */
 
-header {
+/* header {
   grid-area: nav;
   display: flex;
   background-color: #ffffff;
@@ -45,17 +45,17 @@ header {
   box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.1);
   z-index: 0;
 }
-
-.header-container {
+ */
+/* .header-container {
   padding: 20px 40px 20px 120px;
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 1920px;
   align-items: center;
-}
+} */
 
-aside {
+/* aside {
   grid-area: aside;
   background-color: #2a3647;
   display: flex;
@@ -72,13 +72,13 @@ main {
   grid-area: main;
   height: calc(100vh - 96px);
   max-width: 1920px;
-}
+} */
 
 menu {
   padding: 0;
   margin: 0;
 }
-nav {
+/* nav {
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -106,20 +106,20 @@ nav > span {
 
 nav > a:hover {
   background-color: #2a3d59;
-}
-
+} */
+/* 
 .policy-legal > a:hover {
   background-color: #2a3d59;
-}
+} */
 
-.active {
+/* .active {
   background-color: #091931 !important;
 }
 
 .active:hover {
   background-color: #091931 !important;
-}
-
+} */
+/* 
 .dropdown-menu-container {
   position: relative;
   top: 150px;
@@ -154,26 +154,25 @@ nav > a:hover {
   text-decoration: none;
   flex-direction: column;
   justify-content: center;
-}
+} */
 
-.policy-legal {
+/* .policy-legal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*   padding: 243px 0 0 0; */
   gap: 8px;
-}
+} */
 
-.policy-legal > a {
+/* .policy-legal > a {
   display: flex;
   flex-direction: column;
   gap: 8px;
   height: 35px;
   width: 100%;
   color: #a8a8a8;
-}
+} */
 
-.header-user {
+/* .header-user {
   gap: 16px;
   width: 104px;
   height: 56px;
@@ -196,7 +195,7 @@ nav > a:hover {
 .profile-ellipse:hover {
   background-color: rgb(12, 46, 98, 0.12);
   cursor: pointer;
-}
+} */
 
 input[type="checkbox"] {
   background: url(/assets/icons/checkbox.svg) no-repeat;
@@ -217,7 +216,7 @@ input::-webkit-calendar-picker-indicator {
 .disable-scroll {
   overflow: hidden;
 }
-
+/* 
 @media screen and (max-width: 820px) {
   .page {
     grid-template-columns: auto;
@@ -310,8 +309,8 @@ input::-webkit-calendar-picker-indicator {
     display: none;
   }
 }
-
-@media screen and (max-height: 587px) {
+ */
+/* @media screen and (max-height: 439px) {
   .landscape-orientation {
     display: flex !important;
     align-items: center;
@@ -327,3 +326,4 @@ input::-webkit-calendar-picker-indicator {
     color: #ffffff;
   }
 }
+ */
