@@ -1,5 +1,5 @@
 const database =
-  "https://join-461-default-rtdb.europe-west1.firebasedatabase.app/";
+  "https://join-felix-wagner-default-rtdb.europe-west1.firebasedatabase.app/";
 
 let contactsArray = [];
 let tasksArray = [];
@@ -252,13 +252,13 @@ function requiredInputValidation(
   indexTask,
   newContact,
   indexContact,
-  subtask
+  subtask,
 ) {
   let requiredFields = document.getElementsByClassName("required");
   let validationMessageRef = document.getElementsByClassName("validation");
   let whitespacePattern = /^[ \t]*$/;
   let validationTrue = [...requiredFields].every(
-    (element) => element.value != "" && !whitespacePattern.test(element.value)
+    (element) => element.value != "" && !whitespacePattern.test(element.value),
   );
   if (validationTrue) {
     setAddOrEditSubmit(taskStatusId, indexTask, newContact, indexContact);
