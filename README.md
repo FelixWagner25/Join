@@ -1,6 +1,6 @@
 # Join Kanban Board Web Application
 
-Join is a browser-based task manager application following the Kanban system. It was developed as as group project during the Developer Akadiemie Frontend Course.
+Join is a browser-based task manager application following the Kanban system. It was developed as as group project during the Developer Akadiemie Frontend Course.<br>
 The project's goal was the collaborative developement of a browser-based task management tool only unsing plain HMTL, CSS and JacaScript. Google's Firebase was used for backend applications.
 
 ## Content
